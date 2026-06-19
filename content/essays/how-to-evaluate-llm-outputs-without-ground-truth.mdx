@@ -1,0 +1,71 @@
+---
+title: How to evaluate LLM outputs without ground truth
+date: 2026-06-15
+summary: A five-pattern framework for building useful evals when there's no labeled dataset, no obvious right answer, and a deadline.
+pillar: AI
+tags: ["evals", "LLMs", "agents", "production AI"]
+primaryQuery: how to evaluate LLM outputs without ground truth
+---
+
+**Short answer:** stop hunting for a labeled dataset. Build evals out of *signals you already have* — pairwise preferences, rubric-graded outputs, behavioral assertions, drift detectors, and end-user feedback — and treat the eval suite as a product that ships alongside the model. Each signal is weak on its own; together they catch real regressions.
+
+Most teams I've seen building with LLMs hit the same wall in week three. They've got something demo-worthy. The PM asks how they'll know if a model change makes it better. There's no labeled test set. There's no obvious right answer. The PM goes to lunch. Engineering eyeballs outputs for the rest of the quarter.
+
+This is the part that decides whether the product ships. Here are five patterns that work.
+
+## 1. Pairwise preference over absolute scoring
+
+Asking "is this output good?" is hard. Asking "is A better than B?" is easy — for humans and for LLM judges. Run the same prompt through two model variants. Collect the pair. Have a judge (human or model) pick the winner.
+
+What you get: a relative scoreboard that moves when the system improves, without needing a "correct" answer ever defined.
+
+Caveats:
+- Use the same judge across runs or you'll measure judge drift, not system change.
+- Randomize the order of A/B — judges (including LLM judges) have positional bias.
+- 50 pairs gets you signal; 200 gets you confidence.
+
+## 2. Rubric-graded outputs
+
+Pick 4–6 dimensions that matter for your task ("answers the question," "cites real sources," "appropriate tone," "no hallucinated entities"). Score each 0–3 with an LLM judge. Average.
+
+The trick: write the rubric *before* you see outputs. Otherwise you'll define the dimensions around what your current system is already good at, and the eval will tell you what you want to hear.
+
+## 3. Behavioral assertions (the unit tests of LLM systems)
+
+For every failure mode you've actually seen, write a small adversarial test case. "User asks X in a hostile tone → output stays calm." "User asks for medical advice → output declines." "Input contains a date in DD/MM/YYYY → output parses it correctly."
+
+Each assertion is a tiny script: run the prompt, check the output against a regex, a classifier, or a model judge. Run the whole suite on every change.
+
+You're not measuring "is the model good?" You're measuring "did we break a thing we already fixed?" Different question, easier to answer, just as valuable.
+
+## 4. Drift detectors on real traffic
+
+In production, sample 1% of outputs. Run them through a cheap classifier or embedding-distance check against a reference distribution. When the average shifts, page someone.
+
+You don't need to know if outputs are *correct* to know they've *changed*. Drift detectors catch the silent failures — when a model update subtly shortens responses, or when a downstream prompt change makes outputs more hedged. Things you'd never notice scrolling logs.
+
+## 5. End-user feedback as ground truth (eventually)
+
+Thumbs up/down on every output, served back into the eval set. Conversation-completion rate. Re-prompt frequency (when users edit their query, the previous answer was probably bad).
+
+This signal is noisy in week one. By month three, it's the most honest data you have — because it's measuring what actually matters: did the user get value.
+
+## How they compose
+
+| Signal | Catches | Latency | Cost |
+|---|---|---|---|
+| Pairwise preference | Coarse quality changes | Days | Medium |
+| Rubric scoring | Multi-dimensional regressions | Hours | Medium |
+| Behavioral assertions | Known failure modes | Minutes | Low |
+| Drift detection | Silent distribution shifts | Real-time | Low |
+| User feedback | What actually matters | Weeks | Free |
+
+No single one is enough. Together they're a working eval suite — built without ever labeling a dataset, before the system stabilizes enough to be worth labeling.
+
+## The meta-pattern
+
+Treat your eval suite as a product. It has a roadmap. It has bugs. It has owners. When the model changes, the suite runs. When the suite fails, someone investigates *that day*, not after the release.
+
+The teams that ship reliable LLM systems aren't the ones with cleaner data. They're the ones who decided early that evaluation was a first-class engineering discipline, not a quarterly research project.
+
+If you're building with LLMs and you can't answer "how would you know if this got worse?" — start there. Five patterns above, pick one this week. Ship it before you ship the next model change.

@@ -1,0 +1,17 @@
+---
+title: Editorial workflow under regulatory compliance
+domain: Pharma content SaaS
+pillar: Product
+problem: Pharma content (medical communications, promotional materials) lives under strict regulatory review. The editorial workflow has to ship fast *and* survive an audit — competing constraints most CMS tools punt on.
+role: Product on the workflow + audit-trail features. Worked closely with med-legal reviewers.
+insight: In regulated SaaS, the audit trail is the actual product. The editor is just the UI on top. Once we built around "every change is provable, attributable, and reversible," everything else became simpler — including the editor.
+signal: Mid-market regulated SaaS.
+status: Shipped
+updates:
+  - date: 2022-10-01
+    note: Rebuilt the version-control model so audit trails became the primary data structure instead of a side log.
+  - date: 2023-06-20
+    note: Med-legal review time dropped meaningfully after consolidating approval gates into a single timeline view.
+---
+
+Regulated SaaS taught me that the boring infrastructure decisions are the ones that determine whether a product can ever charge premium pricing. Anonymized; happy to discuss the audit-trail model.
