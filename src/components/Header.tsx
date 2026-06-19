@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { SITE } from "@/lib/site";
+import { Monogram } from "./Monogram";
 
 const nav = [
   { href: "/writing", label: "Writing" },
-  { href: "/projects", label: "Projects" },
-  { href: "/notes", label: "Notes" },
-  { href: "/now", label: "Now" },
+  { href: "/projects", label: "Work" },
+  { href: "/frameworks", label: "Frameworks" },
   { href: "/about", label: "About" },
 ];
 
@@ -16,17 +15,17 @@ export function Header() {
       <div className="mx-auto max-w-5xl px-5 sm:px-8 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="font-serif text-[1.05rem] tracking-tight !text-[var(--fg)] hover:!text-[var(--accent)] transition-colors"
+          aria-label="Home"
+          className="inline-flex items-center !text-[var(--fg)] hover:!text-[var(--accent)] transition-colors"
         >
-          {SITE.shortName}
-          <span className="text-[var(--accent)]">.</span>
+          <Monogram />
         </Link>
-        <nav className="flex items-center gap-1 sm:gap-2 text-[0.92rem]">
+        <nav className="flex items-center gap-1 sm:gap-2 font-mono text-[0.78rem] tracking-[0.08em] uppercase">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="px-2.5 py-1.5 rounded-full !text-[var(--fg-muted)] hover:!text-[var(--fg)] hover:bg-[var(--bg-elevated)] transition-colors"
+              className="px-2.5 py-1.5 rounded !text-[var(--fg-muted)] hover:!text-[var(--fg)] hover:bg-[var(--bg-elevated)] transition-colors"
             >
               {item.label}
             </Link>

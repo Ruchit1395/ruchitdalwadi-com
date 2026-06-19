@@ -12,6 +12,7 @@ export type EssayMeta = {
   date: string;
   updated?: string;
   summary: string;
+  pullQuote?: string;
   pillar: Pillar;
   tags: string[];
   primaryQuery: string;
@@ -23,10 +24,19 @@ export type Essay = EssayMeta & { content: string };
 
 export type ProjectUpdate = { date: string; note: string };
 
+export type DiagramKey =
+  | "fashion"
+  | "content-editing"
+  | "logistics"
+  | "pharma"
+  | "erp"
+  | "edtech";
+
 export type ProjectMeta = {
   slug: string;
   title: string;
   domain: string;
+  diagram: DiagramKey;
   pillar: Pillar | "Multiple";
   problem: string;
   role: string;
@@ -75,6 +85,7 @@ export function getAllEssays(): Essay[] {
       summary: String(data.summary),
       pillar: data.pillar as Pillar,
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+      pullQuote: data.pullQuote ? String(data.pullQuote) : undefined,
       primaryQuery: String(data.primaryQuery ?? ""),
       readingTime: rt.text,
       wordCount: rt.words,
@@ -92,6 +103,7 @@ export function getAllProjects(): Project[] {
     slug,
     title: String(data.title),
     domain: String(data.domain),
+    diagram: (data.diagram as DiagramKey) ?? "fashion",
     pillar: (data.pillar as Pillar | "Multiple") ?? "Multiple",
     problem: String(data.problem),
     role: String(data.role),

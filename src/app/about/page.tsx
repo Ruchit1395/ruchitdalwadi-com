@@ -1,82 +1,136 @@
 import { Container } from "@/components/Container";
-import { SectionLabel } from "@/components/SectionLabel";
-import { CopyEmail } from "@/components/CopyEmail";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SITE } from "@/lib/site";
-import Link from "next/link";
 
 export const metadata = {
   title: "About",
   description:
-    "Builder shipping product across six industries. Currently focused on AI-native product, advisory work, and writing about the craft.",
+    "Operator and teacher in AI, startups, and product. A decade of shipping product across six industries.",
 };
+
+const helps = [
+  {
+    label: "Scoping AI features",
+    body: "Cutting AI roadmaps down to the version that actually ships — and earning the right to build the next one.",
+  },
+  {
+    label: "Evaluating LLM systems",
+    body: "Building eval suites for tasks where there is no obvious ground truth and the deadline is real.",
+  },
+  {
+    label: "Vertical SaaS workflows",
+    body: "Going deep on one industry’s actual operating model — not the version the customer first describes.",
+  },
+  {
+    label: "Product-engineering hand-off",
+    body: "Specs that survive contact with reality. The PM ↔ design ↔ engineering loop, in both directions.",
+  },
+];
+
+const teaches = [
+  "Eval design when ground truth is fuzzy",
+  "Scoping AI features without overengineering",
+  "First-10-customers playbooks for B2B AI",
+  "Vertical SaaS distribution motions",
+];
 
 export default function AboutPage() {
   return (
-    <Container size="narrow" className="py-20 sm:py-28">
-      <SectionLabel>About</SectionLabel>
-      <h1 className="font-serif text-3xl sm:text-5xl tracking-tight mt-5 leading-tight">
-        I build products at the intersection of AI, startups, and product.
-      </h1>
+    <Container size="narrow" className="py-24 sm:py-32">
+      <RevealOnScroll>
+        <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+          / About
+        </div>
+        <h1 className="font-serif text-[2.4rem] sm:text-[3.6rem] tracking-tight mt-5 leading-[1.08]">
+          A decade of operator work, now teaching the patterns.
+        </h1>
+      </RevealOnScroll>
 
-      <div className="mt-10 space-y-6 text-[1.05rem] leading-relaxed text-[var(--fg)]">
-        <p>
-          My background is unusual — I&apos;ve shipped across six industries: AI-native
-          consumer apps in fashion and content creation, last-mile B2C logistics in an
-          emerging market, regulated SaaS in pharma, vertical ERP for an underserved
-          industry, and outcomes-driven ed-tech.
-        </p>
-        <p>
-          The through-line: I care about whether real users adopt what we ship. Not just
-          launches. Not just metrics. The unglamorous part — does the product earn its
-          place in someone&apos;s actual day?
-        </p>
-        <p>
-          I&apos;m in the AI space full-time now. I think about agents, evals, harness
-          architecture, and the design choices that make AI products useful instead of
-          impressive-on-Twitter. Most of what I write here is a framework I&apos;ve
-          actually used, a pattern I&apos;ve seen work, or a demo I&apos;ve actually
-          built.
-        </p>
+      <RevealOnScroll delay={120}>
+        <div className="mt-10 space-y-6 text-[1.06rem] leading-relaxed text-[var(--fg)] max-w-2xl">
+          <p>
+            I&apos;ve shipped product across six industries: AI-native consumer in
+            fashion and content creation, last-mile B2C logistics in an
+            emerging market, regulated SaaS in pharma, vertical ERP for an
+            underserved industry, and outcomes-driven ed-tech.
+          </p>
+          <p>
+            The through-line: whether real users adopt what we ship. Not just
+            launches. Not just metrics. The unglamorous part — does the product
+            earn its place in someone&apos;s actual day?
+          </p>
+          <p>
+            I work in AI now. I think about agents, evals, harness architecture,
+            and the design choices that make AI products useful instead of just
+            impressive on a demo reel. What I publish here is a framework I
+            actually use, a pattern I&apos;ve seen work, or a demo I&apos;ve
+            actually built.
+          </p>
+        </div>
+      </RevealOnScroll>
+
+      <div className="mt-20 border-t border-[var(--border)] pt-14">
+        <RevealOnScroll>
+          <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+            / Where I help
+          </div>
+          <h2 className="font-serif text-[1.7rem] sm:text-[2rem] tracking-tight mt-4">
+            Specifically, four kinds of work.
+          </h2>
+        </RevealOnScroll>
+
+        <div className="mt-10 grid sm:grid-cols-2 gap-x-10 gap-y-9">
+          {helps.map((h, i) => (
+            <RevealOnScroll key={h.label} delay={i * 70}>
+              <div className="border-l-2 border-[var(--accent)] pl-5">
+                <div className="font-serif text-[1.2rem] text-[var(--fg)]">
+                  {h.label}
+                </div>
+                <p className="mt-2 text-[0.96rem] text-[var(--fg-muted)] leading-relaxed">
+                  {h.body}
+                </p>
+              </div>
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-14 grid sm:grid-cols-2 gap-6 border-t border-[var(--border)] pt-10">
-        <div>
-          <SectionLabel>What I&apos;m good at</SectionLabel>
-          <ul className="mt-4 space-y-2 text-[0.98rem] text-[var(--fg)]">
-            <li>· Scoping AI features that ship without overengineering</li>
-            <li>· Evaluating LLM systems when ground truth is fuzzy</li>
-            <li>· Vertical SaaS — going deep on one industry&apos;s workflow</li>
-            <li>· The PM-design-engineering hand-off, both directions</li>
-            <li>· Writing specs that survive contact with reality</li>
+      <div className="mt-20 border-t border-[var(--border)] pt-14">
+        <RevealOnScroll>
+          <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+            / What I teach
+          </div>
+          <h2 className="font-serif text-[1.7rem] sm:text-[2rem] tracking-tight mt-4">
+            The frameworks worth handing forward.
+          </h2>
+          <ul className="mt-8 space-y-3">
+            {teaches.map((t) => (
+              <li key={t} className="grid grid-cols-[auto_1fr] gap-4 items-baseline">
+                <span className="font-mono text-[0.72rem] text-[var(--fg-subtle)]">→</span>
+                <span className="text-[1.02rem] text-[var(--fg)]">{t}</span>
+              </li>
+            ))}
           </ul>
-        </div>
-        <div>
-          <SectionLabel>What I&apos;m not</SectionLabel>
-          <ul className="mt-4 space-y-2 text-[0.98rem] text-[var(--fg)]">
-            <li>· A pure researcher — I ship</li>
-            <li>· A growth/marketing specialist</li>
-            <li>· Someone who pretends every problem needs AI</li>
-            <li>· Available for content-farm freelance work</li>
-          </ul>
-        </div>
+        </RevealOnScroll>
       </div>
 
-      <div className="mt-14 border-t border-[var(--border)] pt-10">
-        <SectionLabel>Currently available for</SectionLabel>
-        <p className="mt-4 text-[1.05rem] text-[var(--fg)]">{SITE.availableFor}.</p>
-        <p className="mt-4 text-[0.95rem] text-[var(--fg-muted)]">
-          Send a specific note about what you&apos;re building or what you&apos;re stuck
-          on — the more concrete, the better the response.
-        </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <CopyEmail />
-          <Link
-            href="/contact"
-            className="text-[0.95rem] !text-[var(--fg-muted)] hover:!text-[var(--accent)]"
-          >
-            More ways to reach me →
-          </Link>
-        </div>
+      <div className="mt-20 border-t border-[var(--border)] pt-14">
+        <RevealOnScroll>
+          <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+            / Contact
+          </div>
+          <p className="mt-5 text-[1rem] text-[var(--fg-muted)] max-w-xl">
+            Email is fastest:{" "}
+            <a
+              href={`mailto:${SITE.email}`}
+              className="font-mono text-[0.95rem] !text-[var(--accent)]"
+            >
+              {SITE.email}
+            </a>
+            . Specific notes about what you&apos;re building get faster replies than
+            generic ones.
+          </p>
+        </RevealOnScroll>
       </div>
     </Container>
   );

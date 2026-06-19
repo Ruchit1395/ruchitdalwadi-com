@@ -2,17 +2,19 @@ export const SITE = {
   name: "Ruchit Dalwadi",
   shortName: "Ruchit",
   author: "Ruchit Dalwadi",
-  tagline: "Building at the intersection of AI, startups, and product.",
+  tagline: "I help operators ship AI-native product.",
+  identity:
+    "I help operators ship AI-native product. Frameworks and lessons from a decade of work across six industries.",
   description:
-    "Ruchit Dalwadi — builder writing about AI, startups, and product. Hands-on patterns, frameworks, and lessons from shipping across six industries.",
+    "Ruchit Dalwadi — operator and teacher in AI, startups, and product. Frameworks, evals, and shipping playbooks from a decade across six industries.",
   keywords: [
-    "AI",
-    "LLMs",
+    "AI evals",
     "agentic AI",
-    "startups",
-    "product",
-    "product management",
-    "builder",
+    "LLM evaluation",
+    "product frameworks",
+    "vertical SaaS",
+    "B2B AI",
+    "startup playbooks",
     "Ruchit Dalwadi",
   ],
   url: "https://ruchitdalwadi.com",
@@ -24,8 +26,15 @@ export const SITE = {
     github: "https://github.com/Ruchit1395",
     email: "mailto:ruchitdalwadi001@gmail.com",
   },
-  availableFor: "Advisory work, angel-investor intros, and conversations about AI-native product",
+  trackRecord: [
+    { value: "6", label: "industries shipped across" },
+    { value: "10+", label: "years operator work" },
+    { value: "millions", label: "of end-users reached" },
+  ],
   pillars: ["AI", "Startups", "Product"] as const,
+  pullQuote:
+    "Get to the specific job. Then build the most boring version of the product that does it well.",
+  pullQuoteSource: "from ‘What I learned shipping across six industries’",
 } as const;
 
 export type Pillar = (typeof SITE.pillars)[number];

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { Card } from "@/components/Card";
-import { Tag } from "@/components/Tag";
-import { SectionLabel } from "@/components/SectionLabel";
-import { CopyEmail } from "@/components/CopyEmail";
+import { DomainDiagram } from "@/components/DomainDiagram";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SITE } from "@/lib/site";
 import { getAllEssays, getAllProjects } from "@/lib/content";
 import { format } from "date-fns";
@@ -14,133 +12,145 @@ export default function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="pt-20 sm:pt-28 pb-16 sm:pb-24">
+      {/* 1 — Identity */}
+      <section className="pt-28 sm:pt-40 pb-20 sm:pb-32">
         <Container>
-          <div className="flex items-center gap-2 text-[0.78rem] text-[var(--fg-muted)] mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]" />
-            </span>
-            <span>Currently building — open to {SITE.availableFor.toLowerCase()}</span>
-          </div>
+          <RevealOnScroll>
+            <div className="font-mono text-[0.78rem] tracking-[0.2em] uppercase text-[var(--fg-subtle)]">
+              {SITE.author}
+            </div>
+          </RevealOnScroll>
 
-          <h1 className="font-serif text-4xl sm:text-6xl leading-[1.05] tracking-tight max-w-3xl">
-            Building at the intersection of{" "}
-            <span className="italic text-[var(--accent)]">AI</span>,{" "}
-            <span className="italic text-[var(--accent)]">startups</span>, and{" "}
-            <span className="italic text-[var(--accent)]">product</span>.
-          </h1>
+          <RevealOnScroll delay={120}>
+            <h1 className="font-serif text-[2.6rem] sm:text-[4.4rem] leading-[1.04] tracking-tight mt-7 max-w-4xl">
+              I help operators ship{" "}
+              <span className="italic text-[var(--accent)]">AI-native</span> product.
+            </h1>
+          </RevealOnScroll>
 
-          <p className="mt-7 max-w-2xl text-[1.08rem] leading-relaxed text-[var(--fg-muted)]">
-            I&apos;m Ruchit — a builder who&apos;s shipped product across six industries, from AI-native consumer apps to regulated SaaS and emerging-market logistics. I write about what I&apos;ve learned, share frameworks I actually use, and ship demos for the patterns I claim work.
-          </p>
-
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/writing"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--fg)] !text-[var(--bg)] px-5 py-2.5 text-[0.95rem] font-medium hover:bg-[var(--accent)] transition-colors"
-            >
-              Read the writing →
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] !text-[var(--fg)] px-5 py-2.5 text-[0.95rem] hover:border-[var(--accent)] hover:!text-[var(--accent)] transition-colors"
-            >
-              See the work
-            </Link>
-          </div>
+          <RevealOnScroll delay={220}>
+            <p className="mt-8 max-w-2xl text-[1.1rem] leading-relaxed text-[var(--fg-muted)]">
+              Frameworks, evals, and shipping playbooks from a decade of operator work across six industries — AI-native consumer, regulated SaaS, emerging-market logistics, vertical workflow software, and outcomes-driven learning.
+            </p>
+          </RevealOnScroll>
         </Container>
       </section>
 
-      {/* FEATURED WRITING */}
-      <section className="py-16">
+      {/* 2 — Proof of work */}
+      <section className="py-20 sm:py-28 border-t border-[var(--border)]">
         <Container>
-          <div className="flex items-end justify-between mb-10">
-            <div className="flex flex-col gap-3">
-              <SectionLabel>Featured writing</SectionLabel>
-              <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">
-                Frameworks, not hot-takes.
+          <RevealOnScroll>
+            <div className="grid sm:grid-cols-[auto_1fr] gap-x-12 gap-y-2 items-baseline mb-14">
+              <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+                / Track record
+              </div>
+              <h2 className="font-serif text-[1.8rem] sm:text-[2.4rem] tracking-tight leading-tight">
+                Six industries. One through-line.
               </h2>
             </div>
-            <Link
-              href="/writing"
-              className="hidden sm:inline-flex text-[0.9rem] !text-[var(--fg-muted)] hover:!text-[var(--accent)]"
-            >
-              All essays →
-            </Link>
-          </div>
+          </RevealOnScroll>
 
-          <div className="grid sm:grid-cols-3 gap-5">
-            {essays.map((e) => (
-              <Card key={e.slug} href={`/writing/${e.slug}`}>
-                <Tag variant="accent">{e.pillar}</Tag>
-                <h3 className="font-serif text-[1.25rem] leading-snug mt-4 group-hover:text-[var(--accent)] transition-colors">
-                  {e.title}
-                </h3>
-                <p className="mt-3 text-[0.92rem] text-[var(--fg-muted)] line-clamp-3">
-                  {e.summary}
-                </p>
-                <div className="mt-5 text-[0.78rem] text-[var(--fg-subtle)] flex items-center gap-2">
-                  <span>{format(new Date(e.date), "MMM yyyy")}</span>
-                  <span>·</span>
-                  <span>{e.readingTime}</span>
+          <RevealOnScroll delay={80}>
+            <div className="grid grid-cols-3 gap-6 sm:gap-12 border-y border-[var(--border)] py-7 mb-14">
+              {SITE.trackRecord.map((r) => (
+                <div key={r.label} className="text-left">
+                  <div className="font-serif text-[1.8rem] sm:text-[2.4rem] leading-none text-[var(--fg)]">
+                    {r.value}
+                  </div>
+                  <div className="mt-2 font-mono text-[0.7rem] tracking-[0.12em] uppercase text-[var(--fg-subtle)]">
+                    {r.label}
+                  </div>
                 </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* DOMAINS / PROJECTS */}
-      <section className="py-16">
-        <Container>
-          <div className="flex flex-col gap-3 mb-10">
-            <SectionLabel>Domains shipped across</SectionLabel>
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight max-w-2xl">
-              Six industries, one through-line: shipping product real users adopt.
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projects.map((p) => (
-              <Card key={p.slug} href={`/projects/${p.slug}`}>
-                <div className="flex items-center justify-between">
-                  <Tag>{p.domain}</Tag>
-                  <span className="text-[0.7rem] text-[var(--fg-subtle)] uppercase tracking-wide">
-                    {p.status}
-                  </span>
-                </div>
-                <h3 className="font-serif text-[1.15rem] leading-snug mt-4 group-hover:text-[var(--accent)] transition-colors">
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-[0.9rem] text-[var(--fg-muted)] line-clamp-3">
-                  {p.problem}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* CONTACT CTA */}
-      <section className="py-16">
-        <Container size="narrow">
-          <div className="border-t border-[var(--border)] pt-12">
-            <SectionLabel>Reach out</SectionLabel>
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight mt-4 max-w-xl">
-              If you&apos;re building something at this intersection, I want to hear about it.
-            </h2>
-            <p className="mt-4 text-[1rem] text-[var(--fg-muted)] max-w-xl">
-              Open to advisory work, angel-investor intros, and conversations about AI-native product. The best inbound says specifically what you&apos;re working on and what stage you&apos;re stuck at.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <CopyEmail />
-              <Link href="/contact" className="text-[0.95rem] !text-[var(--fg-muted)] hover:!text-[var(--accent)]">
-                Or use the contact page →
-              </Link>
+              ))}
             </div>
+          </RevealOnScroll>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--border)] border border-[var(--border)] rounded-md overflow-hidden">
+            {projects.map((p, i) => (
+              <RevealOnScroll key={p.slug} delay={i * 60}>
+                <Link
+                  href={`/projects/${p.slug}`}
+                  className="block group bg-[var(--bg)] !text-[var(--fg)] p-6 sm:p-7 h-full transition-colors hover:bg-[var(--bg-elevated)]"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="font-mono text-[0.7rem] tracking-[0.12em] uppercase text-[var(--fg-subtle)]">
+                      /{String(i + 1).padStart(2, "0")} · {p.domain}
+                    </div>
+                  </div>
+                  <DomainDiagram kind={p.diagram} className="my-3 opacity-90 group-hover:opacity-100 transition-opacity" />
+                  <h3 className="font-serif text-[1.05rem] leading-snug mt-5 text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-[0.88rem] text-[var(--fg-muted)] line-clamp-2">
+                    {p.insight}
+                  </p>
+                </Link>
+              </RevealOnScroll>
+            ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 3 — Proof of thinking */}
+      <section className="py-20 sm:py-28 border-t border-[var(--border)]">
+        <Container>
+          <RevealOnScroll>
+            <div className="grid sm:grid-cols-[auto_1fr] gap-x-12 gap-y-2 items-baseline mb-14">
+              <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)]">
+                / Writing
+              </div>
+              <h2 className="font-serif text-[1.8rem] sm:text-[2.4rem] tracking-tight leading-tight">
+                Frameworks, not hot takes.
+              </h2>
+            </div>
+          </RevealOnScroll>
+
+          <div className="divide-y divide-[var(--border)] border-y border-[var(--border)]">
+            {essays.map((e, i) => (
+              <RevealOnScroll key={e.slug} delay={i * 80}>
+                <Link
+                  href={`/writing/${e.slug}`}
+                  className="block group !text-[var(--fg)] py-8 sm:py-10 hover:bg-[var(--bg-elevated)] transition-colors -mx-4 px-4"
+                >
+                  <div className="grid sm:grid-cols-[1fr_auto] gap-x-12 gap-y-3 items-baseline">
+                    <h3 className="font-serif text-[1.4rem] sm:text-[1.8rem] leading-snug tracking-tight group-hover:text-[var(--accent)] transition-colors">
+                      {e.title}
+                    </h3>
+                    <div className="font-mono text-[0.7rem] tracking-[0.14em] uppercase text-[var(--fg-subtle)] whitespace-nowrap">
+                      {e.pillar} · {e.readingTime}
+                    </div>
+                  </div>
+                  {e.pullQuote && (
+                    <p className="font-serif italic text-[1.05rem] sm:text-[1.15rem] leading-relaxed text-[var(--fg-muted)] mt-5 max-w-3xl">
+                      “{e.pullQuote}”
+                    </p>
+                  )}
+                  <div className="mt-5 font-mono text-[0.7rem] tracking-[0.12em] uppercase text-[var(--fg-subtle)]">
+                    {format(new Date(e.date), "MMM yyyy")}
+                  </div>
+                </Link>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 4 — Through-line */}
+      <section className="py-24 sm:py-36 border-t border-[var(--border)]">
+        <Container size="narrow">
+          <RevealOnScroll>
+            <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-[var(--fg-subtle)] mb-8 text-center">
+              / The through-line
+            </div>
+            <blockquote className="font-serif text-[1.7rem] sm:text-[2.4rem] leading-[1.2] tracking-tight text-center text-[var(--fg)]">
+              <span className="text-[var(--accent)]">“</span>
+              {SITE.pullQuote}
+              <span className="text-[var(--accent)]">”</span>
+            </blockquote>
+            <div className="mt-7 font-mono text-[0.72rem] tracking-[0.12em] uppercase text-[var(--fg-subtle)] text-center">
+              {SITE.pullQuoteSource}
+            </div>
+          </RevealOnScroll>
         </Container>
       </section>
     </>
