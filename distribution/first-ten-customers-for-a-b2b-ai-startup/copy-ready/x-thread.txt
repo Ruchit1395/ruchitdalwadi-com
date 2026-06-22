@@ -1,0 +1,81 @@
+The first 10 customers of a B2B AI startup are not bought with marketing.
+
+They are recruited.
+
+Most teams get this wrong, then wonder why "GTM" feels impossible.
+
+Here is the early playbook:
+
+---
+
+Normal B2B SaaS assumes:
+
+- the product is deterministic
+- the buyer knows the workflow
+- the demo represents reality
+
+AI startups often have none of these.
+
+The product is still learning. So is the buyer.
+
+---
+
+Move 1:
+
+Pick a workflow you can run live in a meeting.
+
+"We help analysts" is too vague.
+
+"We turn a 40-page legal brief into a 1-page summary your associate would sign" is runnable.
+
+If you cannot demo it live, the wedge is too abstract.
+
+---
+
+Move 2:
+
+Trade integration work for design-partner rights.
+
+The unfair offer:
+
+"We will build the integration into your stack in two weeks. In exchange, you give us weekly feedback for 90 days and permission to generalize what we learn."
+
+---
+
+Move 3:
+
+Charge real money on day one.
+
+Free customers do not behave like real customers.
+
+They do not push back.
+They do not churn.
+They do not reveal what they actually value.
+
+$500/month teaches more than a free pilot.
+
+---
+
+Move 4:
+
+One founder owns the whole loop:
+
+cold note -> demo -> integration -> onboarding -> 30-day check-in
+
+Do not hire sales yet.
+
+You are still learning the shape of the sale.
+
+Outsourcing it too early destroys the learning.
+
+---
+
+The uncomfortable truth:
+
+Your first 10 customers do not pay for software.
+
+They pay for founder attention.
+
+The startup question is whether that attention becomes repeatable product learning.
+
+Reply below has the full essay.

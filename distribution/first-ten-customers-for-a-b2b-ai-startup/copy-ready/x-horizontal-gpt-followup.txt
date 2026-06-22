@@ -1,0 +1,9 @@
+Most vertical AI startups do not lose to another startup.
+They lose to the horizontal GPT tab already open in the buyer's browser.
+
+So the wedge has to be:
+- workflow context
+- reliable output
+- lower handoff cost
+
+If ChatGPT + a prompt solves it, there is no product yet.

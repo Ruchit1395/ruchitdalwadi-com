@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Ten Customers - Metrics Dashboard</title>
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --panel: #fffaf0;
+      --ink: #151515;
+      --muted: #665f54;
+      --accent: #0f7a5f;
+      --line: #d8d0c0;
+      --danger: #8a2d14;
+      --warn: #b66a00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      padding: 38px 28px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      gap: 18px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    p { color: var(--muted); margin: 0 0 10px; }
+    a { color: var(--accent); font-weight: 700; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fffdf8;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .value {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-top: 6px;
+    }
+    .bar {
+      height: 18px;
+      background: #eee4d2;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 300ms ease;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fffdf8;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #f0e7d8;
+    }
+    code {
+      background: #efe7d8;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .note {
+      color: var(--danger);
+      font-weight: 700;
+    }
+    .pace {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .pace div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fffdf8;
+    }
+    @media (max-width: 800px) {
+      .stats, .grid, .pace { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>100k Reach Dashboard</h1>
+    <p>Reads <code>metrics-log.csv</code> from the campaign folder. Update the CSV after each checkpoint, then refresh this page.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Progress</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Impressions</div>
+          <div class="value" id="impressions">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Goal Progress</div>
+          <div class="value" id="progress">0%</div>
+        </div>
+        <div class="stat">
+          <div class="label">Verified Responses</div>
+          <div class="value" id="verified-responses">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Target Responses</div>
+          <div class="value" id="target-responses">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Platform Comments</div>
+          <div class="value" id="direct-replies">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Link Clicks</div>
+          <div class="value" id="clicks">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Execution Gap</div>
+          <div class="value" id="execution-gap">0</div>
+        </div>
+      </div>
+      <div class="bar" aria-label="Progress toward 100k impressions">
+        <div class="fill" id="bar"></div>
+      </div>
+      <p id="status" style="margin-top: 12px;">Loading metrics...</p>
+      <div class="pace">
+        <div>
+          <div class="label">Daily Average Needed</div>
+          <strong id="daily-needed">0</strong>
+        </div>
+        <div>
+          <div class="label">Day 7 Target Gap</div>
+          <strong id="day7-gap">0</strong>
+        </div>
+        <div>
+          <div class="label">Next Lever</div>
+          <strong id="next-lever">Loading...</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Decision Rules</h2>
+        <p><strong>High impressions, low verified responses:</strong> add a sharper question next time.</p>
+        <p><strong>Low impressions, high response quality:</strong> distribution graph is too small; comment more and send directly to better-matched people.</p>
+        <p><strong>Low impressions, low verified responses:</strong> rewrite the hook around pain, not advice.</p>
+        <p><strong>One comment outperforms the post:</strong> turn it into the next post within 24 hours.</p>
+      </div>
+      <div class="panel">
+        <h2>Checkpoint Cadence</h2>
+        <p>T+1h: impressions, comments, reposts, replies.</p>
+        <p>T+3h: strongest comment thread and post URL.</p>
+        <p>T+6h: decide whether to post a follow-up angle.</p>
+        <p>T+24h: publish standalone X post if thread slows.</p>
+        <p>T+48h: decide keep, pivot hook, or push direct outreach.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Reply Source Scorecard</h2>
+      <p>This is the main learning table: which channel created actual responses, not just passive views. It only counts rows from <code>reply-source-scorecard.csv</code>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Replies</th>
+            <th>Target Replies</th>
+            <th>Best Response</th>
+            <th>Next Action</th>
+          </tr>
+        </thead>
+        <tbody id="reply-sources">
+          <tr><td colspan="5">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Daily Activity</h2>
+      <p>Planned vs actual execution from <code>daily-activity-ledger.csv</code>. This shows whether the campaign is doing enough distribution work to make 100k plausible.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Phase</th>
+            <th>X Posts</th>
+            <th>LI Posts</th>
+            <th>X Reply Batches</th>
+            <th>LI Comment Batches</th>
+            <th>Outreach</th>
+            <th>Metric Checks</th>
+            <th>Verified Replies</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="daily-activity">
+          <tr><td colspan="10">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Rows</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Platform</th>
+            <th>Asset</th>
+            <th>Checkpoint</th>
+            <th>Impressions</th>
+            <th>Comments</th>
+            <th>Reposts</th>
+            <th>Clicks</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+          <tr><td colspan="9">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Manual Update Format</h2>
+      <p>Append/update rows in <code>metrics-log.csv</code>. Keep numeric fields empty or numeric only.</p>
+      <p class="note">Do not treat clicks as the main win. For this campaign, verified replies and second-degree comments are the leading indicators.</p>
+      <p>Use <code>reply-source-scorecard.csv</code> for individual replies, DMs, forwards, and high-quality comments caused by each channel.</p>
+      <p><a href="./launch-cockpit.html">Back to launch cockpit</a></p>
+    </section>
+  </main>
+
+  <script>
+    const GOAL = 100000;
+
+    function parseCsv(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let quoted = false;
+      for (let i = 0; i < text.length; i += 1) {
+        const ch = text[i];
+        const next = text[i + 1];
+        if (ch === '"' && quoted && next === '"') {
+          cell += '"';
+          i += 1;
+        } else if (ch === '"') {
+          quoted = !quoted;
+        } else if (ch === "," && !quoted) {
+          row.push(cell);
+          cell = "";
+        } else if ((ch === "\n" || ch === "\r") && !quoted) {
+          if (ch === "\r" && next === "\n") i += 1;
+          row.push(cell);
+          if (row.some(Boolean)) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += ch;
+        }
+      }
+      if (cell || row.length) {
+        row.push(cell);
+        if (row.some(Boolean)) rows.push(row);
+      }
+      return rows;
+    }
+
+    function number(value) {
+      const cleaned = String(value || "").replace(/[^0-9.]/g, "");
+      return cleaned ? Number(cleaned) : 0;
+    }
+
+    function format(n) {
+      return Math.round(n).toLocaleString();
+    }
+
+    function rowValue(row, idx, key) {
+      return idx[key] == null ? "" : row[idx[key]];
+    }
+
+    function measuredKey(row, idx) {
+      return [
+        rowValue(row, idx, "platform"),
+        rowValue(row, idx, "asset"),
+        rowValue(row, idx, "post_url") || rowValue(row, idx, "checkpoint"),
+      ].join("::");
+    }
+
+    function latestMeasuredRows(data, idx) {
+      const latest = new Map();
+      for (const row of data) {
+        if (!number(rowValue(row, idx, "impressions"))) continue;
+        latest.set(measuredKey(row, idx), row);
+      }
+      return Array.from(latest.values());
+    }
+
+    function classifySource(row, idx) {
+      const platform = rowValue(row, idx, "platform") || "unknown";
+      const asset = rowValue(row, idx, "asset") || "unknown";
+      if (platform === "direct") return "Direct outreach";
+      if (asset.includes("engagement")) return "X engagement replies";
+      if (platform === "linkedin") return "LinkedIn native";
+      if (platform === "x") return "X owned post";
+      return `${platform} / ${asset}`;
+    }
+
+    function renderReplySources(replyRows) {
+      const sources = new Map();
+
+      function ensure(name) {
+        if (!sources.has(name)) {
+          sources.set(name, { replies: 0, targetReplies: 0, best: "", next: "" });
+        }
+        return sources.get(name);
+      }
+
+      for (const row of replyRows) {
+        const sourceName = row.source_channel || "Unknown";
+        const source = ensure(sourceName);
+        source.replies += 1;
+        if ((row.responder_type || "").match(/founder|operator|investor|target/i)) {
+          source.targetReplies += 1;
+        }
+        const quality = number(row.quality_score);
+        const currentQuality = number(source.quality);
+        if (!source.best || quality >= currentQuality) {
+          source.quality = row.quality_score;
+          source.best = row.responder ? `${row.responder}: ${row.notes || row.reply_type || ""}` : (row.notes || row.reply_type || "");
+          source.next = row.followup_action || "";
+        }
+      }
+
+      const tbody = document.getElementById("reply-sources");
+      tbody.innerHTML = "";
+      const entries = Array.from(sources.entries())
+        .sort((a, b) => b[1].replies - a[1].replies || b[1].targetReplies - a[1].targetReplies);
+
+      if (!entries.length) {
+        tbody.innerHTML = '<tr><td colspan="5">No reply source data yet. Log replies in reply-source-scorecard.csv.</td></tr>';
+        return;
+      }
+
+      for (const [name, source] of entries) {
+        const tr = document.createElement("tr");
+        for (const value of [name, source.replies, source.targetReplies, source.best, source.next]) {
+          const td = document.createElement("td");
+          td.textContent = value || "";
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+    }
+
+    async function loadReplyRows() {
+      try {
+        const res = await fetch("./reply-source-scorecard.csv?ts=" + Date.now());
+        if (!res.ok) return [];
+        const parsed = parseCsv(await res.text());
+        const header = parsed.shift();
+        if (!header) return [];
+        return parsed
+          .filter((row) => row.some(Boolean))
+          .map((row) => Object.fromEntries(header.map((name, i) => [name, row[i] || ""])));
+      } catch {
+        return [];
+      }
+    }
+
+    async function loadDailyActivityRows() {
+      try {
+        const res = await fetch("./daily-activity-ledger.csv?ts=" + Date.now());
+        if (!res.ok) return [];
+        const parsed = parseCsv(await res.text());
+        const header = parsed.shift();
+        if (!header) return [];
+        return parsed
+          .filter((row) => row.some(Boolean))
+          .map((row) => Object.fromEntries(header.map((name, i) => [name, row[i] || ""])));
+      } catch {
+        return [];
+      }
+    }
+
+    function plannedActual(row, plannedKey, actualKey) {
+      return `${format(number(row[actualKey]))}/${format(number(row[plannedKey]))}`;
+    }
+
+    function executionGap(row) {
+      const pairs = [
+        ["planned_x_posts", "actual_x_posts"],
+        ["planned_linkedin_posts", "actual_linkedin_posts"],
+        ["planned_x_reply_batches", "actual_x_reply_batches"],
+        ["planned_linkedin_comment_batches", "actual_linkedin_comment_batches"],
+        ["planned_direct_outreach", "actual_direct_outreach"],
+        ["planned_metric_checks", "actual_metric_checks"],
+      ];
+      return pairs.reduce((sum, [plannedKey, actualKey]) => {
+        return sum + Math.max(0, number(row[plannedKey]) - number(row[actualKey]));
+      }, 0);
+    }
+
+    function renderDailyActivity(activityRows) {
+      const tbody = document.getElementById("daily-activity");
+      tbody.innerHTML = "";
+
+      if (!activityRows.length) {
+        tbody.innerHTML = '<tr><td colspan="10">No daily activity data yet.</td></tr>';
+        document.getElementById("execution-gap").textContent = "0";
+        return;
+      }
+
+      const latest = activityRows[activityRows.length - 1];
+      document.getElementById("execution-gap").textContent = format(executionGap(latest));
+
+      for (const row of activityRows.slice(-7).reverse()) {
+        const tr = document.createElement("tr");
+        const cells = [
+          row.date,
+          row.phase,
+          plannedActual(row, "planned_x_posts", "actual_x_posts"),
+          plannedActual(row, "planned_linkedin_posts", "actual_linkedin_posts"),
+          plannedActual(row, "planned_x_reply_batches", "actual_x_reply_batches"),
+          plannedActual(row, "planned_linkedin_comment_batches", "actual_linkedin_comment_batches"),
+          plannedActual(row, "planned_direct_outreach", "actual_direct_outreach"),
+          plannedActual(row, "planned_metric_checks", "actual_metric_checks"),
+          row.verified_replies,
+          row.notes,
+        ];
+        for (const value of cells) {
+          const td = document.createElement("td");
+          td.textContent = value || "";
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+    }
+
+    async function load() {
+      const res = await fetch("./metrics-log.csv?ts=" + Date.now());
+      const text = await res.text();
+      const parsed = parseCsv(text);
+      const header = parsed.shift();
+      const idx = Object.fromEntries(header.map((name, i) => [name, i]));
+      const data = parsed.filter((r) => r[idx.platform] || r[idx.asset] || r[idx.checkpoint]);
+      const measured = latestMeasuredRows(data, idx);
+      const replyRows = await loadReplyRows();
+      const activityRows = await loadDailyActivityRows();
+
+      const totals = measured.reduce((acc, r) => {
+        acc.impressions += number(r[idx.impressions]);
+        acc.platformComments += number(r[idx.comments]);
+        acc.reposts += number(r[idx.reposts]);
+        acc.clicks += number(r[idx.link_clicks]);
+        acc.platformDirectReplies += number(r[idx.direct_replies]);
+        return acc;
+      }, { impressions: 0, platformComments: 0, reposts: 0, clicks: 0, platformDirectReplies: 0 });
+
+      const verifiedResponses = replyRows.length;
+      const targetResponses = replyRows.filter((row) => (row.responder_type || "").match(/founder|operator|investor|target/i)).length;
+      const progress = Math.min(100, (totals.impressions / GOAL) * 100);
+      const remaining = Math.max(0, GOAL - totals.impressions);
+      const dailyNeeded = Math.ceil(remaining / 30);
+      const day7Gap = Math.max(0, 15000 - totals.impressions);
+      let nextLever = "Find first target reply";
+      if (verifiedResponses > 0 && totals.impressions < 1500) {
+        nextLever = "Reply to Luke Sophinos";
+      } else if (verifiedResponses > 0) {
+        nextLever = "Turn best reply into follow-up";
+      } else if (totals.impressions >= 1500) {
+        nextLever = "Ask sharper question";
+      } else if (totals.impressions >= 500) {
+        nextLever = "Comment + direct outreach";
+      }
+      document.getElementById("impressions").textContent = format(totals.impressions);
+      document.getElementById("progress").textContent = progress.toFixed(1) + "%";
+      document.getElementById("verified-responses").textContent = format(verifiedResponses);
+      document.getElementById("target-responses").textContent = format(targetResponses);
+      document.getElementById("direct-replies").textContent = format(totals.platformComments + totals.platformDirectReplies);
+      document.getElementById("clicks").textContent = format(totals.clicks);
+      document.getElementById("bar").style.width = progress + "%";
+      document.getElementById("status").textContent = `${format(remaining)} impressions remaining to hit 100k.`;
+      document.getElementById("daily-needed").textContent = `${format(dailyNeeded)} / day`;
+      document.getElementById("day7-gap").textContent = format(day7Gap);
+      document.getElementById("next-lever").textContent = nextLever;
+      renderReplySources(replyRows);
+      renderDailyActivity(activityRows);
+
+      const tbody = document.getElementById("rows");
+      tbody.innerHTML = "";
+      if (!data.length) {
+        tbody.innerHTML = '<tr><td colspan="9">No campaign metrics yet.</td></tr>';
+        return;
+      }
+      for (const r of data) {
+        const tr = document.createElement("tr");
+        const cells = [
+          r[idx.timestamp],
+          r[idx.platform],
+          r[idx.asset],
+          r[idx.checkpoint],
+          r[idx.impressions],
+          r[idx.comments],
+          r[idx.reposts],
+          r[idx.link_clicks],
+          r[idx.notes],
+        ];
+        for (const value of cells) {
+          const td = document.createElement("td");
+          if (String(value || "").startsWith("http")) {
+            const a = document.createElement("a");
+            a.href = value;
+            a.textContent = value;
+            a.target = "_blank";
+            a.rel = "noreferrer";
+            td.appendChild(a);
+          } else {
+            td.textContent = value || "";
+          }
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+    }
+
+    load().catch((error) => {
+      document.getElementById("status").textContent = "Could not load metrics-log.csv: " + error.message;
+    });
+  </script>
+</body>
+</html>

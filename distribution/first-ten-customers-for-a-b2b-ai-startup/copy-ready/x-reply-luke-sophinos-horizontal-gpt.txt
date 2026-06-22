@@ -1,0 +1,7 @@
+Exactly. That is the real wedge test.
+
+A vertical AI product has to beat horizontal GPT on workflow context, reliability, and handoff cost.
+
+If the buyer can solve it with ChatGPT + a prompt, there is no product yet.
+
+The first 10 customers expose where that line is.

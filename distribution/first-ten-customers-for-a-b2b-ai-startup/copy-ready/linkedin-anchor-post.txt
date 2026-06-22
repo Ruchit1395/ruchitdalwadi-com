@@ -1,0 +1,45 @@
+The first 10 customers of a B2B AI startup are not bought with marketing.
+
+They are recruited.
+
+Most B2B GTM advice assumes three things:
+
+1. The product is deterministic.
+2. The buyer knows what they want.
+3. The demo shows the real product.
+
+AI startups usually have none of these.
+
+The product works beautifully on Tuesday and breaks on a weird input on Thursday.
+
+The buyer cannot fully describe what "good output" means yet.
+
+And your biggest competitor is not another startup. It is the customer's internal team trying to duct-tape the same workflow together.
+
+So the first 10 customers need a different motion:
+
+Pick a workflow you can run live in a meeting.
+
+Trade integration work for design-partner rights.
+
+Charge real money on day one, but keep it psychologically cheap.
+
+Keep one founder across the whole loop: cold note, demo, integration, onboarding, 30-day check-in.
+
+The uncomfortable truth:
+
+Your first customers are not paying for software.
+
+They are paying for founder attention.
+
+The startup question is whether you can turn that attention into repeatable product learning instead of custom consulting.
+
+That is the line.
+
+If customer #1 becomes a custom branch forever, you built a services business.
+
+If customer #1 teaches you how to sell customer #11 without rebuilding the product, you might have a startup.
+
+I wrote the full playbook here.
+
+First comment has the link.

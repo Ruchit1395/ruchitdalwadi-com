@@ -1,0 +1,9 @@
+I write about building AI-native products after the demo works:
+
+- evals
+- first customers
+- product judgment
+- boring systems that make AI useful
+
+Start here:
+https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup?utm_source=x&utm_medium=pinned&utm_campaign=first-ten-customers

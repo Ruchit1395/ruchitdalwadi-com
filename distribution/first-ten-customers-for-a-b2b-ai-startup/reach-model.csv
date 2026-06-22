@@ -1,0 +1,12 @@
+day,target_cumulative_impressions,min_viable_cumulative,strong_cumulative,breakout_cumulative,primary_lever,decision
+0,500,250,1000,3000,"launch posts + first reply/comment loop","If under 250 impressions after 6h, use X engagement Batch A before posting more."
+1,1500,750,3000,8000,"X replies + LinkedIn post/comment loop + 5 direct sends","If replies are zero, rewrite next hook around pain rather than advice."
+2,3000,1500,6000,15000,"paid-pilot angle + direct founder sends","If low impressions but any strong reply appears, turn that reply into a post."
+3,5000,2500,10000,25000,"design-partner angle + comment under active posts","If no target-audience replies, switch from big accounts to niche operators."
+4,7500,3750,15000,35000,"live-workflow angle + 10 X replies","If X still under 2k, publish image/carousel variant."
+5,10000,5000,20000,45000,"investor-forwardable version + 5 investor sends","If one investor/operator engages, expand that thread immediately."
+6,12500,6250,25000,55000,"comments only + metric review","If below min viable, rewrite core hook and relaunch as standalone."
+7,15000,7500,30000,65000,"week-one recap","Double down on the angle with best replies per impression."
+14,40000,20000,60000,90000,"objection week + second thread","If below 20k, the campaign needs a stronger distribution partner or sharper contradiction."
+21,70000,40000,85000,110000,"founder-led sales week + outreach batch 2","If below 40k, stop broad posting and focus on reply/comment network effects."
+30,100000,70000,120000,200000,"synthesis + final push","Decide whether to scale system, rewrite essay hook, or move to next post."

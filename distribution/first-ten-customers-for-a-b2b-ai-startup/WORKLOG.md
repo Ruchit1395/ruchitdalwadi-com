@@ -1,0 +1,249 @@
+# Worklog - First ten customers campaign
+
+Campaign post: `content/essays/first-ten-customers-for-a-b2b-ai-startup.mdx`
+
+Canonical URL: `https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup`
+
+## 2026-06-20
+
+- Reviewed existing site essays and selected `First ten customers for a B2B AI startup` as the first reach campaign.
+- Reason for selection: strongest overlap with founders, AI builders, GTM operators, and investors; sharp contrarian premise; clear practical framework; easy to turn into multiple native social assets.
+- Strategy direction: no paid tools, no APIs, no mass automation. Use browser-assisted manual posting, native social copy, link-later mechanics, targeted comments, and direct outreach.
+- Created campaign draft folder under `distribution/first-ten-customers-for-a-b2b-ai-startup/`.
+- Opened LinkedIn and X in the in-app browser to check local posting feasibility.
+- LinkedIn is not logged in. Browser landed on LinkedIn login page.
+- X is not logged in. Browser landed on the X sign-in screen.
+- Posting is ready to continue after user logs into both accounts in the visible browser tabs.
+- Rechecked browser state. LinkedIn is still logged out; X redirected to the public landing page.
+- Added `LAUNCH_ROOM.md` as the execution command center.
+- Added `metrics-log.csv` for checkpoint-based reach tracking.
+- Added `48-hour-schedule.md` with exact launch timing, reply/comment waves, and metric checkpoints.
+- Expanded `tracker.csv` with pre-launch comments, X replies, and LinkedIn fallback post rows.
+- Rechecked browser state again. LinkedIn and X both appeared to reach logged-in destinations (`/feed/` and `/home`).
+- Added `copy-ready/` plain-text files for posts, first comments, X thread, standalone posts, and newsletter blurb.
+- Added `search-queues.md` with direct X/LinkedIn search URLs and comment prompt banks.
+- Added `approval-checklist.md` with exact approval phrases for posting, comments, replies, and outreach.
+- Created a 9-slide LinkedIn document carousel PDF at `assets/carousel/first-ten-customers-carousel.pdf`.
+- Rendered all 9 PDF pages to PNG under `tmp/rendered-carousel/` and visually checked slides 1, 4, and 9 for readability/clipping.
+- Added `carousel-captions.md` plus copy-ready LinkedIn carousel caption/comment files.
+- Updated `approval-checklist.md`, `tracker.csv`, and `metrics-log.csv` with the carousel option.
+- Added `launch-cockpit.html`, a local execution cockpit with copy buttons, approval phrases, search queues, metric checkpoints, and links to the carousel PDF.
+- Direct `file://` browser rendering was blocked by browser security policy, so the cockpit was verified structurally from source instead.
+- Structural verification passed: required sections present, six copy buttons mapped to existing textareas, approval phrases present, and carousel PDF link present.
+- Added `30-day-calendar.md` so the campaign can pursue 100k reach through repeated native angles instead of a single launch post.
+- Added `follow-up-copy-bank.md` with LinkedIn follow-ups and X post variants for the month.
+- Added `comment-reply-bank.md` with contextual replies for agreement, objections, paid-pilot pushback, consulting concerns, and essay requests.
+- Updated `LAUNCH_ROOM.md` to link the 30-day continuation files and reflect that the remaining blocker is approval, not login.
+- Started a local static server for the campaign folder on `http://127.0.0.1:8765/`.
+- Verified `http://127.0.0.1:8765/launch-cockpit.html` renders in the in-app browser.
+- Verified the `Copy caption` button copies the LinkedIn carousel caption to the browser clipboard.
+- Added `metrics-dashboard.html`, a local dashboard that reads `metrics-log.csv`, totals impressions/conversations/clicks, and shows progress toward 100,000 impressions.
+- Verified `http://127.0.0.1:8765/metrics-dashboard.html` renders in the in-app browser and reads existing metric rows from `metrics-log.csv`.
+- Added `README.md` as the campaign package entry point.
+- Added `campaign-manifest.json` with canonical URL, local URLs, approval phrases, asset paths, execution files, and status flags.
+- Added `scripts/start_cockpit.sh` to relaunch the local cockpit/dashboard server from the campaign folder.
+- Verified `campaign-manifest.json` parses as valid JSON.
+- Verified `scripts/start_cockpit.sh` has valid shell syntax and executable permissions.
+- Added `hook-lab.md` with alternate LinkedIn/X hooks, usage notes, and a scoring rubric for relaunches or follow-up posts.
+- Linked `hook-lab.md` from `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json`.
+- Replaced blank metric rows in `metrics-log.csv` with structured checkpoints for LinkedIn carousel, X thread, and follow-up assets.
+- Added `metrics-entry-guide.md` explaining what to enter at each checkpoint and how to interpret the results.
+- Linked `metrics-entry-guide.md` from `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json`.
+- Exported stable PNG carousel slides under `assets/carousel/png/` for X/image reuse.
+- Verified 9 PNG slides were exported at 2400 x 3000 and visually checked stable `slide-1.png`.
+- Added `copy-ready/x-image-carousel-caption.txt`.
+- Added `carousel-assets.md` explaining LinkedIn PDF carousel and X PNG carousel usage.
+- Linked carousel assets from `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json`.
+- Added `profile-optimization.md` with X bio options, LinkedIn headline/About options, Featured section recommendations, and a profile conversion checklist.
+- Added `copy-ready/x-pinned-post.txt` and `copy-ready/linkedin-featured-caption.txt`.
+- Linked profile optimization assets from `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json`.
+- Verified `campaign-manifest.json` still parses after profile additions.
+- Tightened `copy-ready/x-pinned-post.txt`; estimated X character count is 183 after URL shortening.
+- Added `CAMPAIGN_AUDIT.md`, mapping the active goal to completed artifacts, verified evidence, blockers, approval phrases, and remaining completion criteria.
+- Linked `CAMPAIGN_AUDIT.md` from `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json`.
+- Added `scripts/validate_campaign.py`, a pre-launch validator for manifest structure, required files, X character limits, CSV parsing, carousel assets, shell script syntax, and local cockpit/dashboard availability.
+- Linked the validator from `README.md` and `campaign-manifest.json`.
+- Made `scripts/validate_campaign.py` executable and ran it successfully. Validation passed.
+
+## Current status
+
+- Strategy: drafted.
+- LinkedIn anchor post: drafted.
+- X thread: drafted.
+- Three standalone posts: drafted.
+- Newsletter blurb: drafted.
+- 48-hour engagement plan: drafted.
+- Outreach templates and target queue: drafted.
+- Tracking sheet: scaffolded.
+- Launch room: drafted.
+- Metrics log: scaffolded.
+- 48-hour execution schedule: drafted.
+- Clipboard-ready post files: drafted.
+- Search queues: drafted.
+- Approval checklist: drafted.
+- LinkedIn document carousel: generated and visually checked.
+- Carousel captions: drafted.
+- Local launch cockpit: drafted and structurally verified.
+- 30-day campaign calendar: drafted.
+- Follow-up copy bank: drafted.
+- Comment/reply expansion bank: drafted.
+- Local cockpit server: running on `http://127.0.0.1:8765/launch-cockpit.html`.
+- Local metrics dashboard: drafted at `http://127.0.0.1:8765/metrics-dashboard.html`.
+- Local metrics dashboard: verified in browser.
+- Resume package docs/scripts: drafted.
+- Resume package docs/scripts: verified.
+- Hook lab: drafted.
+- Metric checkpoint scaffold: drafted.
+- Metrics entry guide: drafted.
+- Stable PNG carousel exports: generated and checked.
+- X image carousel caption: drafted.
+- Profile optimization kit: drafted.
+- Profile optimization kit: verified.
+- Campaign audit: drafted.
+- Campaign validator: drafted.
+- Campaign validator: verified.
+
+## Still requires user/account action
+
+- X thread was approved and published on 2026-06-20 at about 17:36 IST: https://x.com/ruchitdalwadi/status/2068304482589650946.
+- X essay link reply was published: https://x.com/ruchitdalwadi/status/2068304756179931420.
+- LinkedIn anchor post is live: https://www.linkedin.com/feed/update/urn:li:activity:7474074950476382208/.
+- LinkedIn first comment is live and corrected to the LinkedIn UTM essay link.
+- Captured LinkedIn anchor snapshot around 2026-06-20T18:20:47+05:30: 32 visible impressions, 0 visible likes, 1 comment.
+- Captured X root tweet baseline around 2026-06-20T17:48:29+05:30: 1 visible view, 0 likes, 0 reposts, 1 reply.
+- Captured fresh X root snapshot around 2026-06-20T17:54:22+05:30: 7 visible root views, 0 likes, 0 reposts, 1 reply. Visible thread reply views included 6, 4, and 2.
+- Added `x-engagement-queue-2026-06-20.md` with 10 live X reply candidates and drafted replies. Approval is required before sending them.
+- Created recurring Codex check-in automation `first-10-customers-campaign-check-in` to refresh campaign metrics and records. It is explicitly constrained not to publish, comment, reply, DM, or edit live profiles without approval.
+- Added `direct-outreach-targets-2026-06-20.md` with 30 specific founder/operator/investor targets, relevance notes, source links, and message angles. Approval is required before sending.
+- Added `direct-outreach-tracker.csv` with one row per outreach target so replies, forwards, and no-response outcomes can be tracked at target level.
+- Added `direct-outreach-batch-1-messages.md` with exact send-ready copy for the first 10 targets and per-target UTM content tags.
+- Added `reach-model.md` and `reach-model.csv` with 30-day target bands, minimum viable thresholds, and pivot rules for the 100k reach goal.
+- Updated `metrics-dashboard.html` with daily-needed, Day 7 gap, and next-lever fields.
+- Refreshed `CAMPAIGN_AUDIT.md` and `approval-checklist.md` to reflect current truth: X and LinkedIn anchor are live, engagement and outreach systems are drafted but not sent.
+- Target handles/profiles should be verified inside the browser before commenting or messaging.
+- 2026-06-20T22:27:37+05:30: User approved all pending live actions.
+- Captured updated metrics before push: X root thread 45 visible views, 1 like, 2 replies; LinkedIn anchor 99 visible impressions, 1 comment, 24 profile viewers.
+- Posted approved X engagement Batch A replies:
+  - `https://x.com/ruchitdalwadi/status/2068375965752021269`
+  - `https://x.com/ruchitdalwadi/status/2068376145280839822`
+  - `https://x.com/ruchitdalwadi/status/2068376187139948849`
+  - `https://x.com/ruchitdalwadi/status/2068376227967304132`
+  - `https://x.com/ruchitdalwadi/status/2068376269579055580`
+- Completed direct outreach public touches for Alexa, Polsia, MarkWeekly, collide., Lisa Calhoun, GTMnow, Luke Sophinos, and Radhesh Kanumury.
+- Skipped Forum Ventures after live review because the X profile showed no current relevant original post.
+- Michael Axelgaard / AI Seed public LinkedIn channel was identified, but browser runtime reset before a safe comment/send could be completed.
+- Attempted LinkedIn document carousel publishing. Caption was prefilled, but LinkedIn did not expose a browser-accessible PDF upload input; carousel was not published to avoid creating a degraded text-only duplicate.
+- 2026-06-20T22:35:54+05:30: Refreshed live metrics: X root thread 50 visible views, 1 like, 2 replies; LinkedIn anchor 106 visible impressions, 1 comment, 24 profile viewers; LinkedIn first comment showed 20 impressions.
+- X notifications and the X thread showed no useful inbound reply to answer at this checkpoint.
+- Posted X engagement Batch B under two live GTM/AI-agent conversations:
+  - Sumit Sharma / MarketiQAI: `https://x.com/ruchitdalwadi/status/2068379658677256638`
+  - Dan Rosenthal / GTM tools: `https://x.com/ruchitdalwadi/status/2068379782845550763`
+- 2026-06-20T22:40:41+05:30: Refreshed live metrics: X root thread 51 visible views, 1 like, 2 replies; LinkedIn anchor 107 visible impressions, 1 comment, 24 profile viewers; LinkedIn first comment still showed 20 impressions.
+- Posted X engagement Batch C under two live AI-agent GTM/founder-led-sales conversations:
+  - Christian / AI agents changed GTM: `https://x.com/ruchitdalwadi/status/2068380961314914786`
+  - Oren Kandel / founder-led sales feedback loop: `https://x.com/ruchitdalwadi/status/2068380996974895157`
+- Decision after Batch C: pause additional broad X replies briefly and monitor for replies/profile visits before publishing another standalone post.
+- 2026-06-20T22:42:46+05:30: Refreshed live metrics: X root thread 54 visible views, 1 like, 2 replies; LinkedIn anchor 108 visible impressions, 1 comment, 24 profile viewers; LinkedIn first comment still showed 20 impressions.
+- X notification check showed a new follower, not a campaign reply.
+- Prepared `next-follow-up-package.md` plus `copy-ready/x-paid-pilot-followup.txt` and `copy-ready/linkedin-paid-pilot-followup.txt`.
+- Added validator coverage for the copy-ready X paid-pilot follow-up length.
+- 2026-06-20T22:47:36+05:30: Improved reply attribution infrastructure instead of posting again immediately.
+- Added `reply-source-scorecard.csv` for per-response channel attribution: source channel, source asset, responder, responder type, reply type, quality score, and follow-up action.
+- Updated `metrics-dashboard.html` so total reach uses the latest measured row per asset instead of summing every checkpoint snapshot.
+- Added a Reply Source Scorecard section to the dashboard and documented the workflow in `metrics-entry-guide.md`.
+- Render-checked `metrics-dashboard.html` in the browser: dashboard showed 162 current measured impressions, 0 direct replies, and no console errors.
+- 2026-06-20T22:49:57+05:30: Light live check showed X root still at 54 visible views and LinkedIn anchor still at 108 visible impressions.
+- X notifications showed no campaign-quality reply; latest new item was a follower.
+- Decision: do not publish the paid-pilot follow-up yet. Keep monitoring until Batches A/B/C have had more time or a high-authority/direct-response opportunity appears.
+- Drafted `direct-outreach-batch-2-messages.md` for targets 11-20: Jason Lemkin/SaaStr, Lenny Rachitsky, Kyle Poyar, Brian Balfour, April Dunford, Amanda Natividad, Emily Kramer/MKT1, Hiten Shah, Gokul Rajaram, and Tomasz Tunguz.
+- Added Batch 2 approval phrase and wired the file into README, launch room, target list, manifest, approval checklist, and validator. No Batch 2 outreach was sent.
+- Drafted `direct-outreach-batch-3-messages.md` for targets 21-30: Rohan Chopra, Diego Canales, Will Harvey, Joe Schmidt, Mark Kosoglow, Max Altschuler, Jeanne DeWitt Grosser, Sarah Guo, Elad Gil, and Sarah Tavel.
+- Added Batch 3 approval phrase and wired the file into README, launch room, target list, manifest, approval checklist, and validator. No Batch 3 outreach was sent.
+- Tightened `metrics-dashboard.html` so "Verified Responses" and "Target Responses" count only `reply-source-scorecard.csv`, not raw platform comment counters that may include self-comments or thread structure.
+- Updated `metrics-entry-guide.md` to clarify that `reply-source-scorecard.csv` is the source of truth for real replies.
+- 2026-06-20T22:57:35+05:30: Render-checked the dashboard after tightening response attribution. It showed 162 measured impressions, 3 raw platform comments, 0 verified responses, 0 target responses, and no console errors.
+- 2026-06-21T17:22:58+05:30: Campaign check-in refreshed live metrics. X root thread reached 85 visible views with visible counters showing 2 replies, 1 repost, and 2 likes. LinkedIn anchor reached 174 visible impressions, 2 visible reactions, 1 comment, 25 profile viewers; first-comment link showed 26 impressions.
+- Found first verified response: Luke Sophinos replied to the earlier vertical AI public touch with the horizontal GPT differentiation objection: `https://x.com/lukesophinos/status/2068384975523643431`.
+- Logged Luke response in `reply-source-scorecard.csv` with quality score 3 and updated `direct-outreach-tracker.csv` row 8 to `replied`.
+- Drafted approval-ready reply in `copy-ready/x-reply-luke-sophinos-horizontal-gpt.txt`; not posted.
+- Next highest-leverage action: reply to Luke's objection if approved, because it turns the first real response into a deeper thread and can become the next standalone angle.
+- Render-checked `metrics-dashboard.html` after the update: 259 measured impressions, 1 verified response, 1 target response, 3 raw platform comments, and no console errors.
+- 2026-06-21T17:28:23+05:30: Light refresh showed X root thread at 86 visible views with the same visible counters: 2 replies, 1 repost, 2 likes. X notifications showed no new campaign-quality response beyond Luke. LinkedIn anchor remained at 174 impressions, 2 reactions, 1 comment, 25 profile viewers; first-comment link remained 26 impressions.
+- Decision unchanged: do not publish a standalone follow-up yet; next highest-leverage action remains replying to Luke if explicitly approved.
+- 2026-06-21T17:33:36+05:30: Light refresh showed X root thread at 87 visible views with the same visible counters: 2 replies, 1 repost, 2 likes. X notifications showed Udbhav Tewari liked the repost of the campaign thread, which is weak engagement evidence but not a verified response.
+- LinkedIn anchor remained unchanged at 174 impressions, 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 26 impressions.
+- Decision unchanged: do not post a standalone follow-up or send more outreach yet. The highest-leverage approved-next-action candidate remains replying to Luke Sophinos's horizontal GPT objection.
+- 2026-06-21T17:36:49+05:30: Live refresh showed X root thread unchanged at 87 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response plus Udbhav Tewari's weak repost-like signal.
+- LinkedIn anchor rose to 176 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 26 impressions.
+- Prepared a horizontal GPT follow-up package from Luke's objection: `horizontal-gpt-follow-up-package.md`, `copy-ready/x-horizontal-gpt-followup.txt`, and `copy-ready/linkedin-horizontal-gpt-followup.txt`.
+- Added approval gates for `approved: publish horizontal GPT X follow-up` and `approved: publish horizontal GPT LinkedIn follow-up`. No follow-up was published.
+- 2026-06-21T17:40:43+05:30: Live refresh showed X root thread at 88 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response; Luke's reply view count moved to 9.
+- LinkedIn anchor rose to 177 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 26 impressions.
+- Prepared `day-2-rescue-sprint.md` and optional link/comment files for the horizontal GPT follow-up: `copy-ready/x-horizontal-gpt-link-reply.txt`, `copy-ready/linkedin-horizontal-gpt-first-comment.txt`, and `copy-ready/x-horizontal-gpt-comment-template.txt`.
+- Added approval gates for `approved: add horizontal GPT X link reply` and `approved: add horizontal GPT LinkedIn first comment`. No live action was taken.
+- 2026-06-21T17:45:38+05:30: Live refresh showed X root thread at 89 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response; Luke's reply view count moved to 10.
+- LinkedIn anchor rose to 178 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 26 impressions.
+- Scouted live X searches for `"ChatGPT wrapper" startup`, `"vertical AI" ChatGPT`, and `"AI agents" GTM`. Drafted `horizontal-gpt-engagement-queue-2026-06-21.md` with 5 no-link reply candidates and added approval gate `approved: post horizontal GPT X engagement queue`.
+- No X replies were posted and no LinkedIn actions were taken.
+- 2026-06-21T17:49:55+05:30: Live refresh showed X root thread at 90 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response; Luke's reply view count moved to 11.
+- LinkedIn anchor rose to 180 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link rose to 27 impressions.
+- Scouted LinkedIn searches for `vertical AI ChatGPT`, `AI agents GTM`, and `ChatGPT wrapper startup`. Drafted `linkedin-horizontal-gpt-engagement-queue-2026-06-21.md` with 5 no-link comment candidates and added approval gate `approved: post LinkedIn horizontal GPT engagement queue`.
+- No LinkedIn comments were posted and no X replies were posted.
+- 2026-06-21T17:53:21+05:30: Live refresh showed X root thread at 91 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response; Luke's reply view count moved to 12.
+- LinkedIn anchor rose to 183 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 27 impressions.
+- Prepared `next-approval-bundle.md`, a concise approval menu recommending `approved: reply to Luke Sophinos` first, then the horizontal GPT X follow-up and engagement queues if approved. No live action was taken.
+- 2026-06-21T17:56:14+05:30: Live refresh showed X root thread at 92 views with 2 replies, 1 repost, and 2 likes. X notifications still showed Luke Sophinos as the only verified response; Luke's reply view count moved to 13.
+- LinkedIn anchor rose to 184 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 27 impressions.
+- Prepared `luke-reply-execution-runbook.md` with exact pre-post checks, posting steps, logging steps, and T+30/T+90 monitoring for the approved Luke reply. No live action was taken.
+- 2026-06-21T18:00:12+05:30: Read-only live refresh showed X root thread at 93 views with 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response; Luke's reply view count moved to 15.
+- LinkedIn anchor rose to 185 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 27 impressions.
+- Dashboard measured impressions should now read 278 from the latest X root + LinkedIn anchor rows. No live action was taken; the highest-leverage next action remains `approved: reply to Luke Sophinos`.
+- 2026-06-22T00:04:51+05:30: Read-only live refresh showed X root thread at 95 views with 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response; Luke's reply showed 17 views on the reply page and 18 views in notifications.
+- LinkedIn anchor rose to 195 impressions with 2 reactions, 1 comment, and 25 profile viewers; first-comment link remained 27 impressions.
+- X notifications showed Udbhav Tewari's prior repost-like signal, Luke's reply, and no new campaign-quality response. The campaign is still far below the day-2 reach target, so the next highest-leverage action is not more generic posting; it is answering Luke's horizontal GPT objection with the prepared reply, then turning that exchange into a follow-up only if it earns movement.
+- 2026-06-22T00:07:00+05:30: User correctly challenged the strategy: distribution should move into posts from people who already get engagement, and LinkedIn commenting should be active rather than deferred.
+- Prepared `high-engagement-commenting-playbook.md`, `linkedin-high-engagement-comment-batch-2026-06-22.md`, and `x-high-engagement-reply-batch-2026-06-22.md`.
+- Added approval gates for `approved: scout high-engagement rooms`, `approved: post LinkedIn high-engagement comment batch`, and `approved: post X high-engagement reply batch`. No comments or replies were posted.
+- 2026-06-22T00:10:41+05:30: Prepared `high-engagement-scout-queue-2026-06-22.md`, a ranked LinkedIn-first target map for checking already-active posts before commenting.
+- The queue prioritizes Kyle Poyar, Jason Lemkin, April Dunford, Emily Kramer, Hiten Shah, Brian Balfour, Tomasz Tunguz, Sarah Tavel, Max Altschuler, and Jeanne DeWitt Grosser on LinkedIn; X remains secondary unless separately approved. No live scouting, comments, replies, or DMs were performed.
+- 2026-06-22T00:21:17+05:30: User explicitly approved `approved: post LinkedIn high-engagement comment batch`.
+- Posted 5 LinkedIn no-link comments from the approved high-engagement commenting motion. No X replies, DMs, standalone posts, profile edits, or essay links were posted.
+- Posted under Keerthan Singhvi's AI retention-agent/GTM workflow post: visible pre-post counters 67 reactions and 14 comments; comment counter increased to 15 after posting.
+- Posted under Apuarv Sethi's AI-first marketing/GTM agent workflow post: visible pre-post counters 226 reactions, 13 comments, and 7 reposts; comment text verified in the LinkedIn DOM after posting.
+- Posted under Manas Yash Sunita Pal's paid-pilot/design-partner post: visible pre-post counters 54 reactions, 6 comments, and 7 reposts; comment counter increased to 7 after posting.
+- Posted under BluePen AI's first-paid-pilot/full-price-user-pull post: visible pre-post counters 16 reactions and 2 comments; used as a high-relevance exception because it was recent and directly matched the essay topic.
+- Posted under Alen Alosious's GTM systems/positioning/customer-acquisition post: visible post counters after posting 10 reactions and 8 comments. This comment landed on the first visible LinkedIn search result for `AI positioning GTM`, not the intended Dipti Agarwal article; logged accurately and left in place because it was still relevant to GTM positioning.
+- Updated `linkedin-high-engagement-comment-batch-2026-06-22.md`, `tracker.csv`, and `metrics-log.csv` with execution evidence. The next highest-leverage action is to recheck LinkedIn notifications/profile views in 30-90 minutes and reply only to real responses; do not post more broad comments until this batch shows whether LinkedIn comments create replies or profile-view movement.
+- 2026-06-22T00:25:09+05:30: Read-only post-comment-batch checkpoint showed minimal movement. LinkedIn anchor moved from 195 to 196 impressions; LinkedIn profile viewers stayed 25; LinkedIn first-comment link stayed 27 impressions; LinkedIn notifications showed no campaign-quality reply. X root thread moved from 95 to 96 views; visible counters stayed 2 replies, 1 repost, and 2 likes; Luke Sophinos remains the only verified response and showed 19 views in X notifications.
+- Added `daily-operating-schedule.md` to make the current cadence explicit: 1 X post per day, 1 LinkedIn post every 24-48 hours, 2 X reply batches/day, 2 LinkedIn comment batches/day, 2-3 metrics checks/day, and 5-10 specific direct-outreach targets/day only after approval and target fit.
+- Updated `strategy.md`, `LAUNCH_ROOM.md`, `README.md`, and `campaign-manifest.json` to point to the daily operating schedule. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made in this step.
+- 2026-06-22T00:28:17+05:30: Added `high-engagement-room-scorecard.md`, a stricter 15-point filter for future comment/reply targets after the first LinkedIn batch showed that relevance alone is not enough.
+- Updated `high-engagement-commenting-playbook.md`, `high-engagement-scout-queue-2026-06-22.md`, `next-approval-bundle.md`, `README.md`, `LAUNCH_ROOM.md`, and `campaign-manifest.json` to require better target qualification: stable post URL, 11/15+ score, visible engagement quality, and a no-link missing-lens comment.
+- Updated the recommended next approval order: first `approved: reply to Luke Sophinos` because it is the only verified response; second `approved: post X high-engagement reply batch`; another LinkedIn batch should happen only after stricter room scoring. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- 2026-06-22T00:31:00+05:30: Added `daily-activity-ledger.csv` to track planned vs actual daily execution: X posts, LinkedIn posts, X reply batches, LinkedIn comment batches, direct outreach, metric checks, and verified replies.
+- Seeded the ledger with 2026-06-20 launch day, 2026-06-21 monitoring/drafting day, and 2026-06-22 rescue day rows. The ledger makes the current execution gap visible: the campaign has monitored heavily, but the new daily cadence still needs approval-backed X replies and native follow-ups to catch up.
+- Updated `daily-operating-schedule.md`, `README.md`, `LAUNCH_ROOM.md`, `campaign-manifest.json`, and `tracker.csv` to include the ledger. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- 2026-06-22T00:31:34+05:30: Prepared `today-execution-pack-2026-06-22.md`, an approval-ready rescue-day sequence that closes the execution gap from `daily-activity-ledger.csv`.
+- The pack recommends: first `approved: reply to Luke Sophinos`; second `approved: post X high-engagement reply batch`; third `approved: publish horizontal GPT X follow-up` only after signal; LinkedIn only after `approved: scout high-engagement rooms` and 11/15+ target scoring.
+- Updated `README.md`, `LAUNCH_ROOM.md`, `campaign-manifest.json`, and `tracker.csv` to include the execution pack. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- 2026-06-22T00:34:00+05:30: Updated `metrics-dashboard.html` to show `daily-activity-ledger.csv` alongside reach metrics and reply-source data.
+- Added an execution-gap stat plus a Daily Activity table with planned vs actual X posts, LinkedIn posts, X reply batches, LinkedIn comment batches, direct outreach, metric checks, verified replies, and notes. Updated `metrics-entry-guide.md` to clarify that daily activity belongs in the ledger. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Render-checked `metrics-dashboard.html` on a temporary local server at port 8766. The dashboard showed 292 measured impressions, 0.3% goal progress, 1 verified response, next lever `Reply to Luke Sophinos`, execution gap 10, and Daily Activity rows loaded from `daily-activity-ledger.csv`; no browser console errors were reported.
+- 2026-06-22T00:38:00+05:30: Updated `launch-cockpit.html` with a rescue-day `Today's Execution` section. It now surfaces the current approval order, Luke reply copy, X high-engagement reply templates, horizontal GPT follow-up copy, scorecard link, and daily activity ledger link. No live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Render-checked `launch-cockpit.html` on a temporary local server at port 8766. The cockpit showed the `TODAY'S EXECUTION` heading, 11 approval blocks, copy targets for `lukeReply`, `xHighEngagementReplies`, and `horizontalGptFollowup`, plus scorecard and daily-ledger links; no browser console errors were reported.
+- 2026-06-22T00:39:02+05:30: Read-only live checkpoint refreshed X and LinkedIn. LinkedIn anchor remained at 196 impressions, 2 reactions, 1 comment, 25 profile viewers, and first-comment link remained 27 impressions; LinkedIn notifications showed no campaign-quality reply.
+- X root thread moved from 96 to 97 visible views with counters still 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response and showed 20 views in notifications. Updated `tracker.csv`, `metrics-log.csv`, and `daily-activity-ledger.csv`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- 2026-06-22T00:40:23+05:30: Added `pace-audit-2026-06-22.md` and refreshed `reach-model.md` with the latest measured state: 293 owned-post impressions, 0.293% progress to 100k, 1,207 impressions behind Day 1 target path, and 2,707 behind Day 2 target path.
+- Updated the reach-model lever order based on evidence: reply to Luke Sophinos first, X high-engagement reply batch second, horizontal GPT X follow-up only after signal or explicit approval, and another LinkedIn batch only after stricter scouting. Updated `README.md`, `LAUNCH_ROOM.md`, `campaign-manifest.json`, and `tracker.csv`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- 2026-06-22T09:20:30+05:30: Read-only morning checkpoint refreshed X and LinkedIn. LinkedIn anchor rose to 217 impressions, 2 reactions, 1 comment, 27 profile viewers, and the first-comment link stayed at 27 impressions; LinkedIn notifications showed no campaign-quality reply.
+- X root thread rose to 99 visible views with counters still 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response and showed 22 views in notifications. Updated `tracker.csv`, `metrics-log.csv`, `daily-activity-ledger.csv`, `reach-model.md`, and `pace-audit-2026-06-22.md`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Decision: do not spend the next block on more passive metrics refreshes. The highest-leverage action is still `approved: reply to Luke Sophinos`, followed by `approved: post X high-engagement reply batch`; LinkedIn should get another comment batch only after stricter high-engagement room scoring.
+- 2026-06-22T09:22:56+05:30: Heartbeat read-only checkpoint refreshed X and LinkedIn shortly after the prior check. LinkedIn anchor rose to 220 impressions, profile viewers rose to 28, and the first-comment link rose to 28 impressions; LinkedIn notifications still showed no campaign-quality reply.
+- X root thread stayed at 99 visible views with counters still 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response and showed 23 views in notifications. Updated `tracker.csv`, `metrics-log.csv`, `daily-activity-ledger.csv`, `reach-model.md`, and `pace-audit-2026-06-22.md`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Decision unchanged: the campaign is below pace and should stop burning cycles on frequent refreshes. Next highest-leverage action remains `approved: reply to Luke Sophinos`, then `approved: post X high-engagement reply batch`.
+- 2026-06-22T11:23:05+05:30: Late-morning heartbeat read-only checkpoint refreshed X and LinkedIn. LinkedIn anchor rose to 225 impressions, profile viewers stayed 28, and the first-comment link stayed 28 impressions; LinkedIn notifications showed no campaign-quality reply.
+- X root thread rose to 104 visible views with counters still 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response and showed 25 views in notifications. Updated `tracker.csv`, `metrics-log.csv`, `daily-activity-ledger.csv`, `reach-model.md`, and `pace-audit-2026-06-22.md`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Decision unchanged: measured reach is now 329, but the campaign is still under pace. The next highest-leverage action remains `approved: reply to Luke Sophinos`, then `approved: post X high-engagement reply batch`.
+- 2026-06-22T13:24:46+05:30: Early-afternoon heartbeat read-only checkpoint refreshed X and LinkedIn. LinkedIn anchor rose to 233 impressions, profile viewers stayed 28, and the first-comment link stayed 28 impressions; LinkedIn notifications showed no campaign-quality reply.
+- X root thread rose to 105 visible views with counters still 2 replies, 1 repost, and 2 likes. Luke Sophinos remains the only verified response and showed 26 views in notifications. Updated `tracker.csv`, `metrics-log.csv`, `daily-activity-ledger.csv`, `reach-model.md`, and `pace-audit-2026-06-22.md`; no live posts, comments, replies, DMs, emails, uploads, or profile edits were made.
+- Decision unchanged: measured reach is now 338, but the campaign is still under pace. The next highest-leverage action remains `approved: reply to Luke Sophinos`, then `approved: post X high-engagement reply batch`.

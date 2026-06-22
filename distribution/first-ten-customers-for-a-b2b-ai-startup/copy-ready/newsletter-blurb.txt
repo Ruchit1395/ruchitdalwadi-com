@@ -1,0 +1,18 @@
+Subject idea: The first 10 AI customers are recruited, not bought
+
+This week I wrote about the early GTM motion for B2B AI startups.
+
+The short version: the first ten customers are not bought with marketing. They are recruited through founder-led, hand-built design partnerships.
+
+Most B2B playbooks assume the product is deterministic and the buyer knows exactly what they want. AI breaks both assumptions. The first sales motion has to produce revenue and product learning at the same time.
+
+The four moves:
+
+1. Pick a workflow you can run live in a meeting.
+2. Trade integration work for design-partner rights.
+3. Charge real money on day one, even if the number is small.
+4. Keep one founder across the whole loop until the sale becomes legible.
+
+Full essay:
+
+https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup?utm_source=newsletter&utm_medium=email&utm_campaign=first-ten-customers

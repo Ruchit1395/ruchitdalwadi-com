@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Ten Customers - Launch Cockpit</title>
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --panel: #fffaf0;
+      --ink: #151515;
+      --muted: #665f54;
+      --accent: #0f7a5f;
+      --line: #d8d0c0;
+      --warn: #8a4b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      padding: 40px 28px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+      gap: 18px;
+      padding: 18px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    p { margin: 0 0 12px; color: var(--muted); }
+    a { color: var(--accent); font-weight: 650; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .stack { display: grid; gap: 18px; }
+    .muted { color: var(--muted); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--muted);
+      font-size: 13px;
+      background: rgba(255,255,255,0.45);
+    }
+    .approval {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: #efe7d8;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      color: var(--ink);
+      word-break: break-word;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.32);
+      padding: 14px;
+    }
+    .card + .card { margin-top: 12px; }
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      background: #fffdf8;
+      color: var(--ink);
+      font: 14px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    button {
+      appearance: none;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .links a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fffdf8;
+      text-decoration: none;
+    }
+    .checklist {
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .checklist li {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      color: var(--muted);
+    }
+    .status {
+      margin-top: 8px;
+      min-height: 20px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .warning {
+      color: var(--warn);
+      font-weight: 700;
+    }
+    @media (max-width: 980px) {
+      main, .grid { grid-template-columns: 1fr; }
+      header { padding-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="pill">No APIs | Free launch | Approval required</span>
+    <h1>First Ten Customers Launch Cockpit</h1>
+    <p>One place to run the LinkedIn + X pilot for the essay: <a href="https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup" target="_blank" rel="noreferrer">First ten customers for a B2B AI startup</a>.</p>
+  </header>
+
+  <main>
+    <section class="stack">
+      <div class="panel">
+        <h2>Launch Sequence</h2>
+        <ul class="checklist">
+          <li>1. Pre-launch: comment on 5 LinkedIn posts and reply to 10 X posts from the search queue.</li>
+          <li>2. Publish LinkedIn carousel or anchor post after approval.</li>
+          <li>3. Add the first comment with the canonical UTM link.</li>
+          <li>4. Publish the X thread after approval.</li>
+          <li>5. Add the X link reply.</li>
+          <li>6. Reply to every meaningful comment in the first 60 minutes.</li>
+          <li>7. Log URLs and metrics at 1h, 3h, 6h, 24h, and 48h.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Today's Execution</h2>
+        <p>Current rescue-day order from <a href="./today-execution-pack-2026-06-22.md" target="_blank">today-execution-pack-2026-06-22.md</a>. Use exact approval before any live action.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>1. Reply to Luke Sophinos</h3>
+            <div class="approval">approved: reply to Luke Sophinos</div>
+            <div class="actions">
+              <button data-copy="lukeReply">Copy Luke reply</button>
+            </div>
+            <textarea id="lukeReply">Exactly. That is the real wedge test.
+
+A vertical AI product has to beat horizontal GPT on workflow context, reliability, and handoff cost.
+
+If the buyer can solve it with ChatGPT + a prompt, there is no product yet.
+
+The first 10 customers expose where that line is.</textarea>
+          </div>
+          <div class="card">
+            <h3>2. X high-engagement batch</h3>
+            <div class="approval">approved: post X high-engagement reply batch</div>
+            <p>Scout 15-25 active posts, score targets with the 11/15 room scorecard, then post 8-12 no-link replies.</p>
+            <div class="actions">
+              <button data-copy="xHighEngagementReplies">Copy reply templates</button>
+            </div>
+            <textarea id="xHighEngagementReplies">The test is not whether the demo looks better than ChatGPT. It is whether the product owns workflow context, exceptions, and handoff cost. If a prompt can solve it, the wedge is not sharp enough yet.
+
+---
+
+First customers are product research with revenue attached. The founder has to stay close enough to see what breaks, what the buyer actually values, and what can become repeatable.
+
+---
+
+Small paid pilots beat free pilots because they force the buyer to reveal real priority. Free feedback often tells you the demo was interesting, not that the workflow matters.
+
+---
+
+Design partners work when the unscalable work creates reusable learning. If customer #1 becomes a permanent custom branch, the startup accidentally built services.
+
+---
+
+For B2B AI, hiring sales too early can break the learning loop. One founder needs to carry the whole path until the workflow, buyer, demo, and onboarding pattern are legible.
+
+---
+
+The agent question I care about: what handoff disappears? If the agent does not remove a handoff someone hates enough to pay for, it is probably a feature, not a company.
+
+---
+
+The best early customer is not just happy. They teach you how to win customer #11 without rebuilding the whole product.</textarea>
+          </div>
+        </div>
+        <div class="grid" style="margin-top: 18px;">
+          <div class="card">
+            <h3>3. Follow-up only after signal</h3>
+            <div class="approval">approved: publish horizontal GPT X follow-up</div>
+            <div class="actions">
+              <button data-copy="horizontalGptFollowup">Copy follow-up</button>
+            </div>
+            <textarea id="horizontalGptFollowup">Most vertical AI startups do not lose to another startup.
+They lose to the horizontal GPT tab already open in the buyer's browser.
+
+So the wedge has to be:
+- workflow context
+- reliable output
+- lower handoff cost
+
+If ChatGPT + a prompt solves it, there is no product yet.</textarea>
+          </div>
+          <div class="card">
+            <h3>4. LinkedIn only after scoring</h3>
+            <div class="approval">approved: scout high-engagement rooms</div>
+            <p>Then use <code>approved: post LinkedIn high-engagement comment batch</code> only after stable post URLs and 11/15+ scores.</p>
+            <p><a href="./high-engagement-room-scorecard.md" target="_blank">Open scorecard</a></p>
+            <p><a href="./daily-activity-ledger.csv" target="_blank">Open daily activity ledger</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>LinkedIn Carousel</h2>
+          <p>Best reach bet. Upload the generated PDF as a LinkedIn document post.</p>
+          <p><a href="./assets/carousel/first-ten-customers-carousel.pdf" target="_blank">Open carousel PDF</a></p>
+          <div class="actions">
+            <button data-copy="linkedinCarouselCaption">Copy caption</button>
+            <button class="secondary" data-copy="linkedinCarouselComment">Copy first comment</button>
+          </div>
+          <textarea id="linkedinCarouselCaption">The first 10 customers of a B2B AI startup are not bought with marketing.
+
+They are recruited.
+
+Normal B2B SaaS advice assumes the product is deterministic, the buyer knows what they want, and the demo represents reality.
+
+Early AI products break all three assumptions.
+
+So the first sales motion has to do two jobs at once:
+
+1. Create revenue.
+2. Create product learning.
+
+That is why I think the first 10 customers should be founder-led design partnerships, not generic pipeline.
+
+The uncomfortable truth:
+
+Your first customers are paying for founder attention.
+
+That is fine, as long as the attention turns into repeatable product learning instead of custom consulting.
+
+I turned the core playbook into a short carousel below.
+
+Full essay in the first comment.</textarea>
+          <textarea id="linkedinCarouselComment">Full essay:
+
+https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup?utm_source=linkedin&amp;utm_medium=document-carousel&amp;utm_campaign=first-ten-customers</textarea>
+        </div>
+
+        <div class="panel">
+          <h2>LinkedIn Anchor</h2>
+          <p>Text-only fallback if the document upload UI is awkward.</p>
+          <div class="actions">
+            <button data-copy="linkedinAnchor">Copy anchor post</button>
+            <button class="secondary" data-copy="linkedinAnchorComment">Copy first comment</button>
+          </div>
+          <textarea id="linkedinAnchor">The first 10 customers of a B2B AI startup are not bought with marketing.
+
+They are recruited.
+
+Most B2B GTM advice assumes three things:
+
+1. The product is deterministic.
+2. The buyer knows what they want.
+3. The demo shows the real product.
+
+AI startups usually have none of these.
+
+The product works beautifully on Tuesday and breaks on a weird input on Thursday.
+
+The buyer cannot fully describe what "good output" means yet.
+
+And your biggest competitor is not another startup. It is the customer's internal team trying to duct-tape the same workflow together.
+
+So the first 10 customers need a different motion:
+
+Pick a workflow you can run live in a meeting.
+
+Trade integration work for design-partner rights.
+
+Charge real money on day one, but keep it psychologically cheap.
+
+Keep one founder across the whole loop: cold note, demo, integration, onboarding, 30-day check-in.
+
+The uncomfortable truth:
+
+Your first customers are not paying for software.
+
+They are paying for founder attention.
+
+The startup question is whether you can turn that attention into repeatable product learning instead of custom consulting.
+
+That is the line.
+
+If customer #1 becomes a custom branch forever, you built a services business.
+
+If customer #1 teaches you how to sell customer #11 without rebuilding the product, you might have a startup.
+
+I wrote the full playbook here.
+
+First comment has the link.</textarea>
+          <textarea id="linkedinAnchorComment">Full essay:
+
+https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=first-ten-customers</textarea>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>X Thread</h2>
+        <p>Copy the full thread, then split on the separator lines. Each part has already passed a 280-character check.</p>
+        <div class="actions">
+          <button data-copy="xThread">Copy X thread</button>
+          <button class="secondary" data-copy="xLinkReply">Copy link reply</button>
+        </div>
+        <textarea id="xThread">The first 10 customers of a B2B AI startup are not bought with marketing.
+
+They are recruited.
+
+Most teams get this wrong, then wonder why "GTM" feels impossible.
+
+Here is the early playbook:
+
+---
+
+Normal B2B SaaS assumes:
+
+- the product is deterministic
+- the buyer knows the workflow
+- the demo represents reality
+
+AI startups often have none of these.
+
+The product is still learning. So is the buyer.
+
+---
+
+Move 1:
+
+Pick a workflow you can run live in a meeting.
+
+"We help analysts" is too vague.
+
+"We turn a 40-page legal brief into a 1-page summary your associate would sign" is runnable.
+
+If you cannot demo it live, the wedge is too abstract.
+
+---
+
+Move 2:
+
+Trade integration work for design-partner rights.
+
+The unfair offer:
+
+"We will build the integration into your stack in two weeks. In exchange, you give us weekly feedback for 90 days and permission to generalize what we learn."
+
+---
+
+Move 3:
+
+Charge real money on day one.
+
+Free customers do not behave like real customers.
+
+They do not push back.
+They do not churn.
+They do not reveal what they actually value.
+
+$500/month teaches more than a free pilot.
+
+---
+
+Move 4:
+
+One founder owns the whole loop:
+
+cold note -> demo -> integration -> onboarding -> 30-day check-in
+
+Do not hire sales yet.
+
+You are still learning the shape of the sale.
+
+Outsourcing it too early destroys the learning.
+
+---
+
+The uncomfortable truth:
+
+Your first 10 customers do not pay for software.
+
+They pay for founder attention.
+
+The startup question is whether that attention becomes repeatable product learning.
+
+Reply below has the full essay.</textarea>
+        <textarea id="xLinkReply">Full essay:
+https://ruchitdalwadi.com/writing/first-ten-customers-for-a-b2b-ai-startup?utm_source=x&amp;utm_medium=social&amp;utm_campaign=first-ten-customers</textarea>
+      </div>
+    </section>
+
+    <aside class="stack">
+      <div class="panel">
+        <h2>Approval Gate</h2>
+        <p class="warning">Do not publish, comment, reply, or send without one of these exact approvals.</p>
+        <div class="card">
+          <h3>Luke reply</h3>
+          <div class="approval">approved: reply to Luke Sophinos</div>
+        </div>
+        <div class="card">
+          <h3>X high-engagement replies</h3>
+          <div class="approval">approved: post X high-engagement reply batch</div>
+        </div>
+        <div class="card">
+          <h3>High-engagement scouting</h3>
+          <div class="approval">approved: scout high-engagement rooms</div>
+        </div>
+        <div class="card">
+          <h3>Horizontal GPT follow-up</h3>
+          <div class="approval">approved: publish horizontal GPT X follow-up</div>
+        </div>
+        <div class="card">
+          <h3>LinkedIn carousel</h3>
+          <div class="approval">approved: publish LinkedIn carousel</div>
+        </div>
+        <div class="card">
+          <h3>LinkedIn anchor</h3>
+          <div class="approval">approved: publish LinkedIn anchor</div>
+        </div>
+        <div class="card">
+          <h3>X thread</h3>
+          <div class="approval">approved: publish X thread</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Search Queue</h2>
+        <div class="links">
+          <a href="https://x.com/search?q=%22B2B%20AI%20startup%22&amp;src=typed_query&amp;f=live" target="_blank" rel="noreferrer">X: B2B AI startup</a>
+          <a href="https://x.com/search?q=%22founder%20led%20sales%22&amp;src=typed_query&amp;f=live" target="_blank" rel="noreferrer">X: founder-led sales</a>
+          <a href="https://x.com/search?q=%22first%2010%20customers%22&amp;src=typed_query&amp;f=live" target="_blank" rel="noreferrer">X: first 10 customers</a>
+          <a href="https://x.com/search?q=%22design%20partners%22%20startup&amp;src=typed_query&amp;f=live" target="_blank" rel="noreferrer">X: design partners</a>
+          <a href="https://www.linkedin.com/search/results/content/?keywords=B2B%20AI%20startup" target="_blank" rel="noreferrer">LinkedIn: B2B AI startup</a>
+          <a href="https://www.linkedin.com/search/results/content/?keywords=founder%20led%20sales" target="_blank" rel="noreferrer">LinkedIn: founder-led sales</a>
+          <a href="https://www.linkedin.com/search/results/content/?keywords=first%2010%20customers" target="_blank" rel="noreferrer">LinkedIn: first 10 customers</a>
+          <a href="https://www.linkedin.com/search/results/content/?keywords=AI%20GTM" target="_blank" rel="noreferrer">LinkedIn: AI GTM</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Comment Prompts</h2>
+        <div class="card">
+          <h3>Founder-led sales</h3>
+          <p>The thing I would add: founder-led sales is not just about trust. It is about compression. The same person hears the objection, sees the workflow, owns the integration, and updates the product instinct before the next call.</p>
+        </div>
+        <div class="card">
+          <h3>Paid pilots</h3>
+          <p>Free pilots create polite feedback. Small paid pilots create honest feedback. The price can be low, but the customer needs to make a real decision.</p>
+        </div>
+        <div class="card">
+          <h3>Design partners</h3>
+          <p>Design partners only work if both sides agree that the learning can be generalized. Without that, the design partner becomes a custom branch with nicer language.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Metrics</h2>
+        <ul class="checklist">
+          <li>T+1h: impressions, comments, reposts, replies.</li>
+          <li>T+3h: strongest comment thread and post URL.</li>
+          <li>T+6h: decide whether to post a follow-up angle.</li>
+          <li>T+24h: publish standalone X post if thread slows.</li>
+          <li>T+48h: decide keep, pivot hook, or push direct outreach.</li>
+        </ul>
+      </div>
+
+      <div class="status" id="status"></div>
+    </aside>
+  </main>
+
+  <script>
+    const status = document.getElementById("status");
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.getAttribute("data-copy");
+        const field = document.getElementById(id);
+        const value = field ? field.value : "";
+        try {
+          await navigator.clipboard.writeText(value);
+          status.textContent = "Copied: " + id;
+        } catch (error) {
+          status.textContent = "Copy failed. Select the text manually.";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

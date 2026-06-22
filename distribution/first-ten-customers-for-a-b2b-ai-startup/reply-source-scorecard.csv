@@ -1,0 +1,2 @@
+timestamp,source_channel,source_asset,source_url,responder,responder_type,reply_type,response_url,quality_score,followup_action,notes
+2026-06-21T17:22:58+05:30,X engagement replies,direct outreach batch 1 public touch,https://x.com/ruchitdalwadi/status/2068377274689470885,Luke Sophinos,founder/investor,public reply,https://x.com/lukesophinos/status/2068384975523643431,3,draft reply for approval,"Asked why the workflow-specific wedge is needed over a horizontal GPT already in use"

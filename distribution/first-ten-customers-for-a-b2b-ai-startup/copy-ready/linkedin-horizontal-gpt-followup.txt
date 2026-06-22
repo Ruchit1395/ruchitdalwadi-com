@@ -1,0 +1,33 @@
+The real competitor for most vertical AI startups is not another startup.
+
+It is the horizontal GPT tab already open in the buyer's browser.
+
+That changes the first-customer test.
+
+The question is not:
+
+"Can this AI do something useful?"
+
+The question is:
+
+"Is this workflow-specific enough that the buyer would rather use this than ChatGPT plus a prompt?"
+
+That usually comes down to three things:
+
+1. Workflow context.
+
+Does the product know the objects, constraints, edge cases, and handoff points of the workflow better than a blank chat box?
+
+2. Reliability.
+
+Can the buyer trust the output when the input is weird, incomplete, political, or high-stakes?
+
+3. Handoff cost.
+
+Does the product remove work from the team, or does it create a new review step they now have to manage?
+
+If ChatGPT plus a prompt solves the job, there is no product yet.
+
+The first 10 customers expose exactly where that line is.
+
+That is why I think early B2B AI GTM is less about "selling software" and more about recruiting design partners into a workflow proof.
