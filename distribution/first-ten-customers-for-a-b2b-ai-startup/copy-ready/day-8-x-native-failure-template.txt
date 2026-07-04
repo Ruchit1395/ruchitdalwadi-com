@@ -1,0 +1,8 @@
+Try this before adding AI to a workflow:
+
+Write one sentence for each failure:
+1. wrong because missing context
+2. wrong because it made a decision too early
+3. wrong because no one knew who checks it
+
+If you cannot name the failure, the model cannot avoid it. It will just fail

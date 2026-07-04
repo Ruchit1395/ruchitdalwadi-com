@@ -1,21 +1,28 @@
-name: X reply agent
+name: X engagement agents
 
 on:
   schedule:
-    # 12:30 and 18:00 IST = 07:00 and 12:30 UTC
+    # inbound answers: 12:30 and 18:00 IST = 07:00 and 12:30 UTC
     - cron: "0 7 * * *"
     - cron: "30 12 * * *"
+    # trend post: 16:00 IST = 10:30 UTC
+    - cron: "30 10 * * *"
   workflow_dispatch:
+    inputs:
+      agent:
+        description: "Which agent (inbound | trend | both)"
+        required: false
+        default: "both"
 
 permissions:
   contents: write
 
 concurrency:
-  group: x-replies
+  group: x-engagement
   cancel-in-progress: false
 
 jobs:
-  reply:
+  engage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +30,8 @@ jobs:
         with:
           node-version: 20
       - run: npm install twitter-api-v2 --no-save --no-audit --no-fund
-      - name: Run reply agent
+      - name: Inbound engagement agent
+        if: github.event.schedule != '30 10 * * *' && github.event.inputs.agent != 'trend'
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
@@ -31,11 +39,22 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/x-reply-agent.mjs
-      - name: Commit reply log
+        run: node scripts/x-inbound-agent.mjs
+      - name: Trend post agent
+        if: github.event.schedule == '30 10 * * *' || github.event.inputs.agent == 'trend' || github.event.inputs.agent == 'both'
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/x-trend-post.mjs
+      - name: Commit logs
         run: |
           git config user.name "campaign-bot"
           git config user.email "bot@ruchitdalwadi.com"
+          git pull --rebase
           git add distribution
-          git diff --cached --quiet || git commit -m "campaign: reply agent run $(date -u +%Y-%m-%dT%H:%M)"
+          git diff --cached --quiet || git commit -m "campaign: engagement agents run $(date -u +%Y-%m-%dT%H:%M)"
           git push

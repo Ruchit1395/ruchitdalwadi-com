@@ -185,7 +185,8 @@ for (const target of targets) {
     posted++;
     await new Promise((r) => setTimeout(r, 4000));
   } catch (err) {
-    console.error(`failed on @${target.author}: ${err.message}`);
+    const detail = err?.data ? JSON.stringify(err.data) : err.message;
+    console.error(`failed on @${target.author}: ${detail}`);
   }
 }
 

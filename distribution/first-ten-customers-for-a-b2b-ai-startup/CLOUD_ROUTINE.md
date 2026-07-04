@@ -7,15 +7,25 @@ Honest base case at current baseline (2,981 X impressions in 14 days): X 25–50
 
 ## Daily cadence (all times IST, all cloud)
 
+> X API policy note (learned Jul 4): the API forbids replying to or quoting
+> posts by people who have not engaged you first. Cold replies are therefore
+> browser-only (bonus tier). The cloud engagement engine answers inbound and
+> rides trends instead.
+
 | Time | What | Runner |
 |---|---|---|
 | 09:00 | X native post — slot 1 (short sharp teaching post) | `x-scheduled-posts.yml` |
-| 12:30 | X reply batch 1 — 5 scorecard-qualified replies | `x-replies.yml` |
+| 12:30 | Inbound sweep 1 — answer everyone who replied to us (max 8) | `x-replies.yml` |
 | 13:00 | Stats refresh + scoreboard commit | `daily-scoreboard.yml` |
 | 14:00 | X native post — slot 2 (mini-framework or thread) | `x-scheduled-posts.yml` |
-| 14:30 | LinkedIn native post (text or image) | Composio (pending API key) or manual packet |
-| 18:00 | X reply batch 2 — 5 more replies | `x-replies.yml` |
-| 19:00 | X native post — slot 3 (signal-based or long-form Premium post) | `x-scheduled-posts.yml` |
+| 14:30 | LinkedIn native post | `li-scheduled-post.yml` (Composio proxy) |
+| 16:00 | X trend post — original take on what's hot right now (Gemini, may skip) | `x-replies.yml` |
+| 18:00 | Inbound sweep 2 | `x-replies.yml` |
+| 19:00 | X native post — slot 3 (actionable or dry-comic) | `x-scheduled-posts.yml` |
+| laptop-on | Cold replies + LinkedIn comments in big rooms (browser, Codex/Claude) | bonus tier |
+
+All generated text obeys `CONTENT_RULES.md` (no em dashes, no repeated
+patterns, sycophant openers rejected, completeness-checked before posting).
 
 Weekly rhythm on top:
 - **2 threads/week** (Tue, Fri slot 2) — the breakout attempts. Strongest hooks from hook-lab, 5–8 tweets, image on tweet 1 when possible.
