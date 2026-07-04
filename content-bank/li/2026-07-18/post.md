@@ -1,9 +1,9 @@
-An AI demo is 80% impressive and 20% missing — and the entire product lives in the missing 20%.
+An AI demo is a magic trick performed by the person who built the deck, on inputs chosen by the person who built the deck, for an audience that wants to believe.
 
-The 80% is real: the model summarizes the document, drafts the reply, writes the query. Week-one work now. That's exactly why it's not a moat — everyone's demo has it.
+Production is the same trick performed at 2am, by nobody, on a forwarded email chain with the subject line "FWD: FWD: RE: urgent???" and a spreadsheet attached as a photo.
 
-The 20% is what happens on contact with reality. The input that arrives half-filled. The edge case with a legal implication. The confident answer built on a source that updated yesterday. The moment nobody can say who checks the output before it reaches a customer.
+The 80% the demo shows is real: summarize the document, draft the reply, write the query. Week-one work now, which is exactly why it is not a moat. The product lives in the missing 20%: the half-filled input, the edge case with a legal implication, the confident answer built on a source that updated yesterday, the question of who checks the output before a customer sees it.
 
-None of that appears in a demo, because demos are performed on curated inputs by the person who built them. Production is performed on your ugliest Tuesday by someone who didn't.
+I have shipped this movie in logistics, pharma, and ed-tech. The script never changes. Only the costumes do.
 
-Budget accordingly: if the demo took a week, expect the 20% to take a quarter. That's not the tool failing. That's the actual product work showing up.
+Budget accordingly: if the demo took a week, give the missing 20% a quarter. That is not the tool failing. That is the actual product work showing up.

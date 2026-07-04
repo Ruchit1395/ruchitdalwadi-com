@@ -1,13 +1,13 @@
-Silent failures worth instrumenting before they find you — the change monitor:
+Silent failures worth instrumenting before they find you:
 
-1. Length drift: average response length moves 20% with no deploy. Something upstream changed.
+Length drift. Average response length moves 20% with no deploy. Something upstream changed.
 
-2. Hedge rate: count "it depends", "generally", "may vary" per 100 outputs. Rising hedges often mean degraded context or a source went missing.
+Hedge rate. Count "it depends", "generally", "may vary" per 100 outputs. Rising hedges often mean degraded context or a missing source.
 
-3. Refusal rate: sudden politeness spikes usually trace to a prompt or policy change, not to user behavior.
+Refusal rate. Sudden politeness spikes usually trace to a prompt or policy change, not to user behavior.
 
-4. Empty-input passthrough: a retrieval step returns nothing and the model improvises confidently. Log source token counts per request; alert on zero.
+Empty-input passthrough. A retrieval step returns nothing and the model improvises confidently. Log source token counts per request; alert on zero.
 
-5. Format drift: the JSON still parses, but a field went from sentences to fragments.
+Format drift. The JSON still parses, but a field went from sentences to fragments.
 
-None of these requires knowing what correct means. Sample 1% of traffic, track weekly averages, alert on movement. Cheap to build — and it catches the failures nobody reports because every individual output still looks fine.
+None of these requires knowing what correct means. Sample 1% of traffic, track weekly averages, alert on movement. It catches the failures nobody reports because every individual output still looks fine.

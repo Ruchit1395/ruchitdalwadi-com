@@ -1,1 +1,1 @@
-Next AI coding session, set a diff budget before you start: "this change fits in ~50 lines and 2 files." If the agent blows past it, stop and re-scope instead of riding along. The budget catches runaway refactors while they're still cheap to abandon.
+Stages of an unscoped AI coding session: hope, a 40-file diff, bargaining ("maybe I'll just read the important files"), acceptance, git reset --hard. I keep a 5-line brief taped to my monitor now. Grief is optional. Scoping is not.

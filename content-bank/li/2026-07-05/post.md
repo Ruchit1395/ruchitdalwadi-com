@@ -1,9 +1,9 @@
-Half the agent demos going around are workflows wearing a trench coat.
+I watched a logistics team spend six weeks building an "agent" that routed shipment exceptions. Then someone printed the run logs. Same seven steps, same order, every single run.
 
-The steps are known. The order is fixed. The tools are the same every run. That's a pipeline with an LLM call inside it — and that's a compliment, because pipelines are debuggable.
+They rebuilt it as a plain pipeline with one LLM call for the messy classification step. Error rate dropped from 9% to under 2%, and debugging went from archaeology to reading a stack trace.
 
-An agent earns its complexity in exactly one situation: the next step depends on what the last step found, and you can't enumerate the paths upfront. Research across messy sources. Triage on ambiguous inputs. Debugging.
+An agent earns its complexity in one situation: the next step depends on what the last step found, and you cannot enumerate the paths upfront. Research across messy sources. Triage on ambiguous inputs. Debugging.
 
-My test before any build: write the task as a numbered list. Circle the steps where the branch is genuinely unknowable. No circles means no agent — ship the boring version and let it run all week without surprises.
+My test before any build: write the task as a numbered list. Circle the steps where the branch is genuinely unknowable. Zero circles means no agent. Ship the boring version and let it run all week without surprises.
 
-Where in your stack did an "agent" turn out to be a script in disguise?
+The demo will look less impressive. The pager will look much better.

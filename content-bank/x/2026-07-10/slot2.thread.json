@@ -1,8 +1,8 @@
 [
-  "Agents don't fail loudly. They fail politely — a confident wrong answer at step 7 of 9 that nobody sees until Friday. The fix is designed, not prompted. Here's what a survivable agent spec includes.",
-  "First: allowed actions, written as a whitelist. Not \"be careful with the database\" — a list of tools it may call and files or records it may touch. Everything else denied by default. Vague permissions are how demos become incidents.",
-  "Second: evidence requirements. Every action returns proof — the query it ran, the rows it read, the source it cited. Without evidence you're not reviewing the agent's work. You're reviewing its self-esteem.",
-  "Third: the stop condition, the most-skipped part. Name the exact states where the agent halts and asks: input missing, confidence low, action irreversible, cost above N. An agent without a stop condition doesn't have autonomy. It has momentum.",
-  "Fourth: the handoff. When it stops, what does the human receive? A good handoff: what I tried, what I found, what's blocking me, what I recommend. A bad handoff: 47 log lines and a shrug. Design the handoff like a UI, because it is one.",
-  "Then run the first 20 executions with a named reviewer and count interventions. Under 3 in 20 with clean handoffs — expand scope. More than that, shrink the task. Autonomy is earned in production, not granted in the system prompt."
+  "Agents do not fail loudly. They fail politely: a confident wrong answer at step 7 of 9 that nobody sees until Friday. The fix is designed, not prompted. Here is what a survivable agent spec includes.",
+  "First: allowed actions, written as a whitelist. Not \"be careful with the database\" but a list of tools it may call and files or records it may touch. Everything else denied by default. Vague permissions are how demos become incidents.",
+  "Second: evidence requirements. Every action returns proof: the query it ran, the rows it read, the source it cited. Without evidence you are not reviewing the agent's work. You are reviewing its self-esteem.",
+  "Third: the stop condition, the most-skipped part. Name the exact states where the agent halts and asks: input missing, confidence low, action irreversible, cost above N. An agent without a stop condition does not have autonomy. It has momentum.",
+  "Fourth: the handoff. When it stops, what does the human receive? A good handoff: what I tried, what I found, what is blocking me, what I recommend. A bad handoff: 47 log lines and a shrug. Design the handoff like a UI, because it is one.",
+  "Then run the first 20 executions with a named reviewer and count interventions. Under 3 in 20 with clean handoffs: expand scope. More than that: shrink the task. Autonomy is earned in production, not granted in the system prompt."
 ]

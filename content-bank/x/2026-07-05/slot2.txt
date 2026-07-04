@@ -1,13 +1,11 @@
-The agent-or-workflow test. Four questions before you build:
+Four questions before you build an agent:
 
-1. Can you list the steps in order today? If yes, it's a pipeline. Build a workflow with an LLM call inside it.
+1. Can you list the steps in order today? If yes, it is a pipeline. Build a workflow with an LLM call inside it.
 
-2. Does the next step depend on what the last step found? If no, you don't need dynamic planning.
+2. Does step N+1 depend on what step N found? If no, you do not need dynamic planning.
 
-3. What happens on step failure — retry, skip, or ask a human? If you can't answer, you're not ready for autonomy.
+3. What happens on failure: retry, skip, or ask a human? No answer means no autonomy yet.
 
 4. Who reviews runs 1 through 20? No owner, no agent.
 
-Most "agent" projects fail question 1. The steps were knowable; someone just skipped writing them down.
-
-A workflow that always works beats an agent that usually does — and you can upgrade a boring workflow into an agent later. Downgrading a flaky agent is a rewrite.
+Most "agent" projects die on question 1. The steps were knowable; someone skipped writing them down. A workflow that always works beats an agent that usually does, and you can upgrade a boring workflow later. Downgrading a flaky agent is a rewrite.

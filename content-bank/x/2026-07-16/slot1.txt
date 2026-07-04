@@ -1,1 +1,1 @@
-Loud AI failures get fixed the same day. The dangerous ones are silent: responses 15% shorter, hedging up, an integration returning empty strings the model politely works around. You don't need to define correct to detect change. Measure change.
+Loud AI failures get fixed the same day. The dangerous ones are silent: responses 15% shorter, hedging up, an integration returning empty strings the model politely works around. You do not need to define correct to detect change. Measure change.

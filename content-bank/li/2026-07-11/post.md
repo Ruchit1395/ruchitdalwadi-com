@@ -1,9 +1,9 @@
-Imagine a new hire on day one. No onboarding, no docs, no examples of past work — just a sticky note with instructions and a deadline. That's the working condition of most AI tools inside companies today.
+We hired someone brilliant last year. Day one, we gave her no laptop, no docs, no examples of past work, told her nothing about the customer, and left a sticky note that said "make it pop." Then we wrote "not a good fit" in her review.
 
-Then the output disappoints, and the verdict is "the model isn't good enough."
+Nobody would run onboarding like that. It is also, roughly, the standard operating procedure for every AI tool inside most companies.
 
-The model never saw the style guide. It never saw an example of what the team ships versus what it rejects. It doesn't know which numbers are sacred and which are placeholders. It isn't underperforming — it's under-informed, and no rewording of the prompt fixes that.
+The model never saw the style guide. It never saw one example of what the team ships versus what it rejects. It does not know which numbers are sacred and which are placeholders. It is not underperforming. It is under-informed, and no amount of prompt poetry fixes that.
 
-The unglamorous fix: give it what you'd give the new hire. The goal, the constraints, one great example, one rejected example, the current source docs. Ten minutes of assembling context routinely beats an hour of prompt wordsmithing.
+The unglamorous fix is the same as for the new hire: the goal, the constraints, one great example, one rejected example, the current source docs. Ten minutes of assembling context beats an hour of wordsmithing, every week, forever.
 
-What does your team re-explain to the AI every single week that should have been written down once?
+Onboard the model. It works for sticker price and never eats the office snacks.

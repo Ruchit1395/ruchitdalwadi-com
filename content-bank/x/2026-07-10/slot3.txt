@@ -1,1 +1,1 @@
-Add one line to your agent's instructions today: "If any required input is missing or an action is irreversible, stop and report what you have." Then test it by deleting an input on purpose. If it barrels ahead anyway, you found this week's real work.
+Add one line to your agent's instructions: "If a required input is missing or an action is irreversible, stop and report what you have." Then delete an input on purpose and watch. If it barrels ahead anyway, you found this week's real work.

@@ -1,1 +1,1 @@
-Quickest demo-vs-production test: take whatever impressed you and feed it the ugliest real input from last week — the forwarded email chain, the half-filled form. Demos are built on curated inputs. Production is built on that email chain.
+Quickest demo-vs-production test: feed whatever impressed you the ugliest real input from last week. The forwarded email chain. The half-filled form. Demos are built on curated inputs. Production is built on that email chain.

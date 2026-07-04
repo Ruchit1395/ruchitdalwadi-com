@@ -1,1 +1,1 @@
-AI didn't shrink the product job. It moved it. Blank canvas to working demo went from months to a week — so the differentiating work is now everything after: evals, edge cases, cost-quality tradeoffs, defining what good means. Judgment got a faster loop, not a replacement.
+Blank canvas to working demo went from months to a week. The product job moved to everything after: evals, edge cases, cost-quality tradeoffs, defining what good means. Judgment got a faster loop, not a replacement.

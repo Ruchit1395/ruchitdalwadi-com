@@ -1,12 +1,12 @@
-Context engineering, minus the mystique — six slots to fill before blaming the model:
+Context engineering, minus the mystique. Six slots to fill before blaming the model:
 
 1. Goal: what does done look like, in one sentence?
 2. Constraints: what must never change without asking?
-3. Examples: one output you'd ship, one you'd reject. The pair teaches more than either alone.
-4. Sources: which docs, tickets, or data does it read — and are they current?
+3. Examples: one output you would ship, one you would reject. The pair teaches more than either alone.
+4. Sources: which docs, tickets, or data does it read, and are they current?
 5. Allowed actions: what can it do versus only suggest?
 6. Review rule: what does the checker look for in 30 seconds?
 
-When an output disappoints, walk the six slots and find the empty one. In my experience it's almost always slot 3 or slot 4 — the instructions were fine, the model was just working from a blank desk.
+When an output disappoints, walk the six slots and find the empty one. In my experience it is almost always slot 3 or slot 4. The instructions were fine; the model was working from a blank desk.
 
 Fill the slots once and next week's task starts at 80% instead of zero.

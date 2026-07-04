@@ -1,1 +1,1 @@
-A prompt fixes one output. A system fixes the category: the context the model sees, the examples it copies, the checks before anything ships. If you retype the same clever prompt every week, you built a habit, not a system.
+A prompt fixes one output. A system fixes the category: default context, examples the model copies, checks before anything ships. Retyping the same clever prompt every week is a habit, not infrastructure.

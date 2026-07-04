@@ -1,1 +1,1 @@
-AI coding tools don't struggle with hard tasks. They struggle with vague ones. "Fix auth" fails on the fanciest model; "make login return 401 instead of 500 on expired tokens, test included" works on almost any of them. Scoping is the skill.
+AI coding tools do not struggle with hard tasks. They struggle with vague ones. "Fix auth" fails on the fanciest model. "Make login return 401 instead of 500 on expired tokens, test included" works on almost any of them. Scoping is the skill.

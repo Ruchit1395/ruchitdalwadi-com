@@ -1,6 +1,6 @@
 # Content bank
 
-Pre-generated daily social content, published by the cloud routine: `x/YYYY-MM-DD/{slot1.txt, slot2.txt | slot2.thread.json, slot3.txt}` for X (slot2 is a thread JSON array on Tue/Fri, a Premium mini-framework post otherwise) and `li/YYYY-MM-DD/post.md` for LinkedIn — one coherent theme per day, no links, no hashtags on X.
+Pre-generated daily social content, published by the cloud routine: `x/YYYY-MM-DD/{slot1.txt, slot2.txt | slot2.thread.json, slot3.txt}` for X (slot2 is a thread JSON array on Tue/Fri, a Premium mini-framework post otherwise) and `li/YYYY-MM-DD/post.md` for LinkedIn. One coherent theme per day, no links, no hashtags on X.
 
 ## Day-theme index (Jul 5-19, 2026)
 

@@ -1,1 +1,1 @@
-Try this on your next AI-generated PR: ask the agent to explain the diff before you read it, then check the explanation against the code. Where they disagree is exactly where the bug lives. Fastest review shortcut I know.
+My coding agent wrote a 400-line "small refactor," apologized for the complexity in its own comments, then asked if I wanted tests. I have managed junior engineers with this exact energy. At least the agent does not want equity.

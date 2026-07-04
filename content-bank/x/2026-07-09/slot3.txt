@@ -1,1 +1,1 @@
-Switching models this week? Keep a do-not-regress file: the 10 worst outputs you ever shipped, plus what the fix looked like. Any new model reruns against those 10 first. Cheaper than a benchmark, and it tests the failures you actually paid for.
+Keep a do-not-regress file: the 10 worst outputs you ever shipped, plus what the fix looked like. Every new model reruns against those 10 before anything else. Cheaper than a benchmark, and it tests the failures you actually paid for.

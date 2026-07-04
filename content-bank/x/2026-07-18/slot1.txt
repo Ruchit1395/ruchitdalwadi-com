@@ -1,1 +1,1 @@
-A demo shows the happy path once. Production is the unhappy paths, hourly. The gap between them isn't model quality — it's the boring inventory: missing inputs, weird formats, ambiguous asks, the user who types "asdf". Demos skip the inventory.
+A demo shows the happy path once. Production is the unhappy paths, hourly. The gap is not model quality. It is the boring inventory: missing inputs, weird formats, ambiguous asks, the user who types "asdf". Demos skip the inventory.

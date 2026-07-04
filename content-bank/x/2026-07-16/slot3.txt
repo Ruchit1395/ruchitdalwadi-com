@@ -1,1 +1,1 @@
-One-hour monitor you can ship today: log response length, refusal count, and retrieved-context size for 1% of AI traffic. Alert when a weekly average moves 20%. It won't tell you what broke — it tells you WHEN, which is the expensive half of debugging.
+LLM incident timeline: day 1, an API starts returning empty strings. Days 1 to 18, the model improvises beautifully. Day 19, a human says the output feels "a bit off." Day 20, you discover your most reliable monitoring system is vibes.

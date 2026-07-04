@@ -1,1 +1,1 @@
-Every AI failure you've fixed and not written down as a test is a failure you've scheduled for later. The model will drift, a prompt will change, and the old bug walks back in through the front door. Fixed is temporary. Tested is fixed.
+Every AI failure you fixed and did not write down as a test is a failure you scheduled for later. The model drifts, a prompt changes, and the old bug walks back in through the front door. Fixed is temporary. Tested is fixed.

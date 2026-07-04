@@ -1,1 +1,1 @@
-Giving an agent 40 tools doesn't make it capable. It makes it indecisive. Every extra tool is another wrong turn available at every step. The strongest agent setups I've seen run 5 tools and a rule for when each applies. Relevance beats inventory.
+Giving an agent 40 tools does not make it capable. It makes it indecisive. Every extra tool is another wrong turn available at every step. The strongest setups I have seen run 5 tools and a rule for when each applies. Relevance beats inventory.

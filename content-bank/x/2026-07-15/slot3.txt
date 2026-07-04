@@ -1,1 +1,1 @@
-Debugging a flaky agent? Halve its tools before touching the prompt. Cut everything unused in the last 20 runs, rerun the same tasks, and compare. Fewer wrong options at each step fixes more agent behavior than another paragraph of instructions.
+Debugging a flaky agent? Halve its tools before touching the prompt. Cut everything unused in the last 20 runs, rerun the same tasks, compare. Fewer wrong options at each step fixes more agent behavior than another paragraph of instructions.

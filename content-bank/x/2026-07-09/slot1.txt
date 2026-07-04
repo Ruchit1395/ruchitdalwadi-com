@@ -1,1 +1,1 @@
-Benchmarks rank models by what they get right. Your product dies by what they get wrong. Before comparing scores, name the one mistake that would cost you the most — then test candidates on that mistake, not on the leaderboard.
+Benchmarks rank models by what they get right. Your product dies by what they get wrong. Name the one mistake that would cost you the most, then test candidates on that mistake, not on the leaderboard.

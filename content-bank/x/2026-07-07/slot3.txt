@@ -1,1 +1,1 @@
-Cheapest eval to ship today: collect the last 10 outputs your team accepted and the last 10 it rejected. Ask an LLM judge which side each new output resembles. Crude, but it flags regressions the day they happen instead of the week after.
+Cheapest eval I know: collect the last 10 outputs your team accepted and the last 10 it rejected. Ask an LLM judge which pile each new output belongs to. Crude, but it flags regressions the day they happen instead of the week after.

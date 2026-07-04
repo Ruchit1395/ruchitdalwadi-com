@@ -1,1 +1,1 @@
-An agent that can act but can't say "I'm stuck because X is missing" turns your team into surprise reviewers. The stop condition is not a safety feature bolted on at the end. It's the first line of the spec.
+An agent that can act but cannot say "I am stuck because X is missing" turns your team into surprise reviewers. The stop condition is not a safety feature bolted on at the end. It is the first line of the spec.

@@ -1,1 +1,1 @@
-Before building an agent this week: write the task as a numbered checklist. Circle every step where the next action depends on the last output. Zero circles: build a script with an LLM call. Three or more: now an agent is worth the debugging.
+Field note from a logistics build: the "agent" ran the same 7 steps in the same order for 3,000 runs straight. We renamed it a pipeline, deleted the planner, and the error rate fell from 9% to 2%. Sometimes the upgrade is a demotion.

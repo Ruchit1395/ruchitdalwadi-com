@@ -1,1 +1,1 @@
-If you can write the steps down in order, you don't need an agent. You need a workflow. Agents earn their complexity only when the path can't be known upfront — when the system has to decide what to do next.
+Write the task as a numbered list before you build the agent. If the list is complete and the order never changes, you need a workflow with one LLM call, not an agent. Agents are for paths you cannot enumerate upfront.

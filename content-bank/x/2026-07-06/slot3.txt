@@ -1,1 +1,1 @@
-Take the last AI output someone on your team rejected. Write one sentence: "This failed because it didn't know ___." Then fix the blank — a doc, an example, a constraint — instead of rewording the prompt. Context beats phrasing almost every time.
+Take the last AI output your team rejected and finish this sentence: "It failed because it did not know ___." Fix the blank with a doc, an example, or a constraint. Rewording the prompt treats the symptom. The blank is the disease.
