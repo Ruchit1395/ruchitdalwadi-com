@@ -1,0 +1,1 @@
+Before building an agent this week: write the task as a numbered checklist. Circle every step where the next action depends on the last output. Zero circles: build a script with an LLM call. Three or more: now an agent is worth the debugging.

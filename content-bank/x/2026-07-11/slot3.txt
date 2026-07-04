@@ -1,0 +1,1 @@
+Test the desk, not the prompt: paste your task input into a fresh chat with zero setup and see what the model asks for. Its first three questions are your missing context slots. Fill those into the system permanently and retire the guesswork.

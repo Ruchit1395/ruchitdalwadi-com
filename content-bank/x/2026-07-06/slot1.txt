@@ -1,0 +1,1 @@
+A prompt fixes one output. A system fixes the category: the context the model sees, the examples it copies, the checks before anything ships. If you retype the same clever prompt every week, you built a habit, not a system.

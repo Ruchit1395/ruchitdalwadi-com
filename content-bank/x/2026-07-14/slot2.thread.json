@@ -1,0 +1,8 @@
+[
+  "Your team's best AI training asset isn't a prompt library. It's the outputs you rejected last month — and almost everyone throws them away. Here's how to turn one rejected output into a reusable system.",
+  "Step 1: Ask what context was missing, not what wording failed. The draft cited the wrong policy? The model never saw the current one. Missing context explains more failures than weak phrasing ever will. Write the missing item down — that's a system requirement.",
+  "Step 2: Find the decision that was outsourced too early. Somewhere in the rejected output the model made a judgment call a human should still own — pricing, tone with an angry customer, what to promise. Mark it: that call stays human until the model earns it.",
+  "Step 3: Write the 30-second review rule. What did the reviewer actually check before rejecting it? Numbers match the source? Right customer named? That check, written down, is your acceptance test — reusable on every future run.",
+  "Step 4: Save the pair. The rejected output plus the shipped correction is the single highest-value example you can put in front of the model next time. One before/after pair beats ten instructions about style.",
+  "Do this for 5 rejected outputs and you've written a workflow spec without meaning to: required context, human-owned decisions, acceptance checks, gold examples. That's a system. It compounds. A prompt library just gets longer."
+]

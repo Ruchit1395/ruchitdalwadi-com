@@ -1,0 +1,1 @@
+A vibe check asks "does this look good?" An eval asks "is this better than yesterday's version, and would we notice if it got worse?" You can build the second one without a labeled dataset. That's the whole trick.

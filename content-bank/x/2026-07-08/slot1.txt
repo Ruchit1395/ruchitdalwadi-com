@@ -1,0 +1,1 @@
+A coding agent is useful when the review surface shrinks, not when the patch grows. If reading the diff takes longer than writing the code would have, the autonomy went the wrong direction.

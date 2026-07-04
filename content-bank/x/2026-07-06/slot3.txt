@@ -1,0 +1,1 @@
+Take the last AI output someone on your team rejected. Write one sentence: "This failed because it didn't know ___." Then fix the blank — a doc, an example, a constraint — instead of rewording the prompt. Context beats phrasing almost every time.

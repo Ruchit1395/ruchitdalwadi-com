@@ -1,0 +1,1 @@
+Write one behavioral assertion today: take your system's most embarrassing past output, turn it into a test case, and check it against tomorrow's deploy. One assertion per past incident, and in a quarter you'll have the eval suite everyone keeps postponing.

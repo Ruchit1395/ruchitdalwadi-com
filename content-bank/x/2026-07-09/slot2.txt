@@ -1,0 +1,11 @@
+A model bake-off that takes an afternoon, not a sprint:
+
+1. Write the expensive mistake first. Not "accuracy" — the specific failure that costs money or trust. Refunding an ambiguous case. Inventing a citation. Deleting the wrong rows.
+
+2. Build 20 test cases around that mistake: 10 where the right move is to act, 10 where the right move is to hesitate, ask, or decline.
+
+3. Run every candidate model on all 20. Log acts-when-it-shouldn't and hesitates-when-it-shouldn't separately. They are different costs.
+
+4. Only then look at price and latency — and only among models that survived step 3.
+
+Most model debates are people arguing step 4 vibes without ever doing steps 1-3. The leaderboard can't know which mistake is expensive for you. That part is your job.

@@ -1,0 +1,15 @@
+The boring contract I hold every coding agent to, whatever the tool:
+
+1. State intent before touching code — one sentence, what and why.
+
+2. List the files it plans to edit, before editing. Surprise files are a stop signal.
+
+3. Run the smallest relevant test, not the whole suite, and show the result.
+
+4. Explain the diff in plain language, as if in code review.
+
+5. Flag anything it did not verify — assumptions, skipped tests, guessed APIs.
+
+None of this limits the model. It limits the blast radius. The agent can be as clever as it wants inside a contract a human can audit in two minutes.
+
+The pattern to watch for: patches getting bigger while explanations get vaguer. That's the moment to shrink the task, not to trust harder.

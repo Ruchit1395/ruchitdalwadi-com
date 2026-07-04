@@ -1,0 +1,13 @@
+The rejected-output audit. Next time your team throws away an AI draft, don't reach for a better prompt. Run four questions on the corpse:
+
+1. What context was missing? The model can't cite a policy it never saw.
+
+2. Which decision did we hand over too early? Judgment calls stay human until the model earns them.
+
+3. What would a reviewer check in 30 seconds? That check becomes your acceptance test.
+
+4. What should the model never change without asking? That becomes a hard constraint in the system.
+
+Answer those and you've written most of a workflow spec: inputs, context, constraints, checks.
+
+A prompt library goes stale in a month. A spec built from your own failures compounds.

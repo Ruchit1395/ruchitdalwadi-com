@@ -1,0 +1,9 @@
+[
+  "Two teams, same AI coding tools. One ships 3x faster, one drowns in review debt. The difference is never the tool — it's the loop around it. Here's the working loop, step by step.",
+  "Before: developer types \"add rate limiting\" into the tool, gets a 600-line diff touching 14 files, spends the afternoon reviewing, trust drops, tool gets blamed. The tool did exactly what was asked. The ask was the bug.",
+  "Step 1 — brief: goal in one sentence, the test that proves done, files in bounds, things that must not change. Two minutes to write. This is where the 3x actually comes from.",
+  "Step 2 — leash length: new area or shaky tests, review every step. Familiar area, good tests, let it run to a checkpoint. Autonomy isn't a setting you pick once; it's per-task, based on how much you trust the ground under it.",
+  "Step 3 — verify before reading: run the test from the brief BEFORE reviewing the diff. Failing code isn't worth your review time. Passing code gets a real review: does the explanation match the diff? Mismatches are where bugs live.",
+  "Step 4 — bank the learning: mistakes the tool repeats become project rules — a conventions file, guardrails, better default context. The goal isn't a good session. It's that next month's sessions start smarter.",
+  "AI coding is a loop, not a keystroke: brief, leash, verify, bank. Teams that manage the loop compound. Teams that manage the tool churn. Speed was never about typing."
+]

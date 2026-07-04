@@ -1,0 +1,11 @@
+A practice that costs 5 minutes per incident and compounds forever — the regression diary:
+
+Every time your AI system produces something bad enough to fix, capture three lines before moving on.
+
+- Input: the exact case that broke it.
+- Bad output: what it did.
+- Rule: one sentence a checker could verify. "Stays calm on hostile input." "Never invents a ticket number." "Declines medical questions."
+
+Once a week, turn the new lines into assertions — a regex, a small classifier, or an LLM judge checking the rule. Run the suite on every prompt change and model upgrade.
+
+You're not measuring whether the system is good. You're measuring whether anything you already paid to fix has quietly broken again. Different question, much easier to answer — and it's the one that pages you before your users do.

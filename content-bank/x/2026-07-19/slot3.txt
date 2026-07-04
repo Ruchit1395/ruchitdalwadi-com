@@ -1,0 +1,1 @@
+PMs on AI features: write the eval before the spec. Three outputs you'd ship, three you'd reject, one mistake that's unacceptable. It fits on a page, and it forces the "what is this actually for?" conversation before engineering builds the wrong thing fast.

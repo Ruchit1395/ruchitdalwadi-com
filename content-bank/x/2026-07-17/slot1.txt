@@ -1,0 +1,1 @@
+"AI makes coding faster" is only half true. It makes typing faster. Whether the whole system speeds up depends on the loop around it — scoping, review, verification. Fast typing into a slow review loop just moves the queue.

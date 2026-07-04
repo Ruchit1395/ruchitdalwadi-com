@@ -1,0 +1,1 @@
+Your prompt library keeps growing because prompts don't accumulate — every task starts from zero again. A system accumulates: context, examples, and checks that make next week's task start at 80%. Growth in prompts is often just repetition in disguise.

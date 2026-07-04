@@ -1,0 +1,11 @@
+The product questions that matter more, not less, now that AI writes the first draft of everything:
+
+1. What's the user's actual job? Test: what happens to them tomorrow if this feature disappears? "They'd use a competitor" means you haven't found it yet.
+
+2. What does good output mean here, specifically? If the PM can't produce 3 shippable and 3 rejectable examples, no eval can save the feature.
+
+3. Which mistake is expensive? Wrong tone is survivable; wrong refund isn't. This ranking drives model choice, review depth, and rollout speed.
+
+4. Where does the human stay in the loop, and until when? "Forever" and "nowhere" are both wrong answers. Name the graduation criteria.
+
+The demo is a week of work now. These four questions are the quarter that follows — and they're the part AI can't do for you.

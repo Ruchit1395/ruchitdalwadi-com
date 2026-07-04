@@ -1,0 +1,1 @@
+Next AI coding session, set a diff budget before you start: "this change fits in ~50 lines and 2 files." If the agent blows past it, stop and re-scope instead of riding along. The budget catches runaway refactors while they're still cheap to abandon.

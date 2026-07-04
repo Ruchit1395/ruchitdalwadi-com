@@ -1,0 +1,11 @@
+The 5-line task brief that makes AI coding sessions boring, in the good way:
+
+1. Goal: the behavior change, one sentence.
+2. Done means: the test or command that proves it, runnable.
+3. Touch: files in scope. Anything else needs a stated reason.
+4. Don't: what stays untouched — deps, public APIs, config, formatting.
+5. Context: the one file or doc to read first.
+
+Write it before opening the tool. If line 2 is hard to write, the task is too big — split it and brief the first piece.
+
+The failure this prevents: a 40-file diff for a 4-line problem, where review costs more than the code was worth. Small verified diffs merged hourly beat one heroic diff at 6pm. The brief is what keeps the diffs small.

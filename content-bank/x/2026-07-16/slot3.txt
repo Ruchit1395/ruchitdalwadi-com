@@ -1,0 +1,1 @@
+One-hour monitor you can ship today: log response length, refusal count, and retrieved-context size for 1% of AI traffic. Alert when a weekly average moves 20%. It won't tell you what broke — it tells you WHEN, which is the expensive half of debugging.

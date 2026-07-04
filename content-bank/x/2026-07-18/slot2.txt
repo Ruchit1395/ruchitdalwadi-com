@@ -1,0 +1,11 @@
+Before an impressive AI demo touches real work, I run the Monday test — four steps, thirty minutes:
+
+1. Feed it 3 inputs from the actual queue, not the curated demo inputs. Real formatting, real typos, real ambiguity.
+
+2. Show it 3 outputs you'd ship and 3 you'd reject, and check it can tell you which are which. If it can't classify quality, it can't produce quality reliably.
+
+3. Name the one mistake that would make this unsafe — the wrong refund, the invented citation, the deleted record. Ask: what currently prevents it? "The model is smart" is not a prevention.
+
+4. Assign a reviewer for the first 20 real runs, by name.
+
+Pass all four and pilot it. Fail any and you have a demo — which is fine, as long as nobody schedules it into a workflow yet.

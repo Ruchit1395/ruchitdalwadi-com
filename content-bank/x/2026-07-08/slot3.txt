@@ -1,0 +1,1 @@
+Try this on your next AI-generated PR: ask the agent to explain the diff before you read it, then check the explanation against the code. Where they disagree is exactly where the bug lives. Fastest review shortcut I know.
