@@ -76,6 +76,7 @@ for (const lane of LANES) {
       }
       cursor = d.next_cursor ?? "";
       if (!cursor || !(d.tweets ?? []).length) break;
+      await new Promise((r) => setTimeout(r, 1200));
     }
   }
 }

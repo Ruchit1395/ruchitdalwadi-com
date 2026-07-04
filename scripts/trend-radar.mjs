@@ -39,15 +39,26 @@ const LANES = [
   { name: "ai-work", q: '("AI at work" OR "AI workflow" OR "AI productivity" OR automation) min_faves:150' },
 ];
 
-const samples = [];
-for (const lane of LANES) {
+async function searchLane(query, type) {
   const r = await fetch(
-    `https://api.twitterapi.io/twitter/tweet/advanced_search?queryType=Top&query=${encodeURIComponent(lane.q.replace(/min_faves:\d+/, "min_faves:80") + " -filter:replies lang:en within_time:24h")}`,
+    `https://api.twitterapi.io/twitter/tweet/advanced_search?queryType=${type}&query=${encodeURIComponent(query)}`,
     { headers: { "X-API-Key": process.env.TWITTERAPIIO_KEY } },
   );
-  if (!r.ok) continue;
-  const d = await r.json();
-  for (const t of (d.tweets ?? []).slice(0, 15)) {
+  if (!r.ok) return [];
+  return (await r.json()).tweets ?? [];
+}
+
+const samples = [];
+for (const lane of LANES) {
+  const q = lane.q.replace(/min_faves:\d+/, "min_faves:80") + " -filter:replies lang:en within_time:24h";
+  // Top first; fall back to Latest; one retry after backoff if throttled empty
+  let tweets = await searchLane(q, "Top");
+  if (tweets.length === 0) tweets = await searchLane(q, "Latest");
+  if (tweets.length === 0) {
+    await new Promise((r) => setTimeout(r, 8000));
+    tweets = await searchLane(q, "Top");
+  }
+  for (const t of tweets.slice(0, 15)) {
     samples.push({
       lane: lane.name,
       author: t.author?.userName,
@@ -60,6 +71,7 @@ for (const lane of LANES) {
       text: (t.text ?? "").slice(0, 350),
     });
   }
+  await new Promise((r) => setTimeout(r, 2000));
 }
 
 if (samples.length < 10) {
