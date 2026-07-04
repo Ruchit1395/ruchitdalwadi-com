@@ -11,7 +11,7 @@
  *   4. Post up to MAX_REPLIES via official X API.
  *   5. Log to replied-log.csv + registry.
  *
- * Env: TWITTERAPIIO_KEY, ANTHROPIC_API_KEY,
+ * Env: TWITTERAPIIO_KEY, GEMINI_API_KEY,
  *      X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET
  */
 
@@ -39,7 +39,7 @@ function assertEnv(names) {
     process.exit(0);
   }
 }
-assertEnv(["TWITTERAPIIO_KEY", "ANTHROPIC_API_KEY", "X_API_KEY", "X_API_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET"]);
+assertEnv(["TWITTERAPIIO_KEY", "GEMINI_API_KEY", "X_API_KEY", "X_API_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET"]);
 
 const repliedAuthors = new Set();
 const repliedIds = new Set();
@@ -105,44 +105,58 @@ if (targets.length === 0) {
   process.exit(0);
 }
 
-const voiceGuide = existsSync(`${DIR}/voice-and-value-guide-2026-06-30.md`)
-  ? readFileSync(`${DIR}/voice-and-value-guide-2026-06-30.md`, "utf8").slice(0, 4000)
+const contentRules = existsSync(`${DIR}/CONTENT_RULES.md`)
+  ? readFileSync(`${DIR}/CONTENT_RULES.md`, "utf8")
   : "";
 
-async function draftReply(target) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": process.env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
+const recentReplies = existsSync(REPLIED_LOG)
+  ? readFileSync(REPLIED_LOG, "utf8").trim().split("\n").slice(-6).join("\n")
+  : "";
+
+const SYSTEM = `You draft X replies for Ruchit Dalwadi, an operator and teacher in AI, startups, and product. A decade shipping across six industries. Teaches practical AI: agents, evals, workflows, harness design.
+
+${contentRules}
+
+Reply-specific rules on top:
+- 240 characters maximum. Hard limit.
+- No links, no hashtags, no emoji, no "great post", no throat-clearing.
+- Add ONE thing the room does not already have: a frame, a caveat, a war story detail, a concrete test, or a dry observation.
+- If the post asks a question, answer it in the first sentence.
+- Vary your shape from the recent replies shown below. If the last reply was a checklist item, make this one a war story or a pointed question or a dry joke.
+- ABSOLUTELY no em dashes (the character "—" or "–"). Use periods, commas, or colons.
+
+Output ONLY the reply text. Nothing else.`;
+
+async function draftReply(target, attempt = 0) {
+  const res = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" +
+      process.env.GEMINI_API_KEY,
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM }] },
+        contents: [
+          {
+            parts: [
+              {
+                text: `Post by @${target.author} (${target.likes} likes, ${target.replies} replies):\n\n"${target.text}"\n\nRecent replies already posted (avoid their shapes):\n${recentReplies || "none"}\n\nDraft the reply.`,
+              },
+            ],
+          },
+        ],
+        generationConfig: { maxOutputTokens: 1200, temperature: 0.9 },
+      }),
     },
-    body: JSON.stringify({
-      model: "claude-sonnet-5",
-      max_tokens: 300,
-      system: `You draft X replies for Ruchit Dalwadi — operator/teacher in AI, startups, product. A decade shipping across six industries; now teaching practical AI: agents, evals, workflows, harness design.
-
-Voice rules:
-- <=240 characters. Hard limit.
-- No links, no hashtags, no emoji, no "great post".
-- Add ONE thing: a frame, a caveat, a workflow step, or a concrete test.
-- Plain confident sentences. Specific > general. Never salesy.
-- If the post asks a question, answer it directly first.
-
-${voiceGuide ? "Voice guide excerpt:\n" + voiceGuide : ""}
-
-Reply with ONLY the reply text, nothing else.`,
-      messages: [
-        {
-          role: "user",
-          content: `Post by @${target.author} (${target.likes} likes, ${target.replies} replies):\n\n"${target.text}"\n\nDraft the reply.`,
-        },
-      ],
-    }),
-  });
-  if (!res.ok) throw new Error(`anthropic ${res.status}: ${await res.text()}`);
+  );
+  if (!res.ok) throw new Error(`gemini ${res.status}: ${await res.text()}`);
   const data = await res.json();
-  return data.content?.[0]?.text?.trim() ?? "";
+  let text = data.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("").trim() ?? "";
+  text = text.replace(/^["']|["']$/g, "").trim();
+  // em-dash guard: one regeneration, then mechanical fix
+  if (/[—–]/.test(text) && attempt === 0) return draftReply(target, 1);
+  text = text.replace(/\s*[—–]\s*/g, ", ");
+  return text;
 }
 
 const client = new TwitterApi({
