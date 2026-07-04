@@ -1,0 +1,34 @@
+name: LinkedIn scheduled post
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # 14:30 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: li-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Publish today's LinkedIn post
+        env:
+          COMPOSIO_REST_API_KEY: ${{ secrets.COMPOSIO_REST_API_KEY }}
+          COMPOSIO_LINKEDIN_ACCOUNT_ID: ${{ secrets.COMPOSIO_LINKEDIN_ACCOUNT_ID }}
+        run: node scripts/li-publish.mjs
+      - name: Commit publish state
+        run: |
+          git config user.name "campaign-bot"
+          git config user.email "bot@ruchitdalwadi.com"
+          git add content-bank distribution
+          git diff --cached --quiet || git commit -m "campaign: linkedin publish $(date -u +%Y-%m-%d)"
+          git push
