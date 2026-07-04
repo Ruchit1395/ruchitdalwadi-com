@@ -6,6 +6,8 @@ The core idea stays the same:
 
 > The first 10 customers of a B2B AI startup are recruited through founder-led design partnerships, not bought with normal marketing.
 
+Current voice warning: do not overuse the "Most people..." opener plus bullet-list lesson. Before selecting a hook, check `voice-and-value-guide-2026-06-30.md` and choose a different shape if the last native post used a similar structure.
+
 ## How to use this
 
 - Pick one hook per post.
@@ -185,3 +187,79 @@ Use hooks that score 9+ out of 12.
 5. Week 2: `Customer 11`
 6. Week 3: `Founder-led sales`
 7. Week 4: `Sharp line`
+
+## AI teaching hook variants, non-templated
+
+Use these for the broader practical AI teaching campaign. They are intentionally varied so the feed does not sound like one repeated automation pattern.
+
+### AI1
+
+Open the last AI output your team rejected.
+
+That is probably a better training asset than another prompt template.
+
+### AI2
+
+A useful agent starts life as a checklist, not a teammate.
+
+Give it a trigger, allowed actions, evidence to return, and a stop condition.
+
+### AI3
+
+Before I compare models, I compare failure modes.
+
+The right question is not "which model is smarter?" It is "which mistake would cost us the most?"
+
+### AI4
+
+If your AI workflow has no owner for exceptions, it is not a workflow yet.
+
+It is a demo with hope attached.
+
+### AI5
+
+The best prompt library is usually a graveyard.
+
+The useful asset is the review rule that tells people what to keep, reject, and retry.
+
+### AI6
+
+Here is a 15-minute exercise:
+
+Pick one annoying weekly task. Write the current steps. Circle the judgment calls. Automate only the uncircled parts first.
+
+### AI7
+
+Claude, Cursor, and ChatGPT matter less than the sentence before you use them:
+
+"What would make this unsafe to ship?"
+
+### AI8
+
+The fastest way to teach AI at work is not a workshop.
+
+It is taking one real task from messy input to reviewed output in front of the team.
+
+### AI9
+
+Do not ask people which AI tool they use.
+
+Ask which decision got easier, which review got shorter, and which handoff disappeared.
+
+### AI10
+
+Context engineering sounds fancy until you make it concrete:
+
+goal, constraints, examples, sources, allowed actions, and the review rule.
+
+### AI11
+
+The first version of an AI system should feel almost boring.
+
+One task. Known inputs. Clear owner. Obvious failure case. Review before trust.
+
+### AI12
+
+If an AI output is hard to review, the workflow is still too vague.
+
+Make the answer smaller, the evidence clearer, or the human checkpoint earlier.

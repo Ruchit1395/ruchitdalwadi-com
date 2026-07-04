@@ -79,7 +79,14 @@ A batch should include:
 - 20% exact-fit exceptions: score 11+ with unusually strong topic fit.
 - 10% experimental: only if the comment is unusually sharp and low-risk.
 
-Do not post more than 5-8 LinkedIn comments or 8-12 X replies in one batch.
+Each normal batch should post:
+
+- 6-7 LinkedIn comments, or
+- 6-7 X replies.
+
+Do not count a batch as complete at one comment/reply. One comment/reply is a maintenance action, not a batch.
+
+For X, draft every reply at 240 characters or fewer before opening the composer. Skip or rewrite any reply that needs emergency trimming inside X.
 
 ## Logging rule
 

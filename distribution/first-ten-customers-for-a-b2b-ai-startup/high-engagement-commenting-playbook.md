@@ -1,6 +1,7 @@
 # High-engagement commenting playbook
 
 Prepared: 2026-06-22T00:07:00+05:30.
+Updated: 2026-06-30T19:00:00+05:30.
 
 Purpose: shift distribution from "publish and wait" to "earn attention inside posts that already have attention."
 
@@ -19,8 +20,8 @@ Comment where all four are true:
 
 ## Priority order
 
-1. LinkedIn comments under high-engagement founder/operator/investor posts.
-2. X replies under active posts from AI/GTM/founder accounts.
+1. X replies under active AI/workflow/tool posts where Premium reply priority can help visibility.
+2. LinkedIn comments under high-engagement founder/operator/investor posts.
 3. Reply to Luke Sophinos because he already responded with the strongest objection.
 4. Standalone follow-up posts only after a comment/reply creates signal.
 5. Direct outreach only when there is a specific reason the essay helps the recipient.
@@ -45,6 +46,8 @@ X:
 - The author has an audience in AI, SaaS, GTM, product, or investing.
 - The thread is still active enough that a useful reply can be seen.
 - Exact post URL is captured before replying.
+- Premium-preferred room: 30-500 likes, fewer than 80 replies, and a comment section where a verified/prioritized reply can still rank.
+- Stronger exception: a mega post is allowed only when the reply is early, the post is from a core AI/tool account, or the exact topic is central to our positioning.
 
 Skip:
 
@@ -55,6 +58,50 @@ Skip:
 - Search-result-only LinkedIn targets when the browser cannot prove the exact post being commented on.
 
 ## Comment shapes that should travel
+
+Use these as thinking shapes, not paste templates. The 2026-06-30 voice rule is: every comment must be specific enough that it would feel odd under a different post.
+
+For practical AI teaching, rotate these additional shapes:
+
+### A. Implementation sequence
+
+Use when the original post is excited about a new AI tool, agent, or workflow.
+
+```text
+If I had to operationalize this, I would define the trigger, the context packet, the allowed actions, the review rule, and the stop condition before picking the tool. Otherwise the team gets a cool demo and no repeatable workflow.
+```
+
+### B. Failure case first
+
+Use when the original post is too optimistic.
+
+```text
+The failure case I would test first is not whether the AI can complete the happy path. It is whether it knows when to stop, ask for missing context, or hand off because the next action has real cost.
+```
+
+### C. Before/after
+
+Use when the post discusses AI adoption, productivity, or PM/operator workflows.
+
+```text
+The before/after I would want to see is not "used AI" vs "did not use AI." It is: unclear task to reviewed output, scattered context to reusable context packet, one-off prompt to repeatable review rule.
+```
+
+### D. Tiny template
+
+Use when the post asks for practical advice.
+
+```text
+The tiny spec I would write: "AI may use [sources], may change [things], must return [evidence], should ask for help when [condition], and is reviewed by [owner]." That prevents a lot of pretend automation.
+```
+
+### E. Earned skepticism
+
+Use when the post is about model/tool breakthroughs.
+
+```text
+The capability is real. The part I would verify is whether the workflow gets easier to review. Better output is useful, but lower review cost is what makes teams actually keep using it.
+```
 
 ### 1. Missing test
 
@@ -103,8 +150,43 @@ The question is not whether customer #1 is happy. It is whether customer #1 teac
 - No pretending to know the author's company or customers unless the post states it.
 - Prefer one concrete idea over three generic points.
 - End with a sharp question only when it naturally invites the author to respond.
+- Refer to one specific noun from the original post when truthful: the tool, workflow, role, claim, metric, or failure mode.
+- Do not reuse the same opener more than twice in a batch.
+- Do not use "The hard part is..." unless the next sentence gives a concrete system, test, owner, or workflow step.
+- Avoid repeated "X is not Y" structure. Use micro-scene, teardown, implementation sequence, failure case, or tiny template instead.
+- For every 5-comment LinkedIn batch, use at least 4 different comment shapes.
+- For every 5-6 reply X batch, include at least 2 replies with specific implementation advice.
+- Every comment must pass the `voice-and-value-guide-2026-06-30.md` scoring gate before posting.
+- Normal X replies stay 180-240 characters.
+- Premium longer X replies can be 240-600 characters only for strong, high-context targets.
+- Use the target-page inline composer on X when the modal composer silently fails verification.
+- For X, count only replies that verify on `with_replies` or on the target conversation.
 - Log every posted comment in `tracker.csv`, `metrics-log.csv`, and `WORKLOG.md`.
 - Log every meaningful reply in `reply-source-scorecard.csv`.
+
+## Failed action retry rule
+
+If a comment/reply is high-signal but fails because the browser editor rejects input, the post button stays disabled, or verification fails:
+
+- do not keep retrying the same target inside the same block,
+- add it to `retry-queue.csv`,
+- set `retry_after` to 45 minutes after failure,
+- keep the exact draft and target URL,
+- retry once from a fresh browser state,
+- count only verified posts/comments/replies,
+- after a second failure, mark it `manual_packet_needed` or `abandoned_stale`.
+
+This prevents a good target from being lost while also preventing editor failures from consuming the whole campaign block.
+
+## X Premium-specific tactics
+
+Use Premium for better placement and better formats:
+
+- Prioritize verified-heavy and medium-hot posts where reply ranking matters.
+- Use bookmark folders to save strong targets for the next scheduled block.
+- Use longer posts for mini-frameworks, not rambling.
+- Use the edit window only for typos, formatting, or one clarifying line on original/quote posts.
+- Do not edit X profile photo, display name, or handle while the blue checkmark is under review or newly applied.
 
 ## Approval gates
 

@@ -8,22 +8,22 @@ Goal: 100,000 X + LinkedIn viewers/impressions in 30 days.
 
 Latest checkpoint:
 
-- X root thread: 105 visible views.
-- LinkedIn anchor: 233 visible impressions.
-- Current measured owned-post impressions: 338.
+- X root thread: 106 visible views.
+- LinkedIn anchor: 244 visible impressions.
+- Current measured owned-post impressions: 350.
 - LinkedIn profile viewers: 28.
 - LinkedIn first-comment link: 28 impressions.
 - Verified campaign-quality replies: 1, from Luke Sophinos.
 
 Current progress:
 
-- 338 / 100,000 = 0.338%.
-- Remaining measured reach: 99,662 impressions.
+- 350 / 100,000 = 0.350%.
+- Remaining measured reach: 99,650 impressions.
 - Average needed from here over 30 days: about 3,323 impressions/day.
 - Day 1 target path: 1,500 impressions.
-- Day 1 deficit: 1,162 impressions.
+- Day 1 deficit: 1,150 impressions.
 - Day 2 target path: 3,000 impressions.
-- Day 2 deficit: 2,662 impressions.
+- Day 2 deficit: 2,650 impressions.
 
 ## Diagnosis
 
@@ -34,7 +34,7 @@ The idea is not dead: Luke Sophinos's reply is a real objection from the right t
 Evidence:
 
 - LinkedIn high-engagement batch produced no immediate campaign-quality reply.
-- LinkedIn anchor later rose to 233 impressions and profile viewers stayed at 28, but no campaign-quality LinkedIn reply appeared.
+- LinkedIn anchor later rose to 244 impressions and profile viewers stayed at 28, but no campaign-quality LinkedIn reply appeared.
 - X root is creeping by single-digit views, not compounding.
 - Daily ledger shows execution gap: no X reply batches posted yet on 2026-06-22 and no follow-up native X post.
 

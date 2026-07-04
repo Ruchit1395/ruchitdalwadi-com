@@ -86,6 +86,7 @@ approved: publish X thread
 - `reach-model.md` - 30-day pace model and pivot thresholds.
 - `daily-operating-schedule.md` - daily cadence for posts, replies/comments, metrics, and outreach.
 - `daily-activity-ledger.csv` - daily planned vs actual execution ledger.
+- `post-stats-registry.md` - human-readable registry of every public X/LinkedIn post, comment, and reply that needs daily stats refreshes.
 - `pace-audit-2026-06-22.md` - current pace deficit and next action decision.
 - `reach-model.csv` - numeric target bands for 100k reach.
 - `assets/carousel/first-ten-customers-carousel.pdf` - LinkedIn document carousel.
@@ -125,6 +126,31 @@ approved: publish X thread
 - `WORKLOG.md` - record of what was created and verified.
 - `CAMPAIGN_AUDIT.md` - requirement-by-requirement completion audit.
 - `scripts/validate_campaign.py` - pre-launch package validator.
+
+## Reporting contract for agents
+
+Every run should preserve two reporting surfaces:
+
+1. `post-stats-registry.md` is the durable per-asset stats registry. Every public X/LinkedIn native post, comment, and reply needs a row with a stable identifier, URL, target/parent, tool path, and latest stats when available.
+2. The chat thread is the human-facing run summary. After any scheduled block, retry processing, inbound check, stats refresh, post/comment/reply, or meaningful blocker, leave a concise summary in this structure:
+
+```text
+X:
+- New post: count and URLs/URNs, or None.
+- New comments: count and URLs, or None.
+- Replies: count and URLs for posted replies or notable inbound replies, or None.
+- Stats updated: count and URLs, or None.
+
+LinkedIn:
+- New post: count and URLs/URNs, or None.
+- New comments: count and URLs/URNs or target descriptions, or None.
+- Replies: count and URLs/URNs for notable inbound replies/comments, or None.
+- Stats updated: count and URLs/URNs or target descriptions, or None.
+
+Status: remaining day gaps and blockers in one short line.
+```
+
+Daily stats refresh runs at the first automation wakeup at or after 13:00 IST. Update views/impressions, likes/reactions, replies/comments, reposts/shares, and `last_checked_ist` in `post-stats-registry.md`; mirror changed checkpoints into `metrics-log.csv`; log noteworthy tool/browser limitations in `WORKLOG.md`. Leave unknown values blank rather than guessing.
 
 ## Target
 

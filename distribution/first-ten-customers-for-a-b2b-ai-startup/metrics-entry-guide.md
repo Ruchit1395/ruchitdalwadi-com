@@ -6,6 +6,10 @@ Metrics source:
 
 `metrics-log.csv`
 
+Per-asset stats registry:
+
+`post-stats-registry.md`
+
 Reply source tracker:
 
 `reply-source-scorecard.csv`
@@ -25,6 +29,21 @@ Reach model:
 
 ## What to enter
 
+First, make sure every new public X/LinkedIn native post, comment, and reply has a row in `post-stats-registry.md`.
+
+Required registry fields:
+
+- `asset_id` - stable human-readable slug, for example `day-6-linkedin-native-rejected-output-workflow`.
+- `platform` - `X` or `LinkedIn`.
+- `type` - `native_post`, `comment`, or `reply`.
+- `stable_id` - X status ID, LinkedIn share/UGC/comment URN, or `comment permalink pending`.
+- `url` - canonical public URL or best available target/search URL.
+- `parent_or_target` - parent post URL, target post description, or blank for native posts.
+- `posted_at_ist` - timestamp in Asia/Kolkata.
+- `tool_path` - `Composio LinkedIn`, `browser X`, or `browser LinkedIn fallback`.
+- `latest_views`, `latest_likes`, `latest_replies_comments`, `latest_reposts`, `last_checked_ist` - visible stats after refresh.
+- `status` and `notes` - active/posted/manual/blocker notes, including exact API/browser limitations.
+
 For each checkpoint row, fill:
 
 - `post_url` - canonical URL for the social post/thread.
@@ -38,6 +57,20 @@ For each checkpoint row, fill:
 - `notes` - best comment, strongest objection, or next action.
 
 Leave unknown numbers blank. Do not guess.
+
+## Daily 13:00 IST stats refresh
+
+At the first automation wakeup at or after 13:00 IST:
+
+1. Read `post-stats-registry.md` and identify every active row.
+2. Refresh views/impressions, likes/reactions, replies/comments, and reposts/shares where visible.
+3. Use Composio first for LinkedIn reads/stats and record exact 403/API limitations.
+4. Use browser automation for X stats only when browser health is clean.
+5. Use browser-native LinkedIn only when Composio cannot access the asset and browser health is clean.
+6. Update `post-stats-registry.md`, append changed/new checkpoints to `metrics-log.csv`, and add a row to the registry's `Daily 13:00 IST Check Log`.
+7. Mention material blockers in `WORKLOG.md`.
+
+Do not take public actions during this stats refresh. No posting, commenting, replying, liking, reposting, following, DM opening, or DM answering.
 
 Important distinction:
 
@@ -119,3 +152,23 @@ At each checkpoint, answer:
 3. What objection came up?
 4. What should the next post say?
 5. Should we push comments, direct outreach, or another native post?
+
+## Chat summary after runs
+
+After any scheduled task, retry processing, inbound check, stats refresh, post/comment/reply, or meaningful blocker, leave the thread summary in this structure:
+
+```text
+X:
+- New post: count and URLs/URNs, or None.
+- New comments: count and URLs, or None.
+- Replies: count and URLs for posted replies or notable inbound replies, or None.
+- Stats updated: count and URLs, or None.
+
+LinkedIn:
+- New post: count and URLs/URNs, or None.
+- New comments: count and URLs/URNs or target descriptions, or None.
+- Replies: count and URLs/URNs for notable inbound replies/comments, or None.
+- Stats updated: count and URLs/URNs or target descriptions, or None.
+
+Status: remaining day gaps and blockers in one short line.
+```

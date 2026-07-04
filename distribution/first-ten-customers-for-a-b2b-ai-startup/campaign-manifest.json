@@ -56,6 +56,11 @@
     "pace-audit-2026-06-22.md",
     "reach-model.csv",
     "daily-operating-schedule.md",
+    "x-premium-operating-plan-2026-06-30.md",
+    "voice-and-value-guide-2026-06-30.md",
+    "retry-queue.csv",
+    "post-stats-registry.md",
+    "manual-packet-2026-06-30-2030.md",
     "daily-activity-ledger.csv",
     "30-day-calendar.md",
     "follow-up-copy-bank.md",
@@ -88,6 +93,7 @@
     "high-engagement-scout-queue-2026-06-22.md",
     "linkedin-high-engagement-comment-batch-2026-06-22.md",
     "x-high-engagement-reply-batch-2026-06-22.md",
+    "ai-teaching-pivot-2026-06-23.md",
     "horizontal-gpt-engagement-queue-2026-06-21.md",
     "linkedin-horizontal-gpt-engagement-queue-2026-06-21.md",
     "copy-ready/x-reply-luke-sophinos-horizontal-gpt.txt",
@@ -136,10 +142,17 @@
     "xHighEngagementReplyBatchDrafted": true,
     "dailyOperatingSchedulePrepared": true,
     "dailyActivityLedgerPrepared": true,
+    "aiTeachingPivotPrepared": true,
+    "autonomousPublicPostingEnabled": true,
     "paceAuditPrepared": true,
     "reachModelDrafted": true,
     "recurringCheckInActive": true,
+    "xPremiumOperatingPlanPrepared": true,
+    "xPremiumActiveOrInReview": true,
+    "voiceAndValueGuidePrepared": true,
+    "retryQueuePrepared": true,
+    "twentyFourHourExecutionEnabled": true,
     "published": true,
-    "waitingOnApproval": true
+    "waitingOnApproval": false
   }
 }
