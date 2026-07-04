@@ -1,0 +1,46 @@
+name: X scheduled posts
+
+on:
+  schedule:
+    # 09:00, 14:00, 19:00 IST = 03:30, 08:30, 13:30 UTC
+    - cron: "30 3 * * *"
+    - cron: "30 8 * * *"
+    - cron: "30 13 * * *"
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Force a specific slot (1, 2, or 3)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install twitter-api-v2 --no-save --no-audit --no-fund
+      - name: Publish due slot from content bank
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          FORCE_SLOT: ${{ github.event.inputs.slot }}
+        run: node scripts/publish-due-slot.mjs
+      - name: Commit publish state
+        run: |
+          git config user.name "campaign-bot"
+          git config user.email "bot@ruchitdalwadi.com"
+          git add content-bank distribution
+          git diff --cached --quiet || git commit -m "campaign: publish state $(date -u +%Y-%m-%dT%H:%M)"
+          git push

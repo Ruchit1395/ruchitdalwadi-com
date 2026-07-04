@@ -1,0 +1,39 @@
+name: Daily scoreboard
+
+on:
+  schedule:
+    - cron: "30 7 * * *" # 13:00 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scoreboard
+  cancel-in-progress: false
+
+jobs:
+  scoreboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install twitter-api-v2 --no-save --no-audit --no-fund
+      - name: Refresh stats and write scoreboard
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
+        run: node scripts/daily-scoreboard.mjs
+      - name: Commit scoreboard
+        run: |
+          git config user.name "campaign-bot"
+          git config user.email "bot@ruchitdalwadi.com"
+          git add distribution
+          git diff --cached --quiet || git commit -m "campaign: daily scoreboard $(date -u +%Y-%m-%d)"
+          git push
