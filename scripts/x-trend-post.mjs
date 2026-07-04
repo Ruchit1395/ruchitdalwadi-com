@@ -55,6 +55,10 @@ const contentRules = existsSync(`${DIR}/CONTENT_RULES.md`)
   ? readFileSync(`${DIR}/CONTENT_RULES.md`, "utf8")
   : "";
 
+const radar = existsSync(`${DIR}/TREND_RADAR.md`)
+  ? readFileSync(`${DIR}/TREND_RADAR.md`, "utf8").slice(0, 3000)
+  : "";
+
 const text = await draftWithGemini({
   system: `You write ONE original X post for Ruchit Dalwadi, operator/teacher in AI, startups, product.
 
@@ -65,7 +69,7 @@ Task: from the trending posts provided, identify the single most consequential c
 If nothing is genuinely worth posting about, respond with exactly: SKIP
 
 Output ONLY the post text or SKIP.`,
-  user: `Trending in the last hours:\n\n${seen.map((s) => `[@${s.author}, ${s.likes} likes, ${s.views} views]: ${s.text}`).join("\n\n")}`,
+  user: `${radar ? `Today's trend radar brief:\n${radar}\n\n---\n\n` : ""}Trending in the last hours:\n\n${seen.map((s) => `[@${s.author}, ${s.likes} likes, ${s.views} views]: ${s.text}`).join("\n\n")}`,
   maxChars: 280,
 });
 
