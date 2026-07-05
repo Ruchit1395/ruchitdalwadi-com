@@ -1,0 +1,7 @@
+# Append-only campaign logs: union merge prevents rebase conflicts
+# when multiple workflows commit concurrently.
+distribution/first-ten-customers-for-a-b2b-ai-startup/post-stats-registry.md merge=union
+distribution/first-ten-customers-for-a-b2b-ai-startup/inbound-log.csv merge=union
+distribution/first-ten-customers-for-a-b2b-ai-startup/replied-log.csv merge=union
+distribution/first-ten-customers-for-a-b2b-ai-startup/scoreboard-history.csv merge=union
+distribution/first-ten-customers-for-a-b2b-ai-startup/metrics-log.csv merge=union

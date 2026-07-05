@@ -48,10 +48,14 @@ if (!res.ok) {
   process.exit(0);
 }
 const data = await res.json();
+const MAX_AGE_MS = 48 * 3600 * 1000;
 const mentions = (data.tweets ?? [])
   .filter((t) => {
     const author = t.author?.userName?.toLowerCase() ?? "";
     if (author === "ruchitdalwadi" || answered.has(t.id)) return false;
+    // mentions endpoint returns all-time history; only answer fresh ones
+    const created = t.createdAt ? new Date(t.createdAt).getTime() : 0;
+    if (!created || Date.now() - created > MAX_AGE_MS) return false;
     const text = (t.text ?? "").toLowerCase();
     if (text.length < 15) return false; // "nice", "🔥" etc — like-worthy, not reply-worthy
     if (/(airdrop|giveaway|dm me|promo|crypto pump)/.test(text)) return false;

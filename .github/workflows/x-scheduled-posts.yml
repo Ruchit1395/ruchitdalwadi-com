@@ -42,5 +42,8 @@ jobs:
           git config user.name "campaign-bot"
           git config user.email "bot@ruchitdalwadi.com"
           git add content-bank distribution
-          git diff --cached --quiet || git commit -m "campaign: publish state $(date -u +%Y-%m-%dT%H:%M)"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "campaign: publish state $(date -u +%Y-%m-%dT%H:%M)"
+            git pull --rebase
+            git push
+          fi

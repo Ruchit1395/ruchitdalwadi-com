@@ -41,7 +41,9 @@ jobs:
         run: |
           git config user.name "campaign-bot"
           git config user.email "bot@ruchitdalwadi.com"
-          git pull --rebase
           git add distribution
-          git diff --cached --quiet || git commit -m "campaign: intelligence refresh $(date -u +%Y-%m-%d)"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "campaign: intelligence refresh $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
