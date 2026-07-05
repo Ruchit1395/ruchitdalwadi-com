@@ -1,1 +1,7 @@
-Field note from a logistics build: the "agent" ran the same 7 steps in the same order for 3,000 runs straight. We renamed it a pipeline, deleted the planner, and the error rate fell from 9% to 2%. Sometimes the upgrade is a demotion.
+Field note from a logistics build: our "agent" ran the same 7 steps in the same order for 3,000 straight runs. We renamed it a pipeline, deleted the planner, and the error rate fell from 9% to 2%. Sometimes the upgrade is a demotion.
+
+Here is the test we should have run on day one. Pull the logs for your agent's last 50 runs and write down the step sequence for each. If you see the same sequence 50 times, the planning layer is pure overhead: latency you pay for, nondeterminism you debug, and a failure surface nobody asked for.
+
+The planner earns its keep only when runs genuinely branch: different tools, different orders, different stopping points, driven by what the data looked like that day.
+
+We wanted to have built an agent. The system wanted to be a script. The system was right, and it took a 9% error rate for us to listen.

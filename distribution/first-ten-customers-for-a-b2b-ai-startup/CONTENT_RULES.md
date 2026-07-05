@@ -24,7 +24,7 @@ The test: **would a busy founder screenshot or save this?** If it only informs b
 
 ## Platform nuances
 
-**X**: punchy, concrete, first line carries everything. Short posts hit harder than long ones. Threads need a hook that creates a curiosity gap without lying. Replies: add value in the first 10 words, no throat-clearing. Humor lands well. Lowercase-casual acceptable.
+**X**: the account is Premium/verified, and long useful posts are the winning format (trend radar 2026-07-04: 12 of 13 top posts were long-form). Default to substantive long posts (500-1,500 chars) that reward dwell time: playbooks, war stories, named frameworks with steps. First line still carries everything: it's the hook above the "show more" fold. Short posts only for genuinely sharp one-liners and dry humor. Threads need a hook that creates a curiosity gap without lying. Replies: add value in the first 10 words, no throat-clearing.
 
 **LinkedIn**: narrative and personal, short paragraphs with whitespace, professional-with-a-pulse. Story beats framework here. First 2 lines decide the "see more" click. Question endings sparingly (max 1 in 3 posts). Humor drier and rarer.
 

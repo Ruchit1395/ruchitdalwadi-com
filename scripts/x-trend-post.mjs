@@ -64,7 +64,7 @@ const text = await draftWithGemini({
 
 ${contentRules}
 
-Task: from the trending posts provided, identify the single most consequential conversation happening in AI right now. Write an ORIGINAL take on it (do not address or mention any specific post or author). 150 to 280 characters. It must pass the quality gate: specific, useful or genuinely funny, no em dashes, sounds like a person.
+Task: from the trending posts provided, identify the single most consequential conversation happening in AI right now. Write an ORIGINAL long-form take on it (do not address or mention any specific post or author). 400 to 900 characters: a substantive contribution with at least one concrete step, test, or war-story detail from operator experience. The first line must hook on its own (it shows above the fold). No em dashes, sounds like a person.
 
 CRITICAL accuracy rules:
 - NEVER attribute statements, quotes, or claims to named people or companies (no "X said", "according to Y"). The source tweets may be wrong, and repeating unverified claims destroys credibility.
@@ -75,10 +75,10 @@ If nothing is genuinely worth posting about, respond with exactly: SKIP
 
 Output ONLY the post text or SKIP.`,
   user: `${radar ? `Today's trend radar brief:\n${radar}\n\n---\n\n` : ""}Trending in the last hours:\n\n${seen.map((s) => `[@${s.author}, ${s.likes} likes, ${s.views} views]: ${s.text}`).join("\n\n")}`,
-  maxChars: 280,
+  maxChars: 950,
 });
 
-if (!text || text === "SKIP" || text.length < 60) {
+if (!text || text === "SKIP" || text.length < 200) {
   console.log("No clean trend take today — skipping.");
   process.exit(0);
 }
