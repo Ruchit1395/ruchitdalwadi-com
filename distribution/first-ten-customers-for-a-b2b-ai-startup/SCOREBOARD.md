@@ -6,10 +6,10 @@ Updated: 2026-07-05 (auto — daily 13:00 IST)
 
 | Platform | Impressions | Target | Progress | Needed/day (14d left) |
 |---|---:|---:|---:|---:|
-| X | 3,157 | 100,000 | 3.2% | 6,918 |
+| X | 3,148 | 100,000 | 3.1% | 6,918 |
 | LinkedIn (manual) | 0 | 100,000 | 0.0% | 7,143 |
 
-X day-over-day: **+176** · engagement: 13 likes, 7 replies across 74 tracked posts.
+X day-over-day: **-9** · engagement: 13 likes, 6 replies across 73 tracked posts.
 
 ## Top X posts
 
@@ -17,7 +17,7 @@ X day-over-day: **+176** · engagement: 13 likes, 7 replies across 74 tracked po
 |---:|---:|---:|---|
 | 682 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071196625431892466 |
 | 399 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
-| 123 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
+| 125 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
 | 114 | 2 | 2 | https://x.com/ruchitdalwadi/status/2068304482589650946 |
 | 99 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072583421755605027 |
 | 97 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072393680334541257 |
@@ -32,3 +32,4 @@ X day-over-day: **+176** · engagement: 13 likes, 7 replies across 74 tracked po
 |---|---:|---:|---:|
 | 2026-07-04 | 2,981 | — | 0 |
 | 2026-07-05 | 3,157 | +176 | 0 |
+| 2026-07-05 | 3,148 | -9 | 0 |
