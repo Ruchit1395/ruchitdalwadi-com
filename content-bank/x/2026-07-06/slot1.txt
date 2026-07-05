@@ -1,1 +1,7 @@
-A prompt fixes one output. A system fixes the category: default context, examples the model copies, checks before anything ships. Retyping the same clever prompt every week is a habit, not infrastructure.
+A pharma team rewrote the same summarization prompt eleven times in one month. Quality moved about five percent.
+
+Then someone stopped editing words and changed what the model could see: one summary the medical reviewer had shipped, one she had rejected, and the current style guide, attached to every run. Quality jumped more in a day than it had in the previous month.
+
+Eleven rewrites were tuning the wording. The attachments changed the knowledge. The model never needed better instructions to match the reviewer's standard. It needed to see the standard.
+
+The rule I took from that project: when quality plateaus after two prompt edits, the next fix is context, not phrasing. Give the model one example of good, one example of bad, and the doc it keeps getting wrong. Wording tunes the last ten percent. What the model can see decides the first ninety.

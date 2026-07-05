@@ -1,1 +1,7 @@
-Keep a do-not-regress file: the 10 worst outputs you ever shipped, plus what the fix looked like. Every new model reruns against those 10 before anything else. Cheaper than a benchmark, and it tests the failures you actually paid for.
+Keep a do-not-regress file. Ten entries, nothing fancy.
+
+Each entry is one of the worst outputs you ever shipped: the input that caused it, what went wrong, and what the fix looked like. That is the whole format.
+
+Every new model, prompt change, or upgrade reruns against those ten before anything else gets evaluated. Twenty minutes, no infrastructure.
+
+It is cheaper than any benchmark and more honest, because it tests the failures you actually paid for instead of the failures someone else's dataset imagined. Benchmarks tell you how models compare on average. The file tells you whether the new one brings back the exact bug that caused your worst week.

@@ -1,1 +1,7 @@
-AI coding tools do not struggle with hard tasks. They struggle with vague ones. "Fix auth" fails on the fanciest model. "Make login return 401 instead of 500 on expired tokens, test included" works on almost any of them. Scoping is the skill.
+"Fix auth" fails on the fanciest model in existence.
+
+"Make login return 401 instead of 500 on expired tokens, with a test" works on almost anything released in the last two years. Same codebase, same tool, same developer. The whole delta is in the ask.
+
+AI coding did not remove the need for engineering judgment. It relocated all of it into one artifact: the task description. Vague asks produce sprawling diffs where review costs more than the code was worth. Precise asks produce boring diffs that merge in minutes.
+
+The tell that your scope is right: you can write the command that proves the task is done before the tool writes a line of code. If you cannot, the model will not discover your intent. It will substitute its own, at scale.

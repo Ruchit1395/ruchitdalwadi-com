@@ -1,11 +1,13 @@
-Before an impressive AI demo touches real work, I run the Monday test. Four steps, thirty minutes.
+Before an impressive AI demo touches real work, I run the Monday test.
 
-1. Feed it 3 inputs from the actual queue, not the curated demo set. Real formatting, real typos, real ambiguity.
+Four steps, thirty minutes, and every step has a way to cheat that you should refuse.
 
-2. Show it 3 outputs you would ship and 3 you would reject, and check it can tell which are which. If it cannot classify quality, it cannot produce quality reliably.
+1. Feed it 3 inputs from the actual queue. Real formatting, real typos, real ambiguity. Failure mode: letting whoever built the demo pick the inputs. Curated ugly is still curated. Pull them yourself, from last week.
 
-3. Name the one mistake that would make this unsafe: the wrong refund, the invented citation, the deleted record. Ask what currently prevents it. "The model is smart" is not a prevention.
+2. Show it 3 outputs you would ship and 3 you would reject, and check it can tell which are which. If it cannot classify quality, it cannot produce quality reliably. Failure mode: skipping this because the demo outputs looked good. Producing one good output and recognizing good are different skills, and the second one predicts consistency.
 
-4. Assign a reviewer for the first 20 real runs, by name.
+3. Name the one mistake that would make this unsafe: the wrong refund, the invented citation, the deleted record. Ask what currently prevents it. Failure mode: accepting "the model is smart" as a prevention. Smart is a capability, not a control.
 
-Pass all four and pilot it. Fail any and you have a demo. Which is fine, as long as nobody schedules it into a workflow yet.
+4. Assign a reviewer for the first 20 real runs, by name. Failure mode: "the team will keep an eye on it." A rotation nobody owns is a rotation nobody does.
+
+Pass all four and pilot it. Fail any and you have a demo, which is fine, as long as nobody schedules it into a workflow yet. The expensive AI incidents I have seen were mostly demos that got promoted by calendar instead of by evidence.

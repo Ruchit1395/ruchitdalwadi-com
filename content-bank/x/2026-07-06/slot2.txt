@@ -1,11 +1,13 @@
-Your team just rejected an AI draft. Do not reach for a better prompt yet. Interrogate the corpse.
+Your team just rejected an AI draft. Do not reach for a better prompt yet.
 
-What context was missing? The model cannot cite a policy it never saw.
+Run the rejected-output audit instead: four questions, ten minutes, and the answers write most of your workflow spec for you.
 
-Which decision did we hand over too early? Judgment calls stay human until the model earns them.
+1. What context was missing? The model cannot cite a policy it never saw. Failure mode: answering "it should have known" instead of naming the missing doc. If you cannot name the source, the next run fails the same way.
 
-What would a reviewer check in 30 seconds? That check is your acceptance test.
+2. Which decision did we hand over too early? Somewhere in that draft the model made a judgment call a human still owns: pricing, tone with an upset customer, a promise. Failure mode: polishing the wording of a decision the model should not be making. Mark it human-only until it earns the call.
 
-What should the model never change without asking? That is a hard constraint.
+3. What would a reviewer check in 30 seconds? Numbers match the source, right customer named, no invented citations. That check is your acceptance test. Failure mode: writing "looks good" as the check. If it cannot be verified in half a minute, it is a vibe.
 
-Answer those four and you have written most of a workflow spec: inputs, context, constraints, checks. A prompt library goes stale in a month. A spec built from your own failures compounds.
+4. What should the model never change without asking? That is a hard constraint, and it belongs in the system, not in a hope. Failure mode: burying it mid-prompt as a polite suggestion.
+
+Four answers give you inputs, context, constraints, and checks: a workflow spec built from your own failure. A prompt library goes stale in a month. A spec built this way compounds, because every reject sharpens it.

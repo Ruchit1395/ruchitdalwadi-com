@@ -1,1 +1,7 @@
-Write one behavioral assertion today: take your system's most embarrassing past output, turn it into a test case, and run it against tomorrow's deploy. One assertion per incident, and in a quarter you own the eval suite everyone keeps postponing.
+The eval suite you keep postponing is two assertions a week away.
+
+When the system produces an embarrassing output, the kind that gets screenshotted in the team channel, turn it into a test: that exact input, plus a check for the behavior you want instead. Run it on tomorrow's deploy and every deploy after.
+
+The math is the persuasive part. One assertion per incident is roughly two a week. A quarter later you own a 25-case suite covering your system's actual failure history, built in stolen minutes, while the official eval project is still a kickoff deck.
+
+Suites built this way have a property no benchmark can offer: every case is something that already burned you once.

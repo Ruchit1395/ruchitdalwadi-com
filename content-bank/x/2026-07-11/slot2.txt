@@ -1,12 +1,15 @@
-Context engineering, minus the mystique. Six slots to fill before blaming the model:
+Context engineering, minus the mystique: the six-slot inventory. Fill all six before blaming the model.
 
-1. Goal: what does done look like, in one sentence?
-2. Constraints: what must never change without asking?
-3. Examples: one output you would ship, one you would reject. The pair teaches more than either alone.
-4. Sources: which docs, tickets, or data does it read, and are they current?
-5. Allowed actions: what can it do versus only suggest?
-6. Review rule: what does the checker look for in 30 seconds?
+1. Goal. What does done look like, in one sentence? Failure mode: a paragraph of vibes where a sentence should be. If done takes three sentences, it is three tasks.
 
-When an output disappoints, walk the six slots and find the empty one. In my experience it is almost always slot 3 or slot 4. The instructions were fine; the model was working from a blank desk.
+2. Constraints. What must never change without asking? Failure mode: constraints living in someone's head and surfacing only in the rejection comment.
 
-Fill the slots once and next week's task starts at 80% instead of zero.
+3. Examples. One output you would ship and one you would reject. The pair teaches more than either alone. Failure mode: three shipped examples and zero rejects, so the model learns the style but never the line.
+
+4. Sources. Which docs, tickets, or data does it read, and are they current? Failure mode: the stale policy. The model cites it perfectly and is confidently wrong.
+
+5. Allowed actions. What can it do versus only suggest? Failure mode: discovering this boundary after the action, in an incident channel.
+
+6. Review rule. What does the checker look for in 30 seconds? Failure mode: "looks good to me", which means there is no rule.
+
+When an output disappoints, walk the six slots and find the empty one. In my experience it is almost always slot 3 or slot 4. The instructions were fine; the model was working from a blank desk. Fill the slots once and next week's task starts at 80 percent instead of zero.

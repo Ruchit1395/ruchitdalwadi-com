@@ -1,1 +1,7 @@
-Measure your AI coding week with one number: median time from diff produced to diff merged. If it grows while diffs get bigger, you are accumulating review debt, not velocity. Shrink task size until the number drops back down.
+Measure your AI coding week with one number: median time from diff produced to diff merged.
+
+Not lines generated, not tasks attempted. Produced to merged. It is the only number that captures both halves of the loop: how well the work was scoped going in and how reviewable it came out.
+
+Watch it weekly. If it grows while diffs get bigger, you are not accelerating. You are accumulating review debt with a faster shovel. The fix is rarely review harder; it is shrink the task briefs until the number drops back down.
+
+Teams that track this stop arguing about whether AI coding works for them. The number settles it monthly, in one direction or the other.

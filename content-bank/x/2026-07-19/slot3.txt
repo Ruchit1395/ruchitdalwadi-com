@@ -1,1 +1,7 @@
-PMs on AI features: write the eval before the spec. Three outputs you would ship, three you would reject, one mistake that is unacceptable. It fits on a page, and it forces the "what is this for?" conversation before engineering builds the wrong thing fast.
+PMs on AI features: write the eval before the spec.
+
+One page, three parts. Three outputs you would ship, word for word. Three you would reject, each with the one-line reason. The single mistake that is never acceptable, named.
+
+It forces the "what is this for?" conversation while it still costs a meeting instead of a sprint. Engineers get a target instead of adjectives. And when quality debates start later, you settle them by pointing at page one instead of relitigating taste.
+
+The spec says what to build. The eval says what good means. Written in that order, the second keeps the first honest. Written in the usual order, quality becomes whatever shipped.

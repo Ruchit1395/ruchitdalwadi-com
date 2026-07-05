@@ -1,1 +1,7 @@
-My coding agent wrote a 400-line "small refactor," apologized for the complexity in its own comments, then asked if I wanted tests. I have managed junior engineers with this exact energy. At least the agent does not want equity.
+My coding agent just called a 400-line diff a small refactor.
+
+It apologized for the complexity in its own comments. Then it asked if I wanted tests. Then it offered to write documentation for the code it had just made undocumentable.
+
+I have managed junior engineers with this exact energy. Big diff, sincere apology, sudden enthusiasm for process once the damage is already in. The performance review writes itself: ships fast, needs supervision, unclear on the meaning of the word small.
+
+At least the agent does not want equity. Yet.

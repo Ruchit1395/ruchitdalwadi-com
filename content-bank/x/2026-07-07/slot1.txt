@@ -1,1 +1,7 @@
-A vibe check asks "does this look good?" An eval asks "is this better than yesterday, and would we notice if it got worse?" You can build the second one without a labeled dataset. That is the whole trick.
+Waiting for a labeled dataset is the most expensive way to avoid writing an eval.
+
+Teams stall for a quarter because there is no right answer, while a much cheaper question sits unused: is this output better than the one we shipped yesterday? Humans are unreliable at absolute judgment and surprisingly good at picking between two options. LLM judges share both traits.
+
+The starter kit is one afternoon. Take 50 real inputs, run them through the current system and the proposed change, and have a judge pick a winner for each pair. You will not learn whether the system is good. You will learn whether it is getting better or worse, and that is the question that actually blocks decisions.
+
+Ground truth is a luxury. Direction is a requirement. Build the direction signal this week and let the labeled dataset stay a someday project.

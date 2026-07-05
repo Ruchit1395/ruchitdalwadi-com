@@ -1,11 +1,13 @@
-Product questions that matter more, not less, now that AI writes the first draft of everything:
+Four product questions that matter more, not less, now that AI writes the first draft of everything.
 
-1. What is the user's actual job? Test: what happens to them tomorrow if this feature disappears? "They would use a competitor" means you have not found it yet.
+Each comes with the failure that skipping it produces.
 
-2. What does good output mean here, specifically? If the PM cannot produce 3 shippable and 3 rejectable examples, no eval can save the feature.
+1. What is the user's actual job? Test: what happens to them tomorrow if this feature disappears? "They would use a competitor" means you have not found the job yet. Skip it and you ship a technically impressive answer to a question nobody asked.
 
-3. Which mistake is expensive? Wrong tone is survivable; wrong refund is not. This ranking drives model choice, review depth, and rollout speed.
+2. What does good output mean here, specifically? If the PM cannot produce 3 shippable and 3 rejectable examples, no eval downstream can save the feature, because nobody can test toward a standard that does not exist. Skip it and every quality debate becomes opinion tennis.
 
-4. Where does the human stay in the loop, and until when? "Forever" and "nowhere" are both wrong answers. Name the graduation criteria.
+3. Which mistake is expensive? Wrong tone is survivable; wrong refund is not. The ranking drives model choice, review depth, and rollout speed, which is why it cannot be delegated to engineering. Skip it and you discover your expensive mistake in production, priced at retail.
 
-The demo is a week of work now. These four questions are the quarter that follows, and they are the part AI cannot do for you.
+4. Where does the human stay in the loop, and until when? "Forever" and "nowhere" are both wrong answers. Name the graduation criteria: what the system must demonstrate before review gets lighter. Skip it and you get permanent babysitting or premature autonomy, often both, on different features.
+
+The demo is a week of work now. These four questions are the quarter that follows, and they are the part AI cannot draft for you.

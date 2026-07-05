@@ -1,11 +1,13 @@
-A model bake-off that takes an afternoon, not a sprint.
+You can settle a model debate in an afternoon if you run the steps in the right order.
 
-Write the expensive mistake first. Not "accuracy": the specific failure that costs money or trust. Refunding an ambiguous case. Inventing a citation. Deleting the wrong rows.
+The order is the whole trick. The afternoon bake-off, with the failure mode at each step:
 
-Build 20 test cases around that mistake: 10 where the right move is to act, 10 where the right move is to hesitate, ask, or decline.
+Step 1. Write the expensive mistake first. Not "accuracy": the specific failure that costs money or trust. Refunding an ambiguous case. Inventing a citation. Deleting the wrong rows. Failure mode: writing a category instead of a mistake. "Bad output" cannot be tested. "Promises a delivery date we cannot meet" can.
 
-Run every candidate on all 20. Log acts-when-it-shouldn't and hesitates-when-it-shouldn't separately. They are different costs.
+Step 2. Build 20 cases around that mistake: 10 where the right move is to act, 10 where the right move is to hesitate, ask, or decline. Failure mode: inventing all 20 from imagination. Pull at least half from the real queue, ugly formatting included.
 
-Only then look at price and latency, and only among the survivors.
+Step 3. Run every candidate on all 20. Log acts-when-it-should-not and hesitates-when-it-should-not as separate columns. Failure mode: averaging them into one score. They are different costs, and in most products one of them is ten times the other.
 
-Most model debates are people arguing the last step on vibes without doing the first three. The leaderboard cannot know which mistake is expensive for you. That part is your job.
+Step 4. Only now look at price and latency, and only among the survivors. Failure mode: letting a 40 percent cost saving argue a failed candidate back into the running. It already failed on the mistake you said you could not afford.
+
+Most model debates are step 4 arguments between people who skipped steps 1 through 3. The leaderboard cannot know which mistake is expensive for you. That part was always your job.

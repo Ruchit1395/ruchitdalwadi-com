@@ -1,1 +1,7 @@
-Giving an agent 40 tools does not make it capable. It makes it indecisive. Every extra tool is another wrong turn available at every step. The strongest setups I have seen run 5 tools and a rule for when each applies. Relevance beats inventory.
+How many of your agent's tools were actually called in the last twenty runs?
+
+On an AI fashion recommendation agent, the answer was five out of twelve. We removed the seven passengers, changed nothing else, and that single afternoon fixed more misbehavior than the previous three weeks of prompt edits had.
+
+The mechanism is not mysterious. Every tool description eats context, and every extra tool is one more wrong turn available at every decision point. Twelve options at each step does not read as capability to the model. It reads as a maze with extra corridors.
+
+Pull the logs and count before you touch the prompt again. Unused tools are not idle. They are actively taxing every choice the agent makes, and deleting them is the rare fix that is both free and reversible.

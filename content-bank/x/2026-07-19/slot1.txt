@@ -1,1 +1,7 @@
-Blank canvas to working demo went from months to a week. The product job moved to everything after: evals, edge cases, cost-quality tradeoffs, defining what good means. Judgment got a faster loop, not a replacement.
+The demo now takes a week. The judgment still takes the quarter.
+
+Blank canvas to working prototype collapsed from months to days, and that fooled a lot of roadmaps into thinking the product work collapsed with it. It did not. It moved. Everything after the demo is where the job lives now: defining what good output means, ranking which mistake is expensive, deciding where a human stays in the loop and what graduates them out.
+
+None of that got faster, because none of it was ever a typing problem. It is taste, context, and consequences, and AI gives it a faster feedback loop rather than a substitute.
+
+The teams shipping real AI products did not skip the judgment. They just stopped spending the quarter on the part that now takes a week.

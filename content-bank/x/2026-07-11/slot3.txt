@@ -1,1 +1,7 @@
-Test the desk, not the prompt: paste your task input into a fresh chat with zero setup and see what the model asks for. Its first three questions are your missing context slots. Fill those into the system permanently and retire the guesswork.
+Test the desk, not the prompt.
+
+Paste your task input into a fresh chat with zero setup, no system prompt, no attachments, and watch what the model asks for. Its first three questions are your missing context slots, straight from the source.
+
+"Which pricing tier?" means the tier sheet belongs in context permanently. "What format?" means the approved example was never attached. "Who is this for?" means the audience line is missing from the spec.
+
+Fill those three into the system once and the questions stop, along with the guesswork they were covering for. The model has been telling you what it needs the whole time. A blank chat is the cheapest way to hear it.

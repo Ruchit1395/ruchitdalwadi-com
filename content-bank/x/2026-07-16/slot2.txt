@@ -1,13 +1,13 @@
-Silent failures worth instrumenting before they find you:
+Five silent failures worth instrumenting before they find you. Together they make a one-page drift board.
 
-Length drift. Average response length moves 20% with no deploy. Something upstream changed.
+1. Length drift. Average response length moves 20 percent with no deploy. Something upstream changed. Failure mode: tracking only the mean; short apologies and long rambles can cancel out. Watch a percentile too.
 
-Hedge rate. Count "it depends", "generally", "may vary" per 100 outputs. Rising hedges often mean degraded context or a missing source.
+2. Hedge rate. Count "it depends", "generally", "may vary" per 100 outputs. Rising hedges usually mean degraded context or a missing source. Failure mode: dismissing it as tone. Hedging is the model telling you what it no longer knows.
 
-Refusal rate. Sudden politeness spikes usually trace to a prompt or policy change, not to user behavior.
+3. Refusal rate. Sudden politeness spikes trace to a prompt or policy change far more often than to user behavior. Failure mode: investigating users first because the deploy log says nothing changed. Something changed.
 
-Empty-input passthrough. A retrieval step returns nothing and the model improvises confidently. Log source token counts per request; alert on zero.
+4. Empty-input passthrough. A retrieval step returns nothing and the model improvises confidently. Log source token counts per request and alert on zero. Failure mode: assuming the pipeline fails loudly. It will not; the model covers for it, gracefully, for weeks.
 
-Format drift. The JSON still parses, but a field went from sentences to fragments.
+5. Format drift. The JSON still parses, but a field went from sentences to fragments. Failure mode: schema validation as the only check. Valid and degraded are perfectly compatible.
 
-None of these requires knowing what correct means. Sample 1% of traffic, track weekly averages, alert on movement. It catches the failures nobody reports because every individual output still looks fine.
+None of these requires defining correct. Sample 1 percent of traffic, compute weekly averages, alert on movement. The board catches the failures nobody reports, because every individual output still looks fine on its own.

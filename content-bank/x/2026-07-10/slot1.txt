@@ -1,1 +1,7 @@
-An agent that can act but cannot say "I am stuck because X is missing" turns your team into surprise reviewers. The stop condition is not a safety feature bolted on at the end. It is the first line of the spec.
+A stop condition is the difference between reviewing decisions and reviewing surprises.
+
+Watching a logistics ops agent through its first month made the economics obvious. The runs that halted early and asked a human cost us minutes each. The one run that barreled through a missing customs field cost a week of cleanup and a very awkward customer call. Same agent, same tools. The only variable was whether it knew when to stop.
+
+Teams write pages about what an agent should do and one vague line about when it should not. Reverse that ratio for a day. Name the exact states that trigger a halt: required input missing, confidence low, action irreversible, cost above a number someone chose on purpose.
+
+An agent that stops well feels slower in the demo and much faster in the quarter.

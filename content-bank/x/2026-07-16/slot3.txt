@@ -1,1 +1,9 @@
-LLM incident timeline: day 1, an API starts returning empty strings. Days 1 to 18, the model improvises beautifully. Day 19, a human says the output feels "a bit off." Day 20, you discover your most reliable monitoring system is vibes.
+Timeline of an LLM incident, reconstructed at the postmortem:
+
+Day 1: a partner API starts returning empty strings. No error. Just silence.
+Days 2 to 18: the model improvises around the gap. Beautifully. Confidently. Daily.
+Day 12: a customer replies "interesting numbers." Nobody hears the italics.
+Day 19: a human says the output feels a bit off. The vibe is escalated.
+Day 20: someone finally greps the logs and finds 19 days of graceful improvisation.
+
+Retro action item, in effect: our most reliable monitoring system is currently a feeling. The actual fix was one alert on empty retrievals. The feeling got a raise.

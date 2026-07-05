@@ -1,1 +1,7 @@
-Benchmarks rank models by what they get right. Your product dies by what they get wrong. Name the one mistake that would cost you the most, then test candidates on that mistake, not on the leaderboard.
+Before comparing models, write down the one mistake you cannot afford.
+
+Not accuracy. The specific failure that costs money or trust: the wrong refund, the invented citation, grading a student who should have been escalated to a teacher.
+
+On an ed-tech grading feature, that exercise became twenty test cases: ten where the right move was to act, ten where the right move was to hand off. The benchmark favorite acted on all twenty, including the ten it should have escalated. The runner-up caught eight of those ten. The runner-up shipped, and nobody has missed the extra leaderboard points.
+
+Benchmarks rank models by what they get right on average. Products die on what one model gets wrong at the worst moment, and no leaderboard can know which mistake is expensive for you. Naming it takes ten minutes. Skipping it can cost the re-platform.

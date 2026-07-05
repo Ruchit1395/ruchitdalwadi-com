@@ -1,1 +1,7 @@
-A demo shows the happy path once. Production is the unhappy paths, hourly. The gap is not model quality. It is the boring inventory: missing inputs, weird formats, ambiguous asks, the user who types "asdf". Demos skip the inventory.
+Every impressive AI demo skips the same inventory, and production is the inventory.
+
+The missing inputs. The half-filled forms. The forwarded email chain with the answer buried in reply number seven. The user who types asdf to see what happens. A demo shows the happy path once. Production is the unhappy paths, hourly.
+
+I have watched the same movie in logistics, pharma, and ed-tech: the model was fine, the inventory was missing. Nobody listed what actually arrives when real users show up, so the system met its first ugly input in production instead of in a test.
+
+The gap between demo and product is not model quality. It is whether someone sat down and wrote the boring list. Writing it takes an afternoon. Skipping it takes a quarter.

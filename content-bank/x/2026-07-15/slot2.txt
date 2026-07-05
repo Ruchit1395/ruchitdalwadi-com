@@ -1,9 +1,11 @@
-A 20-minute tool audit for any agent that is misbehaving.
+The 20-minute tool audit, for any agent that has started misbehaving.
 
-Pull the logs for the last 20 runs and count which tools were actually called. There is usually a long tail of never-used tools. Remove them. They are not free: every description eats context and adds a wrong option at each decision.
+Step 1. Pull the logs for the last 20 runs and count which tools were actually called. There is always a long tail of never-used tools. Remove them. They are not free: every description eats context and adds a wrong option at each decision point. Failure mode: keeping a dead tool because someone might need it someday. Someday can reinstall it.
 
-For each survivor, check that the description answers one question: when should the model pick THIS over its neighbors? "Searches the web" is a label. "Use for facts newer than 2025 or anything with a price" is a decision rule.
+Step 2. For each survivor, check that the description answers one question: when should the model pick THIS over its neighbors? "Searches the web" is a label. "Use for facts newer than 2025 or anything involving a price" is a decision rule. Failure mode: descriptions written for a human reading a docs page instead of a model choosing under uncertainty.
 
-Then find the overlap pairs, two tools that could both handle a task. Merge them, or give one an explicit boundary. Overlap is where agents flip-flop.
+Step 3. Find the overlap pairs: two tools that could both plausibly handle the same task. Merge them, or give one an explicit boundary in its description. Failure mode: leaving the ambiguity because both tools work. Overlap is exactly where agents flip-flop between approaches mid-task.
 
-Agents rarely need more capability. They need fewer, sharper choices.
+Step 4. Rerun the same 20 tasks and compare behavior. Failure mode: shipping the cleanup without the comparison, which turns an experiment into a vibe.
+
+Agents rarely need more capability. They need fewer, sharper choices, and this audit is 20 minutes against three weeks of prompt archaeology.

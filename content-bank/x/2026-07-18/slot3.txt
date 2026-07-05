@@ -1,1 +1,7 @@
-Quickest demo-vs-production test: feed whatever impressed you the ugliest real input from last week. The forwarded email chain. The half-filled form. Demos are built on curated inputs. Production is built on that email chain.
+The quickest demo-vs-production test costs one email.
+
+Take whatever impressed you this week and feed it the ugliest real input from last week: the forwarded chain with the actual question buried in reply seven, the half-filled form, the message that is 40 percent typos.
+
+Demos are built on curated inputs, so this one artifact shows you what the polish was hiding. If it handles the mess, you might have a product. If the input needs cleaning first, you have a demo plus an unpaid preprocessing job, and you already know who the preprocessor is.
+
+Production does not send clean inputs. It sends that email chain, hourly.

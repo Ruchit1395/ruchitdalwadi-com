@@ -1,7 +1,11 @@
-On an AI editing product we fixed "invents a source for statistics" three separate times before admitting the pattern. The fourth fix became a test. It has caught the same regression twice since.
+We fixed "invents a source for statistics" three separate times before admitting it was a pattern.
 
-The practice costs 5 minutes per incident. When the system produces something bad enough to fix, capture three lines: the exact input that broke it, what it did, and one rule a checker could verify. "Stays calm on hostile input." "Never invents a ticket number." "Declines medical questions."
+That was an AI editing product. The fourth fix became a test, and that test has caught the same regression twice since, both times before users did. The practice is one assertion per incident, and it costs five minutes each time.
 
-Once a week, turn the new lines into assertions: a regex, a small classifier, or an LLM judge checking the rule. Run the suite on every prompt change and model upgrade.
+Step 1. When the system produces something bad enough to fix, capture three lines before fixing: the exact input, what it did, and one rule a checker could verify. "Stays calm on hostile input." "Never invents a ticket number." "Declines medical questions." Failure mode: writing the rule as a feeling. "Output should be better" is not checkable. "Cites only sources present in the context" is.
+
+Step 2. Once a week, turn the new lines into assertions: a regex, a small classifier, or an LLM judge checking the rule. Failure mode: waiting for a proper eval framework. A regex that runs today beats a harness that is still being planned.
+
+Step 3. Run the suite on every prompt change and model upgrade, and let failures block the change. Failure mode: a suite that runs but does not gate. Advisory tests get ignored by their second week of existence.
 
 You are not measuring whether the system is good. You are measuring whether anything you already paid to fix has quietly broken again. Much easier question, and it pages you before your users do.

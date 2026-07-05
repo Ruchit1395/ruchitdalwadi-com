@@ -1,1 +1,7 @@
-A coding agent is useful when the review surface shrinks, not when the patch grows. If reading the diff takes longer than writing the code would have, the autonomy went the wrong direction.
+Nine days after the diff merged, every invoice after row 100 quietly disappeared.
+
+The change came from a coding agent on a vertical ERP build. It assumed an internal API paginated. It did not. Right style, right naming, tests green, review approved, because the diff looked exactly like the work of a competent colleague.
+
+That resemblance is the trap. A human who assumes pagination usually leaves a trace of doubt: a comment, a question in the PR, a defensive check. The agent wrote its guess with full confidence, because it does not know what it has not verified.
+
+So change the review question. Not "does this look right?" but "which assumption in here was never checked?" I now make agents list their unverified assumptions under every diff. The line that would have said "I assumed page two exists" pays for the whole habit.

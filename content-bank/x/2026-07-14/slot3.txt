@@ -1,1 +1,7 @@
-Start a rejects folder: every AI output your team throws away goes in, with one line on why. Read it Friday. The patterns you will see, same missing doc, same overstepped decision, are your system backlog, ranked by frequency for free.
+Start a rejects folder today. The format is one line per entry.
+
+Every AI output your team throws away goes in: date, task, one sentence on why it was rejected. No screenshots, no ceremony. Ten seconds per reject, or nobody keeps doing it.
+
+On Friday, read the folder top to bottom. You are not judging individual failures anymore; you are hunting repeat offenders. Same missing doc three times. Same overstepped decision twice. Same format complaint all week.
+
+That ranked list is your system backlog, ordered by frequency for free. Fix only the top item, keep collecting, and next Friday tells you whether the fix worked. That is more feedback than most eval dashboards deliver.

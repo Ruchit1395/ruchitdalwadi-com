@@ -1,1 +1,7 @@
-Every AI failure you fixed and did not write down as a test is a failure you scheduled for later. The model drifts, a prompt changes, and the old bug walks back in through the front door. Fixed is temporary. Tested is fixed.
+Somewhere in your next model upgrade is a bug you already paid to fix once.
+
+The failure you patched in March is not gone. It is dormant. A model swap, a prompt edit, a retrieval tweak, and it walks back in through the front door wearing the same clothes. Every fix that lives only in a prompt change or a vibes check is a fix on loan.
+
+The exit is unglamorous: each fixed failure becomes a permanent test. The input that broke it, the behavior you expect now, checked automatically on every change. Five minutes per incident, then autopilot forever.
+
+Fixed is a state. Tested is a property. Systems with only the first get worse on a random schedule. Systems with the second get better and stay better, which is the only direction users forgive.

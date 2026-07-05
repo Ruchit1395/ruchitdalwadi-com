@@ -1,1 +1,7 @@
-Prompt libraries grow because prompts do not accumulate: every task starts from zero again. A system accumulates context, examples, and checks that make next week's task start at 80%. Growth in prompts is often repetition in disguise.
+Thirty-one rejected outputs, one Friday of reading, three root causes.
+
+On a pharma documentation workflow we kept every reject for a week with a one-line reason attached. Read together, the pile collapsed: a stale source doc, no example of the approved format, and one decision that should have stayed with the reviewer. Fixing those three cut the reject rate roughly in half within two weeks.
+
+The surprise was not the causes. It was the compression. Thirty-one failures felt like thirty-one separate problems while they arrived one at a time. In a pile, they were three problems showing up in thirty-one disguises.
+
+Failures compress. The fix list is almost always shorter than the failure list, but you only learn that if you keep the failures long enough to read them together.

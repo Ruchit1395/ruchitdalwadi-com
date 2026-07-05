@@ -1,11 +1,17 @@
-The 5-line task brief that makes AI coding sessions boring, in the good way:
+The 5-line task brief that makes AI coding sessions boring, in the good way.
 
-1. Goal: the behavior change, one sentence.
-2. Done means: the test or command that proves it, runnable.
-3. Touch: files in scope. Anything else needs a stated reason.
-4. Don't: what stays untouched. Deps, public APIs, config, formatting.
-5. Context: the one file or doc to read first.
+One line each, and a known failure when the line is skipped.
 
-Write it before opening the tool. If line 2 is hard to write, the task is too big. Split it and brief the first piece.
+1. Goal: the behavior change, one sentence. Skip it and the tool optimizes for plausible instead of intended.
 
-The failure this prevents: a 40-file diff for a 4-line problem, where review costs more than the code was worth. Small verified diffs merged hourly beat one heroic diff at 6pm. The brief is what keeps the diffs small.
+2. Done means: the test or command that proves it, runnable today. Skip it and done becomes a feeling you negotiate with yourself at 6pm. This line doubles as the scope alarm: if it is hard to write, the task is too big. Split it and brief the first piece.
+
+3. Touch: the files in scope. Anything else needs a stated reason before editing. Skip it and a rate-limit fix wanders into your auth module because something looked improvable.
+
+4. Don't: what stays untouched. Dependencies, public APIs, config, formatting. Skip it and the diff arrives with a surprise library upgrade riding along.
+
+5. Context: the one file or doc to read first. Skip it and the tool re-derives your conventions from scratch, wrongly, every session.
+
+Write the brief before opening the tool, not inside it. Two honest minutes.
+
+The failure this prevents is the expensive one: the 40-file diff for the 4-line problem. Small verified diffs merged hourly beat one heroic diff at the end of the day, and the brief is what keeps the diffs small.

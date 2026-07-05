@@ -1,15 +1,17 @@
-The boring contract I hold every coding agent to, whatever the tool:
+The boring contract I hold every coding agent to, whatever the tool.
 
-1. State intent before touching code. One sentence, what and why.
+Five clauses, each one there to prevent a specific failure.
 
-2. List the files it plans to edit, before editing. Surprise files are a stop signal.
+1. State intent before touching code. One sentence, what and why. Prevents: solving an adjacent problem competently and shipping the wrong fix.
 
-3. Run the smallest relevant test, not the whole suite, and show the result.
+2. List the files it plans to edit, before editing. Prevents: the surprise sixth file. Anything outside the list is a stop signal, not a footnote in review.
 
-4. Explain the diff in plain language, as if in code review.
+3. Run the smallest relevant test and show the result. Prevents: spending review attention on code that does not work. A failing diff is not worth reading.
 
-5. Flag anything it did not verify: assumptions, skipped tests, guessed APIs.
+4. Explain the diff in plain language, like a comment in code review. Prevents: rubber-stamping. When the explanation and the diff disagree, the disagreement is where the bug lives.
+
+5. Flag everything unverified: assumptions, skipped tests, guessed APIs. Prevents: the confident invisible bug, the kind that sits quiet for nine days and then eats your invoices.
 
 None of this limits the model. It limits the blast radius. The agent can be as clever as it wants inside a contract a human can audit in two minutes.
 
-Watch for patches getting bigger while explanations get vaguer. That is the moment to shrink the task, not to trust harder.
+The tell that the contract is slipping: patches get bigger while explanations get vaguer. That is the moment to shrink the task, not to trust harder.

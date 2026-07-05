@@ -1,1 +1,7 @@
-Add one line to your agent's instructions: "If a required input is missing or an action is irreversible, stop and report what you have." Then delete an input on purpose and watch. If it barrels ahead anyway, you found this week's real work.
+Your agent's stop condition is a claim until you sabotage it.
+
+Add one line to the instructions: "If a required input is missing or an action is irreversible, stop and report what you have." Then delete a required field from a test task on purpose and watch.
+
+If it halts and reports, you have an agent. If it invents a value and keeps rolling, you just found this week's real work, and a drill is a much cheaper place to find it than a customer's shipment.
+
+Rerun the same sabotage after every major prompt or model change. Stopping behavior regresses quietly, and no dashboard is going to tell you when it does.

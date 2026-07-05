@@ -1,1 +1,7 @@
-Take the last AI output your team rejected and finish this sentence: "It failed because it did not know ___." Fix the blank with a doc, an example, or a constraint. Rewording the prompt treats the symptom. The blank is the disease.
+Take the last AI output your team rejected and finish this sentence: "It failed because it did not know ___."
+
+Not "because the prompt was weak." The blank has to name something the model could not have known: the current policy, the approved format, the fact that this customer already churned once and came back on a discount.
+
+Then fix the blank permanently. Attach the doc, add the example, write the constraint into the system prompt. One blank, one fix, applied to every future run.
+
+Rewording the prompt treats the symptom. The blank is the disease, and it is usually curable with one attachment.

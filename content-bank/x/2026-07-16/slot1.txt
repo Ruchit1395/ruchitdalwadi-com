@@ -1,1 +1,7 @@
-Loud AI failures get fixed the same day. The dangerous ones are silent: responses 15% shorter, hedging up, an integration returning empty strings the model politely works around. You do not need to define correct to detect change. Measure change.
+Your scariest production failure will not throw an error.
+
+It will look like this: responses drift 15 percent shorter over a month. Hedging creeps up. An integration starts returning empty strings and the model, being helpful, works around the silence so gracefully that every individual output still reads fine.
+
+Loud failures get fixed the same day because they page someone. Silent ones compound for weeks because no single output is wrong enough to report, and you cannot see a distribution shift by scrolling examples.
+
+The unlock: you do not need to define correct to detect different. Sample 1 percent of traffic, track a few weekly averages, alert on movement. Correctness is hard to measure. Change is easy, and change is almost always the earlier signal.

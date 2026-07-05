@@ -1,1 +1,7 @@
-"Bad output" is usually "missing context" wearing a costume. The model did not ignore your policy; it never saw it. Before rewriting instructions, list what the model actually had in front of it when it failed. The list is shorter than you think.
+The model did not ignore your policy. It never saw it.
+
+Half the outputs that get labeled bad reasoning are the model doing sensible work at a blank desk. It could not cite the current policy, match the approved format, or respect the exception, because none of those were anywhere in its context. So it filled the gaps the only way it can: plausibly.
+
+Before rewriting a single instruction, run the desk check. List literally what the model had in front of it on the failed run: which docs, which examples, which constraints, which data. Not what you meant to give it. What it actually got.
+
+That list is almost always shorter than anyone in the room expects, and the fix is usually an attachment, not an instruction. Instructions tell the model what to do. The desk decides what it can do.

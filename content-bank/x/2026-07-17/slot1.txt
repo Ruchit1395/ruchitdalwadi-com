@@ -1,1 +1,7 @@
-"AI makes coding faster" is half true. It makes typing faster. Whether the system speeds up depends on the loop around it: scoping, review, verification. Fast typing into a slow review loop just moves the queue.
+AI made the typing fast. The review queue did not get the memo.
+
+I watched an ed-tech team and a logistics team adopt the same AI coding tools in the same quarter. One was shipping measurably faster within weeks. The other generated code faster than anyone could responsibly read it, and the backlog simply moved from writing to reviewing.
+
+Typing was never the constraint on a mature team. The constraint is the loop around the tool: how tasks get scoped, how much autonomy each task earns, how diffs get verified before they get read. Speed up the inside of a slow loop and you get a taller pile at the bottleneck, not a faster system.
+
+The uncomfortable diagnostic: if diffs got bigger this quarter and merge times got longer, the tool is working and the loop is not.

@@ -1,1 +1,7 @@
-Debugging a flaky agent? Halve its tools before touching the prompt. Cut everything unused in the last 20 runs, rerun the same tasks, compare. Fewer wrong options at each step fixes more agent behavior than another paragraph of instructions.
+Debugging a flaky agent? Halve its tools before touching the prompt.
+
+Pull the last 20 runs, cut every tool that was never called, then rerun the same tasks and diff the behavior. Twenty minutes, fully reversible, no prompt archaeology required.
+
+Fewer live options at each step fixes more agent behavior than another paragraph of instructions, because most flakiness is not confusion about the goal. It is indecision between overlapping ways to get there.
+
+If behavior improves, keep going: tighten each surviving description until it says when to pick that tool, not just what it does. If nothing changes, you ruled out the cheapest suspect first and the context got smaller anyway.

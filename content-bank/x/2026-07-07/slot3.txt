@@ -1,1 +1,7 @@
-Cheapest eval I know: collect the last 10 outputs your team accepted and the last 10 it rejected. Ask an LLM judge which pile each new output belongs to. Crude, but it flags regressions the day they happen instead of the week after.
+Cheapest eval I know still holds up: the two-pile test.
+
+Collect the last 10 outputs your team accepted and the last 10 it rejected. For every new output, ask an LLM judge one question: which pile does this belong to?
+
+No rubric, no labels, no infrastructure. The piles already encode your team's taste, including the parts nobody has managed to write down as rules.
+
+It is crude, and it will misfile edge cases. It will also flag a regression the day it happens instead of the week after, which is the entire job. Upgrade to a real rubric when the two-pile test starts disagreeing with your reviewers. Until then, it is free signal from data you already had.
