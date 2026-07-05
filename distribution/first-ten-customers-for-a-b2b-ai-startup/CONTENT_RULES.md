@@ -2,6 +2,10 @@
 
 These override everything else. Every agent generating posts, comments, or replies reads this file first. Every piece is checked against it before publishing.
 
+Companion files (read together with this one):
+- `AUDIENCE_MAP.md` — the 16 pain points + 100-item curriculum every post draws from
+- `HOOK_PLAYBOOK.md` — the 8 hook shapes, hook rules, and comprehension rules
+
 ## Hard bans
 
 1. **No em dashes. Ever.** No "—" or "–" anywhere. Use a period, comma, or colon instead. This is the #1 AI-tell and the #1 rule.
