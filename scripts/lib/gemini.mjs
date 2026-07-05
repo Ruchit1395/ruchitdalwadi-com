@@ -14,6 +14,10 @@
 const OPENER_BAN =
   /^(absolutely|totally agree|exactly|spot on|great (point|post|take)|you hit the nail|agreed|so true|100%|couldn't agree|well said|this[.!]|love this)/i;
 
+// banned scaffolds from CONTENT_RULES — Gemini reaches for these under pressure
+const SCAFFOLD_BAN =
+  /(isn't just [^.]{3,40}, it's|is not just [^.]{3,40}, it is|the real (game|question|problem|shift) is|stop doing [^.]+\. start)/i;
+
 export async function draftWithGemini({ system, user, maxChars = 240, attempts = 2 }) {
   let lastIssue = "";
   for (let i = 0; i < attempts; i++) {
@@ -62,6 +66,10 @@ export async function draftWithGemini({ system, user, maxChars = 240, attempts =
     }
     if (OPENER_BAN.test(text)) {
       lastIssue = "it opened with generic agreement, banned by the content rules; start with substance instead";
+      continue;
+    }
+    if (SCAFFOLD_BAN.test(text)) {
+      lastIssue = "it used a banned scaffold pattern (like: isn't just X, it's Y / the real game is); say it plainly instead";
       continue;
     }
     if (text.length > maxChars) {

@@ -66,6 +66,11 @@ ${contentRules}
 
 Task: from the trending posts provided, identify the single most consequential conversation happening in AI right now. Write an ORIGINAL take on it (do not address or mention any specific post or author). 150 to 280 characters. It must pass the quality gate: specific, useful or genuinely funny, no em dashes, sounds like a person.
 
+CRITICAL accuracy rules:
+- NEVER attribute statements, quotes, or claims to named people or companies (no "X said", "according to Y"). The source tweets may be wrong, and repeating unverified claims destroys credibility.
+- Comment on the pattern or question in the conversation, using Ruchit's own operator experience as the substance.
+- If the only interesting angle requires an attributed claim, respond SKIP.
+
 If nothing is genuinely worth posting about, respond with exactly: SKIP
 
 Output ONLY the post text or SKIP.`,
