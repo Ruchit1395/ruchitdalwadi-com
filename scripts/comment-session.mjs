@@ -164,7 +164,26 @@ const prior = [];
 let posted = 0;
 const budget = Math.min(MAX_SESSION, MAX_DAY - todayCount());
 
-for (const target of targets) {
+// fallback ladder: if the first scout list exhausts below quota, scout wider once
+let queue = [...targets];
+let rescouted = false;
+async function refillQueue() {
+  if (rescouted) return;
+  rescouted = true;
+  try {
+    const wide = execSync("node --env-file=.env.local scripts/scout-comment-targets.mjs 20", { encoding: "utf8", timeout: 120000 });
+    for (const block of wide.split(/\n(?=\d+\. )/)) {
+      const m = block.match(/@(\S+) \(([\d,]+) followers\).*?([\d,]+) views, (\d+) likes, (\d+) replies\n\s+(https:\/\/x\.com\/\S+\/status\/(\d+))\n\s+"([\s\S]*?)"\s*$/);
+      if (m && !queue.some((t) => t.id === m[7]) && !targets.some((t) => t.id === m[7])) {
+        queue.push({ author: m[1], url: m[6], id: m[7], views: m[3], text: m[8].slice(0, 300) });
+      }
+    }
+    console.log(`re-scout added ${queue.length} more candidates`);
+  } catch (e) { console.error("re-scout failed:", e.message); }
+}
+
+while (queue.length > 0) {
+  const target = queue.shift();
   if (posted >= budget) break;
   try {
     const comment = await draft(target, prior);
@@ -219,6 +238,8 @@ for (const target of targets) {
     console.error(`failed on @${target.author}: ${String(err.message).slice(0, 150)}`);
     try { osa(`tell application "System Events" to keystroke "w" using command down`); } catch {}
   }
+  // quota not met and list running dry -> widen once
+  if (queue.length === 0 && posted < Math.min(3, budget)) await refillQueue();
 }
 
 // ---------- verify ----------
