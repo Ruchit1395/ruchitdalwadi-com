@@ -13,7 +13,19 @@ On any heartbeat where ALL of these hold:
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
 
-## X session (4-5 comments)
+## Session objective
+
+When the gates pass, the job is to leave qualified comments, not merely to run one scout command.
+
+Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
+- Preferred mix: 3 X comments + 2 LinkedIn comments.
+- If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
+- If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
+- A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
+
+Do not lower the quality bar into spam. Do broaden search, rerun scouting with larger pools, rotate lanes, and use minimum viable sessions instead of ending early.
+
+## X session (target 3-5 comments)
 
 ### 1. Scout
 From the repo root:
@@ -22,10 +34,51 @@ From the repo root:
 node --env-file=.env.local scripts/scout-comment-targets.mjs 6
 ```
 
-This returns fresh (<24h), engaged (40+ likes, <150 replies), in-lane targets, already deduped against `replied-log.csv` (never same post twice, never same author within 3 days) and filtered against finance/crypto/politics rooms. If it prints `NO_TARGETS`, end the session.
+This returns fresh (<24h), engaged (40+ likes, <150 replies), in-lane targets, already deduped against `replied-log.csv` (never same post twice, never same author within 3 days) and filtered against finance/crypto/politics rooms.
+
+If it prints `NO_TARGETS` or returns fewer than 4 qualified targets after selection, do not end the session yet. Run the X fallback ladder.
+
+### X fallback ladder
+
+Use these steps in order until you have enough qualified targets or the ladder is exhausted:
+
+1. Rerun the scout with a larger pool:
+
+```bash
+node --env-file=.env.local scripts/scout-comment-targets.mjs 12
+```
+
+2. If still short, rerun once more:
+
+```bash
+node --env-file=.env.local scripts/scout-comment-targets.mjs 20
+```
+
+3. If still short and browser health is good, use X browser search directly. Sample at least 8 lanes before declaring X exhausted. Use Top for quality, then Latest when Top is stale:
+   - `"AI agents" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"AI workflow" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"AI coding" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"Claude Code" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"Cursor" "AI" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"LLM evals" OR "AI evals" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"context engineering" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"ChatGPT at work" min_faves:20 -crypto -stocks -trading -politics lang:en`
+   - `"model choice" "AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"AI product management" min_faves:10 -crypto -stocks -trading -politics lang:en`
+
+4. If the room is highly relevant and the author is clearly TG, relaxed engagement is allowed: 20+ likes for X, under 200 replies, posted within ~48h. Do not relax the banned-room rails.
+
+5. If direct X search yields only 1-3 qualified rooms, post those and then try the LinkedIn ladder for the remaining session slots.
 
 ### 2. Select
-From the list, keep 4-5 where the author's audience is clearly our TG (founders, PMs, operators, AI builders). Drop anything that is a company promo, an engagement-farm listicle, or unrelated to: agents, evals, AI workflows, AI coding, model choice, AI product/PM work.
+From the list, keep targets where the author's audience is clearly our TG (founders, PMs, operators, AI builders). Drop anything that is a company promo, an engagement-farm listicle, or unrelated to: agents, evals, AI workflows, AI coding, model choice, AI product/PM work.
+
+Selection priority:
+1. Practitioner or builder sharing a concrete lesson.
+2. Founder, PM, operator, engineer, educator, or AI builder with active comments.
+3. A strong room where the comment can add a test, caveat, failure mode, or workflow.
+
+Do not reject a good target only because it is not perfect. Reject it only when it breaks the rails, is off-lane, is promotional, or lacks a real opening for a substantive comment.
 
 ### 3. Draft — one comment per target
 Rules (all mandatory):
@@ -69,13 +122,38 @@ Unverified after one recheck = do not count; note in the session summary.
 ### 6. Commit
 Per the existing contract: stage `distribution/`, commit, `git pull --rebase`, push. Then post the standard chat summary (X/LinkedIn/Status shape from README.md).
 
-## LinkedIn session (3-5 comments, when browser healthy)
+## LinkedIn session (target 2-5 comments, when browser healthy)
 
 1. Search LinkedIn content for lanes: "AI agents", "AI workflow", "evals LLM", "AI product management", "Claude Code" (rotate).
 2. Room gate: only posts with 50+ reactions, posted within ~48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
 3. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed.
 4. One comment per author per week. Log to `replied-log.csv` with the post URL in place of tweet id.
 5. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
+
+### LinkedIn fallback ladder
+
+If the first lane does not produce qualified rooms, do not stop. Sample at least 8 lanes before declaring LinkedIn exhausted:
+- "AI agents"
+- "AI workflow"
+- "evals LLM"
+- "AI product management"
+- "Claude Code"
+- "AI coding"
+- "Cursor AI"
+- "ChatGPT for work"
+- "context engineering"
+- "LLM product"
+- "agentic AI workflow"
+- "AI automation operators"
+
+Use these filters and fallbacks:
+1. Prefer 50+ reactions, within ~48h, practitioner or educator author.
+2. If still short, accept 25+ reactions when the post is within ~24h and the author is clearly TG.
+3. If still short, accept a thoughtful practitioner post with active comments even if reactions are not visible, but only when the room is clearly in-lane and non-promotional.
+4. Skip company promos, course lead-gen posts, engagement polls, generic "future of work" takes, and posts where only connections can comment.
+5. If LinkedIn gives search pages with mostly promos or polls, change the lane, sort/filter by recent when available, and inspect more results before stopping.
+
+The LinkedIn goal is recurring presence. If there are 1-2 high-quality rooms and X has remaining capacity, post those instead of returning zero LinkedIn comments.
 
 ## Hard safety rails (never violate)
 
@@ -84,3 +162,14 @@ Per the existing contract: stage `distribution/`, commit, `git pull --rebase`, p
 - Never comment in politics/crypto/stocks/tragedy rooms even if AI-adjacent.
 - Never comment twice on the same post; never the same author within 3 days (X) / 7 days (LinkedIn).
 - If unsure whether a room fits the TG, skip it. A skipped room costs nothing; a spammy comment costs reputation.
+
+## Exhaustion standard
+
+"No qualified posts" means all of this happened:
+1. Browser health passed.
+2. X scout ran at 6, 12, and 20.
+3. Direct X browser search sampled at least 8 fallback lanes.
+4. LinkedIn browser search sampled at least 8 fallback lanes.
+5. All candidates failed for concrete reasons: banned room, off-lane, promo, engagement farm, insufficient audience fit, duplicate author/post, cannot comment, or composer failure.
+
+If fewer than 4-5 comments were posted, the summary must say exactly which ladder steps ran and why remaining candidates were skipped.
