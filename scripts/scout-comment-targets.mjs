@@ -29,7 +29,7 @@ const LANES = [
 ];
 
 // wrong-audience rooms: finance, crypto, politics, giveaways
-const BLOCK = /(bitcoin|solana|crypto|token|airdrop|\$[A-Z]{2,5}\b|stock|etf|nasdaq|fed |rate cut|election|senate|congress|giveaway|whitelist|mint|nft)/i;
+const BLOCK = /(bitcoin|solana|crypto|token|airdrop|\$[A-Z]{2,5}\b|stock|etf|nasdaq|fed |rate cut|election|senate|congress|giveaway|whitelist|mint|nft|stablecoin|polygon|blockchain|onchain|on-chain|web3|defi|zero caps|completely free|this trick|secret method)/i;
 
 const repliedAuthors = new Set();
 const repliedIds = new Set();

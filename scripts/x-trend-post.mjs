@@ -59,6 +59,10 @@ const radar = existsSync(`${DIR}/TREND_RADAR.md`)
   ? readFileSync(`${DIR}/TREND_RADAR.md`, "utf8").slice(0, 3000)
   : "";
 
+const hookPlaybook = existsSync(`${DIR}/HOOK_PLAYBOOK.md`)
+  ? readFileSync(`${DIR}/HOOK_PLAYBOOK.md`, "utf8").slice(0, 4000)
+  : "";
+
 const text = await draftWithGemini({
   system: `You write ONE original X post for Ruchit Dalwadi, operator/teacher in AI, startups, product.
 
