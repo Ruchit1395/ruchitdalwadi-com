@@ -30,6 +30,28 @@ const PROFILE = path.join(os.homedir(), ".x-comment-runner-profile");
 const MAX_SESSION = 5;
 const MAX_DAY = 12;
 
+// ---------- cookie-inject mode ----------
+// Usage: node scripts/comment-session.mjs cookies <auth_token> <ct0>
+// Transplants an existing x.com session (from the user's real browser) into
+// the runner profile, skipping the login flow entirely.
+if (process.argv[2] === "cookies") {
+  const [authToken, ct0] = [process.argv[3], process.argv[4]];
+  if (!authToken || !ct0) { console.error("Usage: cookies <auth_token> <ct0>"); process.exit(1); }
+  const ctx = await chromium.launchPersistentContext(PROFILE, { headless: true });
+  await ctx.addCookies([
+    { name: "auth_token", value: authToken, domain: ".x.com", path: "/", httpOnly: true, secure: true, sameSite: "None" },
+    { name: "ct0", value: ct0, domain: ".x.com", path: "/", httpOnly: false, secure: true, sameSite: "Lax" },
+  ]);
+  const page = await ctx.newPage();
+  await page.goto("https://x.com/home", { waitUntil: "domcontentloaded", timeout: 45000 });
+  await page.waitForTimeout(6000);
+  const loggedIn = !page.url().includes("/login") &&
+    (await page.locator('[data-testid="SideNav_AccountSwitcher_Button"]').count()) > 0;
+  console.log(loggedIn ? "SESSION VERIFIED — runner is armed." : `NOT LOGGED IN — url: ${page.url()}`);
+  await ctx.close();
+  process.exit(loggedIn ? 0 : 1);
+}
+
 // ---------- login mode ----------
 if (process.argv[2] === "login") {
   const ctx = await chromium.launchPersistentContext(PROFILE, { headless: false, viewport: { width: 1280, height: 850 } });
