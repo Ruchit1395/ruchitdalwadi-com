@@ -60,6 +60,7 @@ for (const lane of LANES) {
       if (likes < 40 || replies > 150) continue;
       const text = t.text ?? "";
       if (BLOCK.test(text) || BLOCK.test(a.name ?? "")) continue;
+      if (/^0x|_eth$|_sol$|\.eth$|degen|onchain/i.test(a.userName ?? "")) continue;
       seen.set(t.id, {
         url: `https://x.com/${a.userName}/status/${t.id}`,
         author: a.userName,

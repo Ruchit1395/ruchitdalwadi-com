@@ -17,7 +17,7 @@
 
 import { chromium } from "playwright"; // used only by cookies/login modes
 import { readFileSync, existsSync, appendFileSync } from "node:fs";
-import { execSync } from "node:child_process";
+import { execSync, execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
@@ -141,7 +141,7 @@ Comment rules: 150-240 chars. Add ONE thing the room lacks: a frame, named test,
   if (!res.ok) throw new Error(`gemini ${res.status}`);
   const d = await res.json();
   let text = (d.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? "").join("").trim()
-    .replace(/^["']|["']$/g, "").replace(/\s*[—–]\s*/g, ", ").trim();
+    .replace(/^["']|["']$/g, "").replace(/\s*[—–]\s*/g, ", ").replace(/[\`$\\]/g, "'").trim();
   const bad = text.length < 100 || text.length > 240 || OPENER_BAN.test(text) || SCAFFOLD_BAN.test(text) || !/[.!?"]$/.test(text);
   if (bad && attempt < 2) return draft(target, prior, attempt + 1);
   return bad ? null : text;
@@ -153,7 +153,8 @@ Comment rules: 150-240 chars. Add ONE thing the room lacks: a frame, named test,
 // Flow per target: open URL in Chrome -> "r" opens reply composer ->
 // type comment -> Cmd+Enter submits -> Cmd+W closes tab.
 function osa(script) {
-  return execSync("osascript -e " + JSON.stringify(script), { encoding: "utf8", timeout: 30000 });
+  // execFileSync: no shell involved, so no backtick/quote injection from draft text
+  return execFileSync("osascript", ["-e", script], { encoding: "utf8", timeout: 30000 });
 }
 function escAS(text) {
   return text.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
@@ -173,7 +174,9 @@ for (const target of targets) {
     osa(`tell application "Google Chrome" to open location "${target.url}"`);
     await new Promise((r) => setTimeout(r, 9000 + Math.random() * 3000));
 
-    // "r" opens the reply composer focused on the main tweet
+    // re-assert focus, then "r" opens the reply composer on the main tweet
+    osa(`tell application "Google Chrome" to activate`);
+    await new Promise((r) => setTimeout(r, 800));
     osa(`tell application "System Events" to keystroke "r"`);
     await new Promise((r) => setTimeout(r, 2500));
 
@@ -187,11 +190,29 @@ for (const target of targets) {
     // close the tab
     osa(`tell application "System Events" to keystroke "w" using command down`);
 
+    // in-loop verification: only count what actually landed
+    await new Promise((r) => setTimeout(r, 6000));
+    let verified = null;
+    try {
+      const vr = await fetch("https://api.twitterapi.io/twitter/user/last_tweets?userName=ruchitdalwadi&includeReplies=true",
+        { headers: { "X-API-Key": process.env.TWITTERAPIIO_KEY } });
+      const vd = await vr.json();
+      for (const t of (vd.data?.tweets ?? vd.tweets ?? []).slice(0, 8)) {
+        if ((t.inReplyToId ?? "") === target.id) { verified = t.id; break; }
+      }
+    } catch {}
+    if (!verified) {
+      console.log(`NOT VERIFIED on @${target.author} — keystrokes may have missed. Not counted.`);
+      appendFileSync(`${DIR}/replied-log.csv`,
+        `${new Date().toISOString()},${target.id},${target.author},${String(target.views).replace(/,/g, "")},failed-not-posted,${target.url}\n`);
+      continue;
+    }
+
     posted++;
     prior.push(comment);
-    console.log(`posted on @${target.author}: ${comment.slice(0, 70)}...`);
+    console.log(`posted on @${target.author}: https://x.com/ruchitdalwadi/status/${verified}`);
     appendFileSync(`${DIR}/replied-log.csv`,
-      `${new Date().toISOString()},${target.id},${target.author},${String(target.views).replace(/,/g, "")},pending-verify,${target.url}\n`);
+      `${new Date().toISOString()},${target.id},${target.author},${String(target.views).replace(/,/g, "")},${verified},https://x.com/ruchitdalwadi/status/${verified}\n`);
 
     if (posted < budget) await new Promise((r) => setTimeout(r, 90000 + Math.random() * 90000));
   } catch (err) {
