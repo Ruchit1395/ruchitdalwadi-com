@@ -18,10 +18,11 @@
 import { chromium } from "playwright";
 import { readFileSync, existsSync, appendFileSync } from "node:fs";
 import { execSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import path from "node:path";
 import os from "node:os";
 
-const REPO = path.dirname(new URL(import.meta.url).pathname) + "/..";
+const REPO = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 process.chdir(path.resolve(REPO));
 
 const DIR = "distribution/first-ten-customers-for-a-b2b-ai-startup";
