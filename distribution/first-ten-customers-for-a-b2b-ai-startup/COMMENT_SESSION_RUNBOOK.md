@@ -18,7 +18,7 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 When the gates pass, the job is to leave qualified comments, not merely to run one scout command.
 
 Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
-- Preferred mix: 3 X comments + 2 LinkedIn comments.
+- Preferred mix: 2 X comments + 3 LinkedIn comments. LinkedIn is Codex's PRIMARY comment duty: the scheduled local runner (launchd, 3x/day) covers X deterministically, and no script can automate LinkedIn (obfuscated DOM), so agent-with-eyes effort goes there first.
 - If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
 - If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
 - A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
@@ -89,7 +89,15 @@ Rules (all mandatory):
 - Banned openers: Absolutely / Totally agree / Exactly / Spot on / Great post / This / Love this / 100%.
 - Banned scaffolds: "isn't just X, it's Y", "the real game is", "Most people...".
 - Vary shape across the session: if comment 1 was a test-to-run, comment 2 is a war story or a caveat or a dry observation.
-- War-story details available (do not invent new companies): logistics agent-to-pipeline 9%->2%, pharma 11x prompt rewrites vs one example pair, ERP row-100 pagination bug, ed-tech 20-case escalation set, fashion 12->5 tools, pharma 31 rejects -> 3 root causes.
+- RECEIPTS FIRST (new standard, 2026-07-06): prefer real, verifiable material from Ruchit's own public builds over anonymized war stories. Available real material, all true and checkable:
+  - X's API returns 403 on cold replies AND cold quotes ("not mentioned or otherwise engaged") - learned building his own distribution automation this week
+  - X pay-per-use pricing: $0.015 per post, $0.20 if the post contains a link (13x penalty)
+  - Playwright/CDP browsers get served a dead static shell by X, headed or headless
+  - Gemini 2.5 Flash thinking mode silently eats maxOutputTokens and truncates output mid-word unless thinkingBudget is set to 0
+  - His first 70 X posts earned 2,981 impressions total; content quality was not the bottleneck, distribution was
+  - LinkedIn personal API cannot read post stats (403) or search public posts at all; document carousels cannot be uploaded by any API
+  - Runs a 6-axis eval rubric (min 12/18, no axis below 2) on content before publishing
+  The old anonymized industry stories (pharma 11x, logistics 9->2%, ERP row-100, ed-tech 20-case, fashion 12->5) may still be used, but a real receipt beats an anonymous story every time.
 
 Reference examples of the standard (posted 2026-07-05):
 - "The prompting-before-agents one is underrated. Most agent problems I get asked about are context problems wearing a costume. If quality plateaus after two prompt edits, change what the model can see, not the words."
