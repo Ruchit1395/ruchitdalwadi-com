@@ -8,7 +8,7 @@ Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`.
 
 On any heartbeat where ALL of these hold:
 1. Browser control is healthy (tab create + navigate succeed).
-2. Last comment session ended more than 3 hours ago (check newest timestamp in `replied-log.csv`).
+2. Last comment session ended more than 2.5 hours ago (check newest timestamp in `replied-log.csv`).
 3. Fewer than 12 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`).
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
