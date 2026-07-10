@@ -9,7 +9,7 @@ Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`.
 On any heartbeat where ALL of these hold:
 1. Browser control is healthy (tab create + navigate succeed).
 2. Last comment session ended more than 2.5 hours ago (check newest timestamp in `replied-log.csv`).
-3. Fewer than 12 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`).
+3. Fewer than 20 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`), with a maximum of 10 on X and 10 on LinkedIn.
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
 
@@ -165,7 +165,7 @@ The LinkedIn goal is recurring presence. If there are 1-2 high-quality rooms and
 
 ## Hard safety rails (never violate)
 
-- Max 12 cold comments/day total; max 5 per session; 2+ min spacing.
+- Max 20 cold comments/day total, with no more than 10 on X and 10 on LinkedIn; max 5 per session; 2+ min spacing.
 - No DMs, no follows, no likes, no reposts, no profile edits, no paid actions.
 - Never comment in politics/crypto/stocks/tragedy rooms even if AI-adjacent.
 - Never comment twice on the same post; never the same author within 3 days (X) / 7 days (LinkedIn).
