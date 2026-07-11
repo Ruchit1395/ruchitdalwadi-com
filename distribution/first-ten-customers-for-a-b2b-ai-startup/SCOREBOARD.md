@@ -1,15 +1,15 @@
 # Campaign Scoreboard
 
-Updated: 2026-07-10 (auto — daily 13:00 IST)
+Updated: 2026-07-11 (auto — daily 13:00 IST)
 
 ## Totals vs target
 
-| Platform | Impressions | Target | Progress | Needed/day (9d left) |
+| Platform | Impressions | Target | Progress | Needed/day (8d left) |
 |---|---:|---:|---:|---:|
-| X | 4,436 | 100,000 | 4.4% | 10,619 |
-| LinkedIn (manual) | 0 | 100,000 | 0.0% | 11,112 |
+| X | 4,598 | 100,000 | 4.6% | 11,926 |
+| LinkedIn (manual) | 0 | 100,000 | 0.0% | 12,500 |
 
-X day-over-day: **+94** · engagement: 20 likes, 11 replies across 99 tracked posts.
+X day-over-day: **+162** · engagement: 20 likes, 12 replies across 103 tracked posts.
 
 ## Top X posts
 
@@ -17,14 +17,14 @@ X day-over-day: **+94** · engagement: 20 likes, 11 replies across 99 tracked po
 |---:|---:|---:|---|
 | 686 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071196625431892466 |
 | 401 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
-| 302 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074502458190303450 |
-| 203 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
+| 305 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074502458190303450 |
+| 206 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
 | 114 | 2 | 2 | https://x.com/ruchitdalwadi/status/2068304482589650946 |
-| 102 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072583421755605027 |
-| 100 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559216958972299 |
+| 104 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559216958972299 |
+| 103 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072583421755605027 |
 | 97 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072393680334541257 |
 | 96 | 0 | 0 | https://x.com/ruchitdalwadi/status/2069334741413961784 |
-| 89 | 0 | 0 | https://x.com/ruchitdalwadi/status/2068375965752021269 |
+| 90 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559796389487032 |
 
 ## History
 
@@ -38,3 +38,4 @@ X day-over-day: **+94** · engagement: 20 likes, 11 replies across 99 tracked po
 | 2026-07-08 | 4,160 | +598 | 0 |
 | 2026-07-09 | 4,342 | +182 | 0 |
 | 2026-07-10 | 4,436 | +94 | 0 |
+| 2026-07-11 | 4,598 | +162 | 0 |
