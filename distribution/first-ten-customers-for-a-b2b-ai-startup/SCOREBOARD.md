@@ -1,24 +1,24 @@
 # Campaign Scoreboard
 
-Updated: 2026-07-11 (auto — daily 13:00 IST)
+Updated: 2026-07-12 (auto — daily 13:00 IST)
 
 ## Totals vs target
 
-| Platform | Impressions | Target | Progress | Needed/day (8d left) |
+| Platform | Impressions | Target | Progress | Needed/day (7d left) |
 |---|---:|---:|---:|---:|
-| X | 4,598 | 100,000 | 4.6% | 11,926 |
-| LinkedIn (manual) | 0 | 100,000 | 0.0% | 12,500 |
+| X | 4,765 | 100,000 | 4.8% | 13,605 |
+| LinkedIn (manual) | 0 | 100,000 | 0.0% | 14,286 |
 
-X day-over-day: **+162** · engagement: 20 likes, 12 replies across 103 tracked posts.
+X day-over-day: **+167** · engagement: 20 likes, 13 replies across 107 tracked posts.
 
 ## Top X posts
 
 | Views | Likes | Replies | URL |
 |---:|---:|---:|---|
 | 686 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071196625431892466 |
-| 401 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
-| 305 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074502458190303450 |
-| 206 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
+| 402 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
+| 306 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074502458190303450 |
+| 210 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
 | 114 | 2 | 2 | https://x.com/ruchitdalwadi/status/2068304482589650946 |
 | 104 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559216958972299 |
 | 103 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072583421755605027 |
@@ -39,3 +39,4 @@ X day-over-day: **+162** · engagement: 20 likes, 12 replies across 103 tracked 
 | 2026-07-09 | 4,342 | +182 | 0 |
 | 2026-07-10 | 4,436 | +94 | 0 |
 | 2026-07-11 | 4,598 | +162 | 0 |
+| 2026-07-12 | 4,765 | +167 | 0 |
