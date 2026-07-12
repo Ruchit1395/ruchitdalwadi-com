@@ -94,7 +94,8 @@ function publicFactsOnly(md) {
     if (/^##\s+Worth a look/i.test(t)) { inWorthALook = true; kept.push(line); continue; }
     if (/^##\s/.test(t) && !/worth a look/i.test(t)) inWorthALook = false;
     if (/^###\s/.test(t)) { kept.push(line); continue; }                 // trend titles
-    if (/^\*\s*\*\*What:\*\*/i.test(t)) { kept.push(line); continue; }    // the public fact
+    if (/^[-*]\s*\*\*What:\*\*/i.test(t)) { kept.push(line); continue; }      // the public fact
+    if (/^[-*]\s*\*\*Practical:\*\*/i.test(t)) { kept.push(line); continue; } // the builder angle (new digest format)
     if (inWorthALook && /^\*/.test(t)) { kept.push(line); continue; }     // outside-watchlist finds
   }
   const out = kept.join("\n").trim();
