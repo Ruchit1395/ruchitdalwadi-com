@@ -1,7 +1,10 @@
-The eval suite you keep postponing is two assertions a week away.
+An agent resolved 32 of 34 support tickets without a human. That's >90% automation. Here's the workflow:
 
-When the system produces an embarrassing output, the kind that gets screenshotted in the team channel, turn it into a test: that exact input, plus a check for the behavior you want instead. Run it on tomorrow's deploy and every deploy after.
+1.  **Ingest Ticket**: Agent receives new support ticket from email/chat.
+2.  **Classify & Prioritize**: Uses an LLM to categorize the issue (bug, feature request, how-to) and assign a priority.
+3.  **Search Knowledge Base**: Queries internal docs, FAQs, and past resolutions for relevant info.
+4.  **Draft Response**: Generates a draft reply, often with step-by-step instructions or links to resources.
+5.  **Attempt Resolution (if applicable)**: For known issues, the agent might trigger an API call to reset a password, clear a cache, or update a setting.
+6.  **Human Review (for exceptions)**: Only tickets that can't be resolved or are high-priority/complex are flagged for human review. The agent provides a summary and its attempted actions.
 
-The math is the persuasive part. One assertion per incident is roughly two a week. A quarter later you own a 25-case suite covering your system's actual failure history, built in stolen minutes, while the official eval project is still a kickoff deck.
-
-Suites built this way have a property no benchmark can offer: every case is something that already burned you once.
+The key is setting clear guardrails for when to escalate. Don't let the agent guess. Give it a 'no-confidence' threshold. This isn't about perfect AI, it's about offloading the predictable noise.
