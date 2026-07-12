@@ -24,13 +24,13 @@ jobs:
       - name: Generate today's Signal-grounded X + LI posts
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          SIGNAL_REPO_TOKEN: ${{ secrets.SIGNAL_REPO_TOKEN }}
+          TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
         run: node scripts/signal-to-social.mjs --write
       - name: Commit into the content bank
         run: |
           git config user.name "campaign-bot"
           git config user.email "bot@ruchitdalwadi.com"
-          git add content-bank
+          git add content-bank distribution
           if ! git diff --cached --quiet; then
             git commit -m "campaign: signal-grounded posts $(date -u +%Y-%m-%d)"
             git pull --rebase

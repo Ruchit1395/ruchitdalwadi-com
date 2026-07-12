@@ -15,6 +15,7 @@ Honest base case at current baseline (2,981 X impressions in 14 days): X 25–50
 | Time | What | Runner |
 |---|---|---|
 | 09:00 | X native post — slot 1 (short sharp teaching post) | `x-scheduled-posts.yml` |
+| 09:45 | Signal post generation: fetch 31 watchlist authors + lanes live from X, one Gemini pass writes today's X slot3 + LI post (retry 11:30 if needed; Signal repo retired from the loop) | `signal-to-social.yml` |
 | 12:30 | Inbound sweep 1 — answer everyone who replied to us (max 8) | `x-replies.yml` |
 | 13:00 | Stats refresh + scoreboard commit | `daily-scoreboard.yml` |
 | 14:00 | X native post — slot 2 (mini-framework or thread) | `x-scheduled-posts.yml` |

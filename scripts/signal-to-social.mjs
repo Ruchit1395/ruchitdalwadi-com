@@ -1,136 +1,175 @@
 #!/usr/bin/env node
 /**
- * Signal -> Social bridge.
+ * Signal -> Social, collapsed to a single LLM pass (2026-07-12).
  *
- * Reads the latest digest from the Signal trend pipeline, extracts the single
- * most publicly-compelling insight, and writes ONE X post + ONE LinkedIn post
- * in Ruchit's voice (per CONTENT_RULES). These become the day's timely,
- * receipts-grounded posts, replacing the evergreen bank slot for the day.
+ * Previous architecture: the Signal repo classified/researched/digested X
+ * trends with 3 LLM stages for a personal digest nobody read anymore, then
+ * this bridge ran a 4th LLM pass over the digest. Now:
  *
- * Digest source (in order):
- *   1. env SIGNAL_DIGEST_TEXT (raw markdown, used by CI after fetching)
- *   2. local sibling repo ../signal/digests/*.md (newest) - for local runs
- *   3. GitHub API on Ruchit1395/signal using SIGNAL_REPO_TOKEN - for CI
+ *   X (twitterapi.io, live)  ->  engagement rank (no LLM)  ->  ONE Gemini
+ *   Flash call (pick insight + fetch its source via url_context + write the
+ *   X and LinkedIn posts)  ->  existing publishers
+ *
+ * Fetch is inline, so input is same-morning fresh by construction: no
+ * cross-repo token, no freshness guard, no digest parsing.
  *
  * Output (with --write):
  *   content-bank/x/<today>/slot3.txt        (19:00 IST X post)
  *   content-bank/li/<today>/post.md         (14:30 IST LinkedIn post)
- * Without --write: prints both to stdout for review.
+ *   content-bank/x/<today>/.signal-done     (idempotency for the retry cron)
+ * Without --write: prints both for review. Gate failures always exit 0 —
+ * the evergreen bank content is the fallback, never a bad post.
  *
- * Env: GEMINI_API_KEY (+ SIGNAL_REPO_TOKEN in CI). Never posts directly;
- * the existing publishers pick these up.
+ * Env: GEMINI_API_KEY, TWITTERAPIIO_KEY
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const REPO = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 process.chdir(path.resolve(REPO));
 const DIR = "distribution/first-ten-customers-for-a-b2b-ai-startup";
+const TOPICS_LOG = `${DIR}/signal-topics-log.csv`;
 const WRITE = process.argv.includes("--write");
 const today = new Date(Date.now() + 330 * 60000).toISOString().slice(0, 10);
 
-if (!process.env.GEMINI_API_KEY) { console.error("GEMINI_API_KEY missing"); process.exit(1); }
-
-// ---------- get the digest ----------
-// Returns { text, date } where date is the digest's YYYY-MM-DD (from its
-// filename) when known, or null for local/env sources without a dated name.
-const dateOf = (name) => (name.match(/(\d{4}-\d{2}-\d{2})/) || [])[1] || null;
-
-async function getDigest() {
-  if (process.env.SIGNAL_DIGEST_TEXT) return { text: process.env.SIGNAL_DIGEST_TEXT, date: null };
-  const sibling = path.resolve(REPO, "../signal/digests");
-  if (existsSync(sibling)) {
-    const files = readdirSync(sibling).filter((f) => f.endsWith(".md")).sort().reverse();
-    if (files.length) return { text: readFileSync(path.join(sibling, files[0]), "utf8"), date: dateOf(files[0]) };
-  }
-  const token = process.env.SIGNAL_REPO_TOKEN;
-  if (token) {
-    const list = await fetch("https://api.github.com/repos/Ruchit1395/signal/contents/digests", {
-      headers: { Authorization: `token ${token}`, "User-Agent": "signal-bridge" },
-    });
-    if (list.ok) {
-      const files = (await list.json()).filter((f) => f.name.endsWith(".md")).map((f) => f.name).sort().reverse();
-      if (files.length) {
-        const raw = await fetch(`https://api.github.com/repos/Ruchit1395/signal/contents/digests/${files[0]}`, {
-          headers: { Authorization: `token ${token}`, "User-Agent": "signal-bridge", Accept: "application/vnd.github.raw" },
-        });
-        if (raw.ok) return { text: await raw.text(), date: dateOf(files[0]) };
-      }
-    }
-  }
-  return { text: null, date: null };
+for (const k of ["GEMINI_API_KEY", "TWITTERAPIIO_KEY"]) {
+  if (!process.env[k]) { console.error(`${k} missing`); process.exit(1); }
 }
 
-// Idempotency: if today's Signal post is already generated, the catch-up run
-// exits without regenerating (avoids overwriting a good morning post).
+// Idempotency: the 11:30 IST retry cron exits if the 09:45 run succeeded.
 const doneMarker = `content-bank/x/${today}/.signal-done`;
 if (existsSync(doneMarker)) { console.log("Signal post already generated today. Nothing to do."); process.exit(0); }
 
-const { text: digestRaw, date: digestDate } = await getDigest();
-if (!digestRaw) { console.error("No Signal digest available. Skipping."); process.exit(0); }
+// ---------- fetch (no LLM) ----------
+// Curated watchlist (from the retired Signal repo's config) + keyword lanes
+// for voices outside it.
+const WATCHLIST = [
+  "AnthropicAI", "alexalbert__", "felixrieseberg", "steipete", "trq212",
+  "OfficialLoganK", "_catwu", "bcherny", "Saboo_Shubham_", "unwind_ai_",
+  "swyx", "danshipper", "MatthewBerman", "karpathy",
+  "lennysan", "petergyang", "PawelHuryn", "ttorres", "clairevo", "ant_murphy", "shl",
+  "CoFoundersNik", "boringmarketer", "starter_story", "iamgdsa", "carlvellotti",
+  "hnshah", "sahilypatel", "gregisenberg", "arvidkahl", "levelsio",
+];
+const LANES = [
+  '("AI agents" OR agentic OR "agent harness" OR evals) min_faves:200',
+  '("Claude Code" OR Cursor OR "coding agent") (workflow OR shipped OR built) min_faves:150',
+];
 
-// Freshness guard: never build "today's timely post" from a stale digest.
-// If the newest digest is not today's (Signal ran late or failed), skip and
-// let the 11:30 IST catch-up run try again; if still stale then, bank content
-// stays. Only enforced when we know the digest's date (token/API path).
-if (digestDate && digestDate !== today) {
-  console.log(`Newest Signal digest is ${digestDate}, not ${today} (Signal late or failed). Skipping to avoid posting stale trends; catch-up run will retry.`);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const H = { "X-API-Key": process.env.TWITTERAPIIO_KEY };
+const cutoffMs = Date.now() - 26 * 3600 * 1000; // ~last day, small buffer
+
+async function fetchJson(url) {
+  try {
+    const r = await fetch(url, { headers: H, signal: AbortSignal.timeout(30000) });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+const candidates = new Map();
+function consider(t, source) {
+  const a = t.author ?? {};
+  const handle = a.userName ?? "";
+  if (!handle || handle.toLowerCase() === "ruchitdalwadi") return;
+  if (t.isReply) return;
+  const created = t.createdAt ? new Date(t.createdAt).getTime() : 0;
+  if (!created || created < cutoffMs) return;
+  const text = t.text ?? "";
+  if (text.length < 60) return;
+  if (/(airdrop|giveaway|\$[A-Z]{2,5}\b|bitcoin|solana|stablecoin|web3|nft)/i.test(text)) return;
+  const urls = (text.match(/https?:\/\/\S+/g) ?? []).slice(0, 3);
+  candidates.set(t.id, {
+    id: t.id,
+    author: handle,
+    followers: a.followers ?? 0,
+    views: t.viewCount ?? 0,
+    likes: t.likeCount ?? 0,
+    text: text.slice(0, 500),
+    urls,
+    source,
+    score: (t.viewCount ?? 0) + (t.likeCount ?? 0) * 100,
+  });
+}
+
+console.log(`Fetching ${WATCHLIST.length} watchlist authors + ${LANES.length} lanes...`);
+for (const h of WATCHLIST) {
+  const d = await fetchJson(`https://api.twitterapi.io/twitter/user/last_tweets?userName=${h}`);
+  for (const t of (d?.data?.tweets ?? d?.tweets ?? []).slice(0, 10)) consider(t, "watchlist");
+  await sleep(1100);
+}
+for (const q of LANES) {
+  const d = await fetchJson(
+    `https://api.twitterapi.io/twitter/tweet/advanced_search?queryType=Top&query=${encodeURIComponent(q + " -filter:replies lang:en within_time:24h")}`,
+  );
+  for (const t of (d?.tweets ?? []).slice(0, 10)) consider(t, "lane");
+  await sleep(1100);
+}
+
+// ---------- rank (no LLM) ----------
+// Watchlist posts get a boost: curated voices beat raw virality for our TG.
+const ranked = [...candidates.values()]
+  .map((c) => ({ ...c, rank: c.score * (c.source === "watchlist" ? 3 : 1) }))
+  .sort((a, b) => b.rank - a.rank)
+  .slice(0, 15);
+
+if (ranked.length < 3) {
+  console.log(`Only ${ranked.length} candidates fetched (API throttled?). Falling back to bank content.`);
   process.exit(0);
 }
+console.log(`${candidates.size} candidates, top ${ranked.length} kept. Best: @${ranked[0].author} (${ranked[0].views} views)`);
 
-// Strip the digest to PUBLIC trend facts only. The digest interleaves public
-// facts ("What:") with Ruchit's private framing ("Why it matters to you:",
-// "Apply (for your ... goal):"). Those private sections leak job-hunt and
-// side-project context into public posts, so we keep only the section titles,
-// the "What:" facts, and the "Worth a look" items.
-function publicFactsOnly(md) {
-  const lines = md.split("\n");
-  const kept = [];
-  let inWorthALook = false;
-  for (const line of lines) {
-    const t = line.trim();
-    if (/^##\s+Worth a look/i.test(t)) { inWorthALook = true; kept.push(line); continue; }
-    if (/^##\s/.test(t) && !/worth a look/i.test(t)) inWorthALook = false;
-    if (/^###\s/.test(t)) { kept.push(line); continue; }                 // trend titles
-    if (/^[-*]\s*\*\*What:\*\*/i.test(t)) { kept.push(line); continue; }      // the public fact
-    if (/^[-*]\s*\*\*Practical:\*\*/i.test(t)) { kept.push(line); continue; } // the builder angle (new digest format)
-    if (inWorthALook && /^\*/.test(t)) { kept.push(line); continue; }     // outside-watchlist finds
-  }
-  const out = kept.join("\n").trim();
-  // guard: if stripping produced too little, fall back to the raw digest head
-  return out.length > 200 ? out : md.slice(0, 4000);
+// ---------- dedupe context ----------
+let recentTopics = [];
+if (existsSync(TOPICS_LOG)) {
+  recentTopics = readFileSync(TOPICS_LOG, "utf8").trim().split("\n").slice(1)
+    .slice(-7).map((r) => r.split(",").slice(1, 2)[0]).filter(Boolean);
+} else {
+  writeFileSync(TOPICS_LOG, "date,topic,source_post_id,source_author\n");
 }
-const digest = publicFactsOnly(digestRaw);
 
 const contentRules = readFileSync(`${DIR}/CONTENT_RULES.md`, "utf8");
 const hookPlaybook = existsSync(`${DIR}/HOOK_PLAYBOOK.md`) ? readFileSync(`${DIR}/HOOK_PLAYBOOK.md`, "utf8") : "";
 
-// ---------- generate ----------
-const SYSTEM = `You turn a private trend-intelligence digest into PUBLIC social posts for Ruchit Dalwadi, an operator and teacher in AI, startups, and product (a decade shipping across six industries).
+// ---------- generate: ONE call (select + read source + write both posts) ----------
+const SYSTEM = `You turn today's live X trend candidates into PUBLIC social posts for Ruchit Dalwadi, an operator and teacher in AI, startups, and product (a decade shipping across six industries).
 
 ${contentRules}
 
 ${hookPlaybook.slice(0, 3000)}
 
-CRITICAL translation rules:
-- The digest is Ruchit's PRIVATE research, framed as "how to apply this to your work" (job applications, his side projects like Nestwise/Bloom/ThreadSweep, his interviews). NONE of that private framing goes public. Never mention job applications, interviews, specific personal side-project names, or "your work".
-- Prefer insights that are SAFE TO ASSERT: a specific result or number (e.g. an agent resolving 32 of 34 support tickets autonomously), a named technique or pattern (a "test backwards from the customer bug" loop; a startup-handshake that fixes agent amnesia), or a concrete capability. These are techniques you can teach with confidence.
-- AVOID asserting a company's business, pricing, or strategy decision as fact (e.g. "Anthropic unbundled X from Y"). The digest is a second-hand summary of a single tweet; if the claim is wrong, it damages credibility. If the strongest insight is company news, either frame it as "the conversation this week around X" without asserting the underlying fact, or skip it for a technique insight instead.
-- AVOID abstract/meta posts about "signal vs noise", pipeline architecture, or "how to filter information" - those read as generic.
-- PRACTICAL IS THE WHOLE POINT. Every post must answer, concretely: what does this mean for someone building or shipping right now? How does it make their work faster, higher quality, or cheaper? What do they actually DO with it on Monday, and what do they gain? Not "this is interesting" but "here is the move and here is the payoff." Name the concrete gain where you can (hours saved, fewer regressions, tickets deflected, a step removed from a workflow).
-- Tie it to what is going on this week (the digest is today's trend feed), but the value is always the practical application, not the news itself.
-- Ground every post in that real specific receipt. A busy founder should think "only someone paying attention this week would know that, and I know exactly what to do about it now."
-- Do NOT include URLs or @handles in the post body (X charges 13x for link posts and suppresses them). You may reference "someone shipped X" without linking.
-- X post: 500-1200 chars, long-form, hook on line 1, one concrete takeaway or step. LinkedIn post: 500-1400 chars, narrative, short paragraphs, first 2 lines earn the click.
-- Both must pass the six-axis quality gate. Zero em dashes. No banned openers (Absolutely/Most people/Stop doing/This/Great). Different shape from each other.
+YOUR JOB, in one pass:
+1. From the candidate posts, pick the SINGLE most valuable insight for an audience of founders, PMs, operators, and AI builders.
+2. If the chosen post links to a source, fetch and read it (you have the url_context tool) and ground the posts in the source's actual facts and numbers.
+3. Write ONE X post and ONE LinkedIn post about it.
 
-Output STRICT JSON only: {"topic": "<one line: which insight you chose>", "x": "<the X post>", "li": "<the LinkedIn post>"}`;
+Selection rules:
+- Prefer insights that are SAFE TO ASSERT: a specific result or number, a named technique or pattern, a concrete capability someone shipped. These are things you can teach with confidence.
+- AVOID asserting a company's business, pricing, or strategy decision as fact from a single tweet; if the strongest item is company news, frame it as "the conversation this week around X" or pick a different insight.
+- AVOID abstract/meta topics (signal vs noise, how to filter information).
+- Skip anything resembling these recently-used topics: ${recentTopics.join(" | ") || "none yet"}.
+
+Writing rules:
+- PRACTICAL IS THE WHOLE POINT. Concretely: what does this mean for someone building or shipping right now? What do they DO with it on Monday, and what do they gain (hours saved, fewer regressions, tickets deflected, a step removed)? The news is the hook; the practical move is the value.
+- Ground in the real receipt: the actual numbers and facts from the post/source. A busy founder should think "only someone paying attention this week would know that, and I know exactly what to do about it now."
+- No URLs or @handles in post bodies. You may say "someone shipped X" without linking.
+- X post: 500-1200 chars, long-form, hook on line 1. LinkedIn post: 500-1400 chars, narrative, short paragraphs, first 2 lines earn the click. Different shape from each other.
+- Zero em dashes. No banned openers or scaffolds (see rules above). No hype, no engagement bait.
+
+Output STRICT JSON only, no markdown fences:
+{"topic": "<one line: the insight you chose>", "source_id": "<id of the chosen candidate post>", "x": "<the X post>", "li": "<the LinkedIn post>"}`;
+
+function candidateBlock(c, i) {
+  return `[${i + 1}] id=${c.id} @${c.author} (${c.followers.toLocaleString()} followers, ${c.views.toLocaleString()} views, ${c.likes} likes, ${c.source})
+"${c.text}"${c.urls.length ? "\nlinks: " + c.urls.join(" ") : ""}`;
+}
 
 async function generate(attempt = 0, lastFail = "") {
   const hint = lastFail
-    ? `\n\nYour previous attempt was REJECTED for: ${lastFail}. Write a completely different post that fixes every one of those. Pick a different insight if needed.`
+    ? `\n\nYour previous attempt was REJECTED for: ${lastFail}. Fix every one of those; pick a different insight if needed.`
     : "";
   const res = await fetch(
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + process.env.GEMINI_API_KEY,
@@ -139,8 +178,12 @@ async function generate(attempt = 0, lastFail = "") {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: SYSTEM }] },
-        contents: [{ parts: [{ text: `Today's Signal digest (public trend facts only):\n\n${digest.slice(0, 12000)}${hint}` }] }],
-        generationConfig: { maxOutputTokens: 4096, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 }, responseMimeType: "application/json" },
+        contents: [{ parts: [{ text: `Today's candidates (live from X, last 24h):\n\n${ranked.map(candidateBlock).join("\n\n")}${hint}` }] }],
+        // url_context lets the model fetch the chosen post's linked source.
+        // Tool use is incompatible with responseMimeType:application/json,
+        // so we parse JSON out of the text response instead.
+        tools: [{ url_context: {} }],
+        generationConfig: { maxOutputTokens: 4096, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 } },
       }),
     },
   );
@@ -148,7 +191,13 @@ async function generate(attempt = 0, lastFail = "") {
   const data = await res.json();
   const txt = (data.candidates?.[0]?.content?.parts ?? []).map((p) => p.text ?? "").join("").trim();
   let obj;
-  try { obj = JSON.parse(txt); } catch { if (attempt < 4) return generate(attempt + 1, "invalid JSON output"); throw new Error("bad JSON from model"); }
+  try {
+    const m = txt.match(/\{[\s\S]*\}/);
+    obj = JSON.parse(m ? m[0] : txt);
+  } catch {
+    if (attempt < 4) return generate(attempt + 1, "output was not valid JSON");
+    throw new Error("bad JSON from model");
+  }
   const clean = (s) => (s ?? "").replace(/\s*[—–]\s*/g, ", ").trim();
   obj.x = clean(obj.x); obj.li = clean(obj.li);
   const reasons = (s, min, max) => {
@@ -164,7 +213,7 @@ async function generate(attempt = 0, lastFail = "") {
     if (/\bthe real (game|problem|question) is\b/i.test(s)) r.push("real-X scaffold");
     if (/(game[- ]changer|mind[- ]blowing|revolutionary|🚀|game changer)/i.test(s)) r.push("hype word");
     if (/\b(agree\?|thoughts\?|repost)/i.test(s)) r.push("engagement bait");
-    // private-context leak: names and framings that must never go public
+    if (/https?:\/\/|@\w+/.test(s)) r.push("url or handle in body");
     if (/\b(nestwise|bloom|threadsweep|career-ops|constructor\.io|constructor trial|anthropic interview|job application|n8n|tally form|supabase|your goals|my goals|micro-saas portfolio)\b/i.test(s)) r.push("private-context leak");
     return r;
   };
@@ -180,14 +229,13 @@ let out;
 try {
   out = await generate();
 } catch (err) {
-  // A gate failure is SAFE: we simply don't produce a Signal post today, and
-  // the evergreen content bank stays as the fallback. Never exit non-zero
-  // (that would fail the workflow); log and skip.
   console.log(`No clean Signal post today (${String(err.message).slice(0, 160)}). Falling back to bank content.`);
   process.exit(0);
 }
 
-console.log(`\n=== TOPIC ===\n${out.topic}\n`);
+const chosen = ranked.find((c) => c.id === String(out.source_id)) ?? ranked[0];
+console.log(`\n=== TOPIC ===\n${out.topic}`);
+console.log(`=== SOURCE ===\n@${chosen.author}: https://x.com/${chosen.author}/status/${chosen.id}\n`);
 console.log(`=== X (${out.x.length} chars) ===\n${out.x}\n`);
 console.log(`=== LINKEDIN (${out.li.length} chars) ===\n${out.li}\n`);
 
@@ -196,6 +244,7 @@ if (WRITE) {
   mkdirSync(`content-bank/li/${today}`, { recursive: true });
   writeFileSync(`content-bank/x/${today}/slot3.txt`, out.x + "\n");
   writeFileSync(`content-bank/li/${today}/post.md`, out.li + "\n");
-  writeFileSync(doneMarker, `${new Date().toISOString()} | ${out.topic}\n`); // catch-up idempotency
+  writeFileSync(doneMarker, `${new Date().toISOString()} | ${out.topic}\n`);
+  appendFileSync(TOPICS_LOG, `${today},"${String(out.topic).replace(/"/g, "'")}",${chosen.id},${chosen.author}\n`);
   console.log(`Wrote content-bank/x/${today}/slot3.txt and content-bank/li/${today}/post.md`);
 }
