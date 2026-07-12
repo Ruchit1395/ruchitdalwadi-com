@@ -1,69 +1,69 @@
 # Target 200 — accounts to engage for visibility
 
-Generated 2026-07-05 from 7-day engagement data across 6 lanes. Refreshed weekly (Sundays).
+Generated 2026-07-12 from 7-day engagement data across 6 lanes. Refreshed weekly (Sundays).
 
 How to use: these are the rooms for browser comment sessions (X API blocks cold replies, so this list powers laptop-on batches and manual engagement). Prioritize **mid** and **rising** tiers: comments there actually get seen. Mega accounts are context, not primary targets.
 
 | Tier | Count | Comment strategy |
 |---|---:|---|
-| rising (1k-10k followers) | 84 | Early, substantive comments build peer relationships |
-| mid (10k-100k) | 95 | The sweet spot: real reach, readable comment sections |
-| large (100k-500k) | 20 | Comment within 30 min of their post or skip |
+| rising (1k-10k followers) | 72 | Early, substantive comments build peer relationships |
+| mid (10k-100k) | 108 | The sweet spot: real reach, readable comment sections |
+| large (100k-500k) | 19 | Comment within 30 min of their post or skip |
 | mega (500k+) | 1 | Only when the post is <1h old and directly in our lane |
 
 ## Top 50 by score
 
 | # | Handle | Followers | Tier | Avg views | Avg likes | Lanes |
 |---:|---|---:|---|---:|---:|---|
-| 1 | @pankajkumar_dev | 12,000 | mid | 43,798 | 374 | models-news |
-| 2 | @itspriionly | 33,915 | mid | 51,536 | 468 | ai-teaching |
-| 3 | @araseb_ | 2,777 | rising | 1,675,866 | 8,306 | coding-ai |
-| 4 | @0xlelouch_ | 23,328 | mid | 31,339 | 563 | ai-teaching |
-| 5 | @synthwavedd | 20,088 | mid | 614,755 | 2,326 | models-news |
-| 6 | @_new_empire_ | 1,829 | rising | 283,303 | 9,408 | pm-product |
-| 7 | @jawwwn_ | 27,230 | mid | 233,353 | 1,797 | models-news |
-| 8 | @DivyanshT91162 | 8,696 | rising | 8,440 | 115 | agents-evals, ai-teaching, models-news |
-| 9 | @israfill | 10,176 | mid | 192,694 | 890 | coding-ai |
-| 10 | @firesidealpha | 1,912 | rising | 32,582 | 94 | startups-gtm, models-news |
-| 11 | @_avichawla | 71,493 | mid | 90,223 | 802 | ai-teaching, models-news |
-| 12 | @pplsartofwar | 28,044 | mid | 16,404 | 445 | pm-product, startups-gtm |
-| 13 | @allen_lattimer | 13,044 | mid | 67,473 | 696 | coding-ai |
-| 14 | @kirillk_web3 | 34,797 | mid | 88,470 | 394 | coding-ai, startups-gtm |
-| 15 | @romanchernin | 12,520 | mid | 67,573 | 595 | pm-product |
-| 16 | @OInvests | 2,325 | rising | 8,366 | 89 | pm-product |
-| 17 | @WillPapper | 23,186 | mid | 69,498 | 663 | pm-product |
-| 18 | @Av1dlive | 17,211 | mid | 41,257 | 237 | coding-ai, ai-teaching |
-| 19 | @astropol0 | 2,714 | rising | 94,620 | 1,001 | models-news |
-| 20 | @TheClubJunto | 14,667 | mid | 72,356 | 458 | models-news |
-| 21 | @justalesky | 3,100 | rising | 20,144 | 2,191 | models-news |
-| 22 | @expertwith_AI | 80,750 | mid | 243,190 | 1,500 | ai-teaching |
-| 23 | @ArchiveExplorer | 10,015 | mid | 34,591 | 329 | models-news |
-| 24 | @starmexxx | 8,059 | rising | 20,155 | 144 | ai-teaching, models-news |
-| 25 | @chinoalemano | 7,441 | rising | 6,469 | 65 | startups-gtm |
-| 26 | @bradshannon | 2,165 | rising | 3,072 | 69 | pm-product |
-| 27 | @caboy21 | 1,165 | rising | 867 | 133 | agents-evals, ai-teaching |
-| 28 | @pierreeliottlal | 7,992 | rising | 39,347 | 457 | startups-gtm |
-| 29 | @hqmank | 8,078 | rising | 50,374 | 386 | models-news |
-| 30 | @zeuuss_01 | 29,840 | mid | 109,128 | 590 | coding-ai |
-| 31 | @ChaitanyaOnTech | 4,561 | rising | 8,259 | 92 | pm-product, startups-gtm |
-| 32 | @Tau_CoreTeam | 15,024 | mid | 16,861 | 390 | models-news |
-| 33 | @undefinedKi | 9,988 | rising | 13,050 | 87 | coding-ai, ai-teaching, models-news |
-| 34 | @elder_plinius | 217,710 | large | 91,518 | 1,760 | coding-ai, models-news |
-| 35 | @PodcastAlphaX | 12,057 | mid | 49,391 | 285 | models-news |
-| 36 | @HBO_data | 19,183 | mid | 1,983 | 267 | coding-ai, models-news |
-| 37 | @Dilesh2004 | 2,006 | rising | 823 | 64 | agents-evals, ai-teaching |
-| 38 | @Suzzy0310 | 9,333 | rising | 22,193 | 262 | pm-product |
-| 39 | @Sprytixl | 4,481 | rising | 22,385 | 172 | ai-teaching |
-| 40 | @suraj_sharma14 | 7,663 | rising | 9,701 | 246 | ai-teaching |
-| 41 | @jiratickets | 28,294 | mid | 34,386 | 481 | pm-product |
-| 42 | @Alacritic_Super | 3,633 | rising | 8,677 | 235 | ai-teaching |
-| 43 | @DualBladesSkill | 3,134 | rising | 18,443 | 150 | coding-ai |
-| 44 | @StudentOffersHQ | 4,850 | rising | 11,099 | 193 | coding-ai |
-| 45 | @xuwu | 3,000 | rising | 14,089 | 159 | pm-product |
-| 46 | @shengkun_ye | 2,039 | rising | 11,244 | 176 | startups-gtm |
-| 47 | @IBuzovskyi | 3,052 | rising | 13,313 | 121 | models-news |
-| 48 | @0xBeaconLayer | 109,325 | large | 31,963 | 147 | startups-gtm |
-| 49 | @phosphenq | 13,308 | mid | 8,347 | 110 | coding-ai, ai-teaching |
-| 50 | @0xBlockLayer | 113,535 | large | 35,543 | 139 | startups-gtm |
+| 1 | @jamonholmgren | 33,872 | mid | 136,298 | 1,979 | coding-ai, models-news |
+| 2 | @itspriionly | 35,326 | mid | 26,126 | 393 | ai-teaching |
+| 3 | @aakashgupta | 289,870 | large | 2,198,528 | 5,689 | startups-gtm, models-news |
+| 4 | @asharoraa | 54,806 | mid | 165,166 | 939 | agents-evals, pm-product |
+| 5 | @expertwith_AI | 87,156 | mid | 355,513 | 3,007 | ai-teaching |
+| 6 | @Mr_Salio | 1,248 | rising | 18,821 | 226 | models-news |
+| 7 | @Dipanshu_AI | 10,920 | mid | 245,350 | 1,643 | ai-teaching |
+| 8 | @thsottiaux | 195,962 | large | 1,945,980 | 13,519 | models-news |
+| 9 | @mikenevermiss | 14,265 | mid | 12,257 | 133 | agents-evals, coding-ai, ai-teaching |
+| 10 | @luke_metro | 17,936 | mid | 85,143 | 1,863 | models-news |
+| 11 | @muratcan | 21,800 | mid | 115,974 | 1,282 | ai-teaching |
+| 12 | @im_dimneo | 9,150 | rising | 914,034 | 393 | coding-ai |
+| 13 | @kirillk_web3 | 35,165 | mid | 99,671 | 170 | coding-ai, startups-gtm, models-news |
+| 14 | @Tanaypawar27 | 2,989 | rising | 2,962 | 106 | coding-ai, ai-teaching |
+| 15 | @gabepereyra | 9,658 | rising | 300,369 | 339 | pm-product |
+| 16 | @PlumbNick | 18,471 | mid | 9,936 | 891 | pm-product |
+| 17 | @radleftreceipts | 50,473 | mid | 18,635 | 1,265 | pm-product |
+| 18 | @FuturesFarming | 12,518 | mid | 13,390 | 646 | agents-evals |
+| 19 | @Nekt_0 | 3,133 | rising | 5,194 | 85 | pm-product, ai-teaching |
+| 20 | @buezeofobuike | 5,865 | rising | 14,521 | 1,382 | ai-teaching |
+| 21 | @ridwan_on_x | 4,387 | rising | 29,330 | 842 | ai-teaching |
+| 22 | @wobbuuu | 16,613 | mid | 6,156 | 614 | coding-ai |
+| 23 | @alex_verem | 96,890 | mid | 74,914 | 533 | agents-evals, models-news |
+| 24 | @BrendanFoody | 24,113 | mid | 49,248 | 528 | startups-gtm |
+| 25 | @xadisingh | 1,459 | rising | 44,222 | 309 | coding-ai |
+| 26 | @venusianpisces | 4,681 | rising | 15,714 | 398 | models-news |
+| 27 | @adocomplete | 32,313 | mid | 51,645 | 588 | models-news |
+| 28 | @morganlinton | 41,122 | mid | 28,121 | 282 | coding-ai, models-news |
+| 29 | @kimmonismus | 124,871 | large | 121,831 | 963 | startups-gtm, models-news |
+| 30 | @suraj_sharma14 | 7,830 | rising | 5,837 | 125 | startups-gtm, ai-teaching |
+| 31 | @whisper_alpha | 1,064 | rising | 55,082 | 104 | pm-product |
+| 32 | @fluixoo | 2,772 | rising | 6,345 | 317 | models-news |
+| 33 | @genzcorporation | 8,104 | rising | 9,900 | 236 | pm-product |
+| 34 | @CryptoTweets | 14,165 | mid | 10,206 | 126 | agents-evals |
+| 35 | @chewadot | 2,866 | rising | 20,316 | 119 | coding-ai |
+| 36 | @stalkermustang | 3,241 | rising | 19,069 | 116 | models-news |
+| 37 | @joelaremagic | 5,319 | rising | 6,867 | 196 | pm-product |
+| 38 | @ArtificialAnlys | 111,032 | large | 96,046 | 687 | models-news |
+| 39 | @levikmunneke | 5,989 | rising | 5,484 | 85 | coding-ai, startups-gtm |
+| 40 | @Mohiniuni | 6,984 | rising | 1,706 | 64 | pm-product, ai-teaching |
+| 41 | @mweinbach | 296,885 | large | 19,860 | 216 | coding-ai, ai-teaching, models-news |
+| 42 | @Whats_AI | 10,579 | mid | 23,852 | 194 | models-news |
+| 43 | @KylaSpiritual_ | 3,539 | rising | 6,078 | 127 | models-news |
+| 44 | @safishamsii | 4,058 | rising | 8,875 | 117 | startups-gtm |
+| 45 | @pham_blnh | 3,172 | rising | 5,953 | 114 | agents-evals |
+| 46 | @Baxate | 15,633 | mid | 14,441 | 260 | coding-ai |
+| 47 | @rabbit_hmi | 65,815 | mid | 335,804 | 511 | models-news |
+| 48 | @hackerrank | 96,884 | mid | 84,216 | 788 | pm-product |
+| 49 | @RoundtableSpace | 256,412 | large | 44,582 | 98 | agents-evals, coding-ai, startups-gtm |
+| 50 | @imsalariasahil | 8,446 | rising | 2,194 | 102 | ai-teaching |
 
 Full list: `target-accounts.csv` (200 rows).
