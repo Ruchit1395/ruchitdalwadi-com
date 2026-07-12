@@ -34,16 +34,19 @@ const today = new Date(Date.now() + 330 * 60000).toISOString().slice(0, 10);
 if (!process.env.GEMINI_API_KEY) { console.error("GEMINI_API_KEY missing"); process.exit(1); }
 
 // ---------- get the digest ----------
+// Returns { text, date } where date is the digest's YYYY-MM-DD (from its
+// filename) when known, or null for local/env sources without a dated name.
+const dateOf = (name) => (name.match(/(\d{4}-\d{2}-\d{2})/) || [])[1] || null;
+
 async function getDigest() {
-  if (process.env.SIGNAL_DIGEST_TEXT) return process.env.SIGNAL_DIGEST_TEXT;
+  if (process.env.SIGNAL_DIGEST_TEXT) return { text: process.env.SIGNAL_DIGEST_TEXT, date: null };
   const sibling = path.resolve(REPO, "../signal/digests");
   if (existsSync(sibling)) {
     const files = readdirSync(sibling).filter((f) => f.endsWith(".md")).sort().reverse();
-    if (files.length) return readFileSync(path.join(sibling, files[0]), "utf8");
+    if (files.length) return { text: readFileSync(path.join(sibling, files[0]), "utf8"), date: dateOf(files[0]) };
   }
   const token = process.env.SIGNAL_REPO_TOKEN;
   if (token) {
-    // find newest digest via the contents API, then fetch raw
     const list = await fetch("https://api.github.com/repos/Ruchit1395/signal/contents/digests", {
       headers: { Authorization: `token ${token}`, "User-Agent": "signal-bridge" },
     });
@@ -53,15 +56,29 @@ async function getDigest() {
         const raw = await fetch(`https://api.github.com/repos/Ruchit1395/signal/contents/digests/${files[0]}`, {
           headers: { Authorization: `token ${token}`, "User-Agent": "signal-bridge", Accept: "application/vnd.github.raw" },
         });
-        if (raw.ok) return raw.text();
+        if (raw.ok) return { text: await raw.text(), date: dateOf(files[0]) };
       }
     }
   }
-  return null;
+  return { text: null, date: null };
 }
 
-const digestRaw = await getDigest();
+// Idempotency: if today's Signal post is already generated, the catch-up run
+// exits without regenerating (avoids overwriting a good morning post).
+const doneMarker = `content-bank/x/${today}/.signal-done`;
+if (existsSync(doneMarker)) { console.log("Signal post already generated today. Nothing to do."); process.exit(0); }
+
+const { text: digestRaw, date: digestDate } = await getDigest();
 if (!digestRaw) { console.error("No Signal digest available. Skipping."); process.exit(0); }
+
+// Freshness guard: never build "today's timely post" from a stale digest.
+// If the newest digest is not today's (Signal ran late or failed), skip and
+// let the 11:30 IST catch-up run try again; if still stale then, bank content
+// stays. Only enforced when we know the digest's date (token/API path).
+if (digestDate && digestDate !== today) {
+  console.log(`Newest Signal digest is ${digestDate}, not ${today} (Signal late or failed). Skipping to avoid posting stale trends; catch-up run will retry.`);
+  process.exit(0);
+}
 
 // Strip the digest to PUBLIC trend facts only. The digest interleaves public
 // facts ("What:") with Ruchit's private framing ("Why it matters to you:",
@@ -100,8 +117,10 @@ CRITICAL translation rules:
 - The digest is Ruchit's PRIVATE research, framed as "how to apply this to your work" (job applications, his side projects like Nestwise/Bloom/ThreadSweep, his interviews). NONE of that private framing goes public. Never mention job applications, interviews, specific personal side-project names, or "your work".
 - Prefer insights that are SAFE TO ASSERT: a specific result or number (e.g. an agent resolving 32 of 34 support tickets autonomously), a named technique or pattern (a "test backwards from the customer bug" loop; a startup-handshake that fixes agent amnesia), or a concrete capability. These are techniques you can teach with confidence.
 - AVOID asserting a company's business, pricing, or strategy decision as fact (e.g. "Anthropic unbundled X from Y"). The digest is a second-hand summary of a single tweet; if the claim is wrong, it damages credibility. If the strongest insight is company news, either frame it as "the conversation this week around X" without asserting the underlying fact, or skip it for a technique insight instead.
-- AVOID abstract/meta posts about "signal vs noise", pipeline architecture, or "how to filter information" - those read as generic. Write Ruchit's OPERATOR POV on the concrete technique: what it means for people building AI products, what to actually do, where the trap is.
-- Ground every post in that real specific receipt. A busy founder should think "only someone paying attention this week would know that."
+- AVOID abstract/meta posts about "signal vs noise", pipeline architecture, or "how to filter information" - those read as generic.
+- PRACTICAL IS THE WHOLE POINT. Every post must answer, concretely: what does this mean for someone building or shipping right now? How does it make their work faster, higher quality, or cheaper? What do they actually DO with it on Monday, and what do they gain? Not "this is interesting" but "here is the move and here is the payoff." Name the concrete gain where you can (hours saved, fewer regressions, tickets deflected, a step removed from a workflow).
+- Tie it to what is going on this week (the digest is today's trend feed), but the value is always the practical application, not the news itself.
+- Ground every post in that real specific receipt. A busy founder should think "only someone paying attention this week would know that, and I know exactly what to do about it now."
 - Do NOT include URLs or @handles in the post body (X charges 13x for link posts and suppresses them). You may reference "someone shipped X" without linking.
 - X post: 500-1200 chars, long-form, hook on line 1, one concrete takeaway or step. LinkedIn post: 500-1400 chars, narrative, short paragraphs, first 2 lines earn the click.
 - Both must pass the six-axis quality gate. Zero em dashes. No banned openers (Absolutely/Most people/Stop doing/This/Great). Different shape from each other.
@@ -175,7 +194,7 @@ if (WRITE) {
   mkdirSync(`content-bank/x/${today}`, { recursive: true });
   mkdirSync(`content-bank/li/${today}`, { recursive: true });
   writeFileSync(`content-bank/x/${today}/slot3.txt`, out.x + "\n");
-  // signal post replaces any thread for slot3 (thread files live at slot2)
   writeFileSync(`content-bank/li/${today}/post.md`, out.li + "\n");
+  writeFileSync(doneMarker, `${new Date().toISOString()} | ${out.topic}\n`); // catch-up idempotency
   console.log(`Wrote content-bank/x/${today}/slot3.txt and content-bank/li/${today}/post.md`);
 }

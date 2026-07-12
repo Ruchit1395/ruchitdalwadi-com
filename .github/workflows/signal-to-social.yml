@@ -3,6 +3,7 @@ name: Signal to social
 on:
   schedule:
     - cron: "15 4 * * *" # 09:45 IST — after Signal's 03:00 UTC (08:30 IST) run
+    - cron: "0 6 * * *"  # 11:30 IST — catch-up if Signal's cron fired late
   workflow_dispatch: {}
 
 permissions:
