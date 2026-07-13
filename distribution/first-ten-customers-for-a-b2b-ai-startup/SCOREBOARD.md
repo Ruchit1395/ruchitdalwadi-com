@@ -1,30 +1,30 @@
 # Campaign Scoreboard
 
-Updated: 2026-07-12 (auto — daily 13:00 IST)
+Updated: 2026-07-13 (auto — daily 13:00 IST)
 
 ## Totals vs target
 
-| Platform | Impressions | Target | Progress | Needed/day (7d left) |
+| Platform | Impressions | Target | Progress | Needed/day (6d left) |
 |---|---:|---:|---:|---:|
-| X | 4,765 | 100,000 | 4.8% | 13,605 |
-| LinkedIn (manual) | 0 | 100,000 | 0.0% | 14,286 |
+| X | 8,092 | 100,000 | 8.1% | 15,318 |
+| LinkedIn (manual) | 0 | 100,000 | 0.0% | 16,667 |
 
-X day-over-day: **+167** · engagement: 20 likes, 13 replies across 107 tracked posts.
+X day-over-day: **+3,327** · engagement: 25 likes, 15 replies across 140 tracked posts.
 
 ## Top X posts
 
 | Views | Likes | Replies | URL |
 |---:|---:|---:|---|
 | 686 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071196625431892466 |
-| 402 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
+| 662 | 1 | 1 | https://x.com/ruchitdalwadi/status/2075820075471519779 |
+| 403 | 1 | 0 | https://x.com/ruchitdalwadi/status/2072583182986412152 |
 | 306 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074502458190303450 |
-| 210 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
-| 114 | 2 | 2 | https://x.com/ruchitdalwadi/status/2068304482589650946 |
-| 104 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559216958972299 |
-| 103 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072583421755605027 |
-| 97 | 0 | 0 | https://x.com/ruchitdalwadi/status/2072393680334541257 |
-| 96 | 0 | 0 | https://x.com/ruchitdalwadi/status/2069334741413961784 |
-| 90 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074559796389487032 |
+| 281 | 0 | 0 | https://x.com/ruchitdalwadi/status/2075289936312549401 |
+| 262 | 0 | 0 | https://x.com/ruchitdalwadi/status/2075486650814304409 |
+| 253 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074837728517361879 |
+| 213 | 0 | 0 | https://x.com/ruchitdalwadi/status/2071456055528452278 |
+| 191 | 0 | 0 | https://x.com/ruchitdalwadi/status/2074881468116201754 |
+| 175 | 0 | 0 | https://x.com/ruchitdalwadi/status/2075529569952800855 |
 
 ## History
 
@@ -40,3 +40,4 @@ X day-over-day: **+167** · engagement: 20 likes, 13 replies across 107 tracked 
 | 2026-07-10 | 4,436 | +94 | 0 |
 | 2026-07-11 | 4,598 | +162 | 0 |
 | 2026-07-12 | 4,765 | +167 | 0 |
+| 2026-07-13 | 8,092 | +3,327 | 0 |
