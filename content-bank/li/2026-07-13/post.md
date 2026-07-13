@@ -1,7 +1,1 @@
-Watch a strong engineer use a coding agent and the session looks almost boring. Before touching the tool, they have written the goal in a sentence, named the command that proves it works, listed which files are in bounds, and said out loud what must not change. Small task in, small verified diff out, repeat.
-
-Now watch a frustrated team: "refactor the service layer" typed into a chat box, a 40-file diff nobody wants to review, then "this tool is not ready."
-
-Same tool. The difference is scoping, and it is the same skill that made people good at delegating to junior engineers. The tools reward it brutally. On one ERP codebase I worked in, tasks that came with a named test merged in under an hour. The vague ones averaged two days and a partial revert.
-
-What is the smallest task you would trust an AI to take end to end today?
+We just saw Grok 4.5 and GPT-5.6 ship in the same week, and the cost difference for agentic tasks is stark. On a benchmark of 8 identical agentic tasks, Grok 4.5 completed them for $2.79, while GPT-5.6 came in at $19.74. This isn't a small delta; it's a 600% difference for the same output. For anyone building and shipping in AI, this is a critical data point. It shifts the conversation from theoretical capabilities to practical deployment, scale, and margins. When you're making decisions about which models to integrate, the cost per task directly impacts your unit economics and overall business feasibility. This kind of efficiency makes a measurable difference in what you can build and how fast you can grow.

@@ -1,9 +1,1 @@
-Stages of an unscoped AI coding session:
-
-1. Hope. The task is described in nine words. What could go wrong.
-2. The diff arrives. 40 files. You were expecting 4.
-3. Bargaining. "Maybe I will just review the important files." There are 40 important files.
-4. Depression. The tool asks if you would like it to also update the README. It already has.
-5. Acceptance. git reset --hard. The commit history never has to know.
-
-I keep a 5-line brief taped to my monitor now. Grief is optional. Scoping is not.
+You're running agentic tasks and watching your token bill. Grok 4.5 just shipped the same week as GPT-5.6, and on a benchmark of 8 agentic tasks, Grok 4.5 cost $2.79. GPT-5.6 cost $19.74. That's a 600% difference for identical task completion. For founders and operators, this isn't about hype; it's about feasibility and margins at scale. When you're shipping, cost efficiency makes a model the #1 practical choice. Don't let the chatter distract you from the numbers.
