@@ -155,6 +155,7 @@ Selection rules:
 Writing rules:
 - PRACTICAL IS THE WHOLE POINT. Concretely: what does this mean for someone building or shipping right now? What do they DO with it on Monday, and what do they gain (hours saved, fewer regressions, tickets deflected, a step removed)? The news is the hook; the practical move is the value.
 - Ground in the real receipt: the actual numbers and facts from the post/source. A busy founder should think "only someone paying attention this week would know that, and I know exactly what to do about it now."
+- NEVER claim someone else's work, benchmark, test, or numbers as Ruchit's own. No "my benchmark", "I tested", "our numbers" for results from the candidates. Attribute neutrally: "a benchmark doing the rounds this week", "someone measured", "the reported numbers". Ruchit only speaks first-person about his own experience (opinions, what he'd do with it).
 - No URLs or @handles in post bodies. You may say "someone shipped X" without linking.
 - X post: 500-1200 chars, long-form, hook on line 1. LinkedIn post: 500-1400 chars, narrative, short paragraphs, first 2 lines earn the click. Different shape from each other.
 - Zero em dashes. No banned openers or scaffolds (see rules above). No hype, no engagement bait.
@@ -214,6 +215,7 @@ async function generate(attempt = 0, lastFail = "") {
     if (/(game[- ]changer|mind[- ]blowing|revolutionary|🚀|game changer)/i.test(s)) r.push("hype word");
     if (/\b(agree\?|thoughts\?|repost)/i.test(s)) r.push("engagement bait");
     if (/https?:\/\/|@\w+/.test(s)) r.push("url or handle in body");
+    if (/\b(my|our) (benchmark|test|tests|experiment|numbers|data|bill|run)\b/i.test(s) || /\bI (tested|benchmarked|measured|ran (it|them|the))\b/i.test(s)) r.push("fabricated first-person claim (results belong to the source, not Ruchit)");
     if (/\b(nestwise|bloom|threadsweep|career-ops|constructor\.io|constructor trial|anthropic interview|job application|n8n|tally form|supabase|your goals|my goals|micro-saas portfolio)\b/i.test(s)) r.push("private-context leak");
     return r;
   };
