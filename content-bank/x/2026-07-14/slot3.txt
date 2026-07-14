@@ -1,7 +1,7 @@
-Start a rejects folder today. The format is one line per entry.
+Your team needs a dashboard, but every static one gathers dust. What if the dashboard could be edited by the model itself?
 
-Every AI output your team throws away goes in: date, task, one sentence on why it was rejected. No screenshots, no ceremony. Ten seconds per reject, or nobody keeps doing it.
+Someone is using Claude Tag to create project dashboards that are editable by other team members or by local Claude Code sessions. This makes artifacts more expressive and flexible.
 
-On Friday, read the folder top to bottom. You are not judging individual failures anymore; you are hunting repeat offenders. Same missing doc three times. Same overstepped decision twice. Same format complaint all week.
+It's a small shift: instead of a fixed dashboard, think of a living document. The model isn't just generating data; it's generating the *interface* for that data.
 
-That ranked list is your system backlog, ordered by frequency for free. Fix only the top item, keep collecting, and next Friday tells you whether the fix worked. That is more feedback than most eval dashboards deliver.
+Actionable: Next time you need a project dashboard, try building it in Claude Tag. Give your model the ability to update it directly. See how much faster you iterate when the UI is as fluid as the data.

@@ -1,9 +1,11 @@
-Before you buy another AI tool, read your trash.
+I've seen many teams struggle with static dashboards. They're built once, then quickly become outdated, leading to a constant scramble for fresh data or new views.
 
-Every rejected AI draft, the summary that missed the point, the reply that cited the wrong policy, carries exact information about what your system lacks. What context was not provided. Which judgment call the model should not have made alone. What the reviewer checked in the 30 seconds before saying no.
+But what if your dashboard wasn't static? What if it could evolve, driven by your AI agent or other team members?
 
-Most teams delete these and go shopping for better prompts.
+One interesting approach I've seen is using Claude Tag to create project dashboards. The key insight here is that these aren't just display tools; they're *editable*. This means other team members, or even local Claude Code sessions, can directly modify them.
 
-Try the opposite for one week. Keep every reject with a one-line reason. On Friday, read them together. When we did this on a pharma documentation workflow, 31 rejects reduced to three root causes: a stale source doc, no example of the approved format, and one decision that should have stayed with the reviewer. Fixing those three cut the reject rate roughly in half within two weeks.
+This makes artifacts much more expressive. Instead of just presenting information, they become interactive canvases for project state.
 
-Your rejects are your requirements. Stop throwing away the spec.
+For operators, this means less time spent on manual updates and more time focused on insights. Imagine your agent not just summarizing project progress, but actively updating the project dashboard itself.
+
+Consider this for your next project: Can you leverage a flexible, AI-editable format like Claude Tag for your dashboards? It could transform how your team interacts with project data.
