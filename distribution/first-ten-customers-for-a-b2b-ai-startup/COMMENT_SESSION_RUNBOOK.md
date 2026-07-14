@@ -13,6 +13,14 @@ On any heartbeat where ALL of these hold:
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
 
+### Standing authorization and recovery
+
+- The user's recurring heartbeat instruction is standing authorization for qualified public cold comments. Do not ask for a second confirmation before submitting a comment that passes this runbook.
+- Treat browser failures as platform-local. After one tab failure, recover with one fresh tab; if that platform fails again, log the platform blocker and immediately continue the other platform or any already-qualified target. Never discard a valid target solely because the other platform is unavailable.
+- Process search lanes one at a time. If a lane or bulk scan times out, record the completed lanes, resume from the first unprocessed lane after recovery, and do not restart the entire session.
+- A valid 1-3-room session is complete enough to post. Post the qualified rooms found, even when the preferred cross-platform mix is unavailable.
+- Do not carry a drafted target across wakeups. If it is stale, promotional, duplicate, or otherwise fails the room gate on recheck, discard it and scout a fresh replacement.
+
 ## Session objective
 
 When the gates pass, the job is to leave qualified comments, not merely to run one scout command.
@@ -111,6 +119,8 @@ For each target:
 3. Screenshot; confirm the text is fully present in the composer.
 4. Find and click the Reply submit button INSIDE the composer (not the reply icon on the post).
 5. 2+ minutes between comments (natural pacing).
+
+When the user has waived screenshots in the thread, verify the exact composer text through the visible DOM or equivalent page state immediately before submission.
 
 If the composer rejects input twice on a target, skip it and continue.
 
