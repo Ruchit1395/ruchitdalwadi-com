@@ -1,7 +1,7 @@
 # Daily operating schedule
 
 Created: 2026-06-22T00:25:09+05:30.
-Updated: 2026-06-30T22:25:00+05:30.
+Updated: 2026-07-14T10:30:00+05:30.
 
 Purpose: daily execution rhythm for the X Premium + LinkedIn reach campaign, now pivoted from narrow first-customer/GTM distribution to broader practical AI teaching.
 
@@ -71,6 +71,12 @@ Keyword lanes:
 - review loops.
 
 ## Daily volume targets
+
+The campaign target is 20 verified cold comments per local day: 10 on X and 10 on LinkedIn. Use 08:00-23:00 IST as the pacing window, which means roughly 4 comments by 11:00, 8 by 14:00, 12 by 18:00, and 20 by 23:00.
+
+When actual verified comments trail the expected pace by 3 or more, enter recovery mode. A new recovery session may start after 10 minutes from the newest verified comment, even when the normal 2.5-hour session cooldown has not elapsed. The per-comment 2-minute spacing, 5-comment session cap, 20-comment daily cap, 10-per-platform caps, room-quality gates, and browser verification rules do not change.
+
+This prevents a low-volume morning from becoming an automatic zero-comment day. Recovery sessions should fill the most lagging platform first, then use the normal mixed-session preference when both platforms have capacity.
 
 ## Strategy update, 2026-06-30: X Premium
 
