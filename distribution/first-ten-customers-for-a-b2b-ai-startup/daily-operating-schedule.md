@@ -208,6 +208,8 @@ The recurring heartbeat runs every 45 minutes across the full day so failed-but-
 
 Token-saving rule: every 45-minute wakeup should inspect `retry-queue.csv` first. If no queued row is due and the wakeup is not near a full scheduled block, browse live platforms only when there is a strong reason: substantive inbound is likely, the browser is already on a high-signal target, or the day is materially behind and the action can be a compact recovery block. Otherwise return quietly.
 
+Discovery rule: when a public action is authorized, use the authenticated home feed as the first discovery surface on both platforms. Inspect visible feed cards before keyword searches. A feed sample that yields enough qualified rooms is sufficient; do not discard those rooms or spend the block searching for theoretically better ones.
+
 Full scheduled check/action slots:
 
 - 10:00 IST
@@ -246,9 +248,9 @@ Actions:
 
 1. Check X and LinkedIn notifications/comments for substantive public inbound.
 2. Reply to campaign-quality inbound before posting new outbound.
-3. Run LinkedIn comment batch 1: 5 sharp comments in medium-hot AI teaching rooms.
+3. Start with feed-first discovery: inspect at least 20 visible LinkedIn posts or 3 screenfuls, then comment in the strongest rooms. Use keyword lanes only if the feed sample is thin.
 4. Publish X native post 1, preferably a short sharp idea.
-5. Run X reply batch 1: 5-6 replies in Premium-priority rooms if browser/time is stable.
+5. Start with feed-first discovery: inspect at least 20 visible X posts or 3 screenfuls, then reply in the strongest rooms. Use the X scout and keyword lanes only if the feed sample is thin.
 6. Log every verified action.
 
 ### Midday block, 14:00-16:00 IST

@@ -46,7 +46,15 @@ Do not lower the quality bar into spam. Do broaden search, rerun scouting with l
 
 ## X session (target 3-5 comments)
 
-### 1. Scout
+### 1. Feed-first discovery (primary)
+
+Start on the authenticated X home feed, not keyword search. Inspect at least 20 visible posts or 3 screenfuls, whichever comes first, scrolling in small increments so each card can be rechecked. Capture the post URL, author, age, likes, replies, and the concrete opening for a useful comment.
+
+Keep feed targets when they are fresh, in-lane, practitioner-authored, and pass the normal engagement and safety gates. Skip reposts without a substantive author comment, ads, company launch promos, engagement farms, banned rooms, duplicates, and authors inside the 3-day cooldown.
+
+If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, composer verification, or twitterapi.io verification.
+
+### 2. Script scout fallback
 From the repo root:
 
 ```bash
@@ -89,7 +97,7 @@ node --env-file=.env.local scripts/scout-comment-targets.mjs 20
 
 5. If direct X search yields only 1-3 qualified rooms, post those and then try the LinkedIn ladder for the remaining session slots.
 
-### 2. Select
+### 3. Select
 From the list, keep targets where the author's audience is clearly our TG (founders, PMs, operators, AI builders). Drop anything that is a company promo, an engagement-farm listicle, or unrelated to: agents, evals, AI workflows, AI coding, model choice, AI product/PM work.
 
 Selection priority:
@@ -99,7 +107,7 @@ Selection priority:
 
 Do not reject a good target only because it is not perfect. Reject it only when it breaks the rails, is off-lane, is promotional, or lacks a real opening for a substantive comment.
 
-### 3. Draft — one comment per target
+### 4. Draft — one comment per target
 Rules (all mandatory):
 - 150-240 characters.
 - Add ONE thing the room does not already have: a frame, a named test, a war-story number, a sharp caveat, or one dry observation.
@@ -123,7 +131,7 @@ Reference examples of the standard (posted 2026-07-05):
 - "The 40 minute build is the demo. Whether it survives depends on the boring contract: what it may touch, when it must stop, who reviews run 20."
 - "Benchmark deltas tell you it can code. They do not tell you how it fails... The failure shape decides production, not the leaderboard."
 
-### 4. Post (browser)
+### 5. Post (browser)
 For each target:
 1. Navigate to the target URL. Wait for load.
 2. Click the "Post your reply" box, type the comment.
@@ -135,7 +143,7 @@ When the user has waived screenshots in the thread, verify the exact composer te
 
 If the composer rejects input twice on a target, skip it and continue.
 
-### 5. Verify and log
+### 6. Verify and log
 After the batch, verify each landed:
 
 ```bash
@@ -148,16 +156,19 @@ For each verified comment, append to `replied-log.csv`:
 
 Unverified after one recheck = do not count; note in the session summary.
 
-### 6. Commit
+### 7. Commit
 Per the existing contract: stage `distribution/`, commit, `git pull --rebase`, push. Then post the standard chat summary (X/LinkedIn/Status shape from README.md).
 
 ## LinkedIn session (target 2-5 comments, when browser healthy)
 
-1. Search LinkedIn content for lanes: "AI agents", "AI workflow", "evals LLM", "AI product management", "Claude Code" (rotate).
-2. Room gate: only posts with 50+ reactions, posted within ~48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
-3. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed.
-4. One comment per author per week. Log to `replied-log.csv` with the post URL in place of tweet id.
-5. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
+1. Feed-first discovery: open the authenticated LinkedIn home feed and inspect at least 20 visible post cards or 3 screenfuls, whichever comes first. Capture exact post URLs, author, age, reactions, comments, and the substantive opening before drafting.
+2. Keep fresh, practitioner-authored, in-lane feed rooms that pass the normal 50+ reaction gate, or the 25+ within 24 hours practitioner fallback. Skip reposts without substance, polls, company promos, lead-gen, hiring posts, restricted rooms, duplicates, and authors inside the 7-day cooldown.
+3. If feed-first discovery finds 2 or more qualified rooms, comment there and do not search merely to replace them. If it finds fewer than 2, continue with the keyword lanes below and sample at least 8 lanes before declaring LinkedIn exhausted.
+4. Search LinkedIn content for lanes: AI agents, AI workflow, evals LLM, AI product management, Claude Code, AI coding, Cursor AI, ChatGPT for work (rotate).
+5. Room gate: only posts with 50+ reactions, posted within about 48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
+6. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed.
+7. One comment per author per week. Log to replied-log.csv with the post URL in place of tweet id.
+8. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
 
 ### LinkedIn fallback ladder
 
@@ -196,9 +207,11 @@ The LinkedIn goal is recurring presence. If there are 1-2 high-quality rooms and
 
 "No qualified posts" means all of this happened:
 1. Browser health passed.
-2. X scout ran at 6, 12, and 20.
-3. Direct X browser search sampled at least 8 fallback lanes.
-4. LinkedIn browser search sampled at least 8 fallback lanes.
-5. All candidates failed for concrete reasons: banned room, off-lane, promo, engagement farm, insufficient audience fit, duplicate author/post, cannot comment, or composer failure.
+2. X authenticated feed sampled at least 20 visible posts or 3 screenfuls.
+3. X scout ran at 6, 12, and 20 when the feed produced fewer than 3 qualified rooms.
+4. Direct X browser search sampled at least 8 fallback lanes when still short.
+5. LinkedIn authenticated feed sampled at least 20 visible posts or 3 screenfuls.
+6. LinkedIn browser search sampled at least 8 fallback lanes when still short.
+7. All candidates failed for concrete reasons: banned room, off-lane, promo, engagement farm, insufficient audience fit, duplicate author/post, cannot comment, or composer failure.
 
 If fewer than 4-5 comments were posted, the summary must say exactly which ladder steps ran and why remaining candidates were skipped.
