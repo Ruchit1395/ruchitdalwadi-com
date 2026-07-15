@@ -1,9 +1,9 @@
-Forty tools, five ever used. That was the audit result on the first misbehaving agent I helped debug, and I have seen the same ratio since.
+I hear founders talk about SaaS bills before they even have product-market fit. It's a common trap: assume you need a suite of enterprise tools to get off the ground.
 
-Every tool in the list is a description in the context window and a wrong option available at every decision. The failure looks mysterious: right model, right prompt, and the agent picks web search when it should have read the database. Again.
+But what if you don't? What if you can build a viable business today with almost zero recurring software costs?
 
-The fix is mundane. Read the last 20 run logs. Remove every tool that was never called. Rewrite the survivors' descriptions until each one answers "when do I pick this over the alternatives?" Merge the overlapping pairs, because overlap is where agents flip-flop.
+The recipe is simple: 100% free open-source software, a virtual private server (VPS), an AI API for specific functionality, and object storage like R2 or S3. That's it.
 
-On an AI fashion recommendation agent, cutting twelve tools down to five fixed more behavior in one afternoon than three weeks of prompt changes had. Nothing else changed.
+This isn't about being cheap; it's about being strategic. Every dollar saved on infrastructure is a dollar invested in product, marketing, or runway. It forces you to be resourceful, to leverage community-built tools, and to own your stack.
 
-Tool count is a demo metric. Tool relevance is a production metric.
+This approach isn't for every team, especially those without strong technical chops. But for builders and operators who can roll up their sleeves, it's a powerful way to de-risk early-stage ventures and accelerate toward profitability. Consider it your lean startup stack for the AI era.

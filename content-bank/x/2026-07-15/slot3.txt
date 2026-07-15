@@ -1,7 +1,7 @@
-Debugging a flaky agent? Halve its tools before touching the prompt.
+You think you need enterprise SaaS to build a business. You don't. All you need today is 100% free open-source software, a VPS, an AI API, and some object storage.
 
-Pull the last 20 runs, cut every tool that was never called, then rerun the same tasks and diff the behavior. Twenty minutes, fully reversible, no prompt archaeology required.
+This setup destroys the 'pay-to-play' myth. The tools are there: no monthly fees for core infrastructure. A VPS for your server, an AI API for specific smarts, and R2/S3 for files. That's your stack.
 
-Fewer live options at each step fixes more agent behavior than another paragraph of instructions, because most flakiness is not confusion about the goal. It is indecision between overlapping ways to get there.
+It's a lean path to launch. You're trading developer time for subscription costs. This is not for everyone, but for founders who can ship, it's a massive cost advantage. You retain more capital, move faster, and aren't locked into vendor ecosystems.
 
-If behavior improves, keep going: tighten each surviving description until it says when to pick that tool, not just what it does. If nothing changes, you ruled out the cheapest suspect first and the context got smaller anyway.
+Your next project: audit what you're paying for. Could a free open-source alternative + minimal cloud services cut 70% of that bill?
