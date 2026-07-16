@@ -26,6 +26,12 @@ const LANES = [
   '("prompt engineering" OR "context engineering" OR "AI workflow") min_faves:40',
   '("product manager" OR PM OR founder) (AI OR agents) (lesson OR mistake OR workflow OR shipped) min_faves:40',
   '("Claude" OR "GPT" OR Gemini OR Anthropic OR OpenAI) (launch OR released OR benchmark OR update) min_faves:80',
+  '("AI startup" OR "B2B AI" OR "enterprise AI") (founder OR product OR workflow) min_faves:30',
+  '("AI infrastructure" OR "AI developer tools" OR RAG OR MCP) (build OR production OR shipped) min_faves:30',
+  '("startup engineering" OR "technical founder" OR "product engineering") (AI OR automation) min_faves:25',
+  '("agent evaluation" OR "LLM evals" OR observability) (production OR failure OR benchmark) min_faves:25',
+  '("AI automation" OR "workflow automation" OR "future of work") (operator OR founder OR team) min_faves:25',
+  '("tech startup" OR "startup product" OR "developer tools") (AI OR agents OR LLM) min_faves:25',
 ];
 
 // wrong-audience rooms: finance, crypto, politics, giveaways

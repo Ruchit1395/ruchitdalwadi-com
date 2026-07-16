@@ -28,7 +28,7 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 - Count comments by the local calendar day in Asia/Kolkata. Pace the 20-comment target across the active window from 08:00 to 23:00 IST. Before 08:00, the expected pace is 0. From 08:00 onward, calculate `expected_by_now = ceil(20 * elapsed_active_minutes / 900)`, capped at 20.
 - Enter recovery mode when `expected_by_now - comments_today >= 3`. Example: at 11:00 IST the expected pace is 4 comments; a day at 1/20 is behind by 3 and should reopen a session even if the last comment was 13 minutes ago.
 - In recovery mode, wait at least 10 minutes from the newest verified comment before starting another session. Keep the mandatory 2+ minute spacing between individual comments.
-- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, composer verification, and X verification all remain mandatory.
+- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, visible composer-state verification, and X verification all remain mandatory.
 - If the day is behind but one platform is capped, route recovery capacity to the other platform. If both platforms have capacity, use the normal mixed-session preference.
 - Re-evaluate the pace after every session. Do not wait for the 2.5-hour normal cooldown when recovery mode still applies; return to normal mode once the backlog is less than 3 comments.
 
@@ -52,7 +52,7 @@ Start on the authenticated X home feed, not keyword search. Inspect at least 20 
 
 Keep feed targets when they are fresh, in-lane, practitioner-authored, and pass the normal engagement and safety gates. Skip reposts without a substantive author comment, ads, company launch promos, engagement farms, banned rooms, duplicates, and authors inside the 3-day cooldown.
 
-If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, composer verification, or twitterapi.io verification.
+If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, visible composer-state verification, or twitterapi.io verification.
 
 ### 2. Script scout fallback
 From the repo root:
@@ -92,6 +92,16 @@ node --env-file=.env.local scripts/scout-comment-targets.mjs 20
    - `"ChatGPT at work" min_faves:20 -crypto -stocks -trading -politics lang:en`
    - `"model choice" "AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
    - `"AI product management" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"AI startup" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"B2B AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"enterprise AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"AI infrastructure" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"AI developer tools" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"startup engineering" AI min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"technical founder" AI min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"agent evaluation" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"production AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
+   - `"MCP tools" min_faves:10 -crypto -stocks -trading -politics lang:en`
 
 4. If the room is highly relevant and the author is clearly TG, relaxed engagement is allowed: 20+ likes for X, under 200 replies, posted within ~48h. Do not relax the banned-room rails.
 
@@ -135,11 +145,9 @@ Reference examples of the standard (posted 2026-07-05):
 For each target:
 1. Navigate to the target URL. Wait for load.
 2. Click the "Post your reply" box, type the comment.
-3. Screenshot; confirm the text is fully present in the composer.
+3. Confirm the exact text is fully present through visible DOM or equivalent page state immediately before submission. A screenshot is optional and is not a posting gate.
 4. Find and click the Reply submit button INSIDE the composer (not the reply icon on the post).
 5. 2+ minutes between comments (natural pacing).
-
-When the user has waived screenshots in the thread, verify the exact composer text through the visible DOM or equivalent page state immediately before submission.
 
 If the composer rejects input twice on a target, skip it and continue.
 
@@ -164,11 +172,18 @@ Per the existing contract: stage `distribution/`, commit, `git pull --rebase`, p
 1. Feed-first discovery: open the authenticated LinkedIn home feed and inspect at least 20 visible post cards or 3 screenfuls, whichever comes first. Capture exact post URLs, author, age, reactions, comments, and the substantive opening before drafting.
 2. Keep fresh, practitioner-authored, in-lane feed rooms that pass the normal 50+ reaction gate, or the 25+ within 24 hours practitioner fallback. Skip reposts without substance, polls, company promos, lead-gen, hiring posts, restricted rooms, duplicates, and authors inside the 7-day cooldown.
 3. If feed-first discovery finds 2 or more qualified rooms, comment there and do not search merely to replace them. If it finds fewer than 2, continue with the keyword lanes below and sample at least 8 lanes before declaring LinkedIn exhausted.
-4. Search LinkedIn content for lanes: AI agents, AI workflow, evals LLM, AI product management, Claude Code, AI coding, Cursor AI, ChatGPT for work (rotate).
+4. Search LinkedIn content using the rotating lane bank below. Start with the base lanes, then add expanded lanes whenever the first pass is short. Do not require every lane in one session:
+   - Base: AI agents, AI workflow, evals LLM, AI product management, Claude Code, AI coding, Cursor AI, ChatGPT for work.
+   - AI systems: artificial intelligence, generative AI, LLM applications, RAG, context engineering, AI automation, AI infrastructure, AI developer tools, agent evaluation, production AI, AI observability, AI safety engineering, model context protocol, MCP tools.
+   - Startup and technical builders: AI startups, startup AI, B2B AI, enterprise AI, SaaS AI, startup engineering, startup product, technical founders, tech founders, product engineering, software engineering, developer tools, AI implementation, workflow automation, future of work.
 5. Room gate: only posts with 50+ reactions, posted within about 48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
 6. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed.
 7. One comment per author per week. Log to replied-log.csv with the post URL in place of tweet id.
 8. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
+
+### LinkedIn selector recovery
+
+If the comment button or editor selector times out before the editor opens, retry that exact target once in a fresh tab. Re-navigate to the target, wait for the post to render, and use visible DOM or equivalent page state to confirm the editor before typing. If the second selector attempt also times out, skip that target, log `LinkedIn selector timeout after one retry`, and continue with the next qualified target or X. Never blind-click or carry the target into the next wakeup.
 
 ### LinkedIn fallback ladder
 
@@ -185,6 +200,34 @@ If the first lane does not produce qualified rooms, do not stop. Sample at least
 - "LLM product"
 - "agentic AI workflow"
 - "AI automation operators"
+- "artificial intelligence"
+- "generative AI"
+- "LLM applications"
+- RAG
+- "AI automation"
+- "AI infrastructure"
+- "AI developer tools"
+- "agent evaluation"
+- "production AI"
+- "AI observability"
+- "AI safety engineering"
+- "model context protocol"
+- "MCP tools"
+- "AI startups"
+- "startup AI"
+- "B2B AI"
+- "enterprise AI"
+- "SaaS AI"
+- "startup engineering"
+- "startup product"
+- "technical founders"
+- "tech founders"
+- "product engineering"
+- "software engineering"
+- "developer tools"
+- "AI implementation"
+- "workflow automation"
+- "future of work"
 
 Use these filters and fallbacks:
 1. Prefer 50+ reactions, within ~48h, practitioner or educator author.
@@ -209,9 +252,9 @@ The LinkedIn goal is recurring presence. If there are 1-2 high-quality rooms and
 1. Browser health passed.
 2. X authenticated feed sampled at least 20 visible posts or 3 screenfuls.
 3. X scout ran at 6, 12, and 20 when the feed produced fewer than 3 qualified rooms.
-4. Direct X browser search sampled at least 8 fallback lanes when still short.
+4. Direct X browser search sampled at least 8 fallback lanes when still short, including expanded AI, startup, and technical-builder lanes when the base lanes are short.
 5. LinkedIn authenticated feed sampled at least 20 visible posts or 3 screenfuls.
-6. LinkedIn browser search sampled at least 8 fallback lanes when still short.
+6. LinkedIn browser search sampled at least 8 fallback lanes when still short, including expanded AI, startup, and technical-builder lanes when the base lanes are short.
 7. All candidates failed for concrete reasons: banned room, off-lane, promo, engagement farm, insufficient audience fit, duplicate author/post, cannot comment, or composer failure.
 
 If fewer than 4-5 comments were posted, the summary must say exactly which ladder steps ran and why remaining candidates were skipped.
