@@ -1,7 +1,13 @@
-Measure your AI coding week with one number: median time from diff produced to diff merged.
+One engineer 10x'd their output with Claude. The rest of the team hadn't caught up. This is the story I hear every day.
 
-Not lines generated, not tasks attempted. Produced to merged. It is the only number that captures both halves of the loop: how well the work was scoped going in and how reviewable it came out.
+Watching teams adopt AI, I've mapped the 4 steps to scaling that initial burst of productivity:
 
-Watch it weekly. If it grows while diffs get bigger, you are not accelerating. You are accumulating review debt with a faster shovel. The fix is rarely review harder; it is shrink the task briefs until the number drops back down.
+1.  **Individual Experimentation:** A few engineers start using AI tools (like Claude) for personal tasks. They see massive gains, often 10x on specific workflows.
 
-Teams that track this stop arguing about whether AI coding works for them. The number settles it monthly, in one direction or the other.
+2.  **Informal Sharing:** Those early adopters start sharing tips, prompts, and success stories in Slack channels or during stand-ups. This sparks curiosity, but adoption is still ad-hoc.
+
+3.  **Team-Level Integration:** A manager or tech lead identifies a common pain point that AI can solve for the whole team. They might build a shared prompt library or integrate an agent into a specific workflow.
+
+4.  **Org-Wide Enablement:** The company invests in training, internal tooling, and clear guidelines. This moves from individual hacks to a systemic capability, turning those 10x gains into a baseline for everyone.
+
+The biggest mistake is trying to jump straight to step 4. Start with the individual wins, then build the scaffolding.

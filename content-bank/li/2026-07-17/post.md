@@ -1,11 +1,13 @@
-Two teams adopted the same AI coding tool. Six weeks later, one shipped noticeably faster and the other was drowning in unreviewed diffs, quietly concluding the tool was not ready.
+I keep hearing the same story from engineering leaders: one person on the team is 10x'ing their output with AI, but the rest of the organization is lagging.
 
-I watched this split happen on an ed-tech team and a logistics team in the same quarter, and it was never about the tool. It was the loop around it.
+It's a common pattern. The initial spark of productivity is usually individual, not top-down. I've been watching teams navigate this, and there are four distinct steps to scaling AI adoption:
 
-The fast team wrote a two-minute brief before every session: the goal, the test that proves it, which files are in bounds. They ran the test before reading the diff, because failing code does not deserve review time. And when the tool repeated a mistake, they turned it into a project rule so next month started smarter.
+1.  **Individual Experimentation:** It starts with a few engineers quietly exploring tools like Claude for their daily tasks. They discover specific workflows where AI delivers a 10x improvement.
 
-The slow team typed a wish into a chat box and reviewed whatever came back.
+2.  **Informal Sharing:** These early adopters naturally share their wins, their prompts, and their techniques in team chats or during casual conversations. This creates a buzz and piques interest among peers.
 
-The uncomfortable part: this is a management skill, not a technical one. Scoping, trust calibration, feedback loops. The same things that make delegation to people work.
+3.  **Team-Level Integration:** A smart leader or tech lead spots a recurring problem that AI can solve for the entire team. They might then build a shared prompt template or integrate an AI agent into a specific, high-leverage team process.
 
-Where does your loop leak: the brief, the review, or the follow-through?
+4.  **Org-Wide Enablement:** Finally, the company formalizes AI adoption. This involves providing structured training, developing internal tools, and establishing clear best practices. It shifts AI from a personal hack to a core organizational capability.
+
+Skipping steps is tempting, but it rarely works. The most effective path is to nurture those individual wins, then systematically build the infrastructure to support broader adoption.
