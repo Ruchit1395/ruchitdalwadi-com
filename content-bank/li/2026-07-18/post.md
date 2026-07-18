@@ -1,9 +1,1 @@
-An AI demo is a magic trick performed by the person who built the deck, on inputs chosen by the person who built the deck, for an audience that wants to believe.
-
-Production is the same trick performed at 2am, by nobody, on a forwarded email chain with the subject line "FWD: FWD: RE: urgent???" and a spreadsheet attached as a photo.
-
-The 80% the demo shows is real: summarize the document, draft the reply, write the query. Week-one work now, which is exactly why it is not a moat. The product lives in the missing 20%: the half-filled input, the edge case with a legal implication, the confident answer built on a source that updated yesterday, the question of who checks the output before a customer sees it.
-
-I have shipped this movie in logistics, pharma, and ed-tech. The script never changes. Only the costumes do.
-
-Budget accordingly: if the demo took a week, give the missing 20% a quarter. That is not the tool failing. That is the actual product work showing up.
+I've seen many builders frustrated by models that get stuck in safety loops or downgraded during complex agentic tasks. It's a common pain point: you're trying to ship, and your agent hits a wall. This week, I'm seeing reports of Kimi-K3 excelling in scenarios where other models falter. One builder noted it's "hammering through" a Windows XP Simulator to-do list, a task that reportedly stalled other models for weeks due to restrictive safety guardrails. This isn't just about raw power; it's about a model's ability to maintain context and execute multi-step processes without unnecessary interruptions. For anyone building agents, especially those requiring persistence and complex task completion, this is a strong signal. The ability to run these types of workflows locally with a model like Kimi-K3 could significantly cut down on development time and frustration. It suggests a path to more robust and reliable agentic systems.
