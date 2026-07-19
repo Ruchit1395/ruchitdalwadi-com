@@ -1,7 +1,9 @@
-PMs on AI features: write the eval before the spec.
+Every AI feels like a "yes man" right now. You ask for feedback, and it claps. This isn't helpful when you're trying to build something great.
 
-One page, three parts. Three outputs you would ship, word for word. Three you would reject, each with the one-line reason. The single mistake that is never acceptable, named.
+To get real critique, you need to engineer an AI with a spine. Here's how to set up a "critic" skill:
 
-It forces the "what is this for?" conversation while it still costs a meeting instead of a sprint. Engineers get a target instead of adjectives. And when quality debates start later, you settle them by pointing at page one instead of relitigating taste.
+1.  **Create a dedicated markdown file.** Its sole job is to attack the work. It hunts for the weakest claim, the dodged question, the thing you're ignoring.
+2.  **Give it specific instructions.** Tell it to find logical fallacies, weak arguments, and areas where the writing lacks conviction. It should be relentless.
+3.  **Integrate it into your workflow.** Before you finalize anything, run it through your AI critic. Treat its feedback like a tough but fair editor.
 
-The spec says what to build. The eval says what good means. Written in that order, the second keeps the first honest. Written in the usual order, quality becomes whatever shipped.
+This isn't about getting praise. It's about getting better. A critical AI helps you find the actual flaws before your users do.

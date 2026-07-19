@@ -1,9 +1,11 @@
-"PMs matter less now" is the most confidently wrong take in AI at the moment.
+We've all been there: you ask an AI for feedback, and it gives you a digital pat on the back. While encouraging, it doesn't help you ship truly excellent work.
 
-When blank-canvas-to-working-prototype took two quarters, product judgment had months to catch up. Now the prototype exists on day five, and every unanswered product question becomes a production incident instead of a planning discussion.
+To move past the "yes man" AI, you need to build a dedicated "critic" skill. This isn't about making the AI mean. It's about making it effective.
 
-What does a good output look like, specifically: can you show three you would ship and three you would reject? Which mistake is expensive and which is survivable? Who reviews outputs, and what graduates the feature out of review?
+Here’s a simple setup:
 
-Those are not engineering questions. They are the oldest product questions there are, evaluation criteria, risk, trust, arriving faster than roadmaps used to.
+1.  **Designate a "critic" agent or skill.** This can be a specific prompt or a markdown file. Its only purpose is to find flaws.
+2.  **Define its critical parameters.** Instruct it to seek out logical inconsistencies, unsupported claims, areas of vagueness, or anything that feels like a shortcut. It should challenge your assumptions.
+3.  **Run your work through it regularly.** Before a launch, a presentation, or even a draft, let your critic agent tear it apart. Embrace the feedback, even if it's uncomfortable.
 
-AI compressed the distance from idea to demo down to a week. What is your process for the distance from demo to trusted?
+This process shifts your AI from a cheerleader to a rigorous sparring partner, helping you sharpen your output and build with more conviction. The goal is to find the weak spots before they become liabilities.
