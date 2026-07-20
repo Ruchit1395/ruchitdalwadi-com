@@ -1,0 +1,10 @@
+You're building agents that control browsers. Ever hit a wall debugging what happened behind the scenes?
+
+Someone's using a smart trick: ask the agent to record network requests into a HAR file. This gives you a full, timestamped log of everything the browser did.
+
+Why it matters:
+1.  **Debugging**: See every API call, every asset load, every redirect. Pinpoint exactly where an agent's interaction went sideways.
+2.  **Testing**: Replay scenarios, validate network behavior, and create robust integration tests. Ensure your agent's actions are consistent.
+3.  **Optimization**: Identify slow requests or unnecessary calls. Fine-tune agent performance.
+
+It's a simple command that unlocks deep visibility. Stop guessing. Start logging.
