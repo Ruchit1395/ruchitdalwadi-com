@@ -1,0 +1,3 @@
+Anthropic is offering grants up to $50,000 in Claude usage credits to researchers. The goal is to accelerate cures for rare diseases. This is their first focused call within the 'AI for Science' program.
+
+For founders and PMs, this is a signal: AI for science is heating up. If you're building in biotech, pharma, or medical research, look for these targeted programs. It's not just about general-purpose models; it's about applying them to specific, high-impact domains where the data is rich and the need is urgent. This kind of grant can de-risk early-stage research and open doors to new partnerships. Pay attention to where the big players are allocating compute.
