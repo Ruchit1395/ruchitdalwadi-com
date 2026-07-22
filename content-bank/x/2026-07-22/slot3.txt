@@ -1,0 +1,7 @@
+You're stuck rewriting prompts, trying to get an LLM to "get it." Stop typing. 
+
+One pattern that works: the "ramble session." Switch to voice input and just talk for 10 minutes, stream-of-consciousness. Total mess. 
+
+The LLM needs more context to understand what you want. You're too lazy to type it all out. Rambling by voice gives it those extra bits. It's like a mini-interview where you just dump everything in your head. 
+
+This isn't about perfect prompts; it's about raw context. The model sifts through the noise. I'd try this for complex tasks where the model keeps missing the nuance.
