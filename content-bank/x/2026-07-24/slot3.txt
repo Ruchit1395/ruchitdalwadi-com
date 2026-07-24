@@ -1,0 +1,3 @@
+Your iOS app dev workflow just got a speed boost. Claude Code on desktop now integrates with the iOS simulator, letting you build and run apps with the simulator opening in a panel right beside your code.
+
+This means faster iteration cycles. Even better, the Claude Security plugin (beta) can scan your changes for vulnerabilities *before* you commit. Catching issues pre-commit saves hours of debugging and rework downstream. It's a pragmatic step for shipping secure code faster.
