@@ -1,0 +1,9 @@
+You've been rewriting system prompts for your agents, trying to squeeze out more performance. This week's lesson from the Claude Opus 5 launch: less is often more.
+
+One team removed ~80% of their Claude Code system prompt for new models. What they learned:
+
+1.  **Skills are the new system prompt**: Instead of long, complex instructions in the system prompt, define specific, reusable 'skills' for common tasks. This modularizes your agent's capabilities.
+2.  **Claude.MDs for structured output**: For reliable structured output, use Claude.MD files. These act as templates, guiding the model to produce consistent formats without needing verbose prompt instructions.
+3.  **Prompt injection resistance**: Shorter, clearer system prompts inherently reduce surface area for prompt injection attacks. Opus 5 is also reported to be their 'least prompt injectable model yet,' which helps even more.
+
+Instead of trying to 'fix' the model with more words, focus on clear, atomic skills and structured output formats. Your agents will be more predictable and robust.
