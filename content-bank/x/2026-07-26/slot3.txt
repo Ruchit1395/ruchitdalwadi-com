@@ -1,0 +1,5 @@
+The biggest blocker for open models isn't quality anymore. It's access to compute. 
+
+Jack Dorsey's 'Buzz' is tapping into something critical: shared compute. Imagine running powerful open models like Goo without buying expensive GPUs or dealing with complex setups. 
+
+One person hosts, everyone benefits. This could unlock a new wave of innovation for builders who need frontier-level performance without the frontier-level hardware bill. It's a simple idea with massive implications for democratizing AI development.
