@@ -1,0 +1,7 @@
+Forget coding agents. Marketing agents are the new frontier, making decisions off live business data on a loop.
+
+Picture this: an agent running your entire Facebook ad account. It researches customer pain points, generates on-brand creative, publishes it, kills the losers, scales the winners, and makes more of whatever's working.
+
+This isn't theory. The stack involves tools like Perplexity to scrape Reddit for real pain points. It's code in the cloud, constantly researching, acting, reading results, and improving.
+
+If you're building, this is where the leverage is. Focus on autonomous loops that drive revenue directly. The shift from human-in-the-loop to agent-in-the-loop for marketing spend is happening now.
