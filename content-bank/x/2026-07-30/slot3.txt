@@ -1,0 +1,7 @@
+You just shipped a launch post. Now you need a video. Fable just cut 46 minutes of work for one founder.
+
+Here's how it worked: The tool read the launch post, found product logos, and generated a full video. Then it logged into ElevenLabs, generated music, and mixed it in.
+
+This isn't about replacing editors. It's about collapsing the time from "text complete" to "video live" from days to minutes. Imagine that for every feature update, every small announcement.
+
+The skill to build: Can you map your content pipeline to an automated video workflow? Think about the specific assets (logos, screenshots, text) and the output you need. What's the smallest viable video you could generate this way?
