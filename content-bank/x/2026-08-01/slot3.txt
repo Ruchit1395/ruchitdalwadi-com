@@ -1,0 +1,7 @@
+You're still building self-improving loops? Many teams just shifted to agentic graphs.
+
+An Anthropic engineer this week shared that 90% of their team moved from self-improving loops to agentic graphs. The key insight: "No more prompting."
+
+This isn't about better prompts, it's about a fundamental architectural shift. Instead of iterating on prompts, you're designing a system where agents interact within a structured graph, making decisions and executing tasks more autonomously.
+
+The payoff: less time spent tweaking prompts, more time building robust, self-managing systems. If you're still stuck in prompt-iteration hell, it might be time to explore agentic graph architectures. This is where the real leverage is for complex agentic workflows.
