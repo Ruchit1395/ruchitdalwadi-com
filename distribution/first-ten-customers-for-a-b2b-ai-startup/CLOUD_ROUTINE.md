@@ -14,16 +14,16 @@ Honest base case at current baseline (2,981 X impressions in 14 days): X 25–50
 
 | Time | What | Runner |
 |---|---|---|
-| 09:00 | X native post — slot 1 (short sharp teaching post) | `x-scheduled-posts.yml` |
+| 09:05 | X native post — slot 1 (short sharp teaching post) | `x-post-session.mjs` (local browser, launchd; API retired 2026-08-01, posts were throttled) |
 | 09:45 | Signal post generation: fetch 31 watchlist authors + lanes live from X, one Gemini pass writes today's X slot3 + LI post (retry 11:30 if needed; Signal repo retired from the loop) | `signal-to-social.yml` |
 | 12:30 | Inbound sweep 1 — answer everyone who replied to us (max 8) | `x-replies.yml` |
 | 13:00 | Stats refresh + scoreboard commit | `daily-scoreboard.yml` |
-| 14:00 | X native post — slot 2 (mini-framework or thread) | `x-scheduled-posts.yml` |
+| 14:05 | X native post — slot 2 (mini-framework or thread) | `x-post-session.mjs` (local browser, launchd; 21:45 catch-up slot) |
 | 14:30 | LinkedIn native post | `li-scheduled-post.yml` (Composio proxy) |
 | 16:00 | X trend post — original take on what's hot right now (Gemini, may skip) | `x-replies.yml` |
 | 18:00 | Inbound sweep 2 | `x-replies.yml` |
-| 19:00 | X native post — slot 3 (actionable or dry-comic) | `x-scheduled-posts.yml` |
-| laptop-on | Cold replies + LinkedIn comments in big rooms (browser, Codex/Claude) | bonus tier |
+| 19:05 | X native post — slot 3 (actionable or dry-comic) | `x-post-session.mjs` (local browser, launchd) |
+| 11:30, 19:30 | LinkedIn comments (primary) + X backup, per runbook | Claude Code scheduled task `comment-heartbeat` (replaced failing Codex heartbeat 2026-08-01) |
 
 All generated text obeys `CONTENT_RULES.md` (no em dashes, no repeated
 patterns, sycophant openers rejected, completeness-checked before posting).

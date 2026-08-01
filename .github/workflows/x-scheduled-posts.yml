@@ -1,11 +1,10 @@
 name: X scheduled posts
 
 on:
-  schedule:
-    # 09:00, 14:00, 19:00 IST = 03:30, 08:30, 13:30 UTC
-    - cron: "30 3 * * *"
-    - cron: "30 8 * * *"
-    - cron: "30 13 * * *"
+  # Crons retired 2026-08-01: API-posted tweets appeared throttled (none crossed
+  # 50 impressions), so posting moved to the local browser runner
+  # (scripts/x-post-session.mjs, launchd). Re-add the schedule block to revert.
+  # workflow_dispatch kept as a manual emergency fallback.
   workflow_dispatch:
     inputs:
       slot:

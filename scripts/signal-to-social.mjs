@@ -153,12 +153,30 @@ Selection rules:
 - Skip anything resembling these recently-used topics: ${recentTopics.join(" | ") || "none yet"}.
 
 Writing rules:
-- PRACTICAL IS THE WHOLE POINT. Concretely: what does this mean for someone building or shipping right now? What do they DO with it on Monday, and what do they gain (hours saved, fewer regressions, tickets deflected, a step removed)? The news is the hook; the practical move is the value.
-- Ground in the real receipt: the actual numbers and facts from the post/source. A busy founder should think "only someone paying attention this week would know that, and I know exactly what to do about it now."
+
+WHAT ACTUALLY WORKS (measured on Ruchit's own LinkedIn, not theory):
+His best post earned 25,327 impressions. His next four earned 761, 665, 377 and 365. The 34x winner was this:
+  "We hired someone brilliant last year. Day one, we gave her no laptop, no docs, no examples of past work, told her nothing about the customer, and left a sticky note that said 'make it pop.' Then we wrote 'not a good fit' in her review."
+That post never mentions AI. It is secretly about how teams onboard AI, and the reader only realises it at the end.
+The four that died all opened by announcing their topic: "A failure you fixed in March...", "The release of Claude Opus 5 brings a critical lesson...", "The demo worked in week one...", "The first 10 customers of a B2B AI startup...".
+
+So, in order of importance:
+1. OPEN WITH A CONCRETE SCENE OR A PERSON, NOT A CATEGORY. A human with a pronoun beats a concept every time. "We hired someone brilliant last year" beats "Here is a lesson about onboarding".
+2. DO NOT ANNOUNCE THE TOPIC IN THE FIRST LINE. Never open with "The release of X brings a lesson", "Here is what I learned about", "X is a critical lesson for anyone building". Make the reader arrive at the point; do not hand it to them.
+3. LET THE INSIGHT LAND LATE. The strongest shape is a story or situation that seems to be about something ordinary, and turns out to be about the AI lesson. Delayed recognition is what makes people comment.
+4. SENSORY, SPECIFIC DETAIL. Laptop, sticky note, "make it pop", a 2am page, a 400-line diff. Concrete nouns beat abstract ones.
+5. NO JARGON IN THE FIRST TWO LINES. No "agentic", "system prompt", "eval harness" before the reader is hooked.
+6. PRACTICAL PAYOFF STILL REQUIRED. After the hook lands, the reader must get something they can act on: the move, and what it gains them.
+
+HARD FORMAT RULES:
+- PLAIN TEXT ONLY. LinkedIn and X do not render markdown. Never use double-asterisk bold, single-asterisk italics, hash headings, or backtick code marks. Asterisks around words are the single most obvious sign a machine wrote the post.
+- Never write a numbered list where each item begins with a bolded label. That structure is the most recognisable LLM shape there is. If you need a list, write plain sentences.
+- Do not narrate your own structure: no "Here's what they found:", "Here are 3 takeaways:", "Let's break it down:".
+- Do not end with a question aimed at farming replies ("What are you removing this week?", "Thoughts?"). End on the strongest line instead. At most one post in three may end on a genuine question.
 - NEVER claim someone else's work, benchmark, test, or numbers as Ruchit's own. No "my benchmark", "I tested", "our numbers" for results from the candidates. Attribute neutrally: "a benchmark doing the rounds this week", "someone measured", "the reported numbers". Ruchit only speaks first-person about his own experience (opinions, what he'd do with it).
 - No URLs or @handles in post bodies. You may say "someone shipped X" without linking.
-- X post: 500-1200 chars, long-form, hook on line 1. LinkedIn post: 500-1400 chars, narrative, short paragraphs, first 2 lines earn the click. Different shape from each other.
-- Zero em dashes. No banned openers or scaffolds (see rules above). No hype, no engagement bait.
+- X post: 400-1200 chars, hook on line 1. LinkedIn post: 500-1400 chars, short paragraphs with whitespace, first two lines earn the click. The two must not be the same text reshaped.
+- Zero em dashes. No hype. No banned openers or scaffolds.
 
 Output STRICT JSON only, no markdown fences:
 {"topic": "<one line: the insight you chose>", "source_id": "<id of the chosen candidate post>", "x": "<the X post>", "li": "<the LinkedIn post>"}`;
@@ -199,7 +217,18 @@ async function generate(attempt = 0, lastFail = "") {
     if (attempt < 4) return generate(attempt + 1, "output was not valid JSON");
     throw new Error("bad JSON from model");
   }
-  const clean = (s) => (s ?? "").replace(/\s*[—–]\s*/g, ", ").trim();
+  // LinkedIn and X render no markdown: asterisks/headings/backticks would
+  // appear literally and read as machine-written. Strip them defensively
+  // rather than trusting the model to obey.
+  const clean = (s) =>
+    (s ?? "")
+      .replace(/\s*[—–]\s*/g, ", ")
+      .replace(/\*\*(.+?)\*\*/g, "$1")      // **bold**
+      .replace(/(?<!\w)\*(?!\s)(.+?)(?<!\s)\*(?!\w)/g, "$1") // *italic*
+      .replace(/^#{1,6}\s+/gm, "")            // ## headings
+      .replace(/`([^`]+)`/g, "$1")             // `code`
+      .replace(/^\s*[-*]\s+/gm, "")           // markdown bullets
+      .trim();
   obj.x = clean(obj.x); obj.li = clean(obj.li);
   const reasons = (s, min, max) => {
     const r = [];
@@ -209,14 +238,24 @@ async function generate(attempt = 0, lastFail = "") {
     if (/^(absolutely|most people|stop doing|this[.!]|great (post|point)|so true|exactly[.,])/i.test(s)) r.push("banned opener");
     if (/^(are|is|do|does|have|has|will|can|could|would|why|what|how|ever wonder)\b.*\?/i.test(s.split("\n")[0])) r.push("question-bait opener");
     if (/\bstop (building|doing|sifting|scrolling) .{0,40}?\.?\s*(build|start)\b/i.test(s)) r.push("stop-start scaffold");
-    if (/\bmost (people|teams)\b/i.test(s)) r.push("most-people scaffold");
-    if (/\bis ?n'?t just .{2,40}?[.,] it'?s\b/i.test(s)) r.push("isnt-just scaffold");
+    if (/^\W*most (people|teams|founders|companies)\b/i.test(s.split("\n")[0])) r.push("most-people opening scaffold");
+    if (/\bis ?n'?t just .{2,60}?[.,;:] it'?s\b/i.test(s)) r.push("isnt-just scaffold");
+    if (/[*#`]/.test(s)) r.push("markdown characters (platforms render none)");
+    if (/^(the (release|launch|announcement) of|here'?s what|here are \d|a (critical|key|important) lesson)/i.test(s)) r.push("announces its own topic in the opening line");
+    if (/\n\s*\d[.)]\s+\S+.{0,40}:/.test(s)) r.push("numbered list with labelled headers (classic LLM shape)");
+    if (/\b(thoughts|agree|am i (wrong|right)|what do you think|what are you .{3,50}|which (one|side) are you .{0,30})\?\s*$/i.test(s)) r.push("reply-farming question ending");
     if (/\bthe real (game|problem|question) is\b/i.test(s)) r.push("real-X scaffold");
     if (/(game[- ]changer|mind[- ]blowing|revolutionary|🚀|game changer)/i.test(s)) r.push("hype word");
     if (/\b(agree\?|thoughts\?|repost)/i.test(s)) r.push("engagement bait");
     if (/https?:\/\/|@\w+/.test(s)) r.push("url or handle in body");
     if (/\b(my|our) (benchmark|test|tests|experiment|numbers|data|bill|run)\b/i.test(s) || /\bI (tested|benchmarked|measured|ran (it|them|the))\b/i.test(s)) r.push("fabricated first-person claim (results belong to the source, not Ruchit)");
-    if (/\b(nestwise|bloom|threadsweep|career-ops|constructor\.io|constructor trial|anthropic interview|job application|n8n|tally form|supabase|your goals|my goals|micro-saas portfolio)\b/i.test(s)) r.push("private-context leak");
+    // Genuinely private terms only. n8n/supabase/tally were removed 2026-08-01:
+    // they guarded the retired private digest; with live public tweets as input
+    // they are ordinary public tools and blocked legitimate trend topics.
+    {
+      const leak = s.match(/\b(nestwise|threadsweep|career-ops|constructor\.io|constructor trial|anthropic interview|job application|your goals|my goals|micro-saas portfolio)\b/i);
+      if (leak) r.push(`private-context leak (${leak[1]})`);
+    }
     return r;
   };
   const xr = reasons(obj.x, 350, 1300), lr = reasons(obj.li, 350, 1600);
