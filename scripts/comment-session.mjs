@@ -97,7 +97,7 @@ if (process.env.FORCE !== "1") {
 // ---------- scout ----------
 let scoutOut = "";
 try {
-  scoutOut = execSync("node --env-file=.env.local scripts/scout-comment-targets.mjs 8", { encoding: "utf8", timeout: 120000 });
+  scoutOut = execFileSync(process.execPath, ["--env-file=.env.local", "scripts/scout-comment-targets.mjs", "8"], { encoding: "utf8", timeout: 120000 });
 } catch (e) {
   console.error("scout failed:", e.message);
   process.exit(1);
@@ -171,7 +171,7 @@ async function refillQueue() {
   if (rescouted) return;
   rescouted = true;
   try {
-    const wide = execSync("node --env-file=.env.local scripts/scout-comment-targets.mjs 20", { encoding: "utf8", timeout: 120000 });
+    const wide = execFileSync(process.execPath, ["--env-file=.env.local", "scripts/scout-comment-targets.mjs", "20"], { encoding: "utf8", timeout: 120000 });
     for (const block of wide.split(/\n(?=\d+\. )/)) {
       const m = block.match(/@(\S+) \(([\d,]+) followers\).*?([\d,]+) views, (\d+) likes, (\d+) replies\n\s+(https:\/\/x\.com\/\S+\/status\/(\d+))\n\s+"([\s\S]*?)"\s*$/);
       if (m && !queue.some((t) => t.id === m[7]) && !targets.some((t) => t.id === m[7])) {

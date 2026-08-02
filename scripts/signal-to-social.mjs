@@ -81,6 +81,7 @@ function consider(t, source) {
   const text = t.text ?? "";
   if (text.length < 60) return;
   if (/(airdrop|giveaway|\$[A-Z]{2,5}\b|bitcoin|solana|stablecoin|web3|nft)/i.test(text)) return;
+  if (/(worth more than|save (this|the article)|bookmark this|👇|thread 🧵|steal my|free course|\$\d+ course|read this before)/i.test(text)) return;
   const urls = (text.match(/https?:\/\/\S+/g) ?? []).slice(0, 3);
   candidates.set(t.id, {
     id: t.id,
@@ -161,7 +162,8 @@ That post never mentions AI. It is secretly about how teams onboard AI, and the 
 The four that died all opened by announcing their topic: "A failure you fixed in March...", "The release of Claude Opus 5 brings a critical lesson...", "The demo worked in week one...", "The first 10 customers of a B2B AI startup...".
 
 So, in order of importance:
-1. OPEN WITH A CONCRETE SCENE OR A PERSON, NOT A CATEGORY. A human with a pronoun beats a concept every time. "We hired someone brilliant last year" beats "Here is a lesson about onboarding".
+1. OPEN WITH SOMETHING CONCRETE, NOT A CATEGORY. A specific situation, object or number beats an abstraction.
+   CRITICAL LIMIT: you do NOT have access to Ruchit's life and may NEVER invent one. Do not write "we hired", "I watched", "a teammate of mine", "last week we", or any first-person story. The 25k example above worked because it actually happened to him; a fabricated version of it is worthless and dangerous. When you have no true story, open on the concrete specifics of the news itself (the actual thing shipped, the actual number, the actual behaviour) and stay in observational voice throughout.
 2. DO NOT ANNOUNCE THE TOPIC IN THE FIRST LINE. Never open with "The release of X brings a lesson", "Here is what I learned about", "X is a critical lesson for anyone building". Make the reader arrive at the point; do not hand it to them.
 3. LET THE INSIGHT LAND LATE. The strongest shape is a story or situation that seems to be about something ordinary, and turns out to be about the AI lesson. Delayed recognition is what makes people comment.
 4. SENSORY, SPECIFIC DETAIL. Laptop, sticky note, "make it pop", a 2am page, a 400-line diff. Concrete nouns beat abstract ones.
@@ -236,19 +238,34 @@ async function generate(attempt = 0, lastFail = "") {
     if (s.length < min || s.length > max) r.push(`length ${s.length} not in ${min}-${max}`);
     if (/[—–]/.test(s)) r.push("em dash");
     if (/^(absolutely|most people|stop doing|this[.!]|great (post|point)|so true|exactly[.,])/i.test(s)) r.push("banned opener");
-    if (/^(are|is|do|does|have|has|will|can|could|would|why|what|how|ever wonder)\b.*\?/i.test(s.split("\n")[0])) r.push("question-bait opener");
-    if (/\bstop (building|doing|sifting|scrolling) .{0,40}?\.?\s*(build|start)\b/i.test(s)) r.push("stop-start scaffold");
-    if (/^\W*most (people|teams|founders|companies)\b/i.test(s.split("\n")[0])) r.push("most-people opening scaffold");
-    if (/\bis ?n'?t just .{2,60}?[.,;:] it'?s\b/i.test(s)) r.push("isnt-just scaffold");
+    if (/^(are|is|do|does|have|has|will|can|could|would|why|what|how|ever wonder|you'?re|still|ever)\b.*\?/i.test(s.split("\n")[0])) r.push("question-bait opener");
+    if (/\bstop \w+ing\b[^.!?]{0,60}[.!?]\s*start \w+ing\b/i.test(s)) r.push("stop-start scaffold");
+    if (/^\W*most (people|teams|founders|companies)\b/i.test(s.split("\n")[0])
+        || /\bmost (people|teams|founders|companies) (think|believe|assume|still)\b/i.test(s)) r.push("most-people scaffold");
+    if (/\bis ?n'?t (just |about |only )?.{2,60}?[.,;:] it'?s\b/i.test(s)
+        || /\bit'?s not (just |about |only )?.{2,60}?[.,;:] it'?s\b/i.test(s)) r.push("isnt-X-its-Y scaffold");
     if (/[*#`]/.test(s)) r.push("markdown characters (platforms render none)");
+    if (/\b\d{1,3}\s?%[^.]{0,90}\b(of (their|our|its|the) (team|engineers|staff|employees|developers))/i.test(s)
+        || /\b(anthropic|openai|google|deepmind|meta|microsoft|mistral|xai)\b[^.]{0,70}\b(engineer|employee|insider|staffer|team member)\b[^.]{0,120}\d{1,3}\s?%/i.test(s)) {
+      r.push("statistic about a named company's internal practice (third-hand, unverifiable)");
+    }
     if (/^(the (release|launch|announcement) of|here'?s what|here are \d|a (critical|key|important) lesson)/i.test(s)) r.push("announces its own topic in the opening line");
     if (/\n\s*\d[.)]\s+\S+.{0,40}:/.test(s)) r.push("numbered list with labelled headers (classic LLM shape)");
     if (/\b(thoughts|agree|am i (wrong|right)|what do you think|what are you .{3,50}|which (one|side) are you .{0,30})\?\s*$/i.test(s)) r.push("reply-farming question ending");
-    if (/\bthe real (game|problem|question) is\b/i.test(s)) r.push("real-X scaffold");
+    if (/\b(the real \w+ is|where the real \w+ is|hiding in plain sight)\b/i.test(s)) r.push("real-X scaffold");
     if (/(game[- ]changer|mind[- ]blowing|revolutionary|🚀|game changer)/i.test(s)) r.push("hype word");
     if (/\b(agree\?|thoughts\?|repost)/i.test(s)) r.push("engagement bait");
     if (/https?:\/\/|@\w+/.test(s)) r.push("url or handle in body");
+    // Two distinct fabrications, both observed live:
+    //  (a) claiming the source's results as Ruchit's own measurements
+    //  (b) inventing a scene he witnessed ("I watched a teammate spend 20
+    //      minutes...", 2026-08-01). Ruchit's real stories come from him, so
+    //      the generator may never invent one.
     if (/\b(my|our) (benchmark|test|tests|experiment|numbers|data|bill|run)\b/i.test(s) || /\bI (tested|benchmarked|measured|ran (it|them|the))\b/i.test(s)) r.push("fabricated first-person claim (results belong to the source, not Ruchit)");
+    if (/\b(we|i) (hired|fired|built|shipped|launched|switched|migrated|rewrote|spent|gave|measured|watched|saw|sat with|met|tried|ran) \b/i.test(s)
+        || /\bI (watched|saw|sat with|met|overheard|walked into|spent \w+ (hours?|minutes?|days?))\b/i.test(s)
+        || /\b(a|my) (teammate|colleague|friend|client|founder I|engineer I)\b/i.test(s)
+        || /\b(last|this) (week|month|year),? I\b/i.test(s)) r.push("invented personal anecdote (generator cannot author Ruchit's memories)");
     // Genuinely private terms only. n8n/supabase/tally were removed 2026-08-01:
     // they guarded the retired private digest; with live public tweets as input
     // they are ordinary public tools and blocked legitimate trend topics.

@@ -133,10 +133,17 @@ async function pasteAndSubmit(text) {
   osa(`tell application "System Events" to keystroke "v" using command down`);
   await sleep(2500);
   if (DRY) {
-    // Esc twice: close composer, then confirm "Discard".
-    osa(`tell application "System Events" to key code 53`);
-    await sleep(1200);
-    osa(`tell application "System Events" to key code 53`);
+    // Discard without touching the composer: navigating away leaves X's
+    // native "Leave site?" confirm, which Esc cannot dismiss and which blocks
+    // Chrome modally (observed 2026-08-01, stalled the browser until cleared).
+    // Clear the field first, then leave, then accept any confirm with Return.
+    osa(`tell application "System Events" to keystroke "a" using command down`);
+    await sleep(400);
+    osa(`tell application "System Events" to key code 51`); // delete
+    await sleep(800);
+    osa(`tell application "Google Chrome" to set URL of active tab of front window to "about:blank"`);
+    await sleep(1500);
+    try { osa(`tell application "System Events" to key code 36`); } catch {}
     return;
   }
   osa(`tell application "System Events" to key code 36 using command down`);
