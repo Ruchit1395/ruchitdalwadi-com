@@ -170,6 +170,17 @@ So, in order of importance:
 5. NO JARGON IN THE FIRST TWO LINES. No "agentic", "system prompt", "eval harness" before the reader is hooked.
 6. PRACTICAL PAYOFF STILL REQUIRED. After the hook lands, the reader must get something they can act on: the move, and what it gains them.
 
+SENTENCE SHAPES THAT ARE BANNED OUTRIGHT. These are auto-rejected by a regex gate, so a post containing any of them is thrown away. Do not write them in any variation:
+- "This isn't about X, it's about Y" / "It's not X, it's Y" / "isn't just X, it's Y" (any punctuation between the halves).
+  Instead: state Y directly. "The shift is architectural." Not "It isn't about prompts, it's architectural."
+- "the real X is" / "where the real leverage is" / "the real win is" / "hiding in plain sight".
+  Instead: name the thing. "The leverage is in the boring tasks." Not "This is where the real leverage is."
+- "Most people think X" / "Most teams believe X" / "Most founders assume X".
+  Instead: skip the strawman and make your claim.
+- "Stop doing X. Start doing Y." (any verb pair).
+  Instead: give the instruction once. "Run the test on your last 50 logs."
+- Any sentence whose job is to announce a contrast rather than deliver information.
+
 HARD FORMAT RULES:
 - PLAIN TEXT ONLY. LinkedIn and X do not render markdown. Never use double-asterisk bold, single-asterisk italics, hash headings, or backtick code marks. Asterisks around words are the single most obvious sign a machine wrote the post.
 - Never write a numbered list where each item begins with a bolded label. That structure is the most recognisable LLM shape there is. If you need a list, write plain sentences.
@@ -242,8 +253,12 @@ async function generate(attempt = 0, lastFail = "") {
     if (/\bstop \w+ing\b[^.!?]{0,60}[.!?]\s*start \w+ing\b/i.test(s)) r.push("stop-start scaffold");
     if (/^\W*most (people|teams|founders|companies)\b/i.test(s.split("\n")[0])
         || /\bmost (people|teams|founders|companies) (think|believe|assume|still)\b/i.test(s)) r.push("most-people scaffold");
-    if (/\bis ?n'?t (just |about |only )?.{2,60}?[.,;:] it'?s\b/i.test(s)
-        || /\bit'?s not (just |about |only )?.{2,60}?[.,;:] it'?s\b/i.test(s)) r.push("isnt-X-its-Y scaffold");
+    // Only the HOLLOW form, where a qualifier signals an abstraction-vs-abstraction
+    // contrast. The bare diagnostic form ("It isn't underperforming. It's
+    // under-informed.") is good writing and appears in Ruchit's best post, so
+    // the earlier catch-all was rejecting quality content (2026-08-02).
+    if (/\bis ?n'?t (just|about|only) .{2,60}?[.,;:] it'?s\b/i.test(s)
+        || /\bit'?s not (just|about|only) .{2,60}?[.,;:] it'?s\b/i.test(s)) r.push("hollow isnt-about-X-its-about-Y scaffold");
     if (/[*#`]/.test(s)) r.push("markdown characters (platforms render none)");
     if (/\b\d{1,3}\s?%[^.]{0,90}\b(of (their|our|its|the) (team|engineers|staff|employees|developers))/i.test(s)
         || /\b(anthropic|openai|google|deepmind|meta|microsoft|mistral|xai)\b[^.]{0,70}\b(engineer|employee|insider|staffer|team member)\b[^.]{0,120}\d{1,3}\s?%/i.test(s)) {
