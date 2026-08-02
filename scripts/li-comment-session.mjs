@@ -47,7 +47,7 @@ if (todayRows().length >= MAX_DAY) { console.log("Daily cap reached."); process.
 if (process.env.FORCE !== "1") {
   try {
     const idleNs = execSync("ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF; exit}'", { encoding: "utf8" }).trim();
-    if (parseInt(idleNs, 10) / 1e9 < 300) { console.log("Machine in use. Skipping."); process.exit(0); }
+    if (parseInt(idleNs, 10) / 1e9 < 180) { console.log("Machine in use. Skipping."); process.exit(0); }
   } catch {}
 }
 
@@ -56,12 +56,31 @@ const logRaw = existsSync(`${DIR}/replied-log.csv`) ? readFileSync(`${DIR}/repli
 // ---------- capability check ----------
 osa(`tell application "Google Chrome" to activate`);
 osa(`tell application "Google Chrome" to open location "https://www.linkedin.com/feed/"`);
-await new Promise((r) => setTimeout(r, 8000));
-try {
-  const ok = chromeJS(`document.title`);
-  if (!ok) throw new Error("empty");
-} catch (e) {
-  console.error("Chrome JavaScript-from-Apple-Events is OFF. Enable: Chrome > View > Developer > Allow JavaScript from Apple Events. Aborting cleanly.");
+// Poll for the page instead of assuming a fixed 8s is enough. A single short
+// wait made a slow LinkedIn load look identical to a disabled Apple Events
+// setting, and every failure was reported as the latter (2026-08-01: the
+// setting was on the whole time).
+let ready = "";
+let lastErr = null;
+for (let i = 0; i < 12; i++) {
+  await new Promise((r) => setTimeout(r, 2500));
+  try {
+    ready = chromeJS(`document.title`);
+    if (ready) break;
+  } catch (e) { lastErr = e; }
+}
+if (!ready) {
+  // Distinguish the real causes rather than blaming one of them.
+  let diagnosis = "page never reported a title";
+  const msg = String(lastErr?.message ?? "");
+  if (/Allow JavaScript from Apple Events|not allowed|-2700/i.test(msg)) {
+    diagnosis = "Chrome JavaScript-from-Apple-Events is OFF (Chrome > View > Developer)";
+  } else if (/front window|-1728/i.test(msg)) {
+    diagnosis = "Chrome had no open window";
+  } else if (msg) {
+    diagnosis = `osascript error: ${msg.slice(0, 160)}`;
+  }
+  console.error(`LinkedIn page not ready after 30s. Cause: ${diagnosis}. Aborting cleanly.`);
   try { osa(`tell application "System Events" to keystroke "w" using command down`); } catch {}
   process.exit(0);
 }

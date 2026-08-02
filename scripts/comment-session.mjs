@@ -87,8 +87,8 @@ if (process.env.FORCE !== "1") {
   try {
     const idleNs = execSync("ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF; exit}'", { encoding: "utf8" }).trim();
     const idleSec = parseInt(idleNs, 10) / 1e9;
-    if (idleSec < 300) {
-      console.log(`Machine in use (idle ${Math.round(idleSec)}s < 300s). Skipping session; launchd will try the next slot.`);
+    if (idleSec < 180) {
+      console.log(`Machine in use (idle ${Math.round(idleSec)}s < 180s). Skipping session; launchd will try the next slot.`);
       process.exit(0);
     }
   } catch { /* if the check fails, proceed */ }
