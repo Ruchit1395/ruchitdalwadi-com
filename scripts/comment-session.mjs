@@ -27,7 +27,7 @@ process.chdir(path.resolve(REPO));
 
 const DIR = "distribution/first-ten-customers-for-a-b2b-ai-startup";
 const PROFILE = path.join(os.homedir(), ".x-comment-runner-profile");
-const MAX_SESSION = 5;
+const MAX_SESSION = parseInt(process.env.MAX_SESSION ?? "5", 10); // env override for supervised single-comment runs
 const MAX_DAY = 12;
 
 // ---------- cookie-inject mode ----------
