@@ -118,7 +118,10 @@ if (targets.length === 0) {
 
 // ---------- draft ----------
 const contentRules = readFileSync(`${DIR}/CONTENT_RULES.md`, "utf8");
-const OPENER_BAN = /^(absolutely|totally agree|exactly|spot on|great (point|post|take)|you hit the nail|agreed|so true|100%|couldn't agree|well said|this[.!]|love this)/i;
+// "This is smart." slipped through on 2026-08-02: the old rule only caught
+// "This." and "This!". Any opener whose first clause is an appraisal of the
+// post rather than a contribution to it is banned.
+const OPENER_BAN = /^(absolutely|totally agree|exactly|spot on|great (point|post|take)|you hit the nail|agreed|so true|100%|couldn't agree|well said|love (this|it)|well put|big if true|nice|solid|smart|makes sense|good (point|call)|this (is|was|hits|nails)\b|that's (smart|right|true|a great))/i;
 const SCAFFOLD_BAN = /(isn't just [^.]{3,40}, it's|the real (game|question|problem|shift) is|stop doing [^.]+\. start)/i;
 
 async function draft(target, prior, attempt = 0) {
