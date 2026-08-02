@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 /**
+ * RETIRED 2026-08-02. LinkedIn removed the DOM hooks this depends on:
+ * [data-urn*="activity"], div.feed-shared-update-v2, [data-urn], [data-id]
+ * all return 0 matches on a loaded search page. The urn:li:activity ID is no
+ * longer in the DOM at all, so even with fresh selectors there is no stable
+ * post identifier for dedupe, permalinks, or verification. Lifetime record:
+ * 0 successful posts. LinkedIn commenting requires an agent with eyes.
+ *
  * Automated LinkedIn comment session — real Chrome, OS-level automation.
  *
  * LinkedIn has no search/read API, so this uses Chrome's "Allow JavaScript

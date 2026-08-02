@@ -24,7 +24,7 @@ Honest base case at current baseline (2,981 X impressions in 14 days): X 25–50
 | 18:00 | Inbound sweep 2 | `x-replies.yml` |
 | 19:15 | X native post — slot 3 (actionable or dry-comic) | `x-post-session.mjs` (local browser, launchd) |
 | 09:12, 16:00, 19:27 | X cold comments | `comment-session.mjs` (launchd) |
-| 12:27, 16:12, 22:12 | LinkedIn cold comments | `li-comment-session.mjs` (launchd) |
+| ~~12:27, 16:12, 22:12~~ | ~~LinkedIn cold comments (script)~~ | RETIRED 2026-08-02: LinkedIn removed `data-urn` and `feed-shared-update-v2` from the DOM. Selector test returned 0 matches on every hook; the post ID is gone, so dedupe and verification are impossible. 0 successful posts in its lifetime. Agent-with-eyes is the only working LinkedIn route. |
 | 12:15, 19:15 | LinkedIn comments (agent-with-eyes) | Claude Code task `comment-heartbeat` (needs the app open) |
 
 All generated text obeys `CONTENT_RULES.md` (no em dashes, no repeated
