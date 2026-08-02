@@ -1,0 +1,7 @@
+You're still testing LLMs with "create an SVG of a pelican on a bicycle" prompts. That's yesterday's problem. 
+
+Someone gave Opus 5 the first paragraph of Lord of the Rings and a 1M token budget. It went off for two hours and wrote 5500 lines of procedural JavaScript to render the story. 
+
+It's janky, sure. But the fact an LLM can orchestrate and place elements in a complex, generative way for a narrative? That's a different league of capability. It means the model itself is building the world, not just a static image. 
+
+Your eval harness needs to catch up. Test for emergent behavior in code, not just basic object generation.
