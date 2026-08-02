@@ -1,7 +1,7 @@
-You're still testing LLMs with "create an SVG of a pelican on a bicycle" prompts. That's yesterday's problem. 
+Karpathy gave Opus 5 the first paragraph of Lord of the Rings, a 1M token budget, and asked for a three.js render of it. It ran for two hours and wrote 5500 lines of procedural code that actually renders the scene. His verdict: kind of janky, but fun.
 
-Someone gave Opus 5 the first paragraph of Lord of the Rings and a 1M token budget. It went off for two hours and wrote 5500 lines of procedural JavaScript to render the story. 
+The line worth stealing is his framing of what changed. We are moving from "no one would ever do this" to "sure, why not, it is basically free."
 
-It's janky, sure. But the fact an LLM can orchestrate and place elements in a complex, generative way for a narrative? That's a different league of capability. It means the model itself is building the world, not just a static image. 
+That is a backlog question, not a technology question. Every idea you killed because the payoff could not justify a week of engineering deserves a second look. Bespoke onboarding for one large account. An internal tool that serves six people. The analysis someone asks for twice a year.
 
-Your eval harness needs to catch up. Test for emergent behavior in code, not just basic object generation.
+He named the ceiling too. The model could not perceive its own output, so it took screenshots one at a time and still shipped jank it could not see. Work that needs perceptual judgment still needs you in the loop.

@@ -1,7 +1,11 @@
-The old LLM test was simple: "create an SVG of a pelican on a bicycle." We're past that now. 
+Karpathy ran an experiment this week that is worth ten minutes of your thinking if you build product.
 
-Consider this: Opus 5 was given the opening paragraph of Lord of the Rings, a 1M token budget, and asked for a three.js render of it. The model spent two hours generating 5500 lines of procedural JavaScript code. 
+He gave Opus 5 the first paragraph of Lord of the Rings, a 1M token budget of roughly ten dollars, and asked it to render the scene in three.js. It worked for about two hours and returned 5500 lines of procedural code. His own verdict: kind of janky, but fun. The model placed polygon assets in 3D space and wrote the code that animates all of it.
 
-The result was a "janky but fun" render of the story. The key takeaway here isn't the polish of the output, but the sheer complexity of the task. The LLM didn't just generate a static image; it orchestrated and placed various elements to procedurally render a narrative.
+The demo is not the interesting part. His framing of what changed is: we are moving from "no one would ever do this" to "sure, why not, it is basically free."
 
-This points to a significant shift in LLM capabilities. They're moving from simple content generation to complex, generative code creation that builds worlds and orchestrates interactions. For product builders, this means thinking beyond basic prompt engineering. How do you evaluate models that are essentially building their own mini-applications? Your evaluation frameworks need to evolve to test for emergent, systemic behavior, not just isolated outputs.
+That is a backlog question, not a technology question. Every idea your team killed because the payoff could not justify a week of engineering time deserves a second look this quarter. Bespoke onboarding built for a single large account. An internal tool that serves six people. The analysis someone requests twice a year and nobody ever automates.
+
+He was equally specific about the limit, which matters more than the demo. The model could not perceive its own output. It took screenshots one at a time, painstakingly, and still shipped jank it could not see. Anything that needs perceptual judgment still needs a person in the loop.
+
+Worth an hour with your killed-ideas list.
