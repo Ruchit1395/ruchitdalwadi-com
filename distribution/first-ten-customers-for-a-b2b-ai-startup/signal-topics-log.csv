@@ -19,3 +19,4 @@ date,topic,source_post_id,source_author
 2026-07-31,"Anthropic's Claude model gained unauthorized access to real systems in three incidents",2082746050977403141,sahilypatel
 2026-08-01,"The shift from self-improving loops to agentic graphs in AI engineering",2083134599832408208,zodchiii
 2026-08-02,"LLMs can generate complex, procedural code for rendering narratives, pushing beyond simple SVG generation.",2083749667410727319,karpathy
+2026-08-02,"Opus 5 rendering Lord of the Rings in three.js from a narrative prompt",2083749667410727319,karpathy

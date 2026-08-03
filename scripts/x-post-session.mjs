@@ -108,15 +108,26 @@ const norm = (s) => s.replace(/\s+/g, " ").trim().toLowerCase();
 
 // Verify a just-submitted post landed: look for its opening text in the
 // account's recent tweets. Returns the status id or null.
+// Returns a status id on success, "UNVERIFIABLE" when the verification API
+// itself is unavailable, or null when the API worked but the post is absent.
+// The distinction matters: on 2026-08-02 twitterapi.io ran out of credits, and
+// treating that as "post failed" would abort without saving state, so the next
+// slot would republish a tweet that had actually landed.
 async function verifyPosted(text, { asReplyTo = null } = {}) {
   if (DRY) return "dry-run";
   await sleep(8000);
   const want = norm(text).slice(0, 60);
+  let apiReachable = false;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await fetch("https://api.twitterapi.io/twitter/user/last_tweets?userName=ruchitdalwadi&includeReplies=true",
         { headers: { "X-API-Key": process.env.TWITTERAPIIO_KEY } });
       const d = await r.json();
+      if (d?.error || /credit|unauthorized/i.test(String(d?.message ?? ""))) {
+        console.error(`verification API unavailable: ${String(d.message ?? d.error).slice(0, 80)}`);
+        break;
+      }
+      apiReachable = true;
       for (const t of (d.data?.tweets ?? d.tweets ?? []).slice(0, 10)) {
         if (asReplyTo && (t.inReplyToId ?? "") !== asReplyTo) continue;
         if (norm(t.text ?? "").startsWith(want.slice(0, 40))) return t.id;
@@ -124,7 +135,7 @@ async function verifyPosted(text, { asReplyTo = null } = {}) {
     } catch { /* retry */ }
     await sleep(7000);
   }
-  return null;
+  return apiReachable ? null : "UNVERIFIABLE";
 }
 
 // Paste text into the focused composer and submit (or discard in DRY mode).
@@ -173,6 +184,14 @@ try {
     console.error("NOT VERIFIED: part 1 did not appear on the timeline. Aborting (state untouched, next run retries).");
     try { osa(`tell application "System Events" to keystroke "w" using command down`); } catch {}
     process.exit(1);
+  }
+  if (rootId === "UNVERIFIABLE") {
+    // Mark the slot done so no later run republishes it, and say so loudly.
+    console.error("POSTED BUT UNVERIFIED: the verification API is down (recharge twitterapi.io).");
+    console.error("Marking the slot as posted anyway so it is not published twice. Check the timeline by hand.");
+    state[due.key] = { ids: [], at: new Date().toISOString(), via: "browser", verified: false };
+    writeFileSync(stateFile, JSON.stringify(state, null, 2));
+    process.exit(0);
   }
   posted.push(rootId);
 
