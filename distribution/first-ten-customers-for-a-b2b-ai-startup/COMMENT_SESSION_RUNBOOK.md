@@ -38,6 +38,9 @@ When the gates pass, the job is to leave qualified comments, not merely to run o
 
 Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
 - Preferred mix: 2 X comments + 3 LinkedIn comments. LinkedIn is Codex's PRIMARY comment duty: the scheduled local runner (launchd, 3x/day) covers X deterministically, and no script can automate LinkedIn (obfuscated DOM), so agent-with-eyes effort goes there first.
+- If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
+- If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
+- A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
 
 ### Division of labour (verified 2026-08-02 — read this before anything else)
 
@@ -67,9 +70,6 @@ Keep comments short. The X drafts cap at 240 characters and have never corrupted
 
 - **twitterapi.io credits.** As of 2026-08-02 the balance is exhausted (`"Credits is not enough. Please recharge"`). While empty: X scouting via `scout-comment-targets.mjs` returns NO_TARGETS, `signal-to-social.mjs` fetches 0 candidates, and X post verification cannot run. This is not "a thin day" — check the balance before concluding targets do not exist.
 - **X DOM scouting fallback.** When twitterapi.io is empty, X targets can still be read from the logged-in browser: `article[data-testid="tweet"]` with `a[href*="/status/"]` for the id and `[data-testid="tweetText"]` for the body. These selectors were verified working on 2026-08-02.
-- If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
-- If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
-- A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
 
 Do not lower the quality bar into spam. Do broaden search, rerun scouting with larger pools, rotate lanes, and use minimum viable sessions instead of ending early.
 
