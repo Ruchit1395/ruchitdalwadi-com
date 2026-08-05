@@ -38,6 +38,35 @@ When the gates pass, the job is to leave qualified comments, not merely to run o
 
 Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
 - Preferred mix: 2 X comments + 3 LinkedIn comments. LinkedIn is Codex's PRIMARY comment duty: the scheduled local runner (launchd, 3x/day) covers X deterministically, and no script can automate LinkedIn (obfuscated DOM), so agent-with-eyes effort goes there first.
+
+### Division of labour (verified 2026-08-02 — read this before anything else)
+
+| Job | Owner | Codex should |
+|---|---|---|
+| X native posts | `x-post-session.mjs` (launchd, 09:00/12:15/19:15/22:00 IST) | Never touch |
+| LinkedIn native posts | `li-publish.mjs` (Composio API) | Never touch |
+| X cold comments | `comment-session.mjs` (launchd, 09:12/16:00/19:27 IST) | Only top up when X is behind day pace |
+| **LinkedIn cold comments** | **Codex** | **This is your job. Nothing else can do it.** |
+
+Why LinkedIn is Codex-only, measured not assumed: on 2026-08-02 a selector test against a loaded LinkedIn search page returned 0 matches for `[data-urn*="activity"]`, `div.feed-shared-update-v2`, `[data-urn]` and `[data-id*="activity"]`. The `urn:li:activity:<id>` identifier is no longer in the DOM at all, so no script can dedupe, permalink, or verify a LinkedIn comment. `li-comment-session.mjs` is retired (lifetime record: 0 successful posts) and its launchd job is unloaded. An agent with eyes is the only working route.
+
+Posts are fully automated on both platforms and need no agent. Do not draft, publish, or "help with" native posts.
+
+### Verify the text, not just that something posted
+
+A comment that posts with mangled text is worse than no comment. On 2026-08-02 a 309-character X reply passed a pre-submit length check, then submitted corrupted: spaces dropped and replaced with stray periods ("State. measurementis the bucket", "a rightanswer in 40 calls"). It is still live as a permanent example.
+
+So, on every comment:
+1. After submitting, re-read the posted comment from the page.
+2. Compare it against the text you intended, not just "did a comment appear".
+3. If the live text does not match, say so in the session summary and log it. Do not post a replacement on the same thread without flagging it.
+
+Keep comments short. The X drafts cap at 240 characters and have never corrupted; the failure appeared at 309. Treat ~250 characters as the practical ceiling for anything typed or pasted into a composer.
+
+### Known blockers to check first
+
+- **twitterapi.io credits.** As of 2026-08-02 the balance is exhausted (`"Credits is not enough. Please recharge"`). While empty: X scouting via `scout-comment-targets.mjs` returns NO_TARGETS, `signal-to-social.mjs` fetches 0 candidates, and X post verification cannot run. This is not "a thin day" — check the balance before concluding targets do not exist.
+- **X DOM scouting fallback.** When twitterapi.io is empty, X targets can still be read from the logged-in browser: `article[data-testid="tweet"]` with `a[href*="/status/"]` for the id and `[data-testid="tweetText"]` for the body. These selectors were verified working on 2026-08-02.
 - If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
 - If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
 - A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
@@ -168,6 +197,9 @@ Unverified after one recheck = do not count; note in the session summary.
 Per the existing contract: stage `distribution/`, commit, `git pull --rebase`, push. Then post the standard chat summary (X/LinkedIn/Status shape from README.md).
 
 ## LinkedIn session (target 2-5 comments, when browser healthy)
+
+This is Codex's core duty. If a wakeup can only do one thing, do this.
+Note (2026-08-02): the `li-comment-session.mjs` script referenced in older notes is retired and its launchd job is unloaded. Do not try to run it or repair its selectors.
 
 1. Feed-first discovery: open the authenticated LinkedIn home feed and inspect at least 20 visible post cards or 3 screenfuls, whichever comes first. Capture exact post URLs, author, age, reactions, comments, and the substantive opening before drafting.
 2. Keep fresh, practitioner-authored, in-lane feed rooms that pass the normal 50+ reaction gate, or the 25+ within 24 hours practitioner fallback. Skip reposts without substance, polls, company promos, lead-gen, hiring posts, restricted rooms, duplicates, and authors inside the 7-day cooldown.
