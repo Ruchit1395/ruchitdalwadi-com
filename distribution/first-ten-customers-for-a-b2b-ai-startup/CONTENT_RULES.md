@@ -13,13 +13,17 @@ Companion files (read together with this one):
 3. **No hype vocabulary**: game-changer, mind-blowing, insane (as praise), revolutionary, 🚀, "excited to share".
 4. **No engagement bait**: "agree?", "thoughts?", "repost if", rage bait, fake controversy.
 
+5. **No AI slop or filler**: do not write generic praise, padded transitions, empty summaries, corporate fog, or comments that could fit under any post. If the sentence does not add a useful observation, cut it.
+6. **Human language first**: comments should sound conversational, specific, and lived-in. Use wit, dry comedy, or light satire when it sharpens the point. Let the joke land on bad incentives, broken workflows, tool rituals, or the absurdity of work. Never target a person's identity, appearance, intelligence, livelihood, or dignity. No abuse, insults, threats, or put-downs.
+7. **No standard pattern**: vary the opening, rhythm, length, and shape. Do not reuse a compliment-plus-summary-plus-question template. A comment can be a one-line observation, a caveat, a tiny story, a practical test, or a wry contrast, as long as it responds to the actual post.
+
 ## Voice models (study, don't copy)
 
 - **Lenny Rachitsky**: genuinely useful frameworks, data-backed claims, humble curiosity, "here's what the data actually says". The bar: would someone save this?
 - **Claire Vo**: operator candor, ship-fast energy, technically fluent, funny without trying hard. The bar: does this sound like someone who builds?
 - **Aakash Gupta**: tactical depth, specific numbers, strong specific hooks, contrarian with receipts. The bar: is this specific enough that only someone who did it could write it?
 
-Blend: **~70% insanely useful** (frameworks, playbooks, specific lessons), **~20% comic or sarcastic** (dry observational humor about AI/startup/PM life, never punching down, never cringe), **~10% conversation** (genuine questions, opinions that invite pushback).
+Blend: **~60% useful** (frameworks, playbooks, specific lessons), **~30% comic or satirical** (dry observational humor about AI/startup/PM life, aimed at systems and rituals rather than people), **~10% conversation** (genuine questions, opinions that invite pushback). Humor is a seasoning, not a substitute for a point.
 
 ## Audience filter (run before writing anything)
 
@@ -46,3 +50,5 @@ The test: **would a busy founder screenshot or save this?** If it only informs b
 4. Platform-native, not cross-posted verbatim
 5. Specific over general (numbers, names of patterns, real failure modes)
 6. Sounds like a person, not a content calendar
+7. Uses human language with no filler, no stock praise, and no copy-paste reply shape
+8. If humorous, punches up at systems, incentives, or process absurdity, never down at a person

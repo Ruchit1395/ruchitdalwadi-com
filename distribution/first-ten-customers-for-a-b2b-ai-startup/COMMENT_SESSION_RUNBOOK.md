@@ -86,6 +86,20 @@ When fewer than two feed rooms pass the normal gate:
 
 A zero-comment session is an exceptional blocker outcome only. It requires a documented browser failure, account restriction, or a completed feed, base-lane, expanded-lane, and relaxed-criteria search with every candidate rejected for a concrete safety or quality reason. Never force a comment into a banned, promotional, duplicate, same-week-author, or genuinely uncertain room just to avoid zero.
 
+### Watchlist recovery queue
+
+If the feed and normal search lanes produce no qualified room, continue through `ai-operator-post-watchlist-2026-08-05.csv` before declaring the session empty.
+
+1. Work from the next unreviewed profile in the watchlist, prioritizing rows with `candidate_post_url` and then rows marked `needs_live_recheck`.
+2. Open the latest post live. Confirm it is still fresh, public, in-lane, non-promotional, and open to comments. A profile link or search result is a lead, not proof of a target.
+3. Use loose criteria only for a clearly relevant practitioner post with a real opening. A thoughtful post with active comments can qualify even when reaction counts are hidden.
+4. Skip hiring, polls, lead magnets, service pitches, company promos, stale posts, duplicates, cooldown authors, and uncertain rooms. Continue down the queue after each skip.
+5. Post every safe qualified room found, up to the session cap. Do not stop at zero merely because the home feed was thin.
+
+### Comment voice gate
+
+Comments must sound like a sharp human who has shipped things. No AI slop, no filler, no generic praise, no corporate fog, and no standard reply pattern. Prefer a dry joke, a small absurdity from working life, a precise caveat, or a concrete observation that makes the author feel understood. Satire may target broken processes, incentives, dashboards, or tool rituals. Never mock, abuse, threaten, or put down the author, their identity, or their audience. Every comment still needs one useful addition tied to the actual post.
+
 ## X session (target 3-5 comments)
 
 ### 1. Feed-first discovery (primary)
