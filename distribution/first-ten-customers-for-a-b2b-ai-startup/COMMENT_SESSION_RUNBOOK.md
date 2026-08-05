@@ -73,6 +73,19 @@ Keep comments short. The X drafts cap at 240 characters and have never corrupted
 
 Do not lower the quality bar into spam. Do broaden search, rerun scouting with larger pools, rotate lanes, and use minimum viable sessions instead of ending early.
 
+### Non-zero LinkedIn session policy
+
+The LinkedIn feed is a starting point, not a stopping point. Do not close a session with zero comments just because the feed is thin.
+
+When fewer than two feed rooms pass the normal gate:
+
+1. Search at least 8 base lanes one at a time.
+2. If the base pass is short, search at least 8 expanded AI-system, startup, and technical-builder lanes.
+3. Relax the room gate in this order: 25+ reactions within 24 hours from a clearly relevant practitioner, then a thoughtful practitioner post with active comments even when reactions are not visible.
+4. Inspect additional result cards and rotate lanes until a qualified room is found or a hard platform blocker is confirmed.
+
+A zero-comment session is an exceptional blocker outcome only. It requires a documented browser failure, account restriction, or a completed feed, base-lane, expanded-lane, and relaxed-criteria search with every candidate rejected for a concrete safety or quality reason. Never force a comment into a banned, promotional, duplicate, same-week-author, or genuinely uncertain room just to avoid zero.
+
 ## X session (target 3-5 comments)
 
 ### 1. Feed-first discovery (primary)
