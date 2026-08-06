@@ -2,6 +2,8 @@
 
 Campaign post: `content/essays/first-ten-customers-for-a-b2b-ai-startup.mdx`
 
+2026-08-06T22:01:12+05:30: Recovery gate passed for X capacity because the local-day pace remained behind and the newest logged comment was more than 2.5 hours old. Browser tab creation and navigation succeeded. X feed was sampled across 3 screenfuls, the 6/12/20 scouts all returned NO_TARGETS, and 8 base plus 8 expanded direct browser search lanes were sampled. Feed rooms were ads, promotions, reposts, off-lane, stale, banned, or lacked a substantive in-lane opening; search results were stale or empty at capture time. No X comment was submitted. LinkedIn was already capped at 10/10. August 6 authoritative count remains 10/20: X 0/10 and LinkedIn 10/10. No API submission or broader campaign actions.
+
 2026-08-06T22:20:00+05:30: Corrective X audit completed. Direct browser rechecks of Mckay Wrigley, Taylor Otwell, Omar Sanseviero, and swyx showed no visible Ruchit D reply on the original posts or the account Replies timeline. All four X rows were removed from replied-log.csv and do not count. Corrected August 6 count is 10/20: X 0/10 and LinkedIn 10/10. The earlier submit clicks were not landing; no new X comment was posted.
 
 2026-08-06T22:08:00+05:30: Corrective verification pass: direct browser checks of the Vikram Chandra and Andrew Ambrosino X posts, plus the account Replies timeline, did not show either submitted reply under Ruchit D. The two X rows were removed from replied-log.csv and are no longer counted. LinkedIn's three browser submissions remain logged per the current no-post-submit-verification instruction. Corrected August 6 count is 14/20: X 4/10 and LinkedIn 10/10. No additional comment was posted.
