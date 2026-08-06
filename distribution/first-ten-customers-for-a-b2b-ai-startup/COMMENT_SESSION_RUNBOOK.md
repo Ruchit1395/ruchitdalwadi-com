@@ -37,7 +37,7 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 When the gates pass, the job is to leave qualified comments, not merely to run one scout command.
 
 Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
-- Preferred mix: 2 X comments + 3 LinkedIn comments. LinkedIn is Codex's PRIMARY comment duty: the scheduled local runner (launchd, 3x/day) covers X deterministically, and no script can automate LinkedIn (obfuscated DOM), so agent-with-eyes effort goes there first.
+- Preferred mix: 2 X comments + 3 LinkedIn comments. Codex owns both cold-comment platforms and handles all comments through the browser. Do not assume a scheduled runner will cover X; check the log and run the X browser ladder in this session when capacity is available.
 - If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
 - If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.
 - A zero-comment session is allowed only after the fallback ladder has been exhausted and the blocker is logged clearly.
@@ -48,10 +48,10 @@ Default target per heartbeat: 4-5 total cold comments, split across both platfor
 |---|---|---|
 | X native posts | `x-post-session.mjs` (launchd, 09:00/12:15/19:15/22:00 IST) | Never touch |
 | LinkedIn native posts | `li-publish.mjs` (Composio API) | Never touch |
-| X cold comments | `comment-session.mjs` (launchd, 09:12/16:00/19:27 IST) | Only top up when X is behind day pace |
-| **LinkedIn cold comments** | **Codex** | **This is your job. Nothing else can do it.** |
+| **X cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and landed-reply verification. Do not delegate to `comment-session.mjs`.** |
+| **LinkedIn cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and visible post-submit verification.** |
 
-Why LinkedIn is Codex-only, measured not assumed: on 2026-08-02 a selector test against a loaded LinkedIn search page returned 0 matches for `[data-urn*="activity"]`, `div.feed-shared-update-v2`, `[data-urn]` and `[data-id*="activity"]`. The `urn:li:activity:<id>` identifier is no longer in the DOM at all, so no script can dedupe, permalink, or verify a LinkedIn comment. `li-comment-session.mjs` is retired (lifetime record: 0 successful posts) and its launchd job is unloaded. An agent with eyes is the only working route.
+Why Codex owns both cold-comment platforms: LinkedIn's obfuscated DOM prevents reliable script-based dedupe, permalink capture, and verification, while X still requires browser-only submission plus twitterapi.io landed-reply verification. `li-comment-session.mjs` is retired and `comment-session.mjs` is no longer the owner of X comments. Native posts remain outside this duty.
 
 Posts are fully automated on both platforms and need no agent. Do not draft, publish, or "help with" native posts.
 
@@ -236,7 +236,7 @@ Note (2026-08-02): the `li-comment-session.mjs` script referenced in older notes
    - AI systems: artificial intelligence, generative AI, LLM applications, RAG, context engineering, AI automation, AI infrastructure, AI developer tools, agent evaluation, production AI, AI observability, AI safety engineering, model context protocol, MCP tools.
    - Startup and technical builders: AI startups, startup AI, B2B AI, enterprise AI, SaaS AI, startup engineering, startup product, technical founders, tech founders, product engineering, software engineering, developer tools, AI implementation, workflow automation, future of work.
 5. Room gate: only posts with 50+ reactions, posted within about 48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
-6. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed.
+6. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed. Immediately before submission, confirm the exact text through visible DOM or equivalent page state. A screenshot is optional and is not a posting gate.
 7. One comment per author per week. Log to replied-log.csv with the post URL in place of tweet id.
 8. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
 
