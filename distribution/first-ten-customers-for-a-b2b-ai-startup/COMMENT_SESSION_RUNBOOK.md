@@ -2,7 +2,7 @@
 
 Purpose: cold comments in fresh, high-engagement, in-lane rooms are the account-warming and visibility engine. The X API forbids this motion (403 on cold replies and quotes), so it runs ONLY through the browser. This runbook makes it deterministic.
 
-Submission boundary: X cold comments must be composed and submitted through the authenticated browser-control session. Never submit them through the X API, Composio, a script, or a direct HTTP endpoint. `twitterapi.io` is used only after submission to verify that a browser-posted reply landed; if that verification service is unavailable, do not submit the X comment and log the blocker.
+Submission boundary: X cold comments must be composed and submitted through the authenticated browser-control session. Never submit them through the X API, Composio, a script, or a direct HTTP endpoint. `twitterapi.io` is optional best-effort evidence only and never gates a browser submission. If it is unavailable, continue with browser-only posting and record that the post-submit check was unavailable.
 
 Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`.
 
@@ -12,7 +12,7 @@ On any heartbeat where ALL of these hold:
 1. Browser control is healthy (tab create + navigate succeed).
 2. Cadence is eligible:
    - **Normal mode:** the last comment session ended more than 2.5 hours ago.
-   - **Recovery mode:** the last session was more recent, but the campaign is behind its local-day pace by at least 3 comments, at least 10 minutes have passed since the newest verified comment, and a fresh qualified room is available. The 2.5-hour cooldown is a burst-control default, not a hard stop when the day is materially behind.
+   - **Recovery mode:** the last session was more recent, but the campaign is behind its local-day pace by at least 3 comments, at least 10 minutes have passed since the newest logged comment, and a fresh qualified room is available. The 2.5-hour cooldown is a burst-control default, not a hard stop when the day is materially behind.
 3. Fewer than 20 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`), with a maximum of 10 on X and 10 on LinkedIn.
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
@@ -29,8 +29,8 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 
 - Count comments by the local calendar day in Asia/Kolkata. Pace the 20-comment target across the active window from 08:00 to 23:00 IST. Before 08:00, the expected pace is 0. From 08:00 onward, calculate `expected_by_now = ceil(20 * elapsed_active_minutes / 900)`, capped at 20.
 - Enter recovery mode when `expected_by_now - comments_today >= 3`. Example: at 11:00 IST the expected pace is 4 comments; a day at 1/20 is behind by 3 and should reopen a session even if the last comment was 13 minutes ago.
-- In recovery mode, wait at least 10 minutes from the newest verified comment before starting another session. Keep the mandatory 2+ minute spacing between individual comments.
-- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, visible composer-state verification, and X verification all remain mandatory.
+- In recovery mode, wait at least 10 minutes from the newest logged comment before starting another session. Keep the mandatory 2+ minute spacing between individual comments.
+- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, and visible pre-submit composer-state verification remain mandatory. Post-submit landed-reply verification is optional.
 - If the day is behind but one platform is capped, route recovery capacity to the other platform. If both platforms have capacity, use the normal mixed-session preference.
 - Re-evaluate the pace after every session. Do not wait for the 2.5-hour normal cooldown when recovery mode still applies; return to normal mode once the backlog is less than 3 comments.
 
@@ -50,10 +50,10 @@ Default target per heartbeat: 4-5 total cold comments, split across both platfor
 |---|---|---|
 | X native posts | `x-post-session.mjs` (launchd, 09:00/12:15/19:15/22:00 IST) | Never touch |
 | LinkedIn native posts | `li-publish.mjs` (Composio API) | Never touch |
-| **X cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and landed-reply verification. Do not delegate to `comment-session.mjs`.** |
-| **LinkedIn cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and visible post-submit verification.** |
+| **X cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and optional best-effort landed-reply lookup. Do not delegate to `comment-session.mjs`.** |
+| **LinkedIn cold comments** | **Codex via browser** | **Handle the feed, fallback lanes, browser composer, and exact pre-submit text check.** |
 
-Why Codex owns both cold-comment platforms: LinkedIn's obfuscated DOM prevents reliable script-based dedupe, permalink capture, and verification, while X still requires browser-only submission plus twitterapi.io landed-reply verification. `li-comment-session.mjs` is retired and `comment-session.mjs` is no longer the owner of X comments. Native posts remain outside this duty.
+Why Codex owns both cold-comment platforms: LinkedIn's obfuscated DOM prevents reliable script-based dedupe and permalink capture, while X requires browser-only submission. `li-comment-session.mjs` is retired and `comment-session.mjs` is no longer the owner of X comments. Native posts remain outside this duty.
 
 Posts are fully automated on both platforms and need no agent. Do not draft, publish, or "help with" native posts.
 
@@ -62,15 +62,15 @@ Posts are fully automated on both platforms and need no agent. Do not draft, pub
 A comment that posts with mangled text is worse than no comment. On 2026-08-02 a 309-character X reply passed a pre-submit length check, then submitted corrupted: spaces dropped and replaced with stray periods ("State. measurementis the bucket", "a rightanswer in 40 calls"). It is still live as a permanent example.
 
 So, on every comment:
-1. After submitting, re-read the posted comment from the page.
-2. Compare it against the text you intended, not just "did a comment appear".
-3. If the live text does not match, say so in the session summary and log it. Do not post a replacement on the same thread without flagging it.
+1. Immediately before submitting, re-read the composer text from the page.
+2. Compare it against the text you intended, not just whether the composer is non-empty.
+3. A post-submit re-read is optional and must not gate the submission or trigger a replacement attempt.
 
 Keep comments short. The X drafts cap at 240 characters and have never corrupted; the failure appeared at 309. Treat ~250 characters as the practical ceiling for anything typed or pasted into a composer.
 
 ### Known blockers to check first
 
-- **twitterapi.io credits.** As of 2026-08-02 the balance is exhausted (`"Credits is not enough. Please recharge"`). While empty: X scouting via `scout-comment-targets.mjs` returns NO_TARGETS, `signal-to-social.mjs` fetches 0 candidates, and X post verification cannot run. This is not "a thin day" — check the balance before concluding targets do not exist.
+- **twitterapi.io credits.** As of 2026-08-02 the balance is exhausted (`"Credits is not enough. Please recharge"`). While empty, X post-submit verification cannot run, but that does not block browser-only submissions. Do not use the API as a submit path, and do not treat its absence as evidence that no browser targets exist.
 - **X DOM scouting fallback.** When twitterapi.io is empty, X targets can still be read from the logged-in browser: `article[data-testid="tweet"]` with `a[href*="/status/"]` for the id and `[data-testid="tweetText"]` for the body. These selectors were verified working on 2026-08-02.
 
 Do not lower the quality bar into spam. Do broaden search, rerun scouting with larger pools, rotate lanes, and use minimum viable sessions instead of ending early.
@@ -110,7 +110,7 @@ Start on the authenticated X home feed, not keyword search. Inspect at least 20 
 
 Keep feed targets when they are fresh, in-lane, practitioner-authored, and pass the normal engagement and safety gates. Skip reposts without a substantive author comment, ads, company launch promos, engagement farms, banned rooms, duplicates, and authors inside the 3-day cooldown.
 
-If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, visible composer-state verification, or twitterapi.io verification.
+If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, or visible pre-submit composer-state verification.
 
 ### 2. Script scout fallback
 From the repo root:
@@ -209,16 +209,18 @@ For each target:
 
 If the composer rejects input twice on a target, skip it and continue.
 
-### 6. Verify and log
-After the batch, verify each landed:
+### 6. Log
+After the batch, a landed-reply check is optional. If the check is available, record its result. If it is unavailable, record the browser submission and the unavailable post-submit check without claiming that the reply was verified:
 
 ```bash
 # check recent replies include the new ones
 curl -s "https://api.twitterapi.io/twitter/user/last_tweets?userName=ruchitdalwadi&includeReplies=true" -H "X-API-Key: $TWITTERAPIIO_KEY"
 ```
 
-For each verified comment, append to `replied-log.csv`:
+For each browser-submitted comment, append to `replied-log.csv`:
 `<iso-date>,<target_tweet_id>,<target_author>,<target_views>,<reply_id>,<reply_url>`
+
+Leave `reply_id` and `reply_url` blank when the browser does not expose them. Do not invent a landed identifier.
 
 Unverified after one recheck = do not count; note in the session summary.
 
