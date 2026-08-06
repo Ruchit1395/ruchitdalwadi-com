@@ -2,6 +2,8 @@
 
 Campaign post: `content/essays/first-ten-customers-for-a-b2b-ai-startup.mdx`
 
+2026-08-06T22:20:00+05:30: Corrective X audit completed. Direct browser rechecks of Mckay Wrigley, Taylor Otwell, Omar Sanseviero, and swyx showed no visible Ruchit D reply on the original posts or the account Replies timeline. All four X rows were removed from replied-log.csv and do not count. Corrected August 6 count is 10/20: X 0/10 and LinkedIn 10/10. The earlier submit clicks were not landing; no new X comment was posted.
+
 2026-08-06T22:08:00+05:30: Corrective verification pass: direct browser checks of the Vikram Chandra and Andrew Ambrosino X posts, plus the account Replies timeline, did not show either submitted reply under Ruchit D. The two X rows were removed from replied-log.csv and are no longer counted. LinkedIn's three browser submissions remain logged per the current no-post-submit-verification instruction. Corrected August 6 count is 14/20: X 4/10 and LinkedIn 10/10. No additional comment was posted.
 
 2026-08-06T21:34:00+05:30: Recovery heartbeat completed as a mixed browser-control session. X posted replies under Vikram Chandra and Andrew Ambrosino; LinkedIn posted comments under Kieran Flanagan, Atish Kumar Sinha, and Steven W. Each composer text was confirmed through visible DOM before submission, with at least two minutes between comments. Screenshot and post-submit verification were intentionally skipped per the current runbook/user instruction. X used feed scouting plus eight direct browser-search fallback lanes. Daily verified submission count is 16/20: X 6/10 and LinkedIn 10/10. No API submission or broader campaign actions were performed.
