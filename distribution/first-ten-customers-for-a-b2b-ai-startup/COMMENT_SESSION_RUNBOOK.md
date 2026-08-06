@@ -2,6 +2,8 @@
 
 Purpose: cold comments in fresh, high-engagement, in-lane rooms are the account-warming and visibility engine. The X API forbids this motion (403 on cold replies and quotes), so it runs ONLY through the browser. This runbook makes it deterministic.
 
+Submission boundary: X cold comments must be composed and submitted through the authenticated browser-control session. Never submit them through the X API, Composio, a script, or a direct HTTP endpoint. `twitterapi.io` is used only after submission to verify that a browser-posted reply landed; if that verification service is unavailable, do not submit the X comment and log the blocker.
+
 Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`.
 
 ## When to run
