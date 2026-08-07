@@ -4,6 +4,8 @@ Created: 2026-06-30T14:35:00+05:30.
 
 Purpose: prevent campaign posts, X replies, and LinkedIn comments from sounding automated, while raising the practical value per public touch.
 
+Read `VOICE_COMPOSITION_GUIDE.md` before drafting. This file sets the value bar; the composition guide sets the language, originality, mode selection, and batch-variety controls.
+
 The campaign should now feel less like a quote-card machine and more like a sharp operator teaching in public.
 
 ## The current fingerprint to avoid

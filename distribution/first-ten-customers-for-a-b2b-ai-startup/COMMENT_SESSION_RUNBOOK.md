@@ -4,7 +4,7 @@ Purpose: cold comments in fresh, high-engagement, in-lane rooms are the account-
 
 Submission boundary: X cold comments must be composed and submitted through the authenticated browser-control session. Never submit them through the X API, Composio, a script, or a direct HTTP endpoint. `twitterapi.io` is optional best-effort evidence only and never gates a browser submission. If it is unavailable, continue with browser-only posting and record that the post-submit check was unavailable.
 
-Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`.
+Read together with: `CONTENT_RULES.md`, `HOOK_PLAYBOOK.md`, `AUDIENCE_MAP.md`, `VOICE_COMPOSITION_GUIDE.md`.
 
 ## When to run
 
@@ -101,6 +101,8 @@ If the feed and normal search lanes produce no qualified room, continue through 
 ### Comment voice gate
 
 Comments must sound like a sharp human who has shipped things. No AI slop, no filler, no generic praise, no corporate fog, and no standard reply pattern. Prefer a dry joke, a small absurdity from working life, a precise caveat, or a concrete observation that makes the author feel understood. Satire may target broken processes, incentives, dashboards, or tool rituals. Never mock, abuse, threaten, or put down the author, their identity, or their audience. Every comment still needs one useful addition tied to the actual post.
+
+Before drafting, use `VOICE_COMPOSITION_GUIDE.md`. It provides a mandatory composite voice system based on high-level, non-exclusive craft traits from the campaign's reference writers. Never imitate a named person, reuse a recognizable phrase, or reproduce a signature structure. Choose no more than two reference qualities, use an original Ruchit receipt or a target-specific detail, and complete the composition checklist before submitting.
 
 ## X session (target 3-5 comments)
 

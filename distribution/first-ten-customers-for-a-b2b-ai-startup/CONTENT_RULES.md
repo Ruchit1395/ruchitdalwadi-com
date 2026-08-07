@@ -5,6 +5,7 @@ These override everything else. Every agent generating posts, comments, or repli
 Companion files (read together with this one):
 - `AUDIENCE_MAP.md` — the 16 pain points + 100-item curriculum every post draws from
 - `HOOK_PLAYBOOK.md` — the 8 hook shapes, hook rules, and comprehension rules
+- `VOICE_COMPOSITION_GUIDE.md` — mandatory voice-composition, originality, language, and batch-variety guide for all native posts and comments
 
 ## Hard bans
 
@@ -52,3 +53,4 @@ The test: **would a busy founder screenshot or save this?** If it only informs b
 6. Sounds like a person, not a content calendar
 7. Uses human language with no filler, no stock praise, and no copy-paste reply shape
 8. If humorous, punches up at systems, incentives, or process absurdity, never down at a person
+9. Passes the `VOICE_COMPOSITION_GUIDE.md` composition checklist: original language, an evidence-backed addition, and a shape that does not repeat the preceding public comments
