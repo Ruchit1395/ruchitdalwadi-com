@@ -253,6 +253,22 @@ For a five-comment session:
 
 Track the last two comments before drafting the next one. Variety is a quality feature, not cosmetic polish.
 
+## Posting failure recovery
+
+A failed post is an operational problem to resolve, not a reason to quietly end the run.
+
+When X or LinkedIn fails at any point in the public-comment flow:
+
+1. Stop on that target before a second blind submit. Record the exact failure point: page load, target selection, comment control, composer input, text verification, submit control, or visible confirmation.
+2. Diagnose immediately. Inspect the live page state, then retry the target once in a fresh tab when the failure may be selector, stale-page, or composer-state related.
+3. Run a dry run before the recovery attempt. Confirm the page loads, the intended comment control opens, the composer accepts a short harmless test only when the platform supports clearing it safely, and the exact intended draft can be read from visible DOM before submission. Never leave a test comment posted.
+4. If the target is uncertain after one recovery attempt, do not risk a duplicate. Mark it as unavailable for this session and move to the next qualified target or the other platform immediately.
+5. Keep filling the session with safe, fresh qualified rooms until the original session capacity is recovered, up to five comments per session and all daily platform caps. If a platform stays blocked after the allowed recovery, redirect remaining capacity to the other platform when it has qualified rooms.
+6. If no safe room remains, carry the missing capacity into the next eligible session. Do not manufacture a comment, bypass the author cooldown, repeat a target, or violate the two-minute spacing just to hit a count.
+7. Log the failure, recovery steps, dry-run result, and whether lost capacity was recovered. A session summary must distinguish browser-submitted comments from blocked or uncertain attempts.
+
+The goal is to make up for lost runs promptly and safely. Persistence applies to troubleshooting and qualified replacements, never to duplicate-risk resubmission or lower-quality rooms.
+
 ## Red flags
 
 Rewrite or skip when a draft:
