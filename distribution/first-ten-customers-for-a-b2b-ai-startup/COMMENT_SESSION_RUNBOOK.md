@@ -113,36 +113,13 @@ Start on the authenticated X home feed, not keyword search. Inspect at least 20 
 
 Keep feed targets when they are fresh, in-lane, practitioner-authored, and pass the normal engagement and safety gates. Skip reposts without a substantive author comment, ads, company launch promos, engagement farms, banned rooms, duplicates, and authors inside the 3-day cooldown.
 
-If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the script scout and direct-search fallback below. Feed discovery does not replace dedupe, author cooldowns, or visible pre-submit composer-state verification.
+If the feed sample produces 3 or more qualified rooms, use those rooms and do not run a keyword scout just to replace them. If it produces fewer than 3, continue to the browser-search fallback below. Feed discovery does not replace dedupe, author cooldowns, or visible pre-submit composer-state verification.
 
-### 2. Script scout fallback
-From the repo root:
-
-```bash
-node --env-file=.env.local scripts/scout-comment-targets.mjs 6
-```
-
-This returns fresh (<24h), engaged (40+ likes, <150 replies), in-lane targets, already deduped against `replied-log.csv` (never same post twice, never same author within 3 days) and filtered against finance/crypto/politics rooms.
-
-If it prints `NO_TARGETS` or returns fewer than 4 qualified targets after selection, do not end the session yet. Run the X fallback ladder.
-
-### X fallback ladder
+### 2. X browser-search fallback
 
 Use these steps in order until you have enough qualified targets or the ladder is exhausted:
 
-1. Rerun the scout with a larger pool:
-
-```bash
-node --env-file=.env.local scripts/scout-comment-targets.mjs 12
-```
-
-2. If still short, rerun once more:
-
-```bash
-node --env-file=.env.local scripts/scout-comment-targets.mjs 20
-```
-
-3. If still short and browser health is good, use X browser search directly. Sample at least 8 lanes before declaring X exhausted. Use Top for quality, then Latest when Top is stale:
+1. With browser health confirmed, use X browser search directly. Sample at least 8 lanes before declaring X exhausted. Use Top for quality, then Latest when Top is stale:
    - `"AI agents" min_faves:20 -crypto -stocks -trading -politics lang:en`
    - `"AI workflow" min_faves:20 -crypto -stocks -trading -politics lang:en`
    - `"AI coding" min_faves:20 -crypto -stocks -trading -politics lang:en`
@@ -164,9 +141,9 @@ node --env-file=.env.local scripts/scout-comment-targets.mjs 20
    - `"production AI" min_faves:10 -crypto -stocks -trading -politics lang:en`
    - `"MCP tools" min_faves:10 -crypto -stocks -trading -politics lang:en`
 
-4. If the room is highly relevant and the author is clearly TG, relaxed engagement is allowed: 20+ likes for X, under 200 replies, posted within ~48h. Do not relax the banned-room rails.
+2. If the room is highly relevant and the author is clearly TG, relaxed engagement is allowed: 20+ likes for X, under 200 replies, posted within ~48h. Do not relax the banned-room rails.
 
-5. If direct X search yields only 1-3 qualified rooms, post those and then try the LinkedIn ladder for the remaining session slots.
+3. If direct X search yields only 1-3 qualified rooms, post those and then try the LinkedIn ladder for the remaining session slots.
 
 ### 3. Select
 From the list, keep targets where the author's audience is clearly our TG (founders, PMs, operators, AI builders). Drop anything that is a company promo, an engagement-farm listicle, or unrelated to: agents, evals, AI workflows, AI coding, model choice, AI product/PM work.
