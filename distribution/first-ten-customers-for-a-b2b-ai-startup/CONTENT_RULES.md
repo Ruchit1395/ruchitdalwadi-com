@@ -6,6 +6,7 @@ Companion files (read together with this one):
 - `AUDIENCE_MAP.md` — the 16 pain points + 100-item curriculum every post draws from
 - `HOOK_PLAYBOOK.md` — the 8 hook shapes, hook rules, and comprehension rules
 - `VOICE_COMPOSITION_GUIDE.md` — mandatory voice-composition, originality, language, and batch-variety guide for all native posts and comments
+- `NATIVE_POST_RUNBOOK.md` — mandatory cadence, topic, browser-publish, and recovery rules for scheduled native X and LinkedIn posts
 
 ## Hard bans
 

@@ -56,7 +56,7 @@ Default target per heartbeat: 4-5 total cold comments, split across both platfor
 
 Why Codex owns both cold-comment platforms: LinkedIn's obfuscated DOM prevents reliable script-based dedupe and permalink capture, while X requires browser-only submission. `li-comment-session.mjs` is retired and `comment-session.mjs` is no longer the owner of X comments. Native posts remain outside this duty.
 
-Posts are fully automated on both platforms and need no agent. Do not draft, publish, or "help with" native posts.
+Native posts are handled only by `NATIVE_POST_RUNBOOK.md` and its separate evening schedules. This runbook remains cold-comments-only. Do not draft or publish native posts from a comment-session run.
 
 ### Verify the text, not just that something posted
 

@@ -85,6 +85,8 @@ approved: publish X thread
 - `metrics-dashboard.html` - local 100k reach dashboard.
 - `reach-model.md` - 30-day pace model and pivot thresholds.
 - `daily-operating-schedule.md` - daily cadence for posts, replies/comments, metrics, and outreach.
+- `NATIVE_POST_RUNBOOK.md` - daily X and alternate-day LinkedIn native-post cadence, topic gate, browser flow, and recovery rules.
+- `NATIVE_POST_DRY_RUN_2026-08-08.md` - no-send readiness check for the scheduled native-post system.
 - `daily-activity-ledger.csv` - daily planned vs actual execution ledger.
 - `post-stats-registry.md` - human-readable registry of every public X/LinkedIn post, comment, and reply that needs daily stats refreshes.
 - `pace-audit-2026-06-22.md` - current pace deficit and next action decision.
