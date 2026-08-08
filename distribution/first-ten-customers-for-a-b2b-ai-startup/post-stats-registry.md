@@ -272,3 +272,7 @@ Use `None` instead of omitting a line. Keep summaries short; the registry and CS
 | 2026-08-01-li-native | LinkedIn | native_post | urn:li:share:7489265431103537152 | https://www.linkedin.com/feed/update/urn:li:share:7489265431103537152/ |  | 2026-08-01T15:57:02.983+05:30 | Composio REST (own project) |  |  |  |  |  | active | Auto-published from content bank. |
 | 2026-08-02-slot3 | X | native_post | 2083828059464212988 | https://x.com/ruchitdalwadi/status/2083828059464212988 |  | 2026-08-02T13:41:55.656+05:30 | browser runner |  |  |  |  |  | active | Auto-published from content bank via browser (text). |
 | 2026-08-02-li-native | LinkedIn | native_post | urn:li:share:7489594003819233281 | https://www.linkedin.com/feed/update/urn:li:share:7489594003819233281/ |  | 2026-08-02T13:42:41.315+05:30 | Composio REST (own project) |  |  |  |  |  | active | Auto-published from content bank. |
+
+## Native-post blocker log
+
+- 2026-08-08T23:32:48+05:30, X: no public asset was created. The first browser submit control silently did nothing and left the exact draft in the composer. One fresh-tab recovery accepted the dry-run text but would not clear it, so the intended draft became contaminated and was not submitted. No identifier, URL, or stats row was invented.
