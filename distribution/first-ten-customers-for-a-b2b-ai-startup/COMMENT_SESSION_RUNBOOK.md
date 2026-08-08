@@ -101,7 +101,7 @@ If the feed and normal search lanes produce no qualified room, continue through 
 
 ### Comment voice gate
 
-Comments must sound like a sharp human who has shipped things. No AI slop, no filler, no generic praise, no corporate fog, and no standard reply pattern. Prefer a dry joke, a small absurdity from working life, a precise caveat, or a concrete observation that makes the author feel understood. Satire may target broken processes, incentives, dashboards, or tool rituals. Never mock, abuse, threaten, or put down the author, their identity, or their audience. Every comment still needs one useful addition tied to the actual post.
+Comments must sound like a sharp human who has shipped things. No AI slop, no filler, no generic praise, no corporate fog, and no standard reply pattern. Use plain language first: one clear point, short sentences, everyday words, and a practical move the reader can understand without specialist jargon. Prefer `note`, `check`, `rule`, `owner`, `step`, and `fix` over `artifact`, `architecture`, `orchestration`, `autonomy`, `operating system`, or `decision tree`. Use a technical term only when the target requires it, then explain it in ordinary language. A dry joke is optional, and it must be easy to understand. Satire may target broken processes, incentives, dashboards, or tool rituals. Never mock, abuse, threaten, or put down the author, their identity, or their audience. Every comment still needs one useful addition tied to the actual post.
 
 Before drafting, use `VOICE_COMPOSITION_GUIDE.md`. It provides a mandatory composite voice system based on high-level, non-exclusive craft traits from the campaign's reference writers. Never imitate a named person, reuse a recognizable phrase, or reproduce a signature structure. Choose no more than two reference qualities, use an original Ruchit receipt or a target-specific detail, and complete the composition checklist before submitting.
 
@@ -157,7 +157,7 @@ Do not reject a good target only because it is not perfect. Reject it only when 
 
 ### 4. Draft — one comment per target
 Rules (all mandatory):
-- 150-240 characters.
+- Normally 90-180 characters. Use 1 or 2 sentences unless extra words make the point clearer.
 - Add ONE thing the room does not already have: a frame, a named test, a war-story number, a sharp caveat, or one dry observation.
 - Answer the post's actual point in the first 10 words. No throat-clearing.
 - NO links, NO hashtags, NO emoji, NO em dashes ("—" or "–").
@@ -220,7 +220,7 @@ Note (2026-08-02): the `li-comment-session.mjs` script referenced in older notes
    - AI systems: artificial intelligence, generative AI, LLM applications, RAG, context engineering, AI automation, AI infrastructure, AI developer tools, agent evaluation, production AI, AI observability, AI safety engineering, model context protocol, MCP tools.
    - Startup and technical builders: AI startups, startup AI, B2B AI, enterprise AI, SaaS AI, startup engineering, startup product, technical founders, tech founders, product engineering, software engineering, developer tools, AI implementation, workflow automation, future of work.
 5. Room gate: only posts with 50+ reactions, posted within about 48h, author is a practitioner or educator in our TG (not a company page promo, not a tiny poll).
-6. Comment: 300-600 chars, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed. Immediately before submission, confirm the exact text through visible DOM or equivalent page state. A screenshot is optional and is not a posting gate.
+6. Comment: normally 180-350 chars and 2-3 sentences, same content rules as X (no links, no em dashes, no banned openers, one substantive addition). LinkedIn register: slightly warmer, narrative allowed. Do not stretch a simple point to hit a length target. Immediately before submission, confirm the exact text through visible DOM or equivalent page state. A screenshot is optional and is not a posting gate.
 7. One comment per author per week. Log to replied-log.csv with the post URL in place of tweet id.
 8. If the editor rejects text twice, stop LinkedIn for the session and log the blocker.
 

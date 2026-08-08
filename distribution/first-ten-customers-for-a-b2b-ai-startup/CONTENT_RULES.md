@@ -15,8 +15,9 @@ Companion files (read together with this one):
 4. **No engagement bait**: "agree?", "thoughts?", "repost if", rage bait, fake controversy.
 
 5. **No AI slop or filler**: do not write generic praise, padded transitions, empty summaries, corporate fog, or comments that could fit under any post. If the sentence does not add a useful observation, cut it.
-6. **Human language first**: comments should sound conversational, specific, and lived-in. Use wit, dry comedy, or light satire when it sharpens the point. Let the joke land on bad incentives, broken workflows, tool rituals, or the absurdity of work. Never target a person's identity, appearance, intelligence, livelihood, or dignity. No abuse, insults, threats, or put-downs.
+6. **Human language first**: comments should sound conversational, specific, and lived-in. Use the simplest words that keep the meaning. One clear point beats a dense mini-essay. Write as if explaining the idea to a smart coworker outside AI or product. Prefer `note`, `check`, `rule`, `owner`, `step`, and `fix` over `artifact`, `architecture`, `orchestration`, `autonomy`, or `operating system`. If a technical term is needed, explain it in ordinary language right away. Use wit, dry comedy, or light satire when it sharpens the point. Let the joke land on bad incentives, broken workflows, tool rituals, or the absurdity of work. Never target a person's identity, appearance, intelligence, livelihood, or dignity. No abuse, insults, threats, or put-downs.
 7. **No standard pattern**: vary the opening, rhythm, length, and shape. Do not reuse a compliment-plus-summary-plus-question template. A comment can be a one-line observation, a caveat, a tiny story, a practical test, or a wry contrast, as long as it responds to the actual post.
+8. **No slide-deck language**: before posting, read the comment aloud. Rewrite it when it sounds like a strategy deck, hides the point behind a metaphor, or needs specialist vocabulary to understand. Default to 1-2 sentences on X and 2-3 sentences on LinkedIn. Do not pad a simple point to make it look substantial.
 
 ## Voice models (study, don't copy)
 
