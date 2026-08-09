@@ -13,6 +13,7 @@ On any heartbeat where ALL of these hold:
 2. Cadence is eligible:
    - **Normal mode:** the last comment session ended more than 2.5 hours ago.
    - **Recovery mode:** the last session was more recent, but the campaign is behind its local-day pace by at least 2 comments, at least 60 minutes have passed since the newest logged comment, and a fresh qualified room is available. The 2.5-hour cooldown is a burst-control default, not a hard stop when the day is materially behind.
+   - **Publication-incident override:** a failed submit did not create a session. Repair it in the same wakeup before returning to normal cadence. It cannot use up a day's pace, justify a zero session, or defer its make-up work to a later day.
 3. Fewer than 20 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`), with a maximum of 10 on X and 10 on LinkedIn.
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
@@ -25,12 +26,25 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 - A valid 1-3-room session is complete enough to post. Post the qualified rooms found, even when the preferred cross-platform mix is unavailable.
 - Do not carry a drafted target across wakeups. If it is stale, promotional, duplicate, or otherwise fails the room gate on recheck, discard it and scout a fresh replacement.
 
+### Publication incident protocol
+
+The campaign is judged by live public comments, not by scouts, typed drafts, or submit clicks. A silent no-op is a publication incident.
+
+1. After clicking submit, check the composer-local state immediately. It must clear, close, or show the platform's normal inline success state.
+2. If there is no state change, do not add a `replied-log.csv` row and do not call the session successful. Record the incident in `WORKLOG.md` with platform, target, and the observed failure.
+3. Stop scouting. Open one fresh tab, run a no-send composer dry run on a fresh qualified target (open, type a short harmless test, remove it, and confirm the unique enabled submit control), then retry with the real comment.
+4. If the retry succeeds, keep going in the same wakeup toward the full five-comment cap whenever capacity and qualified rooms exist. This is the make-up batch for the lost attempt.
+5. If the retry also has no state change, mark that platform blocked for the wakeup, immediately work the other platform, and leave a concrete repair note for the next eligible run. Do not make a false success claim or let a second consecutive eligible wakeup end with the same unresolved submit failure.
+6. A zero-comment day is never acceptable because a submit control misbehaved. Continue the repair and fallback ladders until capacity, a real platform restriction, or the fully documented exhaustive-scout standard stops the session.
+
+The user waived a separate published-reply audit. This protocol does not reinstate one. It only proves that the actual submit control accepted the action, rather than a hidden or duplicate control swallowing the click.
+
 ### Cadence modes and recovery override
 
 - Count comments by the local calendar day in Asia/Kolkata. Pace the 20-comment target across the active window from 08:00 to 23:00 IST. Before 08:00, the expected pace is 0. From 08:00 onward, calculate `expected_by_now = ceil(20 * elapsed_active_minutes / 900)`, capped at 20.
 - Enter recovery mode when `expected_by_now - comments_today >= 2`. Example: at 11:00 IST the expected pace is 4 comments; a day at 2/20 is behind by 2 and should reopen after the shorter recovery interval.
 - In recovery mode, wait at least 60 minutes from the newest logged comment before starting another session. Keep the mandatory 2+ minute spacing between individual comments.
-- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, and visible pre-submit composer-state verification remain mandatory. Post-submit landed-reply verification is optional.
+- Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, and visible pre-submit composer-state verification remain mandatory. Post-submit landed-reply verification is optional, while the submit control must still produce the composer-local state change required by the publication incident protocol.
 - If the day is behind but one platform is capped, route recovery capacity to the other platform. If both platforms have capacity, use the normal mixed-session preference.
 - When the deficit is 2 or more, target the full 5-comment session cap whenever qualified rooms exist. A smaller session is allowed only after the applicable fallback ladder is exhausted; keep scouting until the capacity is recovered or concrete safety/quality skips make further posting unavailable.
 - Re-evaluate the pace after every session. Do not wait for the 2.5-hour normal cooldown when recovery mode still applies; return to normal mode once the backlog is less than 2 comments. Do not leave the campaign two or more comments behind across two consecutive eligible heartbeats without opening the recovery session and attempting the full qualified batch.
