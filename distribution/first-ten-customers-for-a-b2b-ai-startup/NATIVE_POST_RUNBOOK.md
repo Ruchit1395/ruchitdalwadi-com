@@ -9,7 +9,8 @@ This runbook owns native X and LinkedIn posts only. `COMMENT_SESSION_RUNBOOK.md`
 - X: one native post every day at 19:00 IST.
 - LinkedIn: one native post every other day at 19:20 IST, starting 2026-08-08.
 - Do not add a second native post on either platform unless the user explicitly asks.
-- If a scheduled run misses, fix the blocker, dry-run the posting path, and make up the missed post at the next safe evening slot. Never post two native posts back-to-back to catch up.
+- If a scheduled run misses because posting failed, enter recovery mode immediately. Fix the blocker, dry-run the repaired posting path, and publish the missed post as soon as the dry run passes. Normal cadence and cooling periods do not delay this recovery publish.
+- Recovery may publish each platform's one missed native post immediately after its repair. It does not authorize a second native post for the same platform and local IST day or a duplicate of an uncertain submission.
 
 ## Authority and safety
 
@@ -125,11 +126,14 @@ If any check fails, rewrite once. If it still fails, choose another topic. A mis
 
 ## Failure recovery
 
-1. Stop on the target when a step fails. Record whether it failed at navigation, composer, text input, visible-text check, submit, or confirmation.
-2. Diagnose the visible page state and retry once in a fresh tab.
-3. Dry-run the repaired path before retrying: open the composer, confirm that it accepts and displays draft text, then clear the test text without posting it.
-4. If the platform remains blocked, log the blocker and schedule the make-up post for the next safe evening slot. Do not use an API or a second platform as a substitute unless the user asks.
-5. Never publish a rushed replacement just to keep a streak.
+1. Enter recovery mode as soon as an X or LinkedIn native-post step fails. Record whether it failed at navigation, composer, text input, visible-text check, submit, or confirmation.
+2. Diagnose the visible page state and repair the browser path. Use fresh tabs and safe, reversible checks as needed. Do not end the run merely because the first recovery attempt fails.
+3. Test the repaired path before publishing. Open a clean composer, confirm that it starts empty, confirm that it accepts and visibly displays harmless test text, clear the test text completely, and confirm that the composer is empty again. Never submit test text.
+4. After the dry run passes, immediately run every missed native-post session that is due for the affected platform or platforms. Ignore normal cooling periods and evening-slot timing for these recovery publishes.
+5. Before each recovery submit, recheck the local IST daily record, the live profile when available, and the exact visible composer text. Never submit when an earlier attempt may already have landed; resolve duplicate uncertainty first.
+6. Keep recovery mode active until the browser path is fixed, the clean dry run passes, and all eligible missed sessions have been published and logged.
+7. Authentication, CAPTCHA, required user approval, platform safety interstitials, or unresolved duplicate risk remain hard stops because they require user action or could create an unsafe duplicate. Log the exact blocker and resume recovery immediately when it clears.
+8. Browser-only publishing and all no-adjacent-action rules remain in force. Do not use an API or another platform as a substitute, and never publish filler just to keep a streak.
 
 ## Logging and reporting
 
