@@ -65,7 +65,8 @@ A comment that posts with mangled text is worse than no comment. On 2026-08-02 a
 So, on every comment:
 1. Immediately before submitting, re-read the composer text from the page.
 2. Compare it against the text you intended, not just whether the composer is non-empty.
-3. A post-submit re-read is optional and must not gate the submission or trigger a replacement attempt.
+3. A separate post-submit audit is optional. The submit interaction itself must still show a local state change: the composer closes or clears, or the platform shows its normal inline success state. This is a guard against clicking a hidden or duplicate control, not a requirement to inspect the published reply.
+4. If the composer remains unchanged or no state change appears, treat the attempt as failed. Do not count or log it. Recover once in a fresh tab, then move to the next qualified target if it still fails.
 
 Keep comments short. The X drafts cap at 240 characters and have never corrupted; the failure appeared at 309. Treat ~250 characters as the practical ceiling for anything typed or pasted into a composer.
 
@@ -185,7 +186,8 @@ For each target:
 2. Click the "Post your reply" box, type the comment.
 3. Confirm the exact text is fully present through visible DOM or equivalent page state immediately before submission. A screenshot is optional and is not a posting gate.
 4. Find and click the Reply submit button INSIDE the composer (not the reply icon on the post).
-5. 2+ minutes between comments (natural pacing).
+5. Confirm the composer-local state changed. If it did not, do not count the attempt; recover once in a fresh tab.
+6. 2+ minutes between comments (natural pacing).
 
 If the composer rejects input twice on a target, skip it and continue.
 
@@ -197,7 +199,7 @@ After the batch, a landed-reply check is optional. If the check is available, re
 curl -s "https://api.twitterapi.io/twitter/user/last_tweets?userName=ruchitdalwadi&includeReplies=true" -H "X-API-Key: $TWITTERAPIIO_KEY"
 ```
 
-For each browser-submitted comment, append to `replied-log.csv`:
+For each browser submission with a confirmed composer-local state change, append to `replied-log.csv`:
 `<iso-date>,<target_tweet_id>,<target_author>,<target_views>,<reply_id>,<reply_url>`
 
 Leave `reply_id` and `reply_url` blank when the browser does not expose them. Do not invent a landed identifier.
