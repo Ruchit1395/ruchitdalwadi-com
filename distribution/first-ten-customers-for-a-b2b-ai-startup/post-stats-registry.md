@@ -272,6 +272,7 @@ Use `None` instead of omitting a line. Keep summaries short; the registry and CS
 | 2026-08-01-li-native | LinkedIn | native_post | urn:li:share:7489265431103537152 | https://www.linkedin.com/feed/update/urn:li:share:7489265431103537152/ |  | 2026-08-01T15:57:02.983+05:30 | Composio REST (own project) |  |  |  |  |  | active | Auto-published from content bank. |
 | 2026-08-02-slot3 | X | native_post | 2083828059464212988 | https://x.com/ruchitdalwadi/status/2083828059464212988 |  | 2026-08-02T13:41:55.656+05:30 | browser runner |  |  |  |  |  | active | Auto-published from content bank via browser (text). |
 | 2026-08-02-li-native | LinkedIn | native_post | urn:li:share:7489594003819233281 | https://www.linkedin.com/feed/update/urn:li:share:7489594003819233281/ |  | 2026-08-02T13:42:41.315+05:30 | Composio REST (own project) |  |  |  |  |  | active | Auto-published from content bank. |
+| 2026-08-09-evening-x-native-cost-check | X | native_post | 2086511181465059595 | https://x.com/ruchitdalwadi/status/2086511181465059595 |  | 2026-08-09T23:23:53+05:30 | browser X |  | 0 | 0 | 0 | 2026-08-09T23:24:15+05:30 | active | Browser-only recovery publish. Clean composer dry run passed, exact visible text matched before submit, X showed Your post was sent, and the live profile exposed the stable status URL. P8 cost-and-latency lesson using the logged $0.015 versus $0.20 format receipt. |
 
 ## Native-post blocker log
 
