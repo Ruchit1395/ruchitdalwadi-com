@@ -7,7 +7,7 @@ This runbook owns native X and LinkedIn posts only. `COMMENT_SESSION_RUNBOOK.md`
 ## Cadence
 
 - X: one native post every day at 19:00 IST.
-- LinkedIn: one native post every other day at 19:20 IST, starting 2026-08-08.
+- LinkedIn: one native post every day at 19:20 IST.
 - Do not add a second native post on either platform unless the user explicitly asks.
 - If a scheduled run misses because posting failed, enter recovery mode immediately. Fix the blocker, dry-run the repaired posting path, and publish the missed post as soon as the dry run passes. Normal cadence and cooling periods do not delay this recovery publish.
 - Recovery may publish each platform's one missed native post immediately after its repair. It does not authorize a second native post for the same platform and local IST day or a duplicate of an uncertain submission.
