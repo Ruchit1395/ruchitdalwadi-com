@@ -1,5 +1,5 @@
 day,topic_id,title,x_status,x_posted_at_ist,x_url,linkedin_status,linkedin_posted_at_ist,linkedin_url,notes
-1,AI-01,Start with one work loop,pending,,,pending,,,
+1,AI-01,Start with one work loop,pending,,,posted,2026-08-12T19:37:00+05:30,https://www.linkedin.com/feed/update/urn:li:activity:7493307165512990720/,Browser-only publish; correct account and no same-day duplicate verified; clean composer test passed; exact visible 751-character text matched before submit; LinkedIn showed Post successful.
 2,AI-02,Map the handoffs,pending,,,pending,,,
 3,AI-03,Choose the right first workflow,pending,,,pending,,,
 4,AI-04,Run in shadow mode,pending,,,pending,,,
