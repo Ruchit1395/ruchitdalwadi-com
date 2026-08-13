@@ -1,6 +1,6 @@
 day,topic_id,title,x_status,x_posted_at_ist,x_url,linkedin_status,linkedin_posted_at_ist,linkedin_url,notes
 1,AI-01,Start with one work loop,posted,2026-08-12T20:15:00+05:30,https://x.com/ruchitdalwadi/status/2087551084936188337,posted,2026-08-12T19:37:00+05:30,https://www.linkedin.com/feed/update/urn:li:activity:7493307165512990720/,Browser-only X and LinkedIn publishes; correct accounts and same-day duplicate gates verified; clean composer tests passed; exact visible final text matched before each submit; stable public URLs verified.
-2,AI-02,Map the handoffs,pending,,,pending,,,
+2,AI-02,Map the handoffs,posted,2026-08-13T19:05:00+05:30,https://x.com/ruchitdalwadi/status/2087895830162501852,pending,,,Browser-only X publish; correct account and same-day duplicate gate verified; clean composer test required repeated Backspace repair after programmatic clear retained text; separate final composer displayed the exact 430-character text after normalizing X's extra contenteditable line breaks; X showed Your post was sent and exposed the stable status URL.
 3,AI-03,Choose the right first workflow,pending,,,pending,,,
 4,AI-04,Run in shadow mode,pending,,,pending,,,
 5,AI-05,Separate propose from commit,pending,,,pending,,,
