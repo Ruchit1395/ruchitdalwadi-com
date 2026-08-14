@@ -9,11 +9,11 @@
       "updatedAt": "2026-08-14T18:12:05+05:30"
     },
     "linkedin": {
-      "status": "healthy",
-      "failedSubmits": 0,
-      "signature": "",
-      "lastTarget": "",
-      "updatedAt": "2026-08-14T17:15:36+05:30"
+      "status": "blocked_today",
+      "failedSubmits": 1,
+      "signature": "clean-browser repair could not open a comment editor after the unique Comment control was activated",
+      "lastTarget": "https://www.linkedin.com/search/results/content/?datePosted=%22past-24h%22&keywords=Claude%20Code&origin=FACETED_SEARCH",
+      "updatedAt": "2026-08-14T20:17:02+05:30"
     }
   }
 }
