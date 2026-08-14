@@ -6,6 +6,8 @@ This series explains how AI-native work differs from ordinary AI use, how an ind
 
 It is a transformation diary with reusable lessons. It is not a list of prompt tips and it is not a disguised product launch.
 
+The performance standard is governed by `PERFORMANCE_PLAYBOOK.md`. Correct but abstract lessons are not publishable. Each post needs tension, approved proof, consequence, and a mechanism the reader can use.
+
 ## Narrative chapters
 
 | Days | Chapter | Reader question |
@@ -41,17 +43,17 @@ Private local files are research material, not publication permission.
 
 ### X
 
-- Lead with the claim or surprising distinction.
-- Use 3 to 6 short paragraphs.
-- Prefer one example and one test.
-- End with a concrete action or boundary.
+- Lead with tension, a receipt, or a surprising distinction.
+- Use 3 to 6 short paragraphs and usually 350 to 650 characters.
+- Prefer one approved personal proof point and one memorable test.
+- Rotate ending shapes instead of closing every post with an assignment.
 
 ### LinkedIn
 
-- Open from a different angle than X.
+- Open from a different angle than X and put the human or company tension above the fold.
 - Explain why the idea matters inside real work.
-- Use a fuller example or stage-specific comparison.
-- End with an operating step, not engagement bait.
+- Add a short scene, build decision, failure consequence, or stage-specific comparison that X does not contain.
+- End with an operating implication, not a longer version of the X ending.
 
 ## Quality gate
 
@@ -63,6 +65,9 @@ Reject a draft when any answer is no:
 4. Does it contain a test, step, architecture choice, result, or real tradeoff?
 5. Are every personal claim, KPI, timeline, named tool, and replacement claim approved?
 6. Would a reader know why the next lesson is worth following?
+7. Do the first two lines create tension or curiosity without hype?
+8. Is there an approved receipt or concrete mechanism rather than unsupported advice?
+9. Does the hook family and ending differ from the previous two posts?
 
 ## Campaign spine
 

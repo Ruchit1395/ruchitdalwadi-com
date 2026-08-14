@@ -11,6 +11,9 @@ This ledger is the only source of permission for personal receipts in the campai
 | E-03 | The current design uses a central work-hub concept connecting goals, context, proposals, approvals, actions, and memory. | approved | Call it a work hub or shared work layer. Do not disclose private product or organization names. |
 | E-04 | Human approval remains at important write, send, spend, access, and customer-impact boundaries. | approved | Generalize the exact controls and systems. |
 | E-05 | Shadow mode, dry runs, budgets, traces, stop conditions, and kill switches were used as incremental safety controls. | approved | Do not publish incident details or private security configuration. |
+| E-06 | The author built scripts, AI assistants, agent workflows, and a shared work-hub design, and concluded that many early systems were AI-assisted rather than fully AI-native. | approved | Use as the campaign reset receipt without naming private organizations, repositories, or systems. |
+| E-07 | Early systems held separate slices of planning, conversation, document, task, and triage context; this fragmentation motivated a shared context and coordination layer. | approved | Keep the categories general and do not describe private data flows. |
+| E-08 | Some early workflows looked complete in a demo but left missing context, follow-up, review, or correction as manual work. | approved | May be used as a generalized first-person build lesson without incident details or fabricated counts. |
 
 ## Named tools and replacement language
 

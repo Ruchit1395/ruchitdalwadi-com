@@ -6,7 +6,7 @@ This runbook owns one daily native X post and one daily native LinkedIn post for
 
 ## Before drafting
 
-1. Read `README.md`, `SERIES_STRATEGY.md`, `PUBLIC_EVIDENCE_LEDGER.md`, `PRIVACY_AND_LANGUAGE_RULES.md`, `POST_BANK.md`, `POST_QUEUE.csv`, and this runbook.
+1. Read `README.md`, `SERIES_STRATEGY.md`, `PERFORMANCE_PLAYBOOK.md`, the latest performance audit, `PUBLIC_EVIDENCE_LEDGER.md`, `PRIVACY_AND_LANGUAGE_RULES.md`, `POST_BANK.md`, `POST_QUEUE.csv`, and this runbook.
 2. Read the shared voice, content, hook, audience, and native-post guidance in `../first-ten-customers-for-a-b2b-ai-startup/`.
 3. Read the last 10 native-post records in the shared registry, tracker, and worklog.
 4. Check the live profile and local records. Stop if the platform already has a native post for the current IST day.
@@ -35,6 +35,8 @@ Before using a personal achievement, number, timeline, named tool, replacement c
 - A clearly labeled hypothetical may replace a private example.
 - Do not add an unapproved personal receipt.
 - Reject drafts that could belong to any generic productivity or automation campaign.
+- Reject drafts whose first two lines contain no tension, receipt, consequence, or useful contrast.
+- Record the hook family, ending shape, and evidence ID used. They must satisfy `PERFORMANCE_PLAYBOOK.md`.
 
 Run the six-question quality gate in `SERIES_STRATEGY.md` before opening the composer.
 
@@ -56,6 +58,7 @@ Authentication, CAPTCHA, safety interstitials, required user approval, and unres
 1. Update the selected queue row with verified status, timestamp, URL, and note.
 2. Add verified public evidence to the shared post registry and tracker.
 3. Append both worklogs.
-4. Run CSV parsing, the campaign validator, the shared validator, relevant privacy and language checks, and `git diff --check`.
-5. Stage `distribution/`, commit, pull with rebase, and push.
-6. Report under the README contract.
+4. Create 2-hour and 24-hour metric checkpoints for the new asset. Compare reach and visible interaction rate with the trailing five native posts on that platform.
+5. Run CSV parsing, the campaign validator, the shared validator, relevant privacy and language checks, and `git diff --check`.
+6. Stage `distribution/`, commit, pull with rebase, and push.
+7. Report under the README contract.

@@ -28,63 +28,63 @@ Fix the highest-cost handoff first. A clean handoff usually creates more value t
 
 ## Day 3: What AI-native actually means
 
-AI-native does not mean using AI in every task. It means redesigning how work moves.
+I built scripts, AI assistants, and agent workflows before admitting that most of them were not AI-native.
 
-A person or company starts with a goal. The right context arrives with the work. AI prepares or performs the next allowed action. Important judgment stays visible. The result and correction improve the next run.
+They made individual steps faster. The surrounding work still depended on copy-paste, scattered context, manual follow-up, and people remembering what happened.
 
-That is a connected work loop, not a chat window beside the old process.
+AI-native starts when the goal, approved context, next action, human judgment, evidence, and correction become one connected loop.
 
-Use this test: if removing the AI leaves the workflow unchanged except for slower writing, the workflow is AI-assisted, not AI-native. The tradeoff is that real redesign takes more effort than buying another tool.
+Here is the test I wish I had used earlier: remove the AI. If only the writing becomes slower, you built assistance. If the way work moves falls apart, you redesigned the operating model.
 
 ## Day 4: What AI-native is not
 
-An AI subscription does not make a company AI-native.
+The easiest way to fake an AI-native company is to add a chatbot to every tool.
 
-Neither does a prompt library, a chatbot on every screen, or a rule that every employee must use AI. Those additions can improve individual tasks while the company still moves work through the same queues, meetings, copy-paste handoffs, and approval chains.
+People produce summaries faster, then paste them into the same queues. Meetings remain status transfers. Approvals still live in messages. Nobody knows whether a correction improved the next run.
 
-The useful question is not “Where can we add AI?” Ask, “If this work were designed today, what context, decision, action, and review would belong in one loop?”
+That is the old operating model with cheaper writing.
 
-The tradeoff is uncomfortable: some existing processes and tool habits must change, not just become faster.
+The harder question is: if this workflow were designed today, which goal, context, decision, action, review, and learning step would belong together? Becoming AI-native means changing that path. Some familiar processes and tool habits will not survive the answer.
 
 ## Day 5: AI-assisted versus AI-native
 
-AI-assisted work makes one step faster. AI-native work changes the whole path to a finished result.
+The first version drafted work. The better version moved work.
 
-Drafting a summary is assistance. Reading the source, extracting decisions, assigning the next action, attaching evidence, asking for approval, and recording the outcome is a work loop.
+Drafting a meeting summary is AI-assisted. Reading the source, separating decisions from discussion, creating the next action, attaching evidence, routing it for review, and remembering the correction is an AI-native loop.
 
-Both are useful, but they should not be measured the same way. Assistance can be judged by minutes saved. A work loop should be judged by completed outcomes, review time, error handling, and whether context survives the handoffs.
+Both versions can save time. Only one changes how the outcome is completed.
 
-Pick one AI use today and draw what happens before and after it. If the surrounding process is untouched, call it assistance.
+They need different measures too. Assistance is judged by minutes saved. The loop is judged by accepted outcomes, review time, exceptions, and whether context survives. Faster text is useful. Reliable movement is the bigger change.
 
 ## Day 6: The six-part AI-native loop
 
-Every dependable AI-native workflow needs six parts: goal, context, proposed action, review or bounded execution, evidence, and memory.
+This is the architecture I wish I had started with:
 
-Remove the goal and the system optimizes the wrong thing. Remove context and it guesses. Remove the action and it only talks. Remove review and it can overreach. Remove evidence and nobody can trust it. Remove memory and the same corrections repeat forever.
+Goal. Context. Action. Judgment. Evidence. Memory.
 
-This is a design test, not a technology stack.
+Without a goal, AI optimizes the wrong thing. Without context, it guesses. Without an action, it only talks. Without visible judgment, it overreaches. Without evidence, nobody trusts it. Without memory, the same correction returns next week.
 
-Write the six headings for one workflow. Any blank heading is the next problem to solve. The tradeoff is more setup, but it exposes weaknesses before automation scales them.
+My early systems solved one or two boxes and looked impressive in a demo. The missing boxes reappeared as manual work. Before adding another agent, draw these six boxes for one workflow. The empty box is probably the real bottleneck.
 
 ## Day 7: A two-minute AI-native test
 
-You can test an AI workflow in two minutes.
+If your AI workflow needs a long maturity survey, the survey may be hiding the problem.
 
-Ask five questions: Does it know the outcome? Can it find the approved context? Can it take or stage the next action? Is the important judgment visible to a person? Does the correction change future behavior?
+Use five questions instead. Does it know the outcome? Can it find approved context? Can it stage or take the next action? Is important judgment visible? Does a correction improve the next run?
 
-Four or five yes answers suggest a connected loop. Two or three mean the workflow is partly integrated. Zero or one usually means AI is an isolated writing tool.
+Four or five yes answers suggest a connected loop. Two or three mean partial integration. Zero or one usually means AI is an isolated writing tool.
 
-The score is not a maturity badge. A low score may be right for a rare or high-risk task. Use the test to choose the next missing capability, not to force autonomy where it is unsafe.
+This is not a race toward autonomy. A low score may be correct for rare or risky work. The score only shows which capability is missing and whether it is worth adding.
 
 ## Day 8: The first principle is work, not tools
 
-AI-native design starts with the work and ends with the tool choice.
+Replacing Jira, Asana, or Intercom is the wrong starting goal.
 
-Define the outcome, inputs, decisions, actions, exceptions, and proof first. Then decide which parts need a model, a rule, a person, or an existing system of record.
+The useful target is a broken function: repeated intake, lost context, duplicate status, slow approval, weak evidence, or an avoidable handoff. Some functions may move into a shared AI-native work layer. Others should stay in a specialist system of record.
 
-Starting with a tool reverses this logic. The team bends work around whatever the product can do, then calls the gaps “adoption problems.”
+Starting with a vendor logo makes the architecture dishonest. It encourages a broad migration before anyone knows which work improved.
 
-Take one recurring process and describe it without naming any software. If the process becomes impossible to explain, the tool has become the operating model. The tradeoff is that work-first design may keep some old tools and remove others slowly.
+Build a function map first: outcome, input, decision, action, exception, proof. Then decide what moves, what integrates, and what stays.
 
 ## Day 9: How an individual becomes AI-native
 

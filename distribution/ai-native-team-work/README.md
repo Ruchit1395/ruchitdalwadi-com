@@ -51,9 +51,12 @@ No automation may turn a private repository fact into a public receipt merely be
 ## Campaign assets
 
 - `SERIES_STRATEGY.md`: the narrative, chapters, audience progression, and post-quality test.
+- `PERFORMANCE_PLAYBOOK.md`: hook, proof, platform, ending, and iteration rules.
+- `PERFORMANCE_AUDIT_2026-08-14.md`: verified baseline and diagnosis.
 - `PUBLIC_EVIDENCE_LEDGER.md`: disclosure gate for facts and receipts.
 - `POST_BANK.md`: 40 core lessons in campaign order.
 - `POST_QUEUE.csv`: per-platform publication state and URLs.
+- `NEXT_POST_BRIEF_AI_03.md`: performance-reviewed native drafts for the immediate reset post.
 - `RUNBOOK.md`: selection, drafting, publishing, and recovery rules.
 - `PRIVACY_AND_LANGUAGE_RULES.md`: hard bans and disclosure rules.
 - `WORKLOG.md`: durable run history.
