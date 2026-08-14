@@ -1,19 +1,19 @@
 {
-  "localDate": "2026-08-14",
+  "localDate": "2026-08-15",
   "platforms": {
     "x": {
       "status": "blocked_today",
       "failedSubmits": 4,
-      "signature": "clean-control repair retained exact draft after submit on Alican Kiraz benchmark",
+      "signature": "Clean-control repair activated the uniquely matched Reply control but exposed no composer; no draft or submission occurred.",
       "lastTarget": "https://x.com/kunchenguid/status/2087942296721559607",
-      "updatedAt": "2026-08-14T18:12:05+05:30"
+      "updatedAt": "2026-08-15T00:52:03+05:30"
     },
     "linkedin": {
       "status": "blocked_today",
       "failedSubmits": 1,
-      "signature": "clean-browser repair could not open a comment editor after the unique Comment control was activated",
+      "signature": "Clean-control repair opened the qualified post comment thread but exposed no composer; no draft or submission occurred.",
       "lastTarget": "https://www.linkedin.com/search/results/content/?datePosted=%22past-24h%22&keywords=Claude%20Code&origin=FACETED_SEARCH",
-      "updatedAt": "2026-08-14T20:17:02+05:30"
+      "updatedAt": "2026-08-15T00:50:52+05:30"
     }
   }
 }
