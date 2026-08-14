@@ -1,0 +1,19 @@
+{
+  "localDate": "2026-08-14",
+  "platforms": {
+    "x": {
+      "status": "repair_required",
+      "failedSubmits": 4,
+      "signature": "Exact reply draft remained and Reply stayed enabled after two fresh-tab retries.",
+      "lastTarget": "https://x.com/kunchenguid/status/2087942296721559607",
+      "updatedAt": "2026-08-14T17:15:36+05:30"
+    },
+    "linkedin": {
+      "status": "healthy",
+      "failedSubmits": 0,
+      "signature": "",
+      "lastTarget": "",
+      "updatedAt": "2026-08-14T17:15:36+05:30"
+    }
+  }
+}

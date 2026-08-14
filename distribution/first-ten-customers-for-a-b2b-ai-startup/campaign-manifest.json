@@ -82,6 +82,7 @@
     "metrics-log.csv",
     "reply-source-scorecard.csv",
     "WORKLOG.md",
+    "comment-incident-state.json",
     "CAMPAIGN_AUDIT.md",
     "next-follow-up-package.md",
     "horizontal-gpt-follow-up-package.md",
@@ -103,7 +104,8 @@
     "copy-ready/x-horizontal-gpt-comment-template.txt",
     "copy-ready/linkedin-horizontal-gpt-followup.txt",
     "copy-ready/linkedin-horizontal-gpt-first-comment.txt",
-    "scripts/validate_campaign.py"
+    "scripts/validate_campaign.py",
+    "scripts/comment_incident_state.py"
   ],
   "status": {
     "strategyDrafted": true,

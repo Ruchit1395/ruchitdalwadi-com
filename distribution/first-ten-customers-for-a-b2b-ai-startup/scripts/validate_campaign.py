@@ -92,6 +92,35 @@ def validate_manifest():
     return passed
 
 
+def validate_comment_incident_state():
+    try:
+        state = json.loads(read("comment-incident-state.json"))
+    except Exception as exc:
+        return fail(f"comment-incident-state.json invalid JSON: {exc}")
+
+    allowed = {"healthy", "open", "repair_required", "blocked_today"}
+    passed = True
+    if not isinstance(state.get("localDate"), str):
+        passed = fail("comment incident state missing localDate") and passed
+    platforms = state.get("platforms")
+    if not isinstance(platforms, dict):
+        return fail("comment incident state missing platforms")
+    for platform in ("x", "linkedin"):
+        entry = platforms.get(platform)
+        if not isinstance(entry, dict):
+            passed = fail(f"comment incident state missing {platform}") and passed
+            continue
+        if entry.get("status") in allowed:
+            ok(f"comment incident state {platform} status {entry['status']}")
+        else:
+            passed = fail(f"comment incident state {platform} has invalid status") and passed
+        if isinstance(entry.get("failedSubmits"), int) and entry["failedSubmits"] >= 0:
+            ok(f"comment incident state {platform} failedSubmits is valid")
+        else:
+            passed = fail(f"comment incident state {platform} failedSubmits is invalid") and passed
+    return passed
+
+
 def validate_x_lengths():
     passed = True
 
@@ -271,6 +300,7 @@ def validate_shell_script():
 def main():
     checks = [
         validate_manifest(),
+        validate_comment_incident_state(),
         validate_x_lengths(),
         validate_csv(),
         validate_carousel(),

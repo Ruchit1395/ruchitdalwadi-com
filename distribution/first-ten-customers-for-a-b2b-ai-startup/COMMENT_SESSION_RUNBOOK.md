@@ -30,14 +30,52 @@ If the browser fails twice at tab level, stop and log the blocker. Do not retry 
 
 The campaign is judged by live public comments, not by scouts, typed drafts, or submit clicks. A silent no-op is a publication incident.
 
+Before browser health on every wakeup, run:
+
+```bash
+python3 distribution/first-ten-customers-for-a-b2b-ai-startup/scripts/comment_incident_state.py rollover
+python3 distribution/first-ten-customers-for-a-b2b-ai-startup/scripts/comment_incident_state.py status
+```
+
+`comment-incident-state.json` is the authoritative circuit-breaker state. Do not rely on memory, a prior heartbeat summary, or a WORKLOG entry to decide whether a failed path still needs repair.
+
 1. After clicking submit, check the composer-local state immediately. It must clear, close, or show the platform's normal inline success state.
-2. If there is no state change, do not add a `replied-log.csv` row and do not call the session successful. Record the incident in `WORKLOG.md` with platform, target, and the observed failure.
+2. If there is no state change, do not add a `replied-log.csv` row and do not call the session successful. Open the platform incident with its target and signature before continuing:
+
+   ```bash
+   python3 distribution/first-ten-customers-for-a-b2b-ai-startup/scripts/comment_incident_state.py open \
+     --platform x \
+     --target '<target-url>' \
+     --signature 'exact draft remained and Reply stayed enabled after submit'
+   ```
+
+   Use `--platform linkedin` and the observed local signature for LinkedIn. Record the incident in `WORKLOG.md` after the session.
 3. Stop scouting. Open one fresh tab, run a no-send composer dry run on a fresh qualified target (open, type a short harmless test, remove it, and confirm the unique enabled submit control), then retry with the real comment.
-4. If the retry succeeds, keep going in the same wakeup toward the full five-comment cap whenever capacity and qualified rooms exist. This is the make-up batch for the lost attempt.
-5. If the retry also has no state change, immediately work the other platform. If both platforms show the same timeout or silent no-op signature, enter **control repair mode** before declaring either platform blocked: finalize the current browser tabs, create a fresh browser-control session, open fresh target tabs, repeat the no-send composer test, then retry one real qualified comment on each affected platform.
-6. Only if the fresh browser-control session also fails to produce a composer-local state change may the session be logged as a browser-control blocker. Do not stop after the first browser session, and do not defer repair to the next heartbeat.
-7. If control repair restores one platform, use that platform for the remaining qualified capacity in the same wakeup. Treat every failed send as a lost slot and work toward the five-comment cap, subject to daily limits and author cooldowns.
-8. A zero-comment day is never acceptable because a submit control misbehaved. Continue the repair and fallback ladders until capacity, a real platform restriction after control repair, or the fully documented exhaustive-scout standard stops the session.
+4. If the retry succeeds, clear the platform breaker immediately, then keep going in the same wakeup toward the full five-comment cap whenever capacity and qualified rooms exist:
+
+   ```bash
+   python3 distribution/first-ten-customers-for-a-b2b-ai-startup/scripts/comment_incident_state.py clear --platform x
+   ```
+
+5. If the retry also has no state change, do **not** scout another X room or repeat the same submit path. The platform-local breaker is now `repair_required`, even if the other platform has a different failure signature. Finalize all current browser tabs, create a fresh browser-control session, and run exactly one clean-control repair on that platform: fresh target, no-send dry run, exact text check, and one real submit.
+6. If that clean-control repair succeeds, clear the breaker and use that platform for the remaining qualified capacity in the same wakeup. If it fails, block that platform for the local day before working the other platform:
+
+   ```bash
+   python3 distribution/first-ten-customers-for-a-b2b-ai-startup/scripts/comment_incident_state.py block \
+     --platform x \
+     --signature 'clean-control repair retained exact draft after submit'
+   ```
+
+   A blocked platform receives no further real submits that local day. It may be read for diagnosis only. Route the current session's remaining capacity to the other platform and complete its fallback ladder. The next local day starts in `repair_required`, not normal mode, so a clean-control repair happens before any ordinary submit.
+7. A zero-comment day is never acceptable because a submit control misbehaved. Continue the other-platform fallback ladder until capacity, a real platform restriction after control repair, or the fully documented exhaustive-scout standard stops the session. A missing LinkedIn editor is a platform-local selector failure; it does not cancel an X repair requirement, and an X no-op does not cancel the LinkedIn ladder.
+
+### Platform-local circuit breaker
+
+- `healthy`: normal browser posting is allowed.
+- `open`: one failed real submit occurred. The fresh-tab dry run and retry are mandatory in the same wakeup.
+- `repair_required`: two failed real submits occurred. Before any further real submit on that platform, finalize tabs and perform the clean-control repair in this runbook. Do not substitute more discovery for this repair.
+- `blocked_today`: the clean-control repair also failed. Do not issue more real submits on that platform before the next local day. Fill with the other platform or log an exhaustive quality blocker.
+- A verified composer-local acceptance state is the only event that may clear `open` or `repair_required`. A new day moves `blocked_today` to `repair_required`; it never silently returns to `healthy`.
 
 The user waived a separate published-reply audit. This protocol does not reinstate one. It only proves that the actual submit control accepted the action, rather than a hidden or duplicate control swallowing the click.
 
