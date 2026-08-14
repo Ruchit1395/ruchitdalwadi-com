@@ -103,12 +103,23 @@ for (day, title, _), row in zip(posts, rows):
 if any(row["x_status"] != "posted" or row["linkedin_status"] != "posted" for row in rows[:2]):
     fail("published false-start rows 1 and 2 must remain posted on both platforms")
 
-if any(row["x_status"] != "pending" or row["linkedin_status"] != "pending" for row in rows[2:]):
-    fail("rebuilt unpublished rows 3 to 40 must remain pending until publication")
+for platform in ("x", "linkedin"):
+    status_key = f"{platform}_status"
+    timestamp_key = f"{platform}_posted_at_ist"
+    url_key = f"{platform}_url"
+    reached_open_row = False
+    for row in rows:
+        if row[status_key] == "posted":
+            if reached_open_row:
+                fail(f"{platform} posted rows must form one continuous prefix")
+            if not row[timestamp_key] or not row[url_key]:
+                fail(f"{platform} posted row {row['day']} lacks timestamp or URL")
+        else:
+            reached_open_row = True
 
 print("OK 40 evidence-gated core lessons")
 print("OK post lengths are 350 to 900 characters")
 print("OK language and link bans")
 print("OK 40-row platform queue")
 print("OK campaign strategy and evidence assets")
-print("OK published history preserved and rebuilt sequence pending")
+print("OK published history preserved and platform queues advance in order")
