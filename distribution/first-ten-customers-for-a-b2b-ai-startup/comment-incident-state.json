@@ -2,11 +2,11 @@
   "localDate": "2026-08-14",
   "platforms": {
     "x": {
-      "status": "repair_required",
+      "status": "blocked_today",
       "failedSubmits": 4,
-      "signature": "Exact reply draft remained and Reply stayed enabled after two fresh-tab retries.",
+      "signature": "clean-control repair retained exact draft after submit on Alican Kiraz benchmark",
       "lastTarget": "https://x.com/kunchenguid/status/2087942296721559607",
-      "updatedAt": "2026-08-14T17:15:36+05:30"
+      "updatedAt": "2026-08-14T18:12:05+05:30"
     },
     "linkedin": {
       "status": "healthy",
