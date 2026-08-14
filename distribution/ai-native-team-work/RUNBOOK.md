@@ -6,7 +6,7 @@ This runbook owns one daily native X post and one daily native LinkedIn post for
 
 ## Before drafting
 
-1. Read `README.md`, `SERIES_STRATEGY.md`, `PERFORMANCE_PLAYBOOK.md`, the latest performance audit, `PUBLIC_EVIDENCE_LEDGER.md`, `PRIVACY_AND_LANGUAGE_RULES.md`, `POST_BANK.md`, `POST_QUEUE.csv`, and this runbook.
+1. Read `README.md`, `SERIES_STRATEGY.md`, `PERFORMANCE_PLAYBOOK.md`, `LINKEDIN_25K_POST_PATTERN.md`, the latest performance audit, `PUBLIC_EVIDENCE_LEDGER.md`, `PRIVACY_AND_LANGUAGE_RULES.md`, `POST_BANK.md`, `POST_QUEUE.csv`, and this runbook.
 2. Read the shared voice, content, hook, audience, and native-post guidance in `../first-ten-customers-for-a-b2b-ai-startup/`.
 3. Read the last 10 native-post records in the shared registry, tracker, and worklog.
 4. Check the live profile and local records. Stop if the platform already has a native post for the current IST day.
@@ -36,6 +36,7 @@ Before using a personal achievement, number, timeline, named tool, replacement c
 - Do not add an unapproved personal receipt.
 - Reject drafts that could belong to any generic productivity or automation campaign.
 - Reject drafts whose first two lines contain no tension, receipt, consequence, or useful contrast.
+- For LinkedIn, apply the 25K reference mechanics when the lesson supports them, but never copy its new-hire analogy, wording, labels, or punch line.
 - Record the hook family, ending shape, and evidence ID used. They must satisfy `PERFORMANCE_PLAYBOOK.md`.
 
 Run the six-question quality gate in `SERIES_STRATEGY.md` before opening the composer.

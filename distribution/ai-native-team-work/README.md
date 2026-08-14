@@ -53,6 +53,7 @@ No automation may turn a private repository fact into a public receipt merely be
 - `SERIES_STRATEGY.md`: the narrative, chapters, audience progression, and post-quality test.
 - `PERFORMANCE_PLAYBOOK.md`: hook, proof, platform, ending, and iteration rules.
 - `PERFORMANCE_AUDIT_2026-08-14.md`: verified baseline and diagnosis.
+- `LINKEDIN_25K_POST_PATTERN.md`: verified outlier analysis and the original pattern to reuse without copying.
 - `PUBLIC_EVIDENCE_LEDGER.md`: disclosure gate for facts and receipts.
 - `POST_BANK.md`: 40 core lessons in campaign order.
 - `POST_QUEUE.csv`: per-platform publication state and URLs.

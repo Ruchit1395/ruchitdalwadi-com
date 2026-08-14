@@ -13,7 +13,23 @@ Checked live on 2026-08-14 IST.
 
 The sample is small, but the result is unambiguously weak. AI-02 did not earn a visible interaction on either platform.
 
-## Useful comparator
+## The 25K LinkedIn outlier
+
+The 365-day LinkedIn analytics view revealed a much stronger reference post: 25K impressions and 49 engagements. Its public URL is https://www.linkedin.com/feed/update/urn:li:share:7481650828890787840/.
+
+The same view showed 32,130 total account impressions, 19,205 members reached, and 91 percent of impressions coming from outside the network. That audience split is account-level, not post-level. Still, the reference post clearly dominated the visible annual results. The next two visible posts had 762 impressions with 5 engagements and 668 impressions with 1 engagement.
+
+The outlier differed from the weak campaign posts in five important ways:
+
+1. It opened with a workplace scene anyone could picture.
+2. The AI lesson arrived through a surprising but clear analogy.
+3. Concrete objects and missing inputs carried the argument.
+4. One sharp contrast made the diagnosis repeatable.
+5. The repair was an exact checklist, followed by a light human ending.
+
+This is a creative signal, not causal proof. The campaign will reuse the mechanics while avoiding the post's new-hire analogy, wording, labels, and punch line. The full analysis is in `LINKEDIN_25K_POST_PATTERN.md`.
+
+## Secondary comparator
 
 A recent LinkedIn post outside this campaign opened with a real missed-schedule failure, explained the hidden tracking flaw, and gave a three-field repair. It reached 155 impressions, 3 reactions, and 2 comments.
 
@@ -54,7 +70,7 @@ Organic reach is currently small. Better copy cannot guarantee large distributio
 
 ## Immediate correction
 
-AI-03 becomes a candid reset: the first two posts were tactics before the thesis. It uses the approved build journey as proof, defines AI-native work in one contrast, and promises the specific material ahead.
+AI-03 becomes a candid reset built around an observable workflow failure: the AI answer appeared quickly, but source-finding, judgment, transfer, approval, and correction still happened manually. It uses the approved build journey as proof and defines AI-native work with one repeatable contrast: `I had automated the typing, not the work.`
 
 The next sequence alternates:
 

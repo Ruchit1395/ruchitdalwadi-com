@@ -17,6 +17,23 @@ Every draft needs four beats, but their order should vary:
 
 Do not label these beats in the post.
 
+## The 25K LinkedIn reference pattern
+
+The verified 25K-impression LinkedIn outlier is analyzed in `LINKEDIN_25K_POST_PATTERN.md`. Its reusable strength was not a generic storytelling formula. It made an abstract AI problem visible through a familiar workplace scene, then delivered a sharp reframe and an exact fix.
+
+Use this sequence when the lesson supports it:
+
+`recognizable scene -> AI-native pivot -> wrong diagnosis -> better diagnosis -> exact fix -> human close`
+
+Rules:
+
+- At least two of every three LinkedIn posts must open with an approved real scene, an observable workflow, or a clearly labeled hypothetical that a reader can picture.
+- Put concrete nouns and actions before framework labels. Show the source document, approval, copied result, rejected output, open tabs, or correction before naming the operating model.
+- Build around one repeatable contrast. More than one slogan weakens the post.
+- Give three to five exact inputs, checks, or actions when the lesson offers a repair.
+- A light human ending is welcome when natural. Never force a joke.
+- Do not copy the reference post's new-hire analogy, wording, labels, or punch line.
+
 ## Hook rules
 
 - The first line must be understandable without the rest of the post.
@@ -60,6 +77,7 @@ Approved evidence IDs must be recorded in the draft check. A principle without p
 - Aim for 650 to 1,050 characters.
 - Put the human or company tension in the first two lines.
 - Add one layer X does not have: a short scene, company-stage comparison, build decision, or failure consequence.
+- In scene-led posts, delay the abstract term until the reader can see the problem.
 - Change the opening, paragraph order, and closing. Do not translate the X post into longer prose.
 
 ## Ending rotation
@@ -97,3 +115,4 @@ Reject the draft unless all are true:
 5. The platform version differs structurally from its counterpart.
 6. The ending is not the same shape as the previous two posts.
 7. The draft does not promise engagement or use bait to request it.
+8. The opening gives the reader a scene, object, action, or consequence to picture before it starts teaching.

@@ -6,37 +6,42 @@ Role in series: candid reset after two abstract posts.
 
 Evidence: E-01, E-02, E-06, E-08.
 
-Hook family: confession on X, public correction on LinkedIn.
+Hook family: confession on X, observable workflow failure on LinkedIn.
 
 Ending shape: diagnostic on X, specific series promise on LinkedIn.
 
 ## X draft
 
-I built scripts, AI assistants, and agent workflows before admitting that most were not AI-native.
+I mistook a fast AI answer for a finished workflow.
 
-They made one step faster. The work around them still depended on scattered context, copy-paste, follow-up, and memory.
+The draft appeared quickly. The source hunt, judgment, copy-paste, approval chase, and next-run correction stayed manual.
 
-AI-native starts when the goal, context, action, human judgment, evidence, and correction form one loop.
+I had automated the typing, not the work.
 
-My test now: if removing AI only slows the writing, you built assistance, not a new operating model.
+My AI-native test now: remove the AI. If only the writing gets slower, you built assistance. If the path from request to accepted result breaks, you changed the operating model.
 
 ## LinkedIn draft
 
-I need to correct the way I started this series.
+My early AI workflows looked impressive in a demo.
 
-I opened with tactics: choose a workflow, map the handoffs. Useful, but I skipped the harder question: what does AI-native actually mean?
+Then the real job began.
 
-I have built scripts, AI assistants, and agent workflows. Many were not AI-native. They made one step faster while the surrounding work still depended on scattered context, copy-paste, manual follow-up, and people remembering what happened.
+The answer appeared fast. Someone still had to find the source, decide what mattered, paste the result into another tool, chase approval, and carry the correction into the next run.
 
-The change begins when the goal, approved context, next action, human judgment, evidence, and correction become one connected loop.
+I had automated the typing, not the work.
 
-A simple test: remove the AI. If only the writing gets slower, the workflow is AI-assisted. If the way work moves falls apart, the operating model has changed.
+That is the distinction I missed in the first two posts of this series.
 
-That distinction is where this series should have started. The next posts will cover the build, failures, architecture, tool changes, adoption problems, and what still needs a person.
+AI-assisted work makes one step faster. AI-native work connects the goal, approved context, next action, human judgment, evidence, and correction in one loop.
+
+My test now is simple: remove the AI. If only the writing gets slower, you built assistance. If the path from request to accepted result breaks, you changed the operating model.
+
+The next posts will show the build, failures, architecture, tool changes, adoption problems, and the parts that should stay human.
 
 ## Final checks
 
 - X and LinkedIn use different hooks, paragraph order, and endings.
+- LinkedIn applies the 25K reference pattern through an original workflow scene, not its new-hire analogy.
 - Personal claims are approved in the evidence ledger.
 - No private organization, person, customer, system, metric, incident, or architecture detail appears.
 - No hashtag, emoji, link, hype phrase, engagement bait, or banned dash appears.

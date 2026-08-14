@@ -28,13 +28,13 @@ Fix the highest-cost handoff first. A clean handoff usually creates more value t
 
 ## Day 3: What AI-native actually means
 
-I built scripts, AI assistants, and agent workflows before admitting that most of them were not AI-native.
+My early AI workflows looked impressive in a demo. Then the real job began.
 
-They made individual steps faster. The surrounding work still depended on copy-paste, scattered context, manual follow-up, and people remembering what happened.
+The answer appeared fast. Someone still had to find the source, decide what mattered, move the result into another tool, chase approval, and carry the correction into the next run.
 
-AI-native starts when the goal, approved context, next action, human judgment, evidence, and correction become one connected loop.
+I had automated the typing, not the work. AI-native starts when the goal, approved context, next action, human judgment, evidence, and correction become one connected loop.
 
-Here is the test I wish I had used earlier: remove the AI. If only the writing becomes slower, you built assistance. If the way work moves falls apart, you redesigned the operating model.
+Here is the test I wish I had used earlier: remove the AI. If only the writing becomes slower, you built assistance. If the path from request to accepted result breaks, you redesigned the operating model.
 
 ## Day 4: What AI-native is not
 
