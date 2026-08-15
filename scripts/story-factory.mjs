@@ -50,8 +50,10 @@ const dates = [0, 2, 4].map((off) => {
   return d.toISOString().slice(0, 10);
 });
 
-// Idempotency: if Monday's slot already exists, this week is done.
-if (existsSync(`content-bank/x/${dates[0]}/slot3.txt`) && !DRY) {
+// Idempotency per date: fill only the slots still missing, so a partial
+// week (observed 2026-08-16: Friday empty after a short generation) heals.
+const missing = DRY ? dates : dates.filter((d) => !existsSync(`content-bank/x/${d}/slot3.txt`));
+if (missing.length === 0) {
   console.log(`Factory already filled week of ${dates[0]}. Nothing to do.`);
   process.exit(0);
 }
@@ -126,15 +128,20 @@ const plan = hasRealMaterial ? [["a", 6], ["b", 6], ["c", 6]] : [["a", 9], ["b",
 console.log(`Generating ${plan.map(([m, n]) => `${n}x${m}`).join(" + ")} candidates for ${dates.join(", ")}...`);
 const candidates = [];
 for (const [mode, n] of plan) {
-  const txt = await gemini(
-    CRAFT + "\n\n" + MODES[mode],
-    `Write ${n} DIFFERENT candidates in this mode. Vary the pain point (draw from this audience map), the story shape, and the lesson:\n\n${audienceMap.slice(0, 4000)}\n\nOutput STRICT JSON only: [{"title":"<5 words>","li":"<linkedin post>","x":"<x post>"}] with exactly ${n} items.`,
-    8192, 1.0,
-  );
-  try {
-    const arr = JSON.parse(txt.match(/\[[\s\S]*\]/)?.[0] ?? "[]");
-    for (const c of arr) candidates.push({ mode, ...c });
-  } catch { console.error(`mode ${mode}: unparseable batch, skipped`); }
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const txt = await gemini(
+      CRAFT + "\n\n" + MODES[mode],
+      `Write ${n} DIFFERENT candidates in this mode. Vary the pain point (draw from this audience map), the story shape, and the lesson:\n\n${audienceMap.slice(0, 4000)}\n\nOutput STRICT JSON only: [{"title":"<5 words>","li":"<linkedin post>","x":"<x post>"}] with exactly ${n} items. No markdown fences.`,
+      8192, 1.0,
+    );
+    let got = 0;
+    try {
+      const arr = JSON.parse(txt.match(/\[[\s\S]*\]/)?.[0] ?? "[]");
+      for (const c of arr) if (c?.li && c?.x) { candidates.push({ mode, ...c }); got++; }
+    } catch { /* fall through to retry */ }
+    console.log(`  mode ${mode} attempt ${attempt + 1}: ${got} candidates`);
+    if (got > 0) break;
+  }
 }
 console.log(`${candidates.length} candidates generated.`);
 if (candidates.length < 6) { console.error("Too few candidates; aborting without writing."); process.exit(1); }
@@ -186,13 +193,19 @@ const ranked = scores
   .filter((s) => s.c)
   .sort((x, y) => y.composite - x.composite);
 
-// top 3 with mode diversity (max 2 per mode)
+// pick one per missing date, mode-diverse (max 2 per mode); if diversity
+// starves the count (a whole batch failed), fill the rest by rank anyway.
+const NEED = missing.length;
 const picks = [];
 const modeCount = {};
 for (const s of ranked) {
   if ((modeCount[s.c.mode] ?? 0) >= 2) continue;
   picks.push(s); modeCount[s.c.mode] = (modeCount[s.c.mode] ?? 0) + 1;
-  if (picks.length === 3) break;
+  if (picks.length === NEED) break;
+}
+for (const s of ranked) {
+  if (picks.length >= NEED) break;
+  if (!picks.includes(s)) picks.push(s);
 }
 
 // ---------- report ----------
@@ -203,13 +216,13 @@ const report = [`# Factory picks, week of ${week}`, "",
 if (!DRY) writeFileSync(`${DIR}/factory-picks/${week}.md`, report);
 
 console.log("\n=== PICKS ===");
-picks.forEach((s, i) => console.log(`${dates[i]} [mode ${s.c.mode}] composite ${s.composite}: ${s.c.title}\n  ${s.c.li.split("\n")[0].slice(0, 100)}`));
+picks.forEach((s, i) => console.log(`${missing[i]} [mode ${s.c.mode}] composite ${s.composite}: ${s.c.title}\n  ${s.c.li.split("\n")[0].slice(0, 100)}`));
 
 if (DRY) { console.log("\n(dry run: nothing written)"); process.exit(0); }
 
 // ---------- ship into the bank (existing runner contract) ----------
 picks.forEach((s, i) => {
-  const d = dates[i];
+  const d = missing[i];
   mkdirSync(`content-bank/x/${d}`, { recursive: true });
   mkdirSync(`content-bank/li/${d}`, { recursive: true });
   writeFileSync(`content-bank/x/${d}/slot3.txt`, s.c.x.trim() + "\n");
@@ -225,8 +238,8 @@ if (hasRealMaterial && picks.some((s) => s.c.mode === "c")) {
 try {
   const tok = process.env.TELEGRAM_BOT_TOKEN, chat = process.env.TELEGRAM_CHAT_ID;
   if (tok && chat) {
-    const msg = `🏭 Story factory: ${candidates.length} generated, ${viable.length} passed gates, 3 shipped for ${dates.join(" / ")}:\n\n` +
-      picks.map((s, i) => `${dates[i]} [${s.c.mode}] ${s.c.title}\n"${s.c.li.split("\n")[0].slice(0, 90)}..."`).join("\n\n") +
+    const msg = `🏭 Story factory: ${candidates.length} generated, ${viable.length} passed gates, ${picks.length} shipped for ${missing.join(" / ")}:\n\n` +
+      picks.map((s, i) => `${missing[i]} [${s.c.mode}] ${s.c.title}\n"${s.c.li.split("\n")[0].slice(0, 90)}..."`).join("\n\n") +
       `\n\nVeto: delete content-bank/x/<date>/slot3.txt and li/<date>/post.md before 09:00 IST that day. Full scored list: factory-picks/${week}.md`;
     await fetch(`https://api.telegram.org/bot${tok}/sendMessage`, {
       method: "POST", headers: { "content-type": "application/json" },
@@ -235,4 +248,4 @@ try {
   }
 } catch {}
 
-console.log(`\nShipped 3 picks into the bank for ${dates.join(", ")}. ${ranked.length - 3} candidates killed.`);
+console.log(`\nShipped ${picks.length} picks into the bank for ${missing.join(", ")}. ${ranked.length - picks.length} candidates killed.`);

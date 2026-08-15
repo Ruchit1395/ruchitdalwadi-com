@@ -1,0 +1,7 @@
+I found half my team using personal AI tools with company data. One for copy, one for code, one for summaries. All separate, all insecure.
+
+My first instinct was to ban them.
+
+Instead, we created a central 'recipe book.' If you find a great AI workflow, you document the prompt and the tool. We vet it for security, and then everyone can use it.
+
+We went from dozens of solo tricks to one team playbook.

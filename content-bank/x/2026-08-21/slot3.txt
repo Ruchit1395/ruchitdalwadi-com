@@ -1,0 +1,5 @@
+My AI demo to leadership went perfectly. The next day, I got a dozen requests for it to solve completely unrelated, complex problems.
+
+My mistake: the demo was so clean it looked like magic. It hid all the scaffolding and guardrails that made it work. It created an expectation of general intelligence that I could never meet.
+
+My new rule: every AI demo now starts with me showing an example of it failing gracefully. Grounding the room in reality is job one.
