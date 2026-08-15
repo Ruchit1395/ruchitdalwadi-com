@@ -44,10 +44,28 @@ if (!process.env.TWITTERAPIIO_KEY && !DRY) {
   console.error("TWITTERAPIIO_KEY missing (needed to verify posts landed)");
   process.exit(1);
 }
+async function alertTelegram(msg) {
+  const tok = process.env.TELEGRAM_BOT_TOKEN, chat = process.env.TELEGRAM_CHAT_ID;
+  if (!tok || !chat) return;
+  try {
+    await fetch(`https://api.telegram.org/bot${tok}/sendMessage`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id: chat, text: msg }),
+    });
+  } catch {}
+}
+
 if (!existsSync(dir)) {
   console.log(`No content bank for ${today} — nothing to publish.`);
+  // On the last slot of the day, an empty bank means the whole day was silent.
+  // 13 such days went unnoticed in Aug 2026; never again without a ping.
+  if (istMinutes >= 21 * 60) await alertTelegram(`🔴 X: no content existed for ${today}; the day ended with zero posts. Generation upstream is starved.`);
   process.exit(0);
 }
+
+// The bank is written by cloud workflows; without a pull this runner reads a
+// stale tree and can miss a day's content entirely (found 2026-08-16).
+try { execSync("git pull --rebase --autostash -q", { timeout: 60000 }); } catch (e) { console.error("pull failed, reading local tree:", String(e.message).slice(0, 100)); }
 
 const state = existsSync(stateFile) ? JSON.parse(readFileSync(stateFile, "utf8")) : {};
 

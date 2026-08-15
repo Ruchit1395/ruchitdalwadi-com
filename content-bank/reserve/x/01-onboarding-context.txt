@@ -1,0 +1,7 @@
+A model that gets a vague one-line prompt and no examples is in the same position as a new hire with no laptop, no docs, and a sticky note that says make it pop. The review will say not a good fit. The setup guaranteed it.
+
+The fix costs ten minutes: the goal, the constraints, one example of work the team ships, one example of work the team rejects, and the current source docs. Assemble that once per recurring task and reuse it.
+
+The rejected example does the most work. It marks the boundary. A model that has only seen good output does not know where good ends.
+
+Ten minutes of context assembly beats an hour of prompt wordsmithing, every week, forever.

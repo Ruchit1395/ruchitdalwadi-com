@@ -1,0 +1,7 @@
+Before adding a planning layer to an automation, pull the logs from the last 50 runs and write down the step sequence for each one.
+
+All 50 identical: that is a workflow. Hardcode the sequence, keep one model call inside it, and it becomes debuggable. The planner was latency, cost, and nondeterminism with no job.
+
+Sequences genuinely diverge based on what earlier steps found: that is agent territory. Research across messy sources. Triage on ambiguous input. Paths that cannot be enumerated upfront.
+
+The test takes five minutes and settles an argument that otherwise runs for weeks. The boring version ships all week without surprises, and nobody gets paged for a planner improvising on a Tuesday.

@@ -23,7 +23,7 @@
  * Env: GEMINI_API_KEY, TWITTERAPIIO_KEY
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -41,6 +41,60 @@ for (const k of ["GEMINI_API_KEY", "TWITTERAPIIO_KEY"]) {
 // Idempotency: the 11:30 IST retry cron exits if the 09:45 run succeeded.
 const doneMarker = `content-bank/x/${today}/.signal-done`;
 if (existsSync(doneMarker)) { console.log("Signal post already generated today. Nothing to do."); process.exit(0); }
+
+// ---------- starvation fallback (added 2026-08-16) ----------
+// Aug 3-15: twitterapi.io ran dry, every run "succeeded" with exit 0, and the
+// bank fallback pointed at nothing, so both accounts went silent for 13 days
+// while every dashboard stayed green. Two rules now: falling back must PUBLISH
+// something (evergreen reserve), and it must ALERT (Telegram), never silently.
+async function alertTelegram(msg) {
+  const tok = process.env.TELEGRAM_BOT_TOKEN, chat = process.env.TELEGRAM_CHAT_ID;
+  if (!tok || !chat) { console.error("(no telegram creds; alert not sent)"); return; }
+  try {
+    await fetch(`https://api.telegram.org/bot${tok}/sendMessage`, {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id: chat, text: msg }),
+    });
+  } catch (e) { console.error("telegram alert failed:", e.message); }
+}
+
+async function fallbackToReserve(reason) {
+  const usedLog = "content-bank/reserve/used.csv";
+  const used = existsSync(usedLog) ? readFileSync(usedLog, "utf8") : "";
+  const pick = (dir) => {
+    if (!existsSync(dir)) return null;
+    const files = readdirSync(dir).filter((f) => !f.startsWith(".")).sort();
+    return files.find((f) => !used.includes(`${dir}/${f}`)) ?? null;
+  };
+  const xFile = pick("content-bank/reserve/x");
+  const liFile = pick("content-bank/reserve/li");
+
+  if (!WRITE) {
+    console.log(`(dry) would fall back to reserve: x=${xFile ?? "EMPTY"} li=${liFile ?? "EMPTY"} (${reason})`);
+    process.exit(0);
+  }
+  if (!xFile && !liFile) {
+    await alertTelegram(`🔴 Content pipeline starved AND reserve is empty. Reason: ${reason}. Nothing will post today. Refill content-bank/reserve/.`);
+    process.exit(0);
+  }
+  mkdirSync(`content-bank/x/${today}`, { recursive: true });
+  mkdirSync(`content-bank/li/${today}`, { recursive: true });
+  const stamp = new Date().toISOString();
+  if (xFile) {
+    writeFileSync(`content-bank/x/${today}/slot3.txt`, readFileSync(`content-bank/reserve/x/${xFile}`, "utf8"));
+    appendFileSync(usedLog, `${stamp},content-bank/reserve/x/${xFile}\n`);
+  }
+  if (liFile) {
+    writeFileSync(`content-bank/li/${today}/post.md`, readFileSync(`content-bank/reserve/li/${liFile}`, "utf8"));
+    appendFileSync(usedLog, `${stamp},content-bank/reserve/li/${liFile}\n`);
+  }
+  writeFileSync(doneMarker, stamp + "\n");
+  const left = { x: existsSync("content-bank/reserve/x") ? readdirSync("content-bank/reserve/x").filter((f) => !used.includes(f) && f !== xFile).length : 0 };
+  await alertTelegram(`🟠 Signal pipeline starved (${reason}). Published evergreen reserve instead: X=${xFile ?? "none"}, LI=${liFile ?? "none"}. ~${left.x} X reserves left. Root cause needs a look.`);
+  console.log(`Reserve published: x=${xFile} li=${liFile} (${reason})`);
+  process.exit(0);
+}
+
 
 // ---------- fetch (no LLM) ----------
 // Curated watchlist (from the retired Signal repo's config) + keyword lanes
@@ -118,8 +172,8 @@ const ranked = [...candidates.values()]
   .slice(0, 15);
 
 if (ranked.length < 3) {
-  console.log(`Only ${ranked.length} candidates fetched (API throttled?). Falling back to bank content.`);
-  process.exit(0);
+  console.log(`Only ${ranked.length} candidates fetched (API throttled or credits empty).`);
+  await fallbackToReserve(`only ${ranked.length} candidates fetched, likely twitterapi.io credits/throttle`);
 }
 console.log(`${candidates.size} candidates, top ${ranked.length} kept. Best: @${ranked[0].author} (${ranked[0].views} views)`);
 
@@ -302,8 +356,8 @@ let out;
 try {
   out = await generate();
 } catch (err) {
-  console.log(`No clean Signal post today (${String(err.message).slice(0, 160)}). Falling back to bank content.`);
-  process.exit(0);
+  console.log(`No clean Signal post today (${String(err.message).slice(0, 160)}).`);
+  await fallbackToReserve(`quality gate: ${String(err.message).slice(0, 120)}`);
 }
 
 const chosen = ranked.find((c) => c.id === String(out.source_id)) ?? ranked[0];

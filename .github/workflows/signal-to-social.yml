@@ -25,6 +25,8 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node scripts/signal-to-social.mjs --write
       - name: Commit into the content bank
         run: |

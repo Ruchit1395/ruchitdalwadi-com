@@ -1,0 +1,7 @@
+The distance between an AI demo and an AI product is a boring checklist, not a smarter model.
+
+What the demo skipped: retries with backoff. Timeouts. A fallback when the model returns garbage. Input validation before the call. Output validation after it. Rate limit handling. A log of every request and response. A way to replay yesterday's failure. Cost tracking per feature. An owner for the eval set.
+
+None of this is intellectually hard. All of it is unglamorous, which is why the six-month gap between working demo and trustworthy product keeps surprising teams that expected the model to be the hard part.
+
+Budget the checklist, not just the model. The checklist is where the schedule lives.
