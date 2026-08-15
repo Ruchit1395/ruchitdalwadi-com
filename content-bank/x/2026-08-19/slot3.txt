@@ -1,7 +1,7 @@
-Our new AI workout planner was a hit with beta users. It also generated a cloud bill larger than our payroll.
+Our AI workout planner was a hit in beta. At the celebration lunch, finance slid a phone across the table: one morning of usage had cost more than the lunch, times fifty.
 
-We used the most powerful model available because it was easy. It was also absurdly expensive.
+We had wired it to the biggest model available because that's what the prototype used. For turning a form into a workout plan, that's a fighter jet doing grocery runs.
 
-We switched to a smaller, fine-tuned model. The quality dropped 10%, but the cost dropped 99%. A trade we should have made before launch.
+A smaller fine-tuned model took two days to swap in. The plans got slightly blander, nobody said a word, and the bill stopped being a screenshot.
 
-Don't ship the demo model. Find the cheapest one that's good enough.
+One boring afternoon before launch: find the cheapest model users won't notice.

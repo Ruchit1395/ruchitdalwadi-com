@@ -1,9 +1,11 @@
-I showed a demo to our leadership team. It was an AI that took a messy set of meeting notes and turned them into a clean summary with action items. It worked perfectly. The room was impressed.
+I demoed an AI feature to our leadership team. Messy meeting notes in, clean summary with action items out. Flawless run. The room was impressed.
 
-Too impressed.
+Too impressed, it turned out.
 
-The next day, a senior leader asked if the AI could also analyze the sentiment of the speakers and predict project outcomes. Then someone else asked if it could write a full project plan based on the action items.
+By the next morning the requests were arriving. Could it read the mood of the speakers? Could it predict which projects would slip? Could it write the project plan itself? One exec had already promised something to a client.
 
-My slick, narrow demo had created an illusion of general competence. They didn't see the carefully structured prompt and the clean data. They saw a mind that could reason.
+None of them had seen the scaffolding. The carefully shaped prompt, the cleaned-up input, the ten failure cases we quietly handled the week before that meeting. They watched notes go in and judgment come out, and concluded there was a mind in there.
 
-Now, I start every AI demo by showing what it can't do. I show it a piece of input it's designed to reject. It feels counterintuitive, but it's not. Managing expectations is more important than generating applause.
+The demo had worked too well. It sold capability we did not have, and now we had to talk everyone back out of it, one meeting at a time.
+
+These days I open every AI demo with a failure. Feed it something it was not built for, let the room watch it refuse. It costs two minutes and a little applause, and it saves the next quarter.

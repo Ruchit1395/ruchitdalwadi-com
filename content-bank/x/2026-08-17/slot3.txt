@@ -1,7 +1,7 @@
-I found half my team using personal AI tools with company data. One for copy, one for code, one for summaries. All separate, all insecure.
+Found our designer pasting UX copy into an AI tool nobody approved. Next day, a marketer was summarizing competitor pricing in a public chatbot.
 
-My first instinct was to ban them.
+The tempting move was a ban. Bans just push the same behavior onto personal laptops, where you see none of it.
 
-Instead, we created a central 'recipe book.' If you find a great AI workflow, you document the prompt and the tool. We vet it for security, and then everyone can use it.
+We started a recipe book on the wiki instead. Find a workflow that saves you an hour, write down the prompt and the tool, we check nothing sensitive leaves, then anyone can use it.
 
-We went from dozens of solo tricks to one team playbook.
+Ten entries in a month. Half came from people I would never have guessed. The habits were already in the company, just hiding.

@@ -1,7 +1,9 @@
-We added an AI feature that generated custom workout plans for users. The first beta cohort loved it. We celebrated at lunch.
+We shipped an AI feature that built custom workout plans. The beta group loved it, so the team went out for lunch to celebrate.
 
-During the meal, our finance lead sent me a Slack message. It was a screenshot of our cloud bill. The AI feature had cost us four figures in a single morning, with just 100 users.
+Halfway through, our finance lead slid his phone across the table. The cloud bill. One morning of the new feature, about a hundred users, and it had already burned more than the whole lunch cost times fifty.
 
-The model we used was powerful, but it was the equivalent of taking a fighter jet to the grocery store. It was total overkill.
+We had wired it to the biggest model on the market because that was the one we trusted from the prototype, and nobody ever questioned it again. For turning a form into a workout plan, it was a fighter jet doing grocery runs.
 
-We swapped it for a much smaller, fine-tuned open source model. The plans were 90% as good, but the cost was 99% lower. We learned to prototype with the expensive 'fighter jet' model, but find the cheap 'scooter' model before we ship.
+The swap to a smaller fine-tuned model took two days. The plans got a little blander. Not one user mentioned it. The bill dropped to something nobody screenshots at lunch.
+
+Since then there's one boring afternoon before every launch: find the cheapest model users won't notice.

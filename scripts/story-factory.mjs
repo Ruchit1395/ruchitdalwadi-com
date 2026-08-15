@@ -115,6 +115,14 @@ FORM RULES (violations are auto-rejected by regex):
 - No hype words, no emoji, no URLs, no @handles, no "Thoughts?" endings, at most one closing question per 3 posts.
 - Never state a percentage or internal practice of a named company.
 - LinkedIn: 500-1400 chars, short paragraphs, first two lines earn the click. X: 400-1100 chars, hook on line one. The X version must be a re-told tighter version, not a truncation.
+HUMAN LANGUAGE, NOT AI LANGUAGE (the reader must never smell a machine):
+- No moral-of-the-story last line. Endings like "We turned X into Y" or "A is more important than B" are machine bows. End on something concrete: a detail, a cost, a rule someone actually follows.
+- No adjective triplets ("personal, disconnected, and insecure"). Two or one.
+- No symmetric statistics ("90% as good, 99% cheaper"). Real numbers are lopsided or vague the way memory is.
+- No labelled metaphors in quotes ("the 'fighter jet' model"). Use a metaphor once, unmarked, or not at all.
+- Vary sentence length like a person: an occasional fragment, an occasional long run, not two tidy sentences per paragraph forever.
+- Include one detail that does no rhetorical work. Real stories carry noise; parables that only carry the lesson feel written by a committee.
+- Banned vocabulary: delve, tapestry, testament, seamless, robust, elevate, unlock, supercharge, leverage, game-changing, landscape, navigating, "in today's".
 - Avoid these recent topics: ${recentTopics.join(" | ") || "none"}.`;
 
 const MODES = {
@@ -162,6 +170,12 @@ function gateFail(s) {
   if (/\b(nestwise|threadsweep|career-ops|constructor\.io|anthropic interview|job application|micro-saas portfolio)\b/i.test(s)) r.push("private leak");
   if (/\b\d{1,3}\s?%[^.]{0,90}\b(of (their|our|its|the) (team|engineers|staff|employees))/i.test(s)) r.push("company stat");
   if (/\b(anthropic|openai|google|deepmind|meta|microsoft)\b[^.]{0,70}\b(engineer|employee|insider)\b/i.test(s)) r.push("named-company anecdote");
+  if (/\b(delve|tapestry|testament to|seamless|robust|elevate|unlock|supercharge|leverage[ds]?|game.chang\w*|landscape of|navigating the|in today'?s)\b/i.test(s)) r.push("AI vocabulary");
+  if (/(is (more important than|job one|the key|everything)|turned \w+[^.]{0,30} into [^.]{0,30})\.\s*$/im.test(s)) r.push("epigram closer");
+  if (/\b\w+, \w+, and \w+\b[.,]/.test(s)) r.push("adjective triplet");
+  if (/\d+%[^.]{0,40}\d+%/.test(s)) r.push("symmetric stats");
+  if (/\.\.\./.test(s)) r.push("ellipsis");
+  if ([...s].some((ch) => ch.charCodeAt(0) > 127 && !"'\u2018\u2019\u201c\u201d".includes(ch))) r.push("non-ascii character (watermark risk)");
   return r;
 }
 const viable = candidates.filter((c) => {
@@ -219,6 +233,26 @@ console.log("\n=== PICKS ===");
 picks.forEach((s, i) => console.log(`${missing[i]} [mode ${s.c.mode}] composite ${s.composite}: ${s.c.title}\n  ${s.c.li.split("\n")[0].slice(0, 100)}`));
 
 if (DRY) { console.log("\n(dry run: nothing written)"); process.exit(0); }
+
+// ---------- humanizer pass ----------
+// Winners get one more edit whose only job is killing machine rhythm. If the
+// rewrite trips any gate, the original (already gate-clean) ships instead.
+for (const s of picks) {
+  try {
+    const txt = await gemini(
+      `You are a line editor. Rewrite the two posts below so no reader could suspect a machine wrote them, while changing nothing about the story, facts, or length band. Kill: moral-of-the-story last lines, adjective triplets, symmetric statistics, tidy two-sentence paragraph rhythm, labelled metaphors in quotes. Add: one concrete detail that does no rhetorical work, uneven sentence lengths. Plain text, no dashes of any kind, no markdown.`,
+      `LINKEDIN:\n${s.c.li}\n\nX:\n${s.c.x}\n\nOutput STRICT JSON only: {"li":"...","x":"..."}`,
+      4096, 0.7,
+    );
+    const j = JSON.parse(txt.match(/\{[\s\S]*\}/)?.[0] ?? "{}");
+    if (j.li && j.x && gateFail(j.li).length === 0 && gateFail(j.x).length === 0) {
+      s.c.li = j.li; s.c.x = j.x;
+      console.log(`  humanized: ${s.c.title}`);
+    } else {
+      console.log(`  humanizer rejected for ${s.c.title}; shipping original`);
+    }
+  } catch { console.log(`  humanizer failed for ${s.c.title}; shipping original`); }
+}
 
 // ---------- ship into the bank (existing runner contract) ----------
 picks.forEach((s, i) => {
