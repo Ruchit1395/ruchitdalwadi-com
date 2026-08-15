@@ -2,7 +2,7 @@
 
 ## Reader promise
 
-This series explains how AI-native work differs from ordinary AI use, how an individual can adopt it, how the model changes as a company grows, and what the transition actually costs in technology, habits, trust, and management attention.
+This series explains why a team may own its context layer, how to build the platform and AI harness safely, and what process and measurement make the resulting system trustworthy.
 
 It is a transformation diary with reusable lessons. It is not a list of prompt tips and it is not a disguised product launch.
 
@@ -12,14 +12,12 @@ The performance standard is governed by `PERFORMANCE_PLAYBOOK.md`. Correct but a
 
 | Days | Chapter | Reader question |
 |---|---|---|
-| 1-2 | False start | What was already published? |
-| 3-8 | Meaning | What is AI-native, what is not, and how can I test it? |
-| 9-14 | Individual | How can one person change the way they work? |
-| 15-20 | Company stages | How do small, growing, and enterprise companies differ? |
-| 21-27 | Transformation journey | What did the incremental build look like and where did it fail? |
-| 28-31 | Evidence and tools | What improved, how is it measured, and which tool functions changed? |
-| 32-36 | Architecture | How do the hub, context, permissions, memory, and evaluation fit together? |
-| 37-40 | People and direction | Why does adoption fail, how does management change, and where is this going? |
+| 1-5 | The decision | Why own the context layer, and how should build versus buy be recalculated? |
+| 6-12 | The platform | Which foundations connect the work without exposing private implementation? |
+| 13-22 | The AI layer | How do structure, context, gates, identity, and evaluation make models reliable? |
+| 23-29 | The software factory | How does customer evidence become verifiable, governed delivery? |
+| 30-34 | Lessons and culture | Which process controls make greater autonomy trustworthy? |
+| 35-36 | The closers | How should outcomes be measured, and what compounds over time? |
 
 ## Audience progression
 
@@ -32,10 +30,11 @@ The performance standard is governed by `PERFORMANCE_PLAYBOOK.md`. Correct but a
 
 ## Source hierarchy
 
-1. User-approved public facts in `PUBLIC_EVIDENCE_LEDGER.md`.
-2. Generalized lessons derived from the work-hub, orchestration, triage, story-generation, and approval-gated systems.
-3. Clearly labeled hypothetical examples.
-4. General principles that do not claim personal experience.
+1. Topic identity and order from `APPROVED_TOPIC_SEQUENCE.md`.
+2. User-approved public facts in `PUBLIC_EVIDENCE_LEDGER.md`.
+3. Generalized lessons derived from the private source playbook.
+4. Clearly labeled hypothetical examples.
+5. General principles that do not claim personal experience.
 
 Private local files are research material, not publication permission.
 
@@ -68,6 +67,7 @@ Reject a draft when any answer is no:
 7. Do the first two lines create tension or curiosity without hype?
 8. Is there an approved receipt or concrete mechanism rather than unsupported advice?
 9. Does the hook family and ending differ from the previous two posts?
+10. Does the lesson match the current row in `APPROVED_TOPIC_SEQUENCE.md` rather than a newly invented curriculum?
 
 ## Campaign spine
 

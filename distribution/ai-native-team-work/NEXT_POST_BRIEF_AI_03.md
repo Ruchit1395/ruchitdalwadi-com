@@ -1,48 +1,45 @@
 # AI-03 Native Post Brief
 
-Topic: What AI-native actually means
+Topic: Build versus buy changed with coding agents
 
-Role in series: candid reset after two abstract posts.
+Role in series: restore the original Day 3 lesson after the incorrect “What AI-native means” posts were deleted from X and LinkedIn.
 
-Evidence: E-01, E-02, E-06, E-08.
+Evidence: general principle only. Do not claim a private build timeline, cost reduction, tool replacement, or personal result.
 
-Hook family: confession on X, observable workflow failure on LinkedIn.
+Hook family: changed decision on X, old rule with a missing variable on LinkedIn.
 
-Ending shape: diagnostic on X, specific series promise on LinkedIn.
+Ending shape: four-column recalculation on X, one-decision audit on LinkedIn.
 
 ## X draft
 
-I mistook a fast AI answer for a finished workflow.
+Coding agents changed the build-versus-buy equation. They did not make every internal tool worth building.
 
-The draft appeared quickly. The source hunt, judgment, copy-paste, approval chase, and next-run correction stayed manual.
+Keep buying commodity services where ownership adds no advantage. Reconsider software that holds the context and process unique to your work.
 
-I had automated the typing, not the work.
+Redo one decision with four columns: ownership value, build cost, maintenance cost, and exit cost.
 
-My AI-native test now: remove the AI. If only the writing gets slower, you built assistance. If the path from request to accepted result breaks, you changed the operating model.
+AI lowered part of one column. It did not erase the other three.
 
 ## LinkedIn draft
 
-My early AI workflows looked impressive in a demo.
+The old build-versus-buy rule is missing a new variable.
 
-Then the real job began.
+Coding agents can reduce the effort required to create narrow internal software. That does not mean every team should rebuild its stack.
 
-The answer appeared fast. Someone still had to find the source, decide what mattered, paste the result into another tool, chase approval, and carry the correction into the next run.
+Keep buying commodity services where ownership adds no advantage. Authentication, payments, hosting, and delivery infrastructure usually belong in that group.
 
-I had automated the typing, not the work.
+Recalculate the software that holds the context and process unique to your work. Vendor boundaries matter more there because each API, sync, and summary can weaken the evidence the next decision needs.
 
-That is the distinction I missed in the first two posts of this series.
+Take one current decision and score four columns: ownership value, build cost, maintenance cost, and exit cost.
 
-AI-assisted work makes one step faster. AI-native work connects the goal, approved context, next action, human judgment, evidence, and correction in one loop.
+AI lowered part of the build column. It did not remove security, reliability, maintenance, or migration work.
 
-My test now is simple: remove the AI. If only the writing gets slower, you built assistance. If the path from request to accepted result breaks, you changed the operating model.
-
-The next posts will show the build, failures, architecture, tool changes, adoption problems, and the parts that should stay human.
+The useful question is no longer “build or buy?” in the abstract. It is “which layer is commodity, and which layer becomes more valuable when we own its context?”
 
 ## Final checks
 
-- X and LinkedIn use different hooks, paragraph order, and endings.
-- LinkedIn applies the 25K reference pattern through an original workflow scene, not its new-hire analogy.
-- Personal claims are approved in the evidence ledger.
-- No private organization, person, customer, system, metric, incident, or architecture detail appears.
+- Day 3 matches `APPROVED_TOPIC_SEQUENCE.md`; “What AI-native means” remains Day 5.
+- X and LinkedIn use different openings, paragraph order, examples, and closing actions.
+- No personal receipt, metric, timeline, replacement claim, or private implementation detail appears.
 - No hashtag, emoji, link, hype phrase, engagement bait, or banned dash appears.
 - Re-read live composer text and rerun the normal duplicate and browser gates before publication.
