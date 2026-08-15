@@ -49,8 +49,10 @@ Run the six-question quality gate in `SERIES_STRATEGY.md` before opening the com
 4. Open a separate fresh composer for the real draft.
 5. Fill the final draft and re-read the exact visible composer text immediately before submission.
 6. Submit only through the unique enabled native Post control.
-7. Record the success alert, stable URL, or visible live-profile proof. Never invent an identifier.
-8. Do not retry when an earlier submission may have landed. Resolve duplicate uncertainty first.
+7. Open the live post and verify its rendered structure, not only its words. LinkedIn must show the intended blank rows and list-item breaks. A bulk-filled composer may display correct text while stripping empty paragraph rows on publish.
+8. When LinkedIn needs blank rows, ensure the composer contains real spacer paragraphs before submit. Re-read the live post after submit and repair formatting in place if the words are correct but the layout collapsed.
+9. Record the success alert, stable URL, and rendered live-profile proof. Never invent an identifier.
+10. Do not retry when an earlier submission may have landed. Resolve duplicate uncertainty first.
 
 Authentication, CAPTCHA, safety interstitials, required user approval, and unresolved duplicate risk are hard stops.
 
@@ -60,6 +62,7 @@ Authentication, CAPTCHA, safety interstitials, required user approval, and unres
 2. Add verified public evidence to the shared post registry and tracker.
 3. Append both worklogs.
 4. Create 2-hour and 24-hour metric checkpoints for the new asset. Compare reach and visible interaction rate with the trailing five native posts on that platform.
-5. Run CSV parsing, the campaign validator, the shared validator, relevant privacy and language checks, and `git diff --check`.
-6. Stage `distribution/`, commit, pull with rebase, and push.
-7. Report under the README contract.
+5. Record whether rendered paragraph and list formatting passed on the live post.
+6. Run CSV parsing, the campaign validator, the shared validator, relevant privacy and language checks, and `git diff --check`.
+7. Stage `distribution/`, commit, pull with rebase, and push.
+8. Report under the README contract.

@@ -111,6 +111,7 @@ Run every check before posting:
 6. No em dashes, hashtags, emoji, links in body, hype, stock praise, or generic ending.
 7. Browser health and login are good.
 8. Exact composer text is visible in the DOM before submission.
+9. LinkedIn spacing is represented by real spacer paragraphs in the composer, not only newline characters in the source draft.
 
 If any check fails, rewrite once. If it still fails, choose another topic. A missed post should be logged as a blocker, not replaced with filler.
 
@@ -122,7 +123,8 @@ If any check fails, rewrite once. If it still fails, choose another topic. A mis
 4. Re-read the exact visible composer text and compare it to the intended draft.
 5. Submit only the native post. Do not click adjacent reply, media, audience, or profile controls.
 6. Capture the post URL or stable platform identifier when it is visible. If it is not visible, log browser submission without inventing an identifier.
-7. A post-submit re-read is helpful but not required. Do not create a duplicate post to compensate for a missing confirmation.
+7. Open the live post and verify the rendered paragraph spacing and list structure. Composer text equality is not proof of rendered formatting.
+8. If LinkedIn collapses intended blank rows, edit the existing post in place through the browser, verify the corrected live rendering, and record the edit. Do not create a duplicate replacement for formatting alone.
 
 ## Failure recovery
 

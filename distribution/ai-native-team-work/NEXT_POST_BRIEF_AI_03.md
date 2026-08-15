@@ -24,17 +24,31 @@ AI lowered part of one column. It did not erase the other three.
 
 The old build-versus-buy rule is missing a new variable.
 
-Coding agents can reduce the effort required to create narrow internal software. That does not mean every team should rebuild its stack.
+Coding agents can reduce the effort required to create narrow internal software.
 
-Keep buying commodity services where ownership adds no advantage. Authentication, payments, hosting, and delivery infrastructure usually belong in that group.
+That does not mean every team should rebuild its stack.
 
-Recalculate the software that holds the context and process unique to your work. Vendor boundaries matter more there because each API, sync, and summary can weaken the evidence the next decision needs.
+Keep buying commodity services where ownership adds no advantage:
 
-Take one current decision and score four columns: ownership value, build cost, maintenance cost, and exit cost.
+- authentication
+- payments
+- hosting
+- delivery infrastructure
+
+Recalculate the software that holds the context and process unique to your work. Vendor boundaries matter more there because every API, sync, and summary can weaken the evidence the next decision needs.
+
+Score one decision on four factors:
+
+- ownership value
+- build cost
+- maintenance cost
+- exit cost
 
 AI lowered part of the build column. It did not remove security, reliability, maintenance, or migration work.
 
-The useful question is no longer “build or buy?” in the abstract. It is “which layer is commodity, and which layer becomes more valuable when we own its context?”
+The useful question is not “build or buy?” in the abstract.
+
+It is: “Which layer is commodity, and which layer becomes more valuable when we own its context?”
 
 ## Final checks
 
@@ -42,4 +56,5 @@ The useful question is no longer “build or buy?” in the abstract. It is “w
 - X and LinkedIn use different openings, paragraph order, examples, and closing actions.
 - No personal receipt, metric, timeline, replacement claim, or private implementation detail appears.
 - No hashtag, emoji, link, hype phrase, engagement bait, or banned dash appears.
-- Re-read live composer text and rerun the normal duplicate and browser gates before publication.
+- LinkedIn must render visible blank rows between sections and one item per list row. Composer text equality alone is insufficient.
+- Re-read the live composer text, then re-read the rendered live post before marking publication complete.
