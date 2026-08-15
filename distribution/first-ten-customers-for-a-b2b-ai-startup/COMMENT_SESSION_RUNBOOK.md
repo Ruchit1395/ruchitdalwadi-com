@@ -14,7 +14,7 @@ On any heartbeat where ALL of these hold:
    - **Normal mode:** the last comment session ended more than 2.5 hours ago.
    - **Recovery mode:** the last session was more recent, but the campaign is behind its local-day pace by at least 2 comments, at least 60 minutes have passed since the newest logged comment, and a fresh qualified room is available. The 2.5-hour cooldown is a burst-control default, not a hard stop when the day is materially behind.
    - **Publication-incident override:** a failed submit did not create a session. Repair it in the same wakeup before returning to normal cadence. It cannot use up a day's pace, justify a zero session, or defer its make-up work to a later day.
-3. Fewer than 20 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`), with a maximum of 10 on X and 10 on LinkedIn.
+3. Fewer than 8 cold comments posted today across X + LinkedIn (count today's rows in `replied-log.csv`), with a maximum of 5 per platform. Reframed 2026-08-16: 20/day spray produced zero inbound in six weeks; the target is 5-8 conversations that make the author reply, not a count.
 
 If the browser fails twice at tab level, stop and log the blocker. Do not retry the same wakeup.
 
@@ -81,7 +81,7 @@ The user waived a separate published-reply audit. This protocol does not reinsta
 
 ### Cadence modes and recovery override
 
-- Count comments by the local calendar day in Asia/Kolkata. Pace the 20-comment target across the active window from 08:00 to 23:00 IST. Before 08:00, the expected pace is 0. From 08:00 onward, calculate `expected_by_now = ceil(20 * elapsed_active_minutes / 900)`, capped at 20.
+- Count comments by the local calendar day in Asia/Kolkata. Pace the 6-comment target across the active window from 08:00 to 23:00 IST. Before 08:00, the expected pace is 0. From 08:00 onward, calculate `expected_by_now = ceil(6 * elapsed_active_minutes / 900)`, capped at 6.
 - Enter recovery mode when `expected_by_now - comments_today >= 2`. Example: at 11:00 IST the expected pace is 4 comments; a day at 2/20 is behind by 2 and should reopen after the shorter recovery interval.
 - In recovery mode, wait at least 60 minutes from the newest logged comment before starting another session. Keep the mandatory 2+ minute spacing between individual comments.
 - Recovery mode does not relax quality or safety rails: maximum 5 comments per session, maximum 20 per day, maximum 10 per platform, author cooldowns, banned-room exclusions, browser-only posting, and visible pre-submit composer-state verification remain mandatory. Post-submit landed-reply verification is optional, while the submit control must still produce the composer-local state change required by the publication incident protocol.
@@ -93,7 +93,7 @@ The user waived a separate published-reply audit. This protocol does not reinsta
 
 When the gates pass, the job is to leave qualified comments, not merely to run one scout command.
 
-Default target per heartbeat: 4-5 total cold comments, split across both platforms when possible:
+Default target per heartbeat: 2-3 total cold comments, split across both platforms when possible. BEFORE any cold comment, open notifications and reply to every substantive reply on Ruchit's own posts and comments; replies-to-replies are the inbound engine and always outrank a new cold comment:
 - Preferred mix: 2 X comments + 3 LinkedIn comments. Codex owns both cold-comment platforms and handles all comments through the browser. Do not assume a scheduled runner will cover X; check the log and run the X browser ladder in this session when capacity is available.
 - If one platform cannot produce qualified rooms after the fallback ladder below, fill the session with the other platform up to the 5-comment session cap.
 - If only 1-3 qualified rooms exist after exhaustive fallback, post those. A smaller verified session is better than a zero-comment session.

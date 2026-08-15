@@ -1,16 +1,15 @@
-name: Signal to social
+name: Story factory
 
 on:
   schedule:
-    - cron: "15 4 * * 2,4" # Tue/Thu 09:45 IST — news lane; story factory owns Mon/Wed/Fri
-    - cron: "0 6 * * 2,4"  # Tue/Thu 11:30 IST — catch-up
+    - cron: "30 2 * * 0" # Sunday 08:00 IST: fill Mon/Wed/Fri banks for the week
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 concurrency:
-  group: signal-to-social
+  group: story-factory
   cancel-in-progress: false
 
 jobs:
@@ -21,20 +20,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Generate today's Signal-grounded X + LI posts
+      - name: Generate, judge, and ship the week's story posts
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          TWITTERAPIIO_KEY: ${{ secrets.TWITTERAPIIO_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: node scripts/signal-to-social.mjs --write
-      - name: Commit into the content bank
+        run: node scripts/story-factory.mjs
+      - name: Commit the week's bank
         run: |
           git config user.name "campaign-bot"
           git config user.email "bot@ruchitdalwadi.com"
           git add content-bank distribution
           if ! git diff --cached --quiet; then
-            git commit -m "campaign: signal-grounded posts $(date -u +%Y-%m-%d)"
+            git commit -m "campaign: story factory week $(date -u +%Y-%m-%d)"
             git pull --rebase
             git push
           fi
