@@ -4,16 +4,16 @@
     "x": {
       "status": "blocked_today",
       "failedSubmits": 4,
-      "signature": "Clean-control repair activated the uniquely matched Reply control but exposed no composer; no draft or submission occurred.",
+      "signature": "User-authorized same-day clean-control repair: direct X reply retained the exact verified draft after Reply click.",
       "lastTarget": "https://x.com/kunchenguid/status/2087942296721559607",
-      "updatedAt": "2026-08-15T00:52:03+05:30"
+      "updatedAt": "2026-08-15T11:42:10+05:30"
     },
     "linkedin": {
-      "status": "blocked_today",
-      "failedSubmits": 1,
-      "signature": "Clean-control repair opened the qualified post comment thread but exposed no composer; no draft or submission occurred.",
-      "lastTarget": "https://www.linkedin.com/search/results/content/?datePosted=%22past-24h%22&keywords=Claude%20Code&origin=FACETED_SEARCH",
-      "updatedAt": "2026-08-15T00:50:52+05:30"
+      "status": "healthy",
+      "failedSubmits": 0,
+      "signature": "",
+      "lastTarget": "",
+      "updatedAt": "2026-08-15T11:45:17+05:30"
     }
   }
 }
