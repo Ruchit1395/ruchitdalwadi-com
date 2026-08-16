@@ -1,6 +1,6 @@
 # Target 200 — accounts to engage for visibility
 
-Generated 2026-08-09 from 7-day engagement data across 6 lanes. Refreshed weekly (Sundays).
+Generated 2026-08-16 from 7-day engagement data across 6 lanes. Refreshed weekly (Sundays).
 
 How to use: these are the rooms for browser comment sessions (X API blocks cold replies, so this list powers laptop-on batches and manual engagement). Prioritize **mid** and **rising** tiers: comments there actually get seen. Mega accounts are context, not primary targets.
 
