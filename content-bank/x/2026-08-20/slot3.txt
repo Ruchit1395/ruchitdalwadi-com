@@ -1,0 +1,7 @@
+The cheapest eval that actually works: a golden set of 20 cases, in a spreadsheet, run by hand before every prompt or model change.
+
+Pick 12 typical cases, 5 hard ones, 3 that failed in production last month. Write the expected outcome next to each. Twenty is small enough that the set gets maintained and large enough to catch a regression before a customer does.
+
+Teams stall for a quarter picking an eval framework while shipping prompt changes on vibes the whole time. The spreadsheet version pays for itself the first time a model upgrade quietly breaks a case that used to pass, and it becomes the seed data when a real harness arrives later.
+
+The order matters: cases first, tooling second. Tooling without cases measures nothing.
