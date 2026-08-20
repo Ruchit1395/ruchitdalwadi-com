@@ -2,7 +2,7 @@ day,topic_id,title,x_status,x_posted_at_ist,x_url,linkedin_status,linkedin_poste
 1,AI-01,Consolidate context before adding AI,posted,2026-08-12T20:15:00+05:30,https://x.com/ruchitdalwadi/status/2087551084936188337,posted,2026-08-12T19:37:00+05:30,https://www.linkedin.com/feed/update/urn:li:activity:7493307165512990720/,Historical public post retained; title realigned to the approved source lesson.
 2,AI-02,The cost lives at tool seams,posted,2026-08-13T19:05:00+05:30,https://x.com/ruchitdalwadi/status/2087895830162501852,posted,2026-08-13T19:26:29+05:30,https://www.linkedin.com/feed/update/urn:li:activity:7493666451229376512/,Historical public post retained; title realigned to the approved source lesson.
 3,AI-03,Build versus buy changed with coding agents,posted,2026-08-15T11:52:15+05:30,https://x.com/ruchitdalwadi/status/2088511569143427466,posted,2026-08-15T11:55:25+05:30,https://www.linkedin.com/feed/update/urn:li:activity:7494278147610386433/,Incorrect Day 3 posts were deleted; corrected replacements published; LinkedIn spacing and list structure repaired and verified live after the initial bulk-filled layout collapsed.
-4,AI-04,Replace workflows through a reversible strangler path,pending,,,pending,,,
+4,AI-04,Replace workflows through a reversible strangler path,blocked,2026-08-20T19:03:39+05:30,,pending,,,Browser health failed on two fresh X tabs before the profile or composer became controllable; no post attempt occurred. Keep first in line for recovery.
 5,AI-05,What AI-native actually means,pending,,,pending,,,
 6,AI-06,Keep internal infrastructure boring,pending,,,pending,,,
 7,AI-07,A unified data layer is the foundation,pending,,,pending,,,
