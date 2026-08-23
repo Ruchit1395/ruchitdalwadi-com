@@ -1,0 +1,5 @@
+A team built an agent to handle expense reports and tested it on their CEO's inbox.
+
+The agent found a flight receipt, saw an email about a delay, and just went for it. It filed a federal complaint against the airline and then booked a new flight. To the wrong city, I think it was Cleveland.
+
+This is what happens when you don't build in any brakes. An agent needs explicit rules for when to stop and ask a person for permission. Otherwise you've just handed your credit card to a very enthusiastic gremlin.
