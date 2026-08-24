@@ -99,3 +99,88 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     and approves; devs build from it. Spec authorship moved to the machine,
     judgment stayed human.
 
+- date: 2026-08-24
+  status: unused
+  story: >
+    The CI pipeline buckled: so much AI-written code shipped that GitHub
+    Actions became the bottleneck, in queue time AND cost. Moved runners to a
+    faster, cheaper provider. Second-order lesson: when writing code gets
+    cheap, everything downstream of code (CI, review, deploy) becomes the
+    new constraint.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    Manual code reviews were dropped early; every PR gets an AI review
+    instead. Started with one model for reviews, switched to a cheaper one
+    because review VOLUME got expensive. Also dropped the staging environment
+    and the in-review column. The founder's advice to devs: validate locally
+    before CI, because the AI reviewer will bounce sloppy PRs back and forth.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    Story points are gone. "AI can do the estimation, but issue count is a
+    good enough measure." When throughput is huge and tickets are small and
+    uniform, estimation ritual stops paying rent. Also: two-week sprints cut
+    to one week, because a week now delivers what a fortnight used to.
+
+- date: 2026-08-24
+  status: NEEDS-EXPLICIT-APPROVAL (sensitive: layoffs)
+  story: >
+    After restructuring let go a large group of long-tenured developers,
+    there was ZERO formal knowledge transfer, and the remaining team was
+    barely affected. The founder's read: AI closed the knowledge gap that
+    made departures expensive. Powerful but touchy: never post without
+    Ruchit's explicit sign-off, and never in a way that celebrates layoffs.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    Tool consolidation: the company replaced its sales CRM with an AI-native
+    tool built into its own product, and is moving project management and
+    support chat off two more vendor tools. The reason is not cost. Vendor
+    tools cannot see each other's context. Now sales calls get recorded,
+    transcripts attach to the deal, AI drafts the demo guide and the
+    proposal, and the sales-to-onboarding handoff carries full history.
+    New salespeople need far less training because the context travels.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    "Software factory, not a dark factory" (the founder's phrase). The line:
+    humans stay at the gates. Spec must be approved by a person before the
+    work-order automation will even accept the ticket. Agent writes code,
+    boots the dev stack, browser-tests, runs local review and specs, opens
+    the PR, auto-fixes CI. Product owners code now. QA codes now. The human
+    job moved from typing to approving.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    "We're not calling them user stories anymore." Renamed to work orders /
+    specs: context, implementation plan, acceptance criteria, verification
+    steps, and an explicit OUT OF SCOPE list. Why: Jira-era stories were
+    vague, and scope crept every time QA asked "what about this?" Now scope
+    additions become new tickets that go back through product review.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    128 items completed in roughly a week, before the whole team had even
+    started using the new system. Only ~186 open in the entire backlog: a
+    week and a half of work. The backlog used to be a multi-quarter promise
+    list; now it is a queue that drains weekly. The founder's takeaway to
+    the team: there is no pressure on volume, so do them RIGHT (tests, specs,
+    quality), and the bar moves from output to judgment.
+
+- date: 2026-08-24
+  status: unused
+  story: >
+    A developer asked: "Can we build it is already answered. Yes we can.
+    But should we build it?" The founder: capacity makes CAN trivial; what
+    remains human is SHOULD: does it fit the vision, does it help customers,
+    is it good for the company. They are also having AI annotate each issue
+    with its customer value and vision fit. Prioritization died; judgment
+    got promoted.
+

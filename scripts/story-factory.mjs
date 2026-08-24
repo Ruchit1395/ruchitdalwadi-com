@@ -68,7 +68,15 @@ const recentTopics = existsSync(`${DIR}/signal-topics-log.csv`)
 
 const rawEntries = [...storyBank.matchAll(/- date: [\s\S]*?story: >\n([\s\S]*?)(?=\n- date:|\n*$)/g)]
   .map((m) => m[1].trim()).filter((s) => s && !/\(three lines/.test(s));
-const hasRealMaterial = rawEntries.length > 0 && storyBank.includes("status: unused");
+// Entries flagged NEEDS-EXPLICIT-APPROVAL are off limits to the factory:
+// they ship only when Ruchit hand-approves them (e.g. anything touching
+// layoffs). Filter them out of the raw pool entirely.
+const blocks = [...storyBank.matchAll(/- date: [\s\S]*?(?=\n- date:|\n*$)/g)].map((m) => m[0]);
+const usableEntries = blocks
+  .filter((b) => b.includes("status: unused") && !b.includes("NEEDS-EXPLICIT-APPROVAL"))
+  .map((b) => (b.match(/story: >\n([\s\S]*)$/) ?? [])[1]?.trim())
+  .filter(Boolean);
+const hasRealMaterial = usableEntries.length > 0;
 
 const WINNER = `We hired someone brilliant last year. Day one, we gave her no laptop, no docs, no examples of past work, told her nothing about the customer, and left a sticky note that said "make it pop." Then we wrote "not a good fit" in her review.
 
@@ -129,7 +137,7 @@ HUMAN LANGUAGE, NOT AI LANGUAGE (the reader must never smell a machine):
 const MODES = {
   a: `MODE A, invented first-person parable: a fictional but plausible "we/I" story in Ruchit's voice, like the winner. Composite, never claiming checkable specifics (no named companies, no real people, no precise dates). The story is a vehicle for one AI/product/startup lesson.`,
   b: `MODE B, honest hypothetical: identical story craft, but framed openly as a scenario: "Picture the new hire who...", "A team ships a demo in week one...". No first-person claim. The craft must be strong enough that the framing costs nothing.`,
-  c: `MODE C, real material: shape ONE of these true stories from Ruchit's life into the winner's form. Keep every real specific; do not invent details beyond connective tissue. Do not name companies.\n\nRAW MATERIAL:\n${rawEntries.join("\n---\n")}`,
+  c: `MODE C, real material: shape ONE of these true stories from Ruchit's life into the winner's form. Keep every real specific; do not invent details beyond connective tissue. Do not name companies.\n\nRAW MATERIAL:\n${usableEntries.join("\n---\n")}`,
 };
 
 const plan = hasRealMaterial ? [["a", 6], ["b", 6], ["c", 6]] : [["a", 9], ["b", 9]];
