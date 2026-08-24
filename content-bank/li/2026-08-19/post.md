@@ -1,9 +1,9 @@
-We shipped an AI feature that built custom workout plans. The beta group loved it, so the team went out for lunch to celebrate.
+We needed EDI with exactly three trading partners. Three. That was the entire requirement.
 
-Halfway through, our finance lead slid his phone across the table. The cloud bill. One morning of the new feature, about a hundred users, and it had already burned more than the whole lunch cost times fifty.
+The old version of us would have built three integrations and closed the ticket. Every engineering book agrees: build what is asked, you are not going to need the rest.
 
-We had wired it to the biggest model on the market because that was the one we trusted from the prototype, and nobody ever questioned it again. For turning a form into a workout plan, it was a fighter jet doing grocery runs.
+Instead, while the AI was already deep in the EDI work, the founder told it to also look up the big retailers our customers typically deal with and wire those up too. It came back with 55 trading partners. The marginal cost of the extra 52 was close to nothing.
 
-The swap to a smaller fine-tuned model took two days. The plans got a little blander. Not one user mentioned it. The bill dropped to something nobody screenshots at lunch.
+YAGNI was never really a principle about software. It was a principle about payroll. When building was expensive, speculative features were waste. When an agent does the building, the math flips: shipping the whole category at once is cheaper than handling requests one at a time forever, each with its own ticket, its own wait, its own deploy.
 
-Since then there's one boring afternoon before every launch: find the cheapest model users won't notice.
+We keep tripping over rules like this. Written for a constraint that quietly stopped existing.

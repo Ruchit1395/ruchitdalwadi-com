@@ -1,7 +1,9 @@
-Found our designer pasting UX copy into an AI tool nobody approved. Next day, a marketer was summarizing competitor pricing in a public chatbot.
+The founder I work with last wrote code 22 years ago, Java era. This spring he opened our product codebase with AI coding tools.
 
-The tempting move was a ban. Bans just push the same behavior onto personal laptops, where you see none of it.
+He has since shipped the full accounting module that sat on our roadmap for years. Bank feeds, reconciliation, payout matching. Engineers never got to it because something was always more urgent.
 
-We started a recipe book on the wiki instead. Find a workflow that saves you an hour, write down the prompt and the tool, we check nothing sensitive leaves, then anyone can use it.
+Before that he warmed up by moving the company site off WordPress and automating the email marketing. Then he went for the core product.
 
-Ten entries in a month. Half came from people I would never have guessed. The habits were already in the company, just hiding.
+He knows every flow cold. For two decades that knowledge had to pass through other people's hands to become software. Not anymore.
+
+Deep domain knowledge plus rusty syntax just became a seriously underpriced combination.

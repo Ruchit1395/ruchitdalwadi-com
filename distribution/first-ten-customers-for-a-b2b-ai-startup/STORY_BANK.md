@@ -27,4 +27,75 @@ numbers, what was said, what it cost.
 
 ## RAW MATERIAL
 
-(empty — entries added here get used oldest-first, marked used by the factory)
+(Source: internal team call transcript, 2026-08. First ~25% captured before the
+file was removed; ask Ruchit to re-share for the rest. All entries anonymized:
+no company, product, or person names in posts. "The founder" = the founder
+Ruchit works with; Ruchit speaks as himself for his own moments.)
+
+- date: 2026-08-16
+  status: used-manually-2026-08-17
+  story: >
+    The founder last wrote code 22 years ago (Java/C#, 90s). Few months ago
+    started with AI coding tools: moved company site off WordPress, automated
+    email marketing and blogging. April: opened the product codebase. Since:
+    shipped a FULL accounting module (bank connections, reconciliation, payout
+    matching from payment platforms) that sat on the roadmap for years.
+
+- date: 2026-08-16
+  status: used-manually-2026-08-17
+  story: >
+    Reporting arc: company tried customer-facing configurable reporting via
+    Power BI. Hard for the company AND customers; "acceptance was poor."
+    Founder rebuilt it with AI as a native, fully configurable module; replaces
+    Power BI, ships to customers within weeks.
+
+- date: 2026-08-16
+  status: used-manually-2026-08-19
+  story: >
+    EDI: only 3 real trading partners needed. While AI was deep in the EDI
+    build, founder told it to also wire up the big retailers customers
+    typically deal with: 55-57 partners shipped. "It's cheap to add upfront
+    rather than wait for somebody to request it." Inverse-YAGNI economics.
+
+- date: 2026-08-16
+  status: used-manually-2026-08-21
+  story: >
+    Ruchit's own moment: team call about moving sprints from Jira into sprint
+    boards built inside their own product (dogfooding). A developer asks if
+    tickets can show priority. Ruchit: "I'm raising a PR to add the priority
+    right now, I just wanted this call to finish first." Feature request
+    answered before the meeting ended.
+
+- date: 2026-08-16
+  status: unused
+  story: >
+    Ruchit told the team: "priority order will matter a lot lesser now."
+    When shipping throughput explodes, ranking the queue stops being the
+    valuable skill; deciding what belongs in it is. Prioritization as a
+    scarcity artifact.
+
+- date: 2026-08-16
+  status: unused
+  story: >
+    Death of the MVP, per the founder: "In the past we always had to do an
+    MVP, pick and choose, prioritize what is most important today. We couldn't
+    think about what's needed in the future. Those limitations are going away.
+    Build it inside out, build it fully, no piecemeal."
+
+- date: 2026-08-16
+  status: unused
+  story: >
+    The API grew one customer request at a time for years, never designed:
+    "still missing fields, people keep asking can I get this here." Full
+    redesign now underway because AI made the comprehensive rewrite affordable.
+    Accretion debt vs designed surface.
+
+- date: 2026-08-16
+  status: unused
+  story: >
+    AI work-order specs in the sprint tool: CSM/product write the problem
+    statement; an AI that knows the system generates the implementation plan,
+    acceptance criteria, out-of-scope list, verification steps; a PM reviews
+    and approves; devs build from it. Spec authorship moved to the machine,
+    judgment stayed human.
+

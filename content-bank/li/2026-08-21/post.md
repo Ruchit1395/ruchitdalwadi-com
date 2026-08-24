@@ -1,11 +1,11 @@
-I demoed an AI feature to our leadership team. Messy meeting notes in, clean summary with action items out. Flawless run. The room was impressed.
+Halfway through a team call last week, a developer asked if our new sprint board could show ticket priority.
 
-Too impressed, it turned out.
+Some background. We ran sprints in Jira for years. Then we built sprint boards into our own product and moved the whole team onto them. Partly to feel what our customers feel. Partly because the build finally took a weekend instead of a quarter.
 
-By the next morning the requests were arriving. Could it read the mood of the speakers? Could it predict which projects would slip? Could it write the project plan itself? One exec had already promised something to a client.
+So the developer asks about priority, and I heard myself answer: the PR is already up, I just wanted to finish this call first.
 
-None of them had seen the scaffolding. The carefully shaped prompt, the cleaned-up input, the ten failure cases we quietly handled the week before that meeting. They watched notes go in and judgment come out, and concluded there was a mind in there.
+A feature request, closed before the meeting ended. Not because I am fast. Because the distance between wanting a feature and having it collapsed underneath us this year.
 
-The demo had worked too well. It sold capability we did not have, and now we had to talk everyone back out of it, one meeting at a time.
+The part I keep chewing on came right after. I told the team that priority ordering is going to matter a lot less now. When the queue drains this fast, ranking the queue stops being the valuable work. Deciding what deserves to be in it at all is the valuable work.
 
-These days I open every AI demo with a failure. Feed it something it was not built for, let the room watch it refuse. It costs two minutes and a little applause, and it saves the next quarter.
+We spent a decade getting good at prioritization. It was a skill for managing scarcity, and the scarcity is leaving.

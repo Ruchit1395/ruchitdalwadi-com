@@ -1,5 +1,7 @@
-Demoed our AI notes-summarizer to leadership. Perfect run. By next morning: could it read the room's mood, predict slipping projects, write the plan itself? One exec had already promised a client.
+Mid-call last week, a developer asked if our new sprint board could show ticket priority. I said the PR was already up, I just wanted to finish the call first.
 
-They never saw the shaped prompt or the cleaned input or the failure cases we handled the week before. They watched notes become judgment and assumed a mind.
+We moved sprints from Jira into boards built inside our own product. The board took a weekend. The feature request took less than a meeting.
 
-Every demo I run now opens with a failure. Feed it something it was not built for, let the room watch it refuse. Two minutes, a little lost applause, and the next quarter stays honest.
+Then I told the team something that landed strangely: priority will matter a lot less now. When the queue drains this fast, ranking it stops being the job. Deciding what belongs in it at all is the job.
+
+Prioritization was a skill for managing scarcity. The scarcity is leaving.

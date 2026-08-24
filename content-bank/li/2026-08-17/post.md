@@ -1,11 +1,11 @@
-I walked past our lead designer's desk and saw her pasting our UX copy into some AI tool I'd never heard of. A day later, one of our marketers was feeding competitor pricing into a public chatbot to get it summarized.
+The founder I work with wrote his last line of code when Java was young. Twenty-two years of running companies since, zero commits.
 
-Nobody had asked permission. Nobody was going to.
+A few months ago he started poking at AI coding tools. First the safe stuff: moved the company site off WordPress, automated the email marketing. Then in April he opened the actual product codebase.
 
-The tempting move was a policy. Ban unapproved tools, force requests through IT, feel in control again. Except that kills exactly the curiosity you want, and the same behavior moves to personal laptops where you can't see it at all.
+Since then he has shipped a full accounting module. Bank connections, reconciliation, payout matching from payment platforms. It sat on our roadmap for years while the engineers, rightly, always had something more urgent.
 
-So we went the other way. A recipe book on the wiki. Found an AI workflow that saves you an hour? Write down the prompt, the tool, what came out. We check that nothing sensitive leaves the building, then it's fair game for anyone.
+My favorite part is the reporting arc. We had tried to give customers configurable reports through Power BI. It fought us, it fought them, adoption never came. He rebuilt it with AI as a native module, and it does what the expensive route never managed.
 
-A month in, the book had ten entries. The designer's copy trick was in there. So was a contract-review prompt from someone in ops I'd barely ever spoken to.
+He knows every flow in the product cold. For two decades that knowledge had to pass through someone else's hands to become software. That translation layer is gone.
 
-The habits were already in the company. They were just hiding.
+The people with the deepest domain knowledge and the rustiest syntax might be the most underpriced group in this entire shift.

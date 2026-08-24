@@ -1,7 +1,7 @@
-Our AI workout planner was a hit in beta. At the celebration lunch, finance slid a phone across the table: one morning of usage had cost more than the lunch, times fifty.
+We needed EDI with exactly three trading partners. The AI was already deep in the build, so the founder had it wire up the big retailers our customers deal with anyway. It shipped 55.
 
-We had wired it to the biggest model available because that's what the prototype used. For turning a form into a workout plan, that's a fighter jet doing grocery runs.
+The extra 52 cost close to nothing. No future tickets, no waiting on requests, no one-by-one deploys stretched over years.
 
-A smaller fine-tuned model took two days to swap in. The plans got slightly blander, nobody said a word, and the bill stopped being a screenshot.
+YAGNI was never about software. It was about payroll. When an agent does the building, shipping the whole category at once beats answering requests one at a time forever.
 
-One boring afternoon before launch: find the cheapest model users won't notice.
+Worth rereading your own engineering rules and asking which ones were written for a constraint that no longer exists.
