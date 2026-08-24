@@ -1,7 +1,7 @@
-Mid-call last week, a developer asked if our new sprint board could show ticket priority. I said the PR was already up, I just wanted to finish the call first.
+Mid-call last week, a developer asked if our sprint board could show priority. I said: the PR is already up. I just wanted to finish the call first.
 
 We moved sprints from Jira into boards built inside our own product. The board took a weekend. The feature request took less than a meeting.
 
-Then I told the team something that landed strangely: priority will matter a lot less now. When the queue drains this fast, ranking it stops being the job. Deciding what belongs in it at all is the job.
+Then I told the team: priority will matter a lot less now. When the queue drains this fast, ranking it is not the job. Choosing what gets in is the job.
 
 Prioritization was a skill for managing scarcity. The scarcity is leaving.

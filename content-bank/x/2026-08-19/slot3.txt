@@ -1,7 +1,9 @@
-We needed EDI with exactly three trading partners. The AI was already deep in the build, so the founder had it wire up the big retailers our customers deal with anyway. It shipped 55.
+We needed EDI with three trading partners. Three.
 
-The extra 52 cost close to nothing. No future tickets, no waiting on requests, no one-by-one deploys stretched over years.
+The AI was already deep in the build. So the founder had it add the big retailers our customers deal with anyway.
 
-YAGNI was never about software. It was about payroll. When an agent does the building, shipping the whole category at once beats answering requests one at a time forever.
+It shipped 55. The extra 52 cost almost nothing.
 
-Worth rereading your own engineering rules and asking which ones were written for a constraint that no longer exists.
+YAGNI was never about software. It was about payroll. Building used to be expensive. Now an agent builds. Shipping the whole category at once beats answering requests for years.
+
+Worth asking which of your rules were written for a constraint that no longer exists.

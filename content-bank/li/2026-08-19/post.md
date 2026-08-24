@@ -1,9 +1,13 @@
-We needed EDI with exactly three trading partners. Three. That was the entire requirement.
+We needed EDI with three trading partners. Three. That was the whole ask.
 
-The old version of us would have built three integrations and closed the ticket. Every engineering book agrees: build what is asked, you are not going to need the rest.
+The old us would have built three and closed the ticket. Every engineering book says the same thing. Build what is asked. You are not going to need the rest.
 
-Instead, while the AI was already deep in the EDI work, the founder told it to also look up the big retailers our customers typically deal with and wire those up too. It came back with 55 trading partners. The marginal cost of the extra 52 was close to nothing.
+But the AI was already deep in the EDI work. So the founder told it: also add the big retailers our customers usually deal with.
 
-YAGNI was never really a principle about software. It was a principle about payroll. When building was expensive, speculative features were waste. When an agent does the building, the math flips: shipping the whole category at once is cheaper than handling requests one at a time forever, each with its own ticket, its own wait, its own deploy.
+It shipped 55 partners. The extra 52 cost almost nothing.
 
-We keep tripping over rules like this. Written for a constraint that quietly stopped existing.
+Here is why that matters. YAGNI was never really about software. It was about payroll. Building used to be expensive. So extra features were waste.
+
+Now an agent does the building. The math flips. Shipping the whole category at once is cheaper than handling requests one by one for years. Each with its own ticket. Its own wait. Its own deploy.
+
+A lot of our rules are like this. Written for a constraint that no longer exists.

@@ -1,11 +1,15 @@
-The founder I work with wrote his last line of code when Java was young. Twenty-two years of running companies since, zero commits.
+The founder I work with wrote his last line of code 22 years ago. Java days. Since then he ran companies. Zero code.
 
-A few months ago he started poking at AI coding tools. First the safe stuff: moved the company site off WordPress, automated the email marketing. Then in April he opened the actual product codebase.
+A few months ago he tried AI coding tools. He started small. Moved our website off WordPress. Automated the email marketing.
 
-Since then he has shipped a full accounting module. Bank connections, reconciliation, payout matching from payment platforms. It sat on our roadmap for years while the engineers, rightly, always had something more urgent.
+In April he opened the real product code.
 
-My favorite part is the reporting arc. We had tried to give customers configurable reports through Power BI. It fought us, it fought them, adoption never came. He rebuilt it with AI as a native module, and it does what the expensive route never managed.
+Since then he shipped a full accounting module. Bank feeds. Reconciliation. Payout matching. It sat on our roadmap for years. The engineers always had something more urgent.
 
-He knows every flow in the product cold. For two decades that knowledge had to pass through someone else's hands to become software. That translation layer is gone.
+Then reporting. We had tried Power BI for customer reports. It was hard for us. It was hard for customers. Nobody used it. He rebuilt it with AI, inside the product. It works.
 
-The people with the deepest domain knowledge and the rustiest syntax might be the most underpriced group in this entire shift.
+Here is the thing. He knows every flow in the product. For 20 years that knowledge had to go through someone else's hands to become software.
+
+Not anymore.
+
+People with deep domain knowledge and rusty code skills. That might be the most underpriced group in tech right now.

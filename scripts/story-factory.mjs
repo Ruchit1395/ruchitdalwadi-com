@@ -122,6 +122,7 @@ HUMAN LANGUAGE, NOT AI LANGUAGE (the reader must never smell a machine):
 - No labelled metaphors in quotes ("the 'fighter jet' model"). Use a metaphor once, unmarked, or not at all.
 - Vary sentence length like a person: an occasional fragment, an occasional long run, not two tidy sentences per paragraph forever.
 - Include one detail that does no rhetorical work. Real stories carry noise; parables that only carry the lesson feel written by a committee.
+- INSANELY SIMPLE LANGUAGE. Write like you talk. Short sentences. Words a 12 year old knows. One idea per sentence. If a sentence needs a comma to breathe, consider splitting it. "The gap collapsed" beats "the distance contracted materially".
 - Banned vocabulary: delve, tapestry, testament, seamless, robust, elevate, unlock, supercharge, leverage, game-changing, landscape, navigating, "in today's".
 - Avoid these recent topics: ${recentTopics.join(" | ") || "none"}.`;
 

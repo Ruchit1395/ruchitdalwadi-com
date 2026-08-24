@@ -51,6 +51,47 @@ if (commentary.length < 100) {
 // Composio's LINKEDIN_CREATE_LINKED_IN_POST pins a dead LinkedIn-Version
 // (20241101 → 426). Use Composio's raw proxy with a current version instead.
 const LINKEDIN_VERSION = "202606";
+
+async function liProxy(endpoint, method, body) {
+  const r = await fetch("https://backend.composio.dev/api/v3/tools/execute/proxy", {
+    method: "POST",
+    headers: { "x-api-key": apiKey, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      connected_account_id: accountId,
+      endpoint, method, body,
+      parameters: [
+        { name: "LinkedIn-Version", type: "header", value: LINKEDIN_VERSION },
+        { name: "X-Restli-Protocol-Version", type: "header", value: "2.0.0" },
+      ],
+    }),
+  });
+  return { ok: r.ok, data: await r.json() };
+}
+
+// Optional image: an image.png beside the post file gets attached. The flow
+// (verified 2026-08-24): initializeUpload via proxy -> signed uploadUrl that
+// accepts an unauthenticated binary PUT (201) -> attach the image urn.
+// Any failure falls back to a text-only post rather than blocking.
+let postContent = null;
+const imgPath = path.join(path.dirname(file), "image.png");
+if (existsSync(imgPath)) {
+  try {
+    const init = await liProxy("/rest/images?action=initializeUpload", "POST",
+      { initializeUploadRequest: { owner: AUTHOR } });
+    const v = init.data?.data?.value ?? init.data?.value;
+    if (v?.uploadUrl && v?.image) {
+      const up = await fetch(v.uploadUrl, {
+        method: "PUT",
+        headers: { "Content-Type": "application/octet-stream" },
+        body: readFileSync(imgPath),
+      });
+      if (up.status >= 200 && up.status < 300) {
+        postContent = { media: { id: v.image } };
+        console.log(`image attached: ${v.image}`);
+      } else console.error(`image PUT ${up.status}; posting text-only`);
+    } else console.error(`initializeUpload odd response; posting text-only: ${JSON.stringify(init.data).slice(0, 200)}`);
+  } catch (e) { console.error(`image flow failed (${e.message}); posting text-only`); }
+}
 const res = await fetch("https://backend.composio.dev/api/v3/tools/execute/proxy", {
   method: "POST",
   headers: { "x-api-key": apiKey, "Content-Type": "application/json" },
@@ -69,6 +110,7 @@ const res = await fetch("https://backend.composio.dev/api/v3/tools/execute/proxy
       },
       lifecycleState: "PUBLISHED",
       isReshareDisabledByAuthor: false,
+      ...(postContent ? { content: postContent } : {}),
     },
     parameters: [
       { name: "LinkedIn-Version", type: "header", value: LINKEDIN_VERSION },
