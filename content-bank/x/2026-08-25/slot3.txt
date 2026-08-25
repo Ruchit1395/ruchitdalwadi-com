@@ -1,0 +1,7 @@
+A sane default for model spend: route everything to the cheap fast model first, and escalate to the expensive one only on failure or low confidence.
+
+Classification, extraction, formatting, routing, summaries of short inputs: the cheap tier handles these at a fraction of the cost, and a golden set proves it in an afternoon. Long-horizon reasoning, gnarly refactors, ambiguous judgment calls earn the big model.
+
+The pattern that wrecks budgets is the reverse: defaulting to the flagship for everything because it was the model everyone trusted during the demo, then discovering the bill six weeks later.
+
+Price the escalation path, not the model. A pipeline that escalates 10 percent of the time costs a tenth of one that starts at the top.
