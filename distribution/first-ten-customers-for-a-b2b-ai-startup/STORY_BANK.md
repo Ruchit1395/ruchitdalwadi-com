@@ -21,7 +21,7 @@ numbers, what was said, what it cost.
 ## Format
 
 - date: 2026-08-16
-  status: unused
+  status: used
   story: >
     (three lines: situation, turn, cost or payoff, with real specifics)
 
@@ -67,7 +67,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     answered before the meeting ended.
 
 - date: 2026-08-16
-  status: unused
+  status: used
   story: >
     Ruchit told the team: "priority order will matter a lot lesser now."
     When shipping throughput explodes, ranking the queue stops being the
@@ -75,7 +75,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     scarcity artifact.
 
 - date: 2026-08-16
-  status: unused
+  status: used
   story: >
     Death of the MVP, per the founder: "In the past we always had to do an
     MVP, pick and choose, prioritize what is most important today. We couldn't
@@ -83,7 +83,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     Build it inside out, build it fully, no piecemeal."
 
 - date: 2026-08-16
-  status: unused
+  status: used
   story: >
     The API grew one customer request at a time for years, never designed:
     "still missing fields, people keep asking can I get this here." Full
@@ -91,7 +91,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     Accretion debt vs designed surface.
 
 - date: 2026-08-16
-  status: unused
+  status: used
   story: >
     AI work-order specs in the sprint tool: CSM/product write the problem
     statement; an AI that knows the system generates the implementation plan,
@@ -100,7 +100,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     judgment stayed human.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     The CI pipeline buckled: so much AI-written code shipped that GitHub
     Actions became the bottleneck, in queue time AND cost. Moved runners to a
@@ -109,7 +109,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     new constraint.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     Manual code reviews were dropped early; every PR gets an AI review
     instead. Started with one model for reviews, switched to a cheaper one
@@ -118,7 +118,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     before CI, because the AI reviewer will bounce sloppy PRs back and forth.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     Story points are gone. "AI can do the estimation, but issue count is a
     good enough measure." When throughput is huge and tickets are small and
@@ -135,7 +135,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     Ruchit's explicit sign-off, and never in a way that celebrates layoffs.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     Tool consolidation: the company replaced its sales CRM with an AI-native
     tool built into its own product, and is moving project management and
@@ -146,7 +146,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     New salespeople need far less training because the context travels.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     "Software factory, not a dark factory" (the founder's phrase). The line:
     humans stay at the gates. Spec must be approved by a person before the
@@ -156,7 +156,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     job moved from typing to approving.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     "We're not calling them user stories anymore." Renamed to work orders /
     specs: context, implementation plan, acceptance criteria, verification
@@ -165,7 +165,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     additions become new tickets that go back through product review.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     128 items completed in roughly a week, before the whole team had even
     started using the new system. Only ~186 open in the entire backlog: a
@@ -175,7 +175,7 @@ Ruchit works with; Ruchit speaks as himself for his own moments.)
     quality), and the bar moves from output to judgment.
 
 - date: 2026-08-24
-  status: unused
+  status: used
   story: >
     A developer asked: "Can we build it is already answered. Yes we can.
     But should we build it?" The founder: capacity makes CAN trivial; what

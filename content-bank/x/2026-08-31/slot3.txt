@@ -1,0 +1,1 @@
+We finally killed story points. I've lost count of the hours we spent in Jira arguing if something was a 3 or a 5. Now an AI writes most of the code. If it can't handle a ticket, the ticket's too big and gets split. That's the only rule. We don't estimate anymore, we just count closed tickets. The whole 3 vs 5 debate feels like it was from another planet.

@@ -1,0 +1,1 @@
+We had to stop writing user stories for our AI agent. A prompt like 'As a user, I want to filter the list' is a great conversation starter for a human team, but for an AI it's just an invitation to hallucinate. Now we use work orders. They're strict specs with implementation plans and out of scope lists that a human has to approve first.

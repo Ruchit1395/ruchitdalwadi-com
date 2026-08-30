@@ -1,0 +1,5 @@
+Heard a great story about product development. A team builds an AI that writes perfect weekly project summaries. It ships, and after a couple of weeks, they realize usage is at zero.
+
+They talk to the project managers. The PMs weren't using it because writing that Friday summary by hand was the job. It was their moment to signal priorities and show they were in control. The summary itself was just an artifact of that ritual.
+
+The AI automated the artifact but it killed the ritual.
