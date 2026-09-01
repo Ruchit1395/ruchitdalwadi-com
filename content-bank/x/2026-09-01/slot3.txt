@@ -1,0 +1,7 @@
+Context windows grew a hundredfold and the discipline of deciding what belongs in them quietly died. It should not have.
+
+Everything stuffed into a prompt competes for the model's attention. The 40-page policy doc pasted in for one relevant paragraph does not make the answer safer. It buries the paragraph.
+
+A useful habit: for each recurring task, write down what the model must know, what it must never see, and what changes per run. Retrieve the first, exclude the second, template the third. Then measure output quality against the trimmed version. Shorter context wins more often than intuition expects, and it is cheaper and faster every single time.
+
+Attention is the scarce resource. Tokens are just the meter for it.
