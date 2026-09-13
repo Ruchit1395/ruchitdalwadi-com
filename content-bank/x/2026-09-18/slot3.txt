@@ -1,0 +1,7 @@
+Founder wants an AI to write the product roadmap from the backlog and user interviews.
+
+Team builds it. The output is a gorgeous PDF, perfect kerning and all.
+
+No one on the product team uses it.
+
+Because a roadmap isn't a calculation. It's the peace treaty that comes after a brutal, human negotiation over what actually matters. The AI can't do the hard part.

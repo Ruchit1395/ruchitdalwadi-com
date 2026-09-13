@@ -1,0 +1,3 @@
+A friend of mine built a full on race car in his garage. It's painted this obnoxious shade of orange. He took it to get groceries last Tuesday. The thing does zero to sixty in under three seconds, but the trip cost him ninety dollars in fuel, deafened the entire street, and he couldn't fit a gallon of milk in the passenger seat. He had to go back for it in his regular car.
+
+So many AI demos feel like this. A stunning piece of engineering that absolutely crushes one specific benchmark. But nobody talks about what it would cost to actually run it for ten thousand trips to the store. That's the gap between a cool demo and a production ready system.

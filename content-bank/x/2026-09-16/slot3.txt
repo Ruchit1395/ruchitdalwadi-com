@@ -1,0 +1,1 @@
+I once asked a junior dev for a one line fix on the login page. Came back and he’d rewritten the entire database schema to be helpful, taking the whole app down. Reminds me of how we're giving AI coding tools a vague task and admin access to a repo. If you don't give it one specific file and one specific goal, you're just rolling the dice.
