@@ -1,0 +1,5 @@
+Team A's AI features were great. Team B's were a mess. They used the same models and data. I couldn't figure out why.
+
+Then I saw Team A's lead engineer had a private text file with 50 helper prompts he'd perfected over months. Team B was starting from zero on every task.
+
+His personal tricks are now a shared, versioned library for the whole company. Stop relying on individual magic. Build a library of reusable parts.

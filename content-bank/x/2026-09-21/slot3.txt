@@ -1,0 +1,1 @@
+My CEO asked if AI could predict our sales. Instead of a lecture, I built him a one hour demo. It proudly spit out our next top customer: Cosmic Innovations, a nonexistent rocket parts supplier. From Wyoming. He laughed. We're now building a tool our sales team can actually use.
