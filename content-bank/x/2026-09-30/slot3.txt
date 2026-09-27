@@ -1,0 +1,1 @@
+Watched a PM spend almost a week trying to prompt an AI not to mention competitor names in summaries. He must have rewritten the instructions fifty different ways. An engineer solved it in twenty minutes by writing a simple filter to remove the names from the source text first. She never even looked at the prompt.

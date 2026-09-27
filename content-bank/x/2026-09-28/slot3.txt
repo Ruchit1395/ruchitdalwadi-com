@@ -1,0 +1,5 @@
+Our new AI report generator passed every test, so we shipped it. The first user, a CFO, immediately ran it on their entire annual sales database.
+
+One click generated a $400 bill for us.
+
+Had to email him asking him to please not use the feature we literally just launched.
