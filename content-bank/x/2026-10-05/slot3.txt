@@ -1,0 +1,5 @@
+Two of our PMs were arguing in a Figma comment thread over the right prompt for an AI feature. One insisted on a 10 line system prompt, the other built a complex XML structure.
+
+The outputs were basically identical.
+
+Our new rule is simple: prove a 10% improvement in a blind test or ship what you have.

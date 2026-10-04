@@ -1,0 +1,1 @@
+Saw a junior engineer fighting a 400 word prompt for a week. He was trying to get it to summarize these awful IT service agreements. It was a wall of text, all rules and persona instructions, and it just wasn't working. I deleted his whole prompt. Replaced it with one good summary written by a lawyer. It nails it every time now.

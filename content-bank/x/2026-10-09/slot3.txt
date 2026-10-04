@@ -1,0 +1,1 @@
+A founder in our strategy meeting was pitching a hugely complex AI for reading team morale on Slack. We're all nodding, the whiteboard markers were squeaking. Then the tech lead just cut in, wait, couldn't we just use an if else statement? The whole room just kind of stopped. We're building the simple version next week.
