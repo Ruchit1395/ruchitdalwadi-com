@@ -1,0 +1,1 @@
+Watching someone give a tourist directions by just repeating 'TURN LEFT' slower and louder is exactly how people try to fix their prompts. It's just shouting. Don't rephrase it again. Draw the map. Show the model one good example of what you want.

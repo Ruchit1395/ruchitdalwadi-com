@@ -1,0 +1,1 @@
+We gave our brilliant new intern a company card and told him to cut our cloud spend. He found a cheaper vendor and migrated the entire production database before his first standup. We woke up to an eight hour outage. He did exactly what we asked. It’s the same way we’re building AI agents, giving them a clear objective and the keys to everything without any real oversight.
