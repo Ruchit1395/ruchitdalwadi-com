@@ -1,0 +1,1 @@
+A team had two options. They could fix the login page that made every single employee stare at a loading spinner for ten minutes a day. Or they could build an AI that plastered a new motivational quote on it every morning. They chose the AI. Now the login page is just as slow, but it also offers you some advice in a font that's a little too big.
