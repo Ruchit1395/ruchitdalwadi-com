@@ -1,0 +1,5 @@
+A team spent six months and a staggering amount of money building an AI to schedule meetings from email threads. A massive technical achievement, they even had to get new servers for it.
+
+The final product is 95% accurate.
+
+Their human assistant was already 99% accurate. They burned a fortune building a less reliable solution because the mandate was to ship AI, not to solve a problem that actually needed solving.
