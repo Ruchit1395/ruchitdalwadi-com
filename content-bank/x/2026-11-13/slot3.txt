@@ -1,0 +1,1 @@
+A team built an AI assistant that answers any question by writing and running a fresh SQL query. The sales VP saw it and just said, Ship it now. The first month's bill was the size of an engineer's salary. Each answer was secretly a dozen expensive model calls. They demoed the feature but forgot to demo the invoice.

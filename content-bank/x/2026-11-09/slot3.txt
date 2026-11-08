@@ -1,0 +1,7 @@
+My boss saw a cool AI video demo and asked if we could build it in two weeks from his phone. I didn't say no.
+
+I said yes, let's write the project plan.
+
+The spec I sent back just detailed the 15 manual data cleaning and review steps required. All the ugly, non magic stuff.
+
+The project was dead an hour later.
