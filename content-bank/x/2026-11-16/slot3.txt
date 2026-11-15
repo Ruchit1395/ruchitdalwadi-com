@@ -1,0 +1,7 @@
+Your AI's first production bug won't be a 500 error. It will be a weird feeling.
+
+A team shipped an AI that summarized sales calls. It worked perfectly. Then it suggested a rep congratulate a customer on their daughter's graduation, which was mentioned briefly on a call.
+
+Technically correct. Socially creepy.
+
+The most important log for your first 50 runs isn't the server status. It's the user's first action after seeing the output. Edit, copy, or delete: that's the real signal.

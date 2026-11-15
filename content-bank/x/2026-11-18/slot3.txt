@@ -1,0 +1,1 @@
+Stop writing brand manifestos for your LLM. When a new designer joins, you send them Figma links to three recent projects, you don't give them a 40 page document on brand theory. Prompts work the same way. Instead of piling on adjectives like 'make it professional but witty', just replace all those instructions with a single, perfect example of the output you want.

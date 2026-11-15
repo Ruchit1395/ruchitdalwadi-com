@@ -1,0 +1,3 @@
+Imagine your new junior designer starts on Monday. He's still figuring out where the coffee machine is. You could hand him a 40 page brand manifesto full of abstract rules like 'our tone is smart, but never arrogant'. Or you could just send him a link to the last three landing pages the team shipped and say, make the new one feel like these. We all know which approach gets better work on day one.
+
+Your LLM is that junior designer. It learns from seeing, not from being told. Yet we see so many teams get stuck in this loop, adding more and more adjectives to their system prompt, trying to perfectly describe the output they want. Stop describing. Just show it a single, high quality example of the finished thing.
